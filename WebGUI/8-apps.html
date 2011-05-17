@@ -278,12 +278,12 @@ Knows and uses VB. Doesn't enjoy it.<br/>
     <li>Return a template from a www_method</li>
     <li>Edit that template in a subclass</li>
     <li>Call a macro from Template Toolkit
-        <pre>[% USE Macro %]
+        <pre class="sh_html">[% USE Macro %]
 [% Macro.AssetProxy( 'ASSET_ID' ) %]</pre>
     </li>
     <li>Include an asset inside a TT template
-        <pre>[% INCLUDE asset:ASSET_ID %]
-[% INSERT template:/template/url %]</pre>
+        <pre class="sh_html">[% INSERT template:/template/url %]
+[% INCLUDE asset:ASSET_ID %]</pre>
     </li>
 </ul>
 </li>
@@ -292,7 +292,7 @@ Knows and uses VB. Doesn't enjoy it.<br/>
 <h1>Templates</h1>
 <ul>
     <li>Configure TT directly from the config file
-        <pre class="sh_js"># etc/site.conf
+        <pre class="sh_javascript"># etc/site.conf
 {
     "template" : {
         "INCLUDE_PATH" : "/data/WebGUI/tmpl",
@@ -309,8 +309,36 @@ Knows and uses VB. Doesn't enjoy it.<br/>
 
 <li class="slide">
 <h1>Edit A Row</h1>
-
+<pre class="sh_perl">
+use WebGUI::FormBuilder;
+sub getRowForm {
+    my ( $self, $row ) = @_;
+    my $fb = WebGUI::FormBuilder-&gt;new( $self-&gt;session );
+    $fb-&gt;addField( "ReadOnly",
+        name        =&gt; 'id',
+        value       =&gt; $row ? $row-&gt;id 
+                    : $session-&gt;id-&gt;generate,
+    );
+    $fb-&gt;addField( "Text",
+        name        =&gt; 'name',
+        value       =&gt; $row ? $row-&gt;name,
+    );
+</pre>
 </li>
+<li class="slide">
+<h1>Edit A Row</h1>
+<pre class="sh_perl">
+    $fb-&gt;addField( "Text",
+        name        =&gt; 'salary',
+        value       =&gt; $row ? $row-&gt;salary,
+    );
+    $fb-&gt;addField( "Textarea",
+        name        =&gt; 'notes',
+        value       =&gt; $row ? $row-&gt;notes,
+    );
+    return $fb;
+}
+</pre>
 
 </li>
 
