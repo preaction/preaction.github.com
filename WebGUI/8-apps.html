@@ -102,7 +102,8 @@ define 'assetName' =&gt; 'Hello World';
 
 sub www_view {
     my ( $self ) = @_;
-    $self-&gt;session-&gt;response-&gt;content_type('text/plain');
+    my $resp = $self-&gt;session-&gt;response;
+    $resp-&gt;content_type('text/plain');
     return "Hello, World!\n";
 }
 
@@ -182,22 +183,42 @@ $session-&gt;request-&gt;content_type( 'text/html' );
 </li>
 
 <li class="slide">
-<h1>Schema Manager</h1>
+<h1>Schema Manager Wobject</h1>
 <pre class="sh_perl">
 package WebGUI::Asset::Wobject::SchemaManager;
 use Moose;
 use WebGUI::Definition::Asset;
 extends 'WebGUI::Asset';
 define 'assetName' =&gt; 'Schema Manager';
-
 use My::Schema;
 has 'schema' =&gt; (
     is      =&gt; 'ro',
-    default =&gt; 'My::Schema',
+    lazy    =&gt; 1,
+    default =&gt; sub {
+        my $self = $_[0];
+        My::Schema-&gt;connect(
+            sub{ $self-&gt;session-&gt;db-&gt;dbh },
+            { unsafe =&gt; 1 } 
+        );
+    },
 );
+</pre>
+</li>
+
+<li class="slide">
+<h1>Schema Manager Wobject (cont)</h1>
+<pre class="sh_perl">
 has 'resultClass' =&gt; (
     is      =&gt; 'ro',
     default =&gt; 'My::Schema::Result::Employee',
+);
+
+has 'rs' =&gt; (
+    is      =&gt; 'ro',
+    lazy    =&gt; 1,
+    default =&gt; sub {
+        $_[0]-&gt;schema-&gt;resultset( $_[0]-&gt;resultClass )
+    },
 );
 </pre>
 </li>
@@ -243,17 +264,12 @@ mysql&gt; select * from employee;
 </pre>
 <li class="slide">
 <h1>View the Rows</h1>
-<pre class="sh_perl">
-package WebGUI::Asset::Wobject::SchemaManager;
+<pre class="sh_perl">package WebGUI::Asset::Wobject::SchemaManager;
 # ...
 sub www_view {
     my ( $self ) = @_;
     my $session = $self-&gt;session;
-    my $dbh     = $session-&gt;db-&gt;dbh;
-    my $schema 
-        = $self-&gt;schema-&gt;connect(sub{ $dbh },{ unsafe =&gt; 1});
-    my $rs = $schema-&gt;resultset( $self-&gt;resultClass );
-
+    my $rs = $self-&gt;rs;
     my $template
         = WebGUI::Asset-&gt;newById( $session, 'TMPL_ID' );
     $template-&gt;setParam( rows =&gt; [$rs-&gt;all] );
@@ -289,7 +305,7 @@ Knows and uses VB. Doesn't enjoy it.<br/>
 </li>
 
 <li class="slide">
-<h1>Templates</h1>
+<h1>Templates (cont)</h1>
 <ul>
     <li>Configure TT directly from the config file
         <pre class="sh_javascript"># etc/site.conf
@@ -308,7 +324,7 @@ Knows and uses VB. Doesn't enjoy it.<br/>
 </ul>
 
 <li class="slide">
-<h1>Edit A Row</h1>
+<h1>Edit Row Form</h1>
 <pre class="sh_perl">
 use WebGUI::FormBuilder;
 sub getRowForm {
@@ -316,31 +332,171 @@ sub getRowForm {
     my $fb = WebGUI::FormBuilder-&gt;new( $self-&gt;session );
     $fb-&gt;addField( "ReadOnly",
         name        =&gt; 'id',
-        value       =&gt; $row ? $row-&gt;id 
-                    : $session-&gt;id-&gt;generate,
+        label       =&gt; 'ID',
+        value       =&gt; $row ? $row-&gt;id
+                    : $self-&gt;session-&gt;id-&gt;generate,
     );
     $fb-&gt;addField( "Text",
         name        =&gt; 'name',
-        value       =&gt; $row ? $row-&gt;name,
+        label       =&gt; 'Name',
+        value       =&gt; $row ? $row-&gt;name : '',
     );
 </pre>
 </li>
+
 <li class="slide">
-<h1>Edit A Row</h1>
+<h1>Edit Row Form (cont)</h1>
 <pre class="sh_perl">
     $fb-&gt;addField( "Text",
         name        =&gt; 'salary',
-        value       =&gt; $row ? $row-&gt;salary,
+        label       =&gt; 'Salary',
+        value       =&gt; $row ? $row-&gt;salary : '',
     );
     $fb-&gt;addField( "Textarea",
         name        =&gt; 'notes',
-        value       =&gt; $row ? $row-&gt;notes,
+        label       =&gt; 'Notes',
+        value       =&gt; $row ? $row-&gt;notes : '',
     );
     return $fb;
 }
 </pre>
-
 </li>
+
+<li class="slide">
+<h1>FormBuilder</h1>
+<ul>
+    <li>Introspective Forms
+    <pre class="sh_perl">$fb-&gt;getField( "notes" )
+   -&gt;set( "label" =&gt; "Secret!" );</pre>
+    </li>
+    <li>Forms as Template Variables
+    <pre class="sh_perl">$template-&gt;setParam( %{ $fb-&gt;toTemplateVars } );</pre>
+    </li>
+    <li>Process the Form
+    <pre class="sh_perl">my $values = $fb-&gt;process;</pre>
+    </li>
+    <li>Display Validation Errors
+    <pre class="sh_perl">if ( $fb-&gt;errors ) { return; }</pre>
+    </li>
+</ul>
+
+<li class="slide">
+<h1>Edit Row Page</h1>
+<pre class="sh_perl">
+sub www_editRow {
+    my ( $self ) = @_;
+    my $ses = $self-&gt;session;
+    my $row;
+    if ( my $id = $ses-&gt;request-&gt;param('id') ) {
+        $row = $self-&gt;rs
+               -&gt;search( id =&gt; $id )-&gt;next;
+    }
+    my $fb = $self-&gt;getRowForm( $row );
+    $fb-&gt;addField( 'Submit', name =&gt; 'Save' );
+    return $fb-&gt;toHtml;
+}
+</pre>
+</li>
+
+<li class="slide">
+<h1>Save Row Page</h1>
+<pre class="sh_perl">
+sub www_editRowSave {
+    my ( $self ) = @_;
+    my $req = $self-&gt;session-&gt;request;
+    my $values = $self-&gt;getRowForm-&gt;process;
+    my $row = $self-&gt;rs-&gt;search({ 
+        id =&gt; $req-&gt;param('id'),
+    })-&gt;next;
+    if ( !$row ) { 
+        $self-&gt;rs-&gt;new( $values )-&gt;insert;
+    }
+    else {
+        $row-&gt;update( $rowValues );
+    }
+</pre>
+</li>
+
+<li class="slide">
+<h1>Save Row Page (cont)</h1>
+<pre class="sh_perl">
+    $self-&gt;session-&gt;response-&gt;setRedirect( 
+        $self-&gt;getUrl
+    );
+    return;
+}
+</pre>
+</li>
+
+<li class="slide">
+<h1>Results as JSON</h1>
+<pre class="sh_perl">
+override dispatch =&gt; sub {
+    my ( $self, $frag ) = @_;
+    if ( $frag eq '.json' ) {
+        return JSON-&gt;new-&gt;encode(
+            [
+                map { { $_-&gt;get_columns } } 
+                $self-&gt;rs-&gt;all 
+            ]
+        );
+    }
+    super();
+};
+</pre>
+</li>
+
+<li class="slide">
+<h1>Dispatch</h1>
+<ul>
+    <li>Override default method dispatch</li>
+    <li>Do ANYTHING!</li>
+    <li>Copy Catalyst, Mojo, Dancer, ...</li>
+    <li>Create services</li>
+    <li>Asset controls entire URL trees</li>
+</ul>
+
+<li class="slide">
+<h1>Dispatch Output</h1>
+<pre class="sh_javascript">
+[ {
+    "notes":"Knows and uses VB. Doesn't enjoy it.",
+    "name":"Graham Knop",
+    "id":"3",
+    "salary":"Less than nothing"
+}, {
+    "notes":"Knows and users VB",
+    "name":"Chris Hanson",
+    "id":"2",
+    "salary":"Nothing"
+},{
+    "notes":"Barely worth the damage he causes.",
+    "name":"Doug Bell",
+    "id":"1",
+    "salary":"A pittance"
+} ]
+</pre>
+</li>
+
+<li class="slide">
+<h1>Demo!</h1>
+<p>Broken in lots of ways!</p>
+</li>
+
+<li class="slide">
+<h1>Future Development</h1>
+<ul class="incremental">
+    <li>Moving Core Templates to Template Toolkit</li>
+    <li>More Rapid Application Development</li>
+    <li>CPAN</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Questions</h1>
+<a href="http://preaction.github.com/WebGUI/8-apps.html">
+http://preaction.github.com/WebGUI/8-apps.html
+</a>
 
 </ol> <!-- class="xoxo presentation" -->
 
