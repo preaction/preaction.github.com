@@ -1,10 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<title>S5: An Introduction</title>
+<title>WebGUI 8 Apps</title>
 <!-- metadata -->
 <meta name="generator" content="S5" />
 <meta name="version" content="S5 1.2a2" />
@@ -14,22 +12,22 @@
 <meta name="defaultView" content="slideshow" />
 <meta name="controlVis" content="hidden" />
 <!-- style sheet links -->
-<link rel="stylesheet" href="/s5/ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
-<link rel="stylesheet" href="/s5/ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
-<link rel="stylesheet" href="/s5/ui/default/print.css" type="text/css" media="print" id="slidePrint" />
-<link rel="stylesheet" href="/s5/ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+<link rel="stylesheet" href="../s5/ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="../s5/ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="../s5/ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="../s5/ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
 <!-- embedded styles -->
 <style type="text/css" media="all">
-.imgcon {width: 525px; margin: 0 auto; padding: 0; text-align: center;}
-#anim {width: 270px; height: 320px; position: relative; margin-top: 0.5em;}
-#anim img {position: absolute; top: 42px; left: 24px;}
-img#me01 {top: 0; left: 0;}
-img#me02 {left: 23px;}
-img#me04 {top: 44px;}
-img#me05 {top: 43px;left: 36px;}
 </style>
 <!-- S5 JS -->
-<script src="/s5/ui/default/slides.js" type="text/javascript"></script>
+<script src="../s5/ui/default/slides.js" type="text/javascript"></script>
+<!-- SHJS -->
+<script type="text/javascript" src="../shjs/sh_main.min.js"></script>
+<script type="text/javascript" src="../shjs/lang/sh_perl.min.js"></script>
+<script type="text/javascript" src="../shjs/lang/sh_javascript.min.js"></script>
+<script type="text/javascript" src="../shjs/lang/sh_sh.min.js"></script>
+<script type="text/javascript" src="../shjs/lang/sh_html.min.js"></script>
+<link rel="stylesheet" href="../shjs/css/sh_ide-eclipse.min.css" type="text/css" />
 </head>
 <body>
 
@@ -38,164 +36,282 @@ img#me05 {top: 43px;left: 36px;}
 <div id="currentSlide"><!-- DO NOT EDIT --></div>
 <div id="header"></div>
 <div id="footer">
-<h1>S5 Testbed</h1>
-<h2>Your computer &#8226; Today's date</h2>
+<h1>WebGUI 8 Apps</h1>
+<h2>MadMongers -- 2011-05-17</h2>
 </div>
 </div>
 
 <ol class="xoxo presentation">
 
 <li class="slide">
-<h1>S5 Testbed</h1>
-<h3>Eric A. Meyer</h3>
-<h4><a href="http://www.complexspiral.com/" rel="external">Complex Spiral Consulting</a></h4>
+<h1>WebGUI 8 Apps</h1>
+<h3>Doug Bell</h3>
+<h4><a href="http://www.plainblack.com">Plain Black Corp</a> | <a href="http://www.webgui.org/" rel="external">WebGUI</a></h4>
 <div class="handout"></div>
 </li>
 
 
 <li class="slide">
-<h1>What Is S5?</h1>
+<h1>WebGUI</h1>
 <ul>
-<li>It's a <strong>S</strong>imple <strong>S</strong>tandards-based <strong>S</strong>lide <strong>S</strong>how <strong>S</strong>ystem</li>
-<li>One XHTML document provides all of the slide show's content</li>
-<li>CSS handles the layout and look of the slides</li>
-<li>JavaScript handles the dynamic aspects of the show</li>
-<li>That's all there is to it!  (<a href="#slide10">skip to summary</a>; demonstrates links internal to the slide show)</li>
+    <li>A Perl Web Content Management System</li>
+    <li>First public release: 0.9 August 2001</li>
+    <li>Most recent stable series: 7.0 July 2006</li>
+    <li>8.x development started October 2009</li>
+    <li>8.x alpha: June 2011!</li>
+    <li>2000 commits</li>
 </ul>
-
-<div class="notes">
-<ul>
-<li>I have notes here!</li>
-<li>Keen.</li>
-<li>Remember to tell people that notes are a new feature in 1.2</li>
-</ul>
-</div>
-
 </li>
 
-
 <li class="slide">
-<h1>Operatic Origins</h1>
-<ul>
-<li>Opera 4 introduced <a href="http://www.opera.com/support/tutorials/operashow/" rel="external">Opera Show</a>, a projection-mode style sheet technology (link demonstrates external link styling and window spawning)</li>
-<li>Allows a single XHTML document to be turned into a PowerPoint-like slide show</li>
-<li>Adding screen and print style sheets allows for multi-medium views of a single document</li>
-<li>Highly efficient, but highly browser centric...</li>
-</ul>
-
-<div class="notes">
-<ul>
-<li>S5 and OperaShow diverged greatly in S5 1.1</li>
-<li>S5 1.2 should (we hope) bring them into harmony once more</li>
-</ul>
-</div>
-
-</li>
-
-
-<li class="slide">
-<h1>Incremental Display</h1>
+<h1>WebGUI 8</h1>
 <ul class="incremental show-first">
-<li>Keep hitting/clicking "next" as long as it isn't the control link (&raquo;)</li>
-<li>Bullet points are revealed one by one
+    <li>InnoDB</li>
+    <li>PSGI/Plack</li>
+    <li>Upgrade System</li>
+    <li>CHI Cache</li>
+    <li>Moose-based Assets</li>
+    <li>Admin Interface</li>
+    <li>JSON Services</li>
+    <li>Asset Helpers</li>
+    <li>FormBuilder</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>WebGUI 8</h1>
+<ul class="incremental show-first">
+    <li>Asset Dispatch</li>
+    <li>WebGUI Command</li>
+    <li>New WRE</li>
+    <li>Nginx</li>
+    <li>Template Toolkit integration</li>
+    <li>Facebook and Twitter login</li>
+</ul>
+
+<li class="slide">
+<h1>Hello, World!</h1>
+<pre class="sh_perl">
+package WebGUI::Asset::HelloWorld;
+
+use Moose;
+use WebGUI::Definition::Asset;
+extends 'WebGUI::Asset';
+
+define 'assetName' =&gt; 'Hello World';
+
+sub www_view {
+    my ( $self ) = @_;
+    $self-&gt;session-&gt;response-&gt;content_type('text/plain');
+    return "Hello, World!\n";
+}
+
+1;
+</pre>
+</li>
+
+<li class="slide">
+<h1>Moose Definition</h1>
+<pre class="sh_perl">
+use WebGUI::Definition::Asset;
+define 'assetName' =&gt; 'Hello World';
+</pre>
+<ul>
+    <li><pre class="sh_perl">
+define 'tableName' =&gt; 'HelloWorld';
+</pre></li>
+<li><pre class="sh_perl">
+property 'greeting' =&gt; (
+    tab         =&gt; 'properties',
+    fieldType   =&gt; 'text',
+    label       =&gt; 'Greeting',
+    default     =&gt; 'Hello',
+);
+$self-&gt;greeting;
+$self-&gt;greeting( 'Bonjour' );
+</pre></li>
+<li><pre class="sh_perl">
+has 'something' =&gt; ( is =&gt; 'rw', isa =&gt; 'Array', );
+</pre></li>
+</ul>
+
+<li class="slide">
+<h1>Plack</h1>
+<pre class="sh_perl">
+$session-&gt;request-&gt;content_type( 'text/html' );
+</pre>
 <ul class="incremental">
-<li>All based on class name of <code>inc</code></li>
-<li>Lists can be classed to make items appear individually</li>
-<li>Individual items can be classed as well to create "animations"; see <a href="http://boxofchocolates.ca/projects/s5-incremental-graphics/" rel="external">Derek Featherstone's example</a></li>
+    <li>WebGUI::Session::Request isa Plack::Request</li>
+    <li>WebGUI::Session::Response isa Plack::Response</li>
+    <li>WebGUI isa Plack::Component</li>
+    <li>Session is created by WebGUI::Middleware::Session isa Plack::Middleware</li>
+    <li>Uploads are handled by WebGUI::Middleware::WGAccess</li>
+    <li>Debug plugins for MySQL queries and Asset Performance</li>
 </ul>
 </li>
-<li>Let's try it again, but without the first bullet point being pre-highlighted...</li>
-</ul>
-</li>
-
 
 <li class="slide">
-<h1>Incremental Display II</h1>
-<ul class="incremental">
-<li>Keep hitting/clicking "next" as long as it isn't the control link (&raquo;)</li>
-<li>Bullet points are revealed one by one
+<h1>Installing Asset</h1>
+<pre class="sh_javascript">
+// etc/site.conf
+{
+    "assets" : {
+        "WebGUI::Asset::HelloWorld" : {
+            "category" : "basic"
+        },
+    ...
+    }
+}
+</pre>
+<pre class="sh_sh">
+# plackup app.psgi
+</pre>
+</li>
+
+<li class="slide">
+<h1>Schema Manager</h1>
 <ul>
-<li>All based on class name of <code>incremental</code></li>
-<li>Lists can be classed to make items appear individually</li>
-<li>Individual items can be classed as well to create "animations"; see <a href="http://boxofchocolates.ca/projects/s5-incremental-graphics/" rel="external">Derek Featherstone's example</a></li>
-</ul>
-</li>
-<li>Notice how the sub-list was part of the parent bullet point; that was done on purpose</li>
-<li>Now to move on to other test slides!</li>
+    <li>You have a DBIC Schema</li>
+    <li>You want to manage it in WebGUI</li>
+    <li>WebGUI::Asset::Wobject::SchemaManager</li>
 </ul>
 </li>
 
-
 <li class="slide">
-<h1>PNG Alpha Tests</h1>
-<div style="width: 400px; height: 150px; text-align: center; background: url(/s5/ui/bg-shade.png)">
-<p>DIV with PNG background followed by foreground PNG</p>
-<img src="/s5/ui/bg-shade.png" alt="" title="A translucent image" />
-</div>
-<div style="width: 100%; height: 150px; text-align: center; background: url(/s5/ui/bg-shade.png)">
-<p>DIV with PNG background followed by foreground PNG</p>
-<img src="/s5/ui/bg-shade.png" alt="" title="A translucent image" />
-</div>
+<h1>Schema Manager</h1>
+<pre class="sh_perl">
+package WebGUI::Asset::Wobject::SchemaManager;
+use Moose;
+use WebGUI::Definition::Asset;
+extends 'WebGUI::Asset';
+define 'assetName' =&gt; 'Schema Manager';
+
+use My::Schema;
+has 'schema' =&gt; (
+    is      =&gt; 'ro',
+    default =&gt; 'My::Schema',
+);
+has 'resultClass' =&gt; (
+    is      =&gt; 'ro',
+    default =&gt; 'My::Schema::Result::Employee',
+);
+</pre>
 </li>
 
-
 <li class="slide">
-<h1>S5 Default File Structure</h1>
-<p style="text-align: center;">
-<img src="/s5/pix/s5filemap.png" alt="" title="At a Glance" />
-</p>
+<h1>My::Schema</h1>
+<pre class="sh_perl">
+package My::Schema;
+use base 'DBIx::Class::Schema';
+__PACKAGE__-&gt;load_namespaces();
+
+package My::Schema::Result::Employee;
+use base 'DBIx::Class::Core';
+__PACKAGE__-&gt;table('employee');
+__PACKAGE__-&gt;add_columns(qw/ id name salary notes /);
+__PACKAGE__-&gt;set_primary_key('id');
+
+</pre>
 </li>
 
-
 <li class="slide">
-<h1>S5 Themes</h1>
-<p class="imgcon">
-<img src="/s5/pix/S501.jpg" alt="" title="Default" />
-<img src="/s5/pix/S502.jpg" alt="" title="I18N" />
-<img src="/s5/pix/S503.jpg" alt="" title="Blue" />
-<img src="/s5/pix/S504.jpg" alt="" title="Flower" />
-(one way of presenting multiple graphics)
-</p>
+<h1>Some Rows</h1>
+<pre>
+mysql&gt; select * from employee;
++----+--------------+-------------------+--------------------------------------+
+| id | name         | salary            | notes                                |
++----+--------------+-------------------+--------------------------------------+
+| 1  | Doug Bell    | A pittance        | Barely worth the damage he causes    | 
+| 2  | Chris Hanson | Nothing           | Knows and uses VB.                   | 
+| 3  | Graham Knop  | Less than nothing | Knows and uses VB. Doesn't enjoy it. | 
++----+--------------+-------------------+--------------------------------------+
+3 rows in set (0.00 sec)
+</pre>
 </li>
 
-
 <li class="slide">
-<h1>Incremental S5 Themes</h1>
-<p class="imgcon">
-<img src="/s5/pix/S501.jpg" alt="" title="Default" class="incremental" />
-<img src="/s5/pix/S502.jpg" alt="" title="I18N" class="incremental" />
-<img src="/s5/pix/S503.jpg" alt="" title="Blue" class="incremental" />
-<img src="/s5/pix/S504.jpg" alt="" title="Flower" class="incremental" />
-(one by one!)
-</p>
+<h1>A Template</h1>
+<pre class="sh_html">
+[% FOREACH row IN rows %]
+([% row.id %]) [% row.name %] makes [% row.salary %]&lt;br/&gt;
+[% row.notes %]&lt;br/&gt;
+[% END %]
+</pre>
+<li class="slide">
+<h1>View the Rows</h1>
+<pre class="sh_perl">
+package WebGUI::Asset::Wobject::SchemaManager;
+# ...
+sub www_view {
+    my ( $self ) = @_;
+    my $session = $self-&gt;session;
+    my $dbh     = $session-&gt;db-&gt;dbh;
+    my $schema 
+        = $self-&gt;schema-&gt;connect(sub{ $dbh },{ unsafe =&gt; 1});
+    my $rs = $schema-&gt;resultset( $self-&gt;resultClass );
+
+    my $template
+        = WebGUI::Asset-&gt;newById( $session, 'TMPL_ID' );
+    $template-&gt;setParam( rows =&gt; [$rs-&gt;all] );
+    return $template;
+}
+</pre>
 </li>
 
+<li class="slide">
+<h1>The Output</h1>
+(1) Doug Bell makes A pittance<br/>
+Barely worth the damage he causes<br/>
+(2) Chris Hanson makes Nothing<br/>
+Knows and uses VB.<br/>
+(3) Graham Knop makes Less than nothing<br/>
+Knows and uses VB. Doesn't enjoy it.<br/>
+</li>
 
 <li class="slide">
-<h1>Incremental Animation</h1>
+<h1>Templates</h1>
 <ul>
-<li>A demonstration of just one of the many ways to accomplish simple animation-like effects <small>(using a diagram from <a href="http://gmpg.org/xfn/and/" rel="external">"XFN and..."</a>)</small></li>
+    <li>Return a template from a www_method</li>
+    <li>Edit that template in a subclass</li>
+    <li>Call a macro from Template Toolkit
+        <pre>[% USE Macro %]
+[% Macro.AssetProxy( 'ASSET_ID' ) %]</pre>
+    </li>
+    <li>Include an asset inside a TT template
+        <pre>[% INCLUDE asset:ASSET_ID %]
+[% INSERT template:/template/url %]</pre>
+    </li>
 </ul>
-<p class="imgcon" id="anim">
-<img src="/s5/pix/mememe01.png" id="me01" alt="" />
-<img src="/s5/pix/mememe02.png" alt="" id="me02" class="incremental" />
-<img src="/s5/pix/mememe03.png" alt="" id="me03" class="incremental" />
-<img src="/s5/pix/mememe04.png" alt="" id="me04" class="incremental" />
-<img src="/s5/pix/mememe05.png" alt="" id="me05" class="incremental" />
-</p>
 </li>
-
 
 <li class="slide">
-<h1>In Summary</h1>
+<h1>Templates</h1>
 <ul>
-<li>With minimal scripting, we have recreated and improved upon a (currently) browser-specific technology, making it cross-browser in the process</li>
-<li>The S5 format is OSF 1.0 compatible</li>
-<li>S5 is a very flexible and lightweight slide show system available for anyone to use</li>
+    <li>Configure TT directly from the config file
+        <pre class="sh_js"># etc/site.conf
+{
+    "template" : {
+        "INCLUDE_PATH" : "/data/WebGUI/tmpl",
+        "PLUGIN_BASE" : "My::Template::Plugin"
+    }
+}</pre>
+    </li>
+    <li>Downgrade variables HTML::Template can't handle
+    <pre class="sh_perl">{ foo =&gt; { bar =&gt; "baz" }</pre>
+    <pre class="sh_perl">{ "foo.bar" =&gt; "baz" }</pre>
+    <div>Deletes objects!</div>
+    </li>
 </ul>
+
+<li class="slide">
+<h1>Edit A Row</h1>
+
 </li>
 
-</ol>
+</li>
 
+</ol> <!-- class="xoxo presentation" -->
+
+<script type="text/javascript">sh_highlightDocument();</script>
 </body>
 </html>
