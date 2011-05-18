@@ -169,8 +169,12 @@ $session-&gt;request-&gt;content_type( 'text/html' );
 <li class="slide">
 <h1>Starting WebGUI</h1>
 <pre class="sh_sh">
-# plackup app.psgi
+# plackup
 </pre>
+<ul>
+    <li>Run from WebGUI directory (/data/WebGUI)</li>
+    <li>app.psgi is implied</li>
+</ul>
 </li>
 
 <li class="slide">
@@ -188,7 +192,7 @@ $session-&gt;request-&gt;content_type( 'text/html' );
 package WebGUI::Asset::Wobject::SchemaManager;
 use Moose;
 use WebGUI::Definition::Asset;
-extends 'WebGUI::Asset';
+extends 'WebGUI::Asset::Wobject';
 define 'assetName' =&gt; 'Schema Manager';
 use My::Schema;
 has 'schema' =&gt; (
@@ -272,7 +276,10 @@ sub www_view {
     my $rs = $self-&gt;rs;
     my $template
         = WebGUI::Asset-&gt;newById( $session, 'TMPL_ID' );
-    $template-&gt;setParam( rows =&gt; [$rs-&gt;all] );
+    $template-&gt;setParam( 
+        rows =&gt; [ 
+            map { { $_-&gt;get_columns } } $rs-&gt;all 
+        ] );
     return $template;
 }
 </pre>
@@ -298,8 +305,8 @@ Knows and uses VB. Doesn't enjoy it.<br/>
 [% Macro.AssetProxy( 'ASSET_ID' ) %]</pre>
     </li>
     <li>Include an asset inside a TT template
-        <pre class="sh_html">[% INSERT template:/template/url %]
-[% INCLUDE asset:ASSET_ID %]</pre>
+        <pre class="sh_html">[% INCLUDE template:/template/url %]
+[% INSERT asset:ASSET_ID %]</pre>
     </li>
 </ul>
 </li>
@@ -386,12 +393,16 @@ sub getRowForm {
 sub www_editRow {
     my ( $self ) = @_;
     my $ses = $self-&gt;session;
+
     my $row;
     if ( my $id = $ses-&gt;request-&gt;param('id') ) {
-        $row = $self-&gt;rs
-               -&gt;search( id =&gt; $id )-&gt;next;
+        $row = $self-&gt;rs-&gt;find({ id =&gt; $id });
     }
+
     my $fb = $self-&gt;getRowForm( $row );
+    $fb-&gt;addField( 'Hidden', 
+        name =&gt; 'func', value =&gt; 'editRowSave',
+    );
     $fb-&gt;addField( 'Submit', name =&gt; 'Save' );
     return $fb-&gt;toHtml;
 }
@@ -404,22 +415,10 @@ sub www_editRow {
 sub www_editRowSave {
     my ( $self ) = @_;
     my $req = $self-&gt;session-&gt;request;
-    my $values = $self-&gt;getRowForm-&gt;process;
-    my $row = $self-&gt;rs-&gt;search({ 
-        id =&gt; $req-&gt;param('id'),
-    })-&gt;next;
-    if ( !$row ) { 
-        $self-&gt;rs-&gt;new( $values )-&gt;insert;
-    }
-    else {
-        $row-&gt;update( $rowValues );
-    }
-</pre>
-</li>
 
-<li class="slide">
-<h1>Save Row Page (cont)</h1>
-<pre class="sh_perl">
+    my $values = $self-&gt;getRowForm-&gt;process;
+    my $row = $self-&gt;rs-&gt;update_or_create( $values );
+
     $self-&gt;session-&gt;response-&gt;setRedirect( 
         $self-&gt;getUrl
     );
@@ -453,7 +452,13 @@ override dispatch =&gt; sub {
     <li>Do ANYTHING!</li>
     <li>Copy Catalyst, Mojo, Dancer, ...</li>
     <li>Create services</li>
-    <li>Asset controls entire URL trees</li>
+    <li>Asset controls entire URL trees
+        <ul>
+            <li>ASSET_URL/subpage</li>
+            <li>ASSET_URL.ext</li>
+            <li>ASSET_URL/subpage/subsubpage.ext</li>
+        </ul>
+    </li>
 </ul>
 
 <li class="slide">
@@ -494,9 +499,17 @@ override dispatch =&gt; sub {
 
 <li class="slide">
 <h1>Questions</h1>
-<a href="http://preaction.github.com/WebGUI/8-apps.html">
-http://preaction.github.com/WebGUI/8-apps.html
-</a>
+<ul>
+    <li>
+    Slides: <a href="http://preaction.github.com/WebGUI/8-apps.html">
+    http://preaction.github.com/WebGUI/8-apps.html
+    </a>
+    </li>
+    <li>
+    Code: <a href="http://preaction.github.com/WebGUI/8-apps.tar.gz">
+    http://preaction.github.com/WebGUI/8-apps.tar.gz
+    </a>
+    </li>
 
 </ol> <!-- class="xoxo presentation" -->
 

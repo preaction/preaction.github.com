@@ -1,0 +1,21 @@
+To install the HelloWorld and SchemaManager apps, add this to your WebGUI config file:
+
+{
+    "assets" : {
+        "WebGUI::Asset::HelloWorld" : {
+            "category" : "basic"
+        },
+        "WebGUI::Asset::Wobject::SchemaManager" : {
+            "category" : "basic"
+        }
+    }
+}
+
+To use the SchemaManager app you must also create the template and replace the ID in
+SchemaManager.pm line 36 (o61VdYlrT52-ErovFs45nA).
+
+    [% FOREACH row IN rows %]
+    ([% row.id %]) [% row.name %] makes [% row.salary %]<br/>
+    [% row.notes %]<br/>
+    [% END %]
+
