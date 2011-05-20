@@ -8,6 +8,7 @@
 <meta name="version" content="S5 1.2a2" />
 <meta name="author" content="Doug Bell" />
 <meta name="company" content="Plain Black Corp." />
+<meta name="license" content="CC-BY-SA 3.0" />
 <!-- configuration parameters -->
 <meta name="defaultView" content="slideshow" />
 <meta name="controlVis" content="hidden" />
@@ -65,7 +66,7 @@
 
 <li class="slide">
 <h1>WebGUI 8</h1>
-<ul class="incremental show-first">
+<ul>
     <li>InnoDB</li>
     <li>PSGI/Plack</li>
     <li>Upgrade System</li>
@@ -80,7 +81,7 @@
 
 <li class="slide">
 <h1>WebGUI 8</h1>
-<ul class="incremental show-first">
+<ul>
     <li>Asset Dispatch</li>
     <li>WebGUI Command</li>
     <li>New WRE</li>
@@ -141,7 +142,7 @@ has 'something' =&gt; ( is =&gt; 'rw', isa =&gt; 'Array', );
 <pre class="sh_perl">
 $session-&gt;request-&gt;content_type( 'text/html' );
 </pre>
-<ul class="incremental">
+<ul>
     <li>WebGUI::Session::Request isa Plack::Request</li>
     <li>WebGUI::Session::Response isa Plack::Response</li>
     <li>WebGUI isa Plack::Component</li>
@@ -450,8 +451,8 @@ override dispatch =&gt; sub {
 <ul>
     <li>Override default method dispatch</li>
     <li>Do ANYTHING!</li>
-    <li>Copy Catalyst, Mojo, Dancer, ...</li>
     <li>Create services</li>
+    <li>Copy Catalyst, Mojo, Dancer, ...</li>
     <li>Asset controls entire URL trees
         <ul>
             <li>ASSET_URL/subpage</li>
@@ -490,10 +491,11 @@ override dispatch =&gt; sub {
 
 <li class="slide">
 <h1>Future Development</h1>
-<ul class="incremental">
+<ul>
     <li>Moving Core Templates to Template Toolkit</li>
     <li>More Rapid Application Development</li>
     <li>CPAN</li>
+    <li>More Performance Improvement</li>
 </ul>
 </li>
 
@@ -510,7 +512,13 @@ override dispatch =&gt; sub {
     http://preaction.github.com/WebGUI/8-apps.tar.gz
     </a>
     </li>
-
+</ul>
+<p>Slides are licensed under a <a
+    href="http://creativecommons.org/licenses/by-sa/3.0/us/">CC-BY-SA
+    3.0 license</a>.</p> 
+<p>Code is licensed under the <a
+    href="http://www.gnu.org/licenses/gpl-3.0.txt">GNU GPL v3.0</a> or
+later.</p>
 </ol> <!-- class="xoxo presentation" -->
 
 <script type="text/javascript">sh_highlightDocument();</script>
