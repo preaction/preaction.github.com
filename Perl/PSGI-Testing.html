@@ -1,0 +1,311 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Testing with PSGI</title>
+<!-- metadata -->
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.2a2" />
+<meta name="author" content="Doug Bell" />
+<meta name="company" content="Plain Black Corp." />
+<meta name="license" content="CC-BY-SA 3.0" />
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<link rel="stylesheet" href="../s5/ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="../s5/ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="../s5/ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="../s5/ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+<!-- embedded styles -->
+<style type="text/css" media="all">
+</style>
+<!-- S5 JS -->
+<script src="../s5/ui/default/slides.js" type="text/javascript"></script>
+<!-- SHJS -->
+<script type="text/javascript" src="../shjs/sh_main.min.js"></script>
+<script type="text/javascript" src="../shjs/lang/sh_perl.min.js"></script>
+<link rel="stylesheet" href="../shjs/css/sh_ide-eclipse.min.css" type="text/css" />
+</head>
+<body>
+
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+<div id="footer">
+<h1>Testing with PSGI</h1>
+<h2>YAPC::NA -- 2011-06-29</h2>
+</div>
+</div>
+
+<ol class="xoxo presentation">
+
+<li class="slide">
+<h1>Testing with PSGI</h1>
+<h3>Doug Bell</h3>
+<h4><a href="http://www.plainblack.com">Plain Black Corp</a> | <a href="http://www.webgui.org/" rel="external">WebGUI</a></h4>
+<div class="handout"></div>
+</li>
+
+<li class="slide">
+<h1>What is PSGI?</h1>
+<ul>
+    <li>Perl Service Gateway Interface</li>
+    <li>Perfect Server of Great Ideas</li>
+    <li>Perl's answer to WSGI and Rack</li>
+    <li>Decouples your web app from the server</li>
+    <li>-- in a Perl way</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Basic PSGI</h1>
+<pre class="sh_perl">
+# from PSGI.pod
+my $app = sub {
+      my $env = shift;
+      return [
+          '200',
+          [ 'Content-Type' =&gt; 'text/plain' ],
+          [ "Hello World" ], # or IO::Handle-like object
+      ];
+  };
+</pre>
+<ul>
+    <li>A Perl code reference</li>
+    <li>Accepts a Perl hash reference of environment variables</li>
+    <li>Returns a Perl datastructure</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Testing with PSGI</h1>
+<ul>
+    <li>Run the coderef</li>
+    <li>Give the right environment variables</li>
+    <li>Parse output</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Run a PSGI app</h1>
+<pre class="sh_perl">
+use HTTP::Message::PSGI;
+use HTTP::Request;
+use HTTP::Response;
+use MyApp; # is a Plack::Component
+
+my $app = MyApp-&gt;to_app;
+
+my $request = HTTP::Request-&gt;new;
+
+my $output = $app-&gt;( $request-&gt;to_psgi );
+
+my $response = HTTP::Response-&gt;from_psgi( $output );
+</pre>
+</li>
+
+<li class="slide">
+<h1>Using T::W::M::PSGI</h1>
+<ul>
+    <li>Test::WWW::Mechanize::PSGI</li>
+</ul>
+<pre class="sh_perl">
+use Test::More;
+use Test::WWW::Mechanize::PSGI;
+use MyApp;
+my $mech = Test::WWW::Mechanize::PSGI-&gt;new( 
+                app =&gt; MyApp-&gt;to_app, );
+$mech-&gt;get_ok( '/' );
+done_testing;
+</pre>
+</li>
+
+<li class="slide">
+<h1>A Guestbook</h1>
+<ul>
+    <li>The Web 0.0 Killer App</li>
+    <li>Hilariously contrived example</li>
+    <li>Post a comment to a web site</li>
+    <li>Read posted comments</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>The App Class</h1>
+<pre class="sh_perl">
+package MyApp;
+use Moose;
+use Template::Simple;
+extends 'Plack::Component';
+has posts =&gt; (
+    is      =&gt; 'rw',
+    default =&gt; sub { [] },
+);
+</pre>
+</li>
+
+<li class="slide">
+<h1>The Template</h1>
+
+<pre class="sh_perl">
+has tmpl =&gt; (
+    is      =&gt; 'ro',
+    default =&gt; sub {
+        Template::Simple-&gt;new(
+            templates =&gt; {
+                view =&gt; &lt;&lt;'ENDTMPL',
+&lt;form&gt;&lt;label&gt;Name:&lt;input name="name"/&gt;&lt;/label&gt;
+&lt;label&gt;Comment:&lt;textarea name="text"&gt;&lt;/textarea&gt;&lt;/label&gt;
+&lt;/form&gt;
+[% START posts %]
+&lt;p&gt;[% name %] -- [% text %]&lt;/p&gt;
+[% END posts %]
+ENDTMPL
+            },
+        );
+    }
+);
+</pre>
+</li>
+
+<li class="slide">
+<h1>The View Method</h1>
+<pre class="sh_perl">
+sub call {
+    my ( $self, $env ) = @_;
+    my $req = Plack::Request-&gt;new( $env );
+    if ( $req-&gt;method eq 'POST' ) {
+        $self-&gt;add_post( $req-&gt;parameters );
+    }
+    return $self-&gt;posts_html;
+}
+</pre>
+</li>
+
+<li class="slide">
+<h1>The Posts</h1>
+<h2>Add a Post</h2>
+
+<pre class="sh_perl">
+sub add_post {
+    my ( $self, $row ) = @_;
+    push @{$self-&gt;posts}, $row;
+}
+</pre>
+<h2>Show the Posts</h2>
+<pre class="sh_perl">
+sub posts_html {
+    my ( $self ) = @_;
+    return $self-&gt;tmpl-&gt;render( 'view', $posts );
+}
+</pre>
+</li>
+
+<li class="slide">
+<h1>Test the Whole Thing</h1>
+<pre class="sh_perl">
+use Test::More;
+use Test::WWW::Mechanize::PSGI;
+use MyApp;
+my $mech = Test::WWW::Mechanize::PSGI-&gt;new( 
+    app =&gt; MyApp-&gt;to_app,
+);
+</pre>
+</li>
+
+<li class="slide">
+<h1>Test the Form</h1>
+<pre class="sh_perl">
+$mech-&gt;get_ok( '/', 'get the form' );
+$mech-&gt;submit_form_ok(
+    {
+        fields  =&gt; {
+            name    =&gt; 'Scrappy Doo',
+            text    =&gt; 'Puppy power!',
+        },
+    }
+    "Add a guestbook entry",
+);
+</pre>
+</li>
+
+<li class="slide">
+<h1>Test the New Post</h1>
+
+<pre class="sh_perl">
+$mech-&gt;content_contains( "Scrappy Doo" );
+$mech-&gt;content_contains( "Puppy power!" );
+</pre>
+</li>
+
+<li class="slide">
+<h1>More Tests</h1>
+<ul>
+    <li><code>follow_link_ok</code></li>
+    <li><code>html_link_ok</code></li>
+    <li><code>text_contains</code></li>
+    <li><code>page_links_ok</code></li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Why?</h1>
+<ul>
+    <li>Why not unit testing instead?</li>
+    <li>Integration testing</li>
+    <li>User Model tests</li>
+    <li>Make sure it works as the user would use it</li>
+    <li>Limited test investment for good results</li>
+    <li>Same tests, only automated</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Coverage</h1>
+<ul>
+    <li>More code is exercised</li>
+    <li>Fewer tests and less development time</li>
+    <li>More time doing real work</li>
+    <li>More confidence in the code</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>But...</h1>
+<ul>
+    <li>More difficult to track down test failures</li>
+    <li>Not a replacement for unit tests
+    <ul>
+        <li>But only unit test your own code</li>
+    </ul>
+    </li>
+    <li>Nor a replacement for regression tests
+    <ul>
+        <li>Regression tests are non-optional</li>
+    </ul>
+    </li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Questions</h1>
+<ul>
+    <li>
+    Slides: <a href="http://preaction.github.com/Perl/PSGI-Testing.html">
+    http://preaction.github.com/Perl/PSGI-Testing.html
+    </a>
+    </li>
+</ul>
+<p>Slides are licensed under a <a
+    href="http://creativecommons.org/licenses/by-sa/3.0/us/">CC-BY-SA
+    3.0 license</a>.</p> 
+<p>Code is licensed under the <a
+    href="http://www.gnu.org/licenses/gpl-3.0.txt">GNU GPL v3.0</a> or
+later.</p>
+</ol> <!-- class="xoxo presentation" -->
+
+<script type="text/javascript">sh_highlightDocument();</script>
+</body>
+</html>
