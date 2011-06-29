@@ -138,9 +138,13 @@ done_testing;
 package MyApp;
 use Moose;
 use Template::Simple;
+use Plack::Request;
+use Plack::Response;
 extends 'Plack::Component';
+
 has posts =&gt; (
     is      =&gt; 'rw',
+    lazy    =&gt; 1,
     default =&gt; sub { [] },
 );
 </pre>
@@ -151,12 +155,12 @@ has posts =&gt; (
 
 <pre class="sh_perl">
 has tmpl =&gt; (
-    is      =&gt; 'ro',
+    is      =&gt; 'ro', lazy =&gt; 1,
     default =&gt; sub {
         Template::Simple-&gt;new(
             templates =&gt; {
                 view =&gt; &lt;&lt;'ENDTMPL',
-&lt;form&gt;&lt;label&gt;Name:&lt;input name="name"/&gt;&lt;/label&gt;
+&lt;form method="POST"&gt;&lt;label&gt;Name:&lt;input name="name"/&gt;&lt;/label&gt;
 &lt;label&gt;Comment:&lt;textarea name="text"&gt;&lt;/textarea&gt;&lt;/label&gt;
 &lt;/form&gt;
 [% START posts %]
@@ -175,11 +179,16 @@ ENDTMPL
 <pre class="sh_perl">
 sub call {
     my ( $self, $env ) = @_;
+
     my $req = Plack::Request-&gt;new( $env );
     if ( $req-&gt;method eq 'POST' ) {
         $self-&gt;add_post( $req-&gt;parameters );
     }
-    return $self-&gt;posts_html;
+
+    my $res = Plack::Response-&gt;new(200);
+    $res-&gt;content_type('text/html');
+    $res-&gt;body( $self-&gt;posts_html );
+    return $res-&gt;finalize;
 }
 </pre>
 </li>
@@ -198,7 +207,8 @@ sub add_post {
 <pre class="sh_perl">
 sub posts_html {
     my ( $self ) = @_;
-    return $self-&gt;tmpl-&gt;render( 'view', $posts );
+    my $output = $self-&gt;tmpl-&gt;render( 'view', $posts );
+    return ${ $output };
 }
 </pre>
 </li>
@@ -210,7 +220,7 @@ use Test::More;
 use Test::WWW::Mechanize::PSGI;
 use MyApp;
 my $mech = Test::WWW::Mechanize::PSGI-&gt;new( 
-    app =&gt; MyApp-&gt;to_app,
+    app =&gt; MyApp-&gt;new-&gt;to_app,
 );
 </pre>
 </li>
@@ -243,10 +253,10 @@ $mech-&gt;content_contains( "Puppy power!" );
 <li class="slide">
 <h1>More Tests</h1>
 <ul>
-    <li><code>follow_link_ok</code></li>
-    <li><code>html_link_ok</code></li>
-    <li><code>text_contains</code></li>
-    <li><code>page_links_ok</code></li>
+    <li><code>follow_link_ok</code> - Follow a link</li>
+    <li><code>html_lint_ok</code> - Lint check your HTML</li>
+    <li><code>text_contains</code> - Without HTML</li>
+    <li><code>page_links_ok</code> - Check for broken links</li>
 </ul>
 </li>
 
@@ -296,6 +306,10 @@ $mech-&gt;content_contains( "Puppy power!" );
     Slides: <a href="http://preaction.github.com/Perl/PSGI-Testing.html">
     http://preaction.github.com/Perl/PSGI-Testing.html
     </a>
+    </li>
+    <li>
+    Code: <a href="http://preaction.github.com/Perl/PSGI-Testing/MyApp.pm">MyApp.pm</a>, 
+    <a href="http://preaction.github.com/Perl/PSGI-Testing/myapp.t">myapp.t</a>
     </li>
 </ul>
 <p>Slides are licensed under a <a
