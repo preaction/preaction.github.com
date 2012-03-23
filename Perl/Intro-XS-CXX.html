@@ -1,0 +1,655 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Intro to XS/C++</title>
+<!-- metadata -->
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.2a2" />
+<meta name="author" content="Doug Bell" />
+<meta name="company" content="Double Cluepon Software Corp." />
+<meta name="license" content="CC-BY-SA 3.0" />
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<link rel="stylesheet" href="../s5/ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="../s5/ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="../s5/ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="../s5/ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+<!-- embedded styles -->
+<style type="text/css" media="all">
+</style>
+<!-- S5 JS -->
+<script src="../s5/ui/default/slides.js" type="text/javascript"></script>
+<!-- SHJS -->
+<script type="text/javascript" src="../shjs/sh_main.min.js"></script>
+<script type="text/javascript" src="../shjs/lang/sh_perl.min.js"></script>
+<script type="text/javascript" src="../shjs/lang/sh_c.min.js"></script>
+<script type="text/javascript" src="../shjs/lang/sh_cpp.min.js"></script>
+<link rel="stylesheet" href="../shjs/css/sh_ide-eclipse.min.css" type="text/css" />
+</head>
+<body>
+
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+<div id="footer">
+<h1>Intro to XS/C++</h1>
+<h2>Chicago.PM -- 2012-03-22</h2>
+</div>
+</div>
+
+<ol class="xoxo presentation">
+<!-- Begin presentation -->
+
+<li class="slide">
+<h1>Intro to XS/C++</h1>
+<h3>Doug Bell</h3>
+<h4><a href="http://www.doublecluepon.com">Double Cluepon Software Corp.</a></h4>
+<div class="handout"></div>
+</li>
+
+<!-- li class="slide" -->
+<!-- pre class="sh_perl" -->
+
+<li class="slide">
+<h1>Don't Panic</h1>
+<ul>
+<li>XS has a reputation for being obtuse
+<ul>
+<li>Compared to Perl?</li>
+<li>Lower-level</li>
+</ul></li>
+<li>Try it again for the first time</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Just the Basics</h1>
+<ul>
+<li>XS provides a way to call native libraries from Perl</li>
+<li>Probably C or C++</li>
+<li>XS for C is well-documented
+<ul>
+<li><a href="http://perldoc.perl.org/index-internals.html">http://perldoc.perl.org/index-internals.html</a></li>
+<li><a href="http://world.std.com/~swmcd/steven/perl/pm/xs/intro/">http://world.std.com/~swmcd/steven/perl/pm/xs/intro/</a></li>
+</ul></li>
+<li>XS for C++ less-so
+<ul>
+<li>Some mention in `perldoc perlxs`</li>
+<li><a href="http://www.johnkeiser.com/perl-xs-c++.html">http://www.johnkeiser.com/perl-xs-c++.html</a></li>
+<li>C++ is a wonderful language for XS</li>
+</ul></li>
+</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Start with h2xs</h1>
+<ul>
+<li>Build a bare XS module called MyModule
+<ul><li><code>h2xs -A --skip-exporter -nMyModule</code>
+<ul><li><code>-A</code> -- no AUTOLOAD</li>
+<li><code>--skip-exporter</code> -- no use Exporter</li>
+<li><code>-nMyModule</code> -- name MyModule</li>
+</ul></li>
+</ul></li>
+<li>Set appropriate Makefile.PL parameters
+<ul><li><code>h2xs -L/opt/local/lib -lmylib</code></li>
+<li>Much like the arguments to gcc/g++</li>
+</ul></li>
+</ul></li>
+
+<li class="slide">
+<h1>What we have</h1>
+<div style="float: left; width: 50%"><ul>
+<li>MyModule/</li>
+<li>README</li>
+<li>Changes</li>
+<li>MANIFEST</li>
+<li>ppport.h</li>
+<li>lib/MyModule.pm</li>
+</ul></div>
+<div style="float: left"><ul>
+<li>t/MyModule.t</li>
+<li>MyModule.xs</li>
+<li>Makefile.PL</li>
+<li>Missing: typemap</li>
+<li>Missing: perlobject.map</li>
+</ul></div>
+</li>
+
+<li class="slide">
+<h1>lib/MyModule.pm</h1>
+<pre class="sh_perl">
+package MyModule;
+
+use 5.014001;
+use strict;
+use warnings;
+
+our @ISA = qw();
+
+our $VERSION = '0.01';
+
+require XSLoader;
+XSLoader::load('MyModule', $VERSION);
+
+# Preloaded methods go here.
+
+1;
+</pre>
+</li>
+
+<li class="slide">
+<h1>MyModule.xs</h1>
+
+<pre class="sh_cpp">
+#include "EXTERN.h"
+#include "perl.h"
+#include "XSUB.h"
+
+#include "ppport.h"
+
+MODULE = MyModule               PACKAGE = MyModule
+</pre>
+<ul>
+<li>Before "MODULE" -- C/C++</li>
+<li>After "MODULE" -- XS</li>
+<li>.xs files processed by xsubpp into C/C++</li>
+<li>XS covered later, some administrative details first...</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>C++ Edits to MyModule.xs</h1>
+<ul>
+<li>Add 'extern "C"' around C headers</li>
+</ul>
+<pre class="sh_cpp">
+#ifdef __cplusplus
+extern "C" {
+#endif
+#include "EXTERN.h"
+#include "perl.h"
+#include "XSUB.h"
+#ifdef __cplusplus
+}
+#endif
+</pre>
+<ul>
+<li>This prevents name-mangling</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>C++ typemap file</h1>
+<ul>
+<li><a href="http://www.cpan.org/authors/id/DMR/">http://www.cpan.org/authors/id/DMR/</a></li>
+<li>perlobject.map</li>
+<li>We'll add it to Makefile.PL later</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>typemap file</h1>
+<ul>
+<li>typemap maps C/C++ types to/from Perl SV</li>
+</ul>
+<pre class="sh_perl">
+# typemap
+MyClass *       O_OBJECT
+</pre>
+<ul>
+<li>O_OBJECT defined in perlobject.map</li>
+</ul>
+</li>
+<li class="slide">
+<h1>typemap file</h1>
+<pre class="sh_perl" style="font-size: smaller">
+MyClass *       O_MYCLASS
+
+OUTPUT
+O_MYCLASS
+    sv_setref_pv( $arg, CLASS, (void*)$var );
+
+INPUT
+O_MYCLASS
+    if ( sv_isobject($arg) &amp;&amp; (SvTYPE(SvRV($arg)) == SVt_PVMG) ) {
+        $var = ($type)SvIV((SV*)SvRV( $arg ));
+    }
+    else {
+        warn( \"${Package}::$func_name() -- \
+		$var not a blessed SV reference\" );
+        XSRETURN_UNDEF;
+    }
+</pre>
+<div style="float: left; width: 50%"><ul style="font-size: smaller">
+<li>Acts much like macro definitions</li>
+<li><code>CLASS</code> created by XS new()</li>
+</ul></div>
+<div style="float: left"><ul style="font-size: smaller">
+<li><code>$arg</code> replaced by Perl SV</li>
+<li><code>$var</code> replaced by C/C++ variable</li>
+</ul></div>
+</li>
+
+</li>
+<li class="slide">
+<h1>Makefile.PL</h1>
+<pre class="sh_perl" style="font-size: smaller">
+use 5.014001;
+use ExtUtils::MakeMaker;
+WriteMakefile(
+    NAME              =&gt; 'MyModule',
+    VERSION_FROM      =&gt; 'lib/MyModule.pm', # finds $VERSION
+    PREREQ_PM         =&gt; {}, # e.g., Module::Name =&gt; 1.1
+    ($] &gt;= 5.005 ?     ## Add these new keywords supported since 5.005
+      (ABSTRACT_FROM  =&gt; 'lib/MyModule.pm', # retrieve abstract from module
+       AUTHOR         =&gt; 'Doug &lt;madcityzen@gmail.com&gt;') : ()),
+    LIBS              =&gt; [''], # e.g., '-lm'
+    DEFINE            =&gt; '', # e.g., '-DHAVE_SOMETHING'
+    INC               =&gt; '-I.', # e.g., '-I. -I/usr/include/other'
+        # Un-comment this if you add C files to link with later:
+    # OBJECT            =&gt; '$(O_FILES)', # link all the C files too
+    ### Add these for C++ support
+    CC                =&gt; 'g++', # Override from Config
+    LD                =&gt; 'g++', # Override from Config
+    XSOPT             =&gt; '-C++',
+    TYPEMAPS          =&gt; ['perlobject.map'],
+);
+</pre>
+
+</li>
+<li class="slide">
+<h1>Interface a C++ Class</h1>
+
+<pre class="sh_cpp">
+#ifdef __cplusplus
+extern "C" {
+#endif
+#include "EXTERN.h"
+#include "perl.h"
+#include "XSUB.h"
+#ifdef __cplusplus
+}
+#endif
+</pre>
+</li>
+
+</li>
+<li class="slide">
+<h1>Interface a C++ Class</h1>
+<pre class="sh_cpp" style="font-size: smaller">
+class Card {
+    int value_;
+    enum t_suit { SPADES, CLUBS, HEARTS, DIAMONDS } suit_;
+    public:
+        Card( int value, t_suit suit ) {
+            value_ = value;
+            suit_ = suit;
+        }
+        ~Card() { }
+        int value() { return value_; }
+        int suit() { return suit_; }
+        void set_value( int value ) {
+            value_ = value;
+        }
+        void set_suit( t_suit suit ) {
+            suit_ = t_suit;
+        }
+};
+</pre>
+
+</li>
+<li class="slide">
+<h1>Interface a C++ Class</h1>
+<pre class="sh_cpp" style="font-size:smaller">
+MODULE = Card               PACKAGE = Card
+
+Card *
+Card::new( int suit, int value )
+
+void
+Card::DESTROY()
+
+int
+Card::value()
+
+int
+Card::suit()
+
+void
+Card::set_value( int value )
+
+void
+Card::set_suit( int suit )
+</pre>
+</li>
+
+</li>
+<li class="slide">
+<h1>typemap</h1>
+<pre class="sh_perl">
+Card *      O_OBJECT
+</pre>
+<ul>
+<li><code>Card::new()</code> gives us CLASS automatically</li>
+<li>Other <code>Card::*</code> knows it gets a Card * and calls it <code>THIS</code></li>
+<li>All this comes from <code>XSOPTS =&gt; '-C++',</code></li>
+</ul>
+
+</li>
+<li class="slide">
+<h1>Build and test</h1>
+
+<pre>
+$ perl Makefile.PL &amp;&amp; make test
+</pre>
+
+<ul><li>And you're done</li></ul>
+
+<div style="position: fixed; bottom: 150px; width: 85%; color: grey; font-size: smaller; font-family: monospace; font-style: italic; text-align: center;">
+This space accidentally left blank
+</div>
+</li>
+<li class="slide">
+<h1>More Difficult Interfaces</h1>
+
+<pre class="sh_cpp">
+#include &lt;vector&gt;
+class Deck {
+    std::vector&lt;Card&gt; cards_;
+    public:
+        Deck() { }
+        ~Deck() { }
+        void add_card( Card card ) {
+            cards_.push_back( card );
+        }
+        std::vector cards() {
+            return cards_;
+        }
+};
+</pre>
+</li>
+<li class="slide">
+<h1>More Difficult Interfaces</h1>
+
+<pre class="sh_cpp">
+MODULE = Card               PACKAGE = Deck
+
+Deck *
+Deck::new()
+
+void
+Deck::DESTROY()
+</pre>
+<ul>
+<li>Standard boilerplate</li>
+<li>Module turns into Card.so</li>
+<li>Package turns into <code>package Deck;</code></li>
+<li>Include in Card.xs</li>
+</ul>
+
+</li>
+<li class="slide">
+<h1>Custom CODE:</h1>
+
+<pre class="sh_perl">
+void
+Deck::add_card( suit, value )
+    int suit
+    int value
+    CODE:
+        Card card( suit, value );
+        THIS-&gt;add_card( card );
+</pre>
+<ul>
+<li>Change the interface of Deck</li>
+<li>CODE: is C/C++ code</li>
+</ul>
+
+</li>
+<li class="slide">
+<h1>Returning Arrays</h1>
+
+<pre class="sh_cpp" style="font-size: smaller">
+AV *
+Deck::cards()
+    CODE:
+        std::vector&lt;Card&gt; cards( THIS-&gt;cards() );
+        std::vector&lt;Card&gt;::iterator iter( cards.begin() );
+        RETVAL = newAV();               // create an array
+        sv_2mortal( (SV*)RETVAL );      // "mortalize"
+        for ( ; iter != cards.end(); iter++ ) {
+            SV* card_sv( newSV(0) );    // create a scalar
+            sv_setref_pv( card_sv, "Card", (void*)&amp;*iter ); // bless
+            av_push( RETVAL, card_sv );
+        }
+    OUTPUT:
+        RETVAL
+</pre>
+<div style="float: left; width: 49%">
+<ul style="font-size: smaller">
+<li>AV - Array Value; SV - Scalar Value</li>
+<li>Mortal - delayed refcount decrement
+<ul><li>If not used, will be GCed</li>
+<li><code>my @cards = $deck-&gt;cards;</code></li>
+</ul></li>
+<li>RETVAL - Created automatically with type</li>
+</ul></div>
+<div style="float: left; width: 49%">
+<ul style="font-size: smaller">
+<li><code>sv_setref_pv</code> - Set SV to be Reference to Pointer Value<ul>
+<li>Bless into a package too</li>
+</ul></li>
+<li>CODE: requires OUTPUT:</li>
+</ul>
+</div>
+
+</li>
+<li class="slide">
+<h1>Thems The Basics</h1>
+<ul>
+<li>Questions</li>
+<li>Comments</li>
+<li>Concerns</li>
+<li>Scathing Criticisms</li>
+<li>Bombastic Praise</li>
+<li>Moving on...</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Memory Management with SVs</h1>
+<ul>
+<li>Perl SVs are reference counted</li>
+<li>C++11 std::shared_ptr is reference counted</li>
+<li>Same techniques can be used to track SVs through C++
+<ul><li>Good for C++ callbacks</li>
+<li>POSIX-threaded applications</li>
+<li>Avoid memory leaks</li>
+<li>Type-safety with templates</li>
+<li>Pointer can be used after we're done with it (ownership)</li>
+</ul></li>
+</ul>
+
+</li>
+<li class="slide">
+<h1>Building shared_sv</h1>
+<ul>
+<li>The Required 4 methods for STL containers<ul>
+<li>Default (empty) Constructor</li>
+<li>Copy constructor</li>
+<li>Assignment operator</li>
+<li>Destructor</li>
+</ul></li>
+<li>Mostly C++ code</li>
+</ul>
+
+</li>
+<li class="slide">
+<h1>Constructor(s)</h1>
+
+<ul>
+<li>One for STL containers to create empty objects</li>
+<li>One for users to create new SVs</li>
+</ul>
+<pre class="sh_cpp">
+/** Default constructor needed for STL containers */
+shared_sv() : p_(0), sv_(0) {};
+
+/** Useful constructor */
+shared_sv( void* p, std::string package )
+    : p_(p), sv_( newSV(0) ) // Created with refcnt 1
+{
+    if ( sv_ == 0 ) return;
+    sv_ = sv_setref_pv( sv_, package.c_str(), p_ );
+}
+</pre>
+
+</li>
+<li class="slide">
+<h1>Copy constructor</h1>
+<pre class="sh_cpp">
+shared_sv( const shared_sv&amp; that ) 
+    : p_(that.p_), sv_(that.sv_)
+{
+    if ( sv_ == 0 ) return; // Don't do empty SVs
+    // We can increment the refcount faster if we 
+    // don't care about return value (void)
+    SvREFCNT_inc_void( sv_ );
+}
+</pre>
+<ul>
+<li>Copying increments ref count</li>
+<li>Happens a lot inside STL containers</li>
+<li>Happens during method calls</li>
+</ul>
+
+</li>
+<li class="slide">
+<h1>Assignment operator</h1>
+<pre class="sh_cpp">
+shared_sv&amp; operator=( const shared_sv&amp; that ) {
+    if ( this == &amp;that ) return *this; // Mandatory
+    p_ = that.p_;
+    if ( sv_ != 0 ) 
+        SvREFCNT_dec( sv_ ); // Lose our SV
+    sv_ = that.sv();
+    if ( sv_ == 0 ) return *this;
+    SvREFCNT_inc_void( sv_ ); // Gain their SV
+    return *this;
+}
+</pre>
+<ul>
+<li>Assign into STL containers
+<ul>
+<li><code>vector[i] = new shared_sv(...);</code></li>
+</ul></li>
+<li>Also happens a lot during STL container internals</li>
+</ul>
+</li>
+
+</li>
+<li class="slide">
+<h1>Destructor</h1>
+<pre class="sh_perl">
+~shared_sv() {
+    if ( sv_ == 0 ) return;
+    SvREFCNT_dec( sv_ );
+}
+</pre>
+<ul>
+<li>We're done, decrement our refcount</li>
+<li>When refcount is zero, the DESTROY() XS method is called</li>
+<li>Default DESTROY for XS/C++ is <code>delete THIS</code></li>
+</ul>
+
+</li>
+<li class="slide">
+<h1>Usage</h1>
+<ul>
+<li>In routines</li>
+</ul>
+<pre class="sh_perl">
+shared_sv make_card( ) {
+    // Card* card = new Card(); &lt;- bad
+    shared_sv ssv( new Card(), "Card" ); // &lt;- good
+    // We return a copy
+    return ssv;
+    // Copy means refcount incremented
+}
+</pre>
+<ul><li>In containers</li></ul>
+<pre class="sh_cpp">
+std::vector&lt;shared_sv&gt; cxx_array();
+// Card* card = new Card(); &lt;- bad
+shared_sv ssv( new Card(), "Card" ); // &lt;- good
+cxx_array.push_back( ssv );
+// cxx_array keeps a copy, refcount incremented
+</pre>
+
+</li>
+<li class="slide">
+<h1>Helpful tips</h1>
+<ul>
+<li>Keep little C/C++ inside .xs file
+<ul><li>Sharing functions between .xs files is hairy</li>
+<li>Make a static lib to link against</li>
+</ul>
+<li>Build a Perly interface in the XS if possible
+<ul><li>C-style interfaces are not Perly</li></ul>
+</li>
+<li>Do most things in Perl
+<ul><li>More stuff done in Perl, more flexibility you have</li>
+<li>Pull routines out into Perl as long as interface remains Perly</li>
+</ul></li>
+<li>One directory for each XS package
+<ul><li>Subdirectories of main XS package</li>
+<li>Helps share code when in Perl</li>
+</ul>
+</ul></li>
+
+</li>
+<li class="slide">
+<h1>Docs for C++</h1>
+<ul>
+<li><a href="http://www.cplusplus.com/reference/">http://www.cplusplus.com/reference/</a></li>
+<li><a href="http://www.parashift.com/c++-faq-lite/">http://www.parashift.com/c++-faq-lite/</a></li>
+<li><em>Effective C++</em>, <em>Effective STL</em>, <em>More Effective C++</em> by Scott Meyers</li>
+<li><em>C++ Coding Standards</em> by Andrei Alexandrescu and Herb Sutter
+<ul><li>Perl Best Practices for C++</li></ul></li>
+</ul>
+
+</li>
+<li class="slide">
+<h1>The End!</h1>
+<ul>
+    <li>
+    Slides: <a href="http://preaction.github.com/Perl/Intro-XS-CXX.html">
+    http://preaction.github.com/Perl/Intro-XS-CXX.html
+    </a>
+    </li>
+    <li>Code:<ul>
+        <li><a href="http://preaction.github.com/Perl/Intro-XS-CXX/shared_sv.hpp">shared_sv.hpp</a></li>
+    </ul></li>
+</ul>
+<p>Slides are licensed under a <a
+    href="http://creativecommons.org/licenses/by-sa/3.0/us/">CC-BY-SA
+    3.0 license</a>.</p> 
+<p>Code is licensed under the <a href="http://dev.perl.org/licenses/artistic.html">
+Artistic License</a> or <a
+    href="http://www.gnu.org/licenses/gpl-1.0.txt">GNU GPL v1.0</a> or
+later (the same terms as Perl itself).</p>
+</li>
+
+<!-- Done with presentation -->
+</ol> <!-- class="xoxo presentation" -->
+
+<script type="text/javascript">sh_highlightDocument();</script>
+</body>
+</html>
+
