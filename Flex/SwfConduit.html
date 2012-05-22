@@ -1,0 +1,413 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>SwfConduit: A Flash Socket Server</title>
+<!-- metadata -->
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.2a2" />
+<meta name="author" content="Doug Bell" />
+<meta name="company" content="Double Cluepon Software Corp." />
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<link rel="stylesheet" href="../s5/ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="../s5/ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="../s5/ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="../s5/ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+<!-- embedded styles -->
+<style type="text/css" media="all">
+.imgcon {width: 525px; margin: 0 auto; padding: 0; text-align: center;}
+#anim {width: 270px; height: 320px; position: relative; margin-top: 0.5em;}
+#anim img {position: absolute; top: 42px; left: 24px;}
+img#me01 {top: 0; left: 0;}
+img#me02 {left: 23px;}
+img#me04 {top: 44px;}
+img#me05 {top: 43px;left: 36px;}
+</style>
+<!-- S5 JS -->
+<script src="../s5/ui/default/slides.js" type="text/javascript"></script>
+<!-- SHJS -->
+<script type="text/javascript" src="../shjs/sh_main.min.js"></script>
+<script type="text/javascript" src="../shjs/lang/sh_python.min.js"></script>
+<script type="text/javascript" src="../shjs/lang/sh_flex.min.js"></script>
+<link rel="stylesheet" href="../shjs/css/sh_ide-eclipse.min.css" type="text/css" />
+</head>
+<body>
+
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+<div id="footer">
+<h1>SwfConduit</h1>
+<h2>Double Cluepon Software&#8226; 2012-05-22</h2>
+</div>
+</div>
+
+<ol class="xoxo presentation">
+
+<li class="slide">
+<h1>SwfConduit</h1>
+<h2>A Flash Socket Server</h2>
+<h3>Doug Bell</h3>
+<h4><a href="http://www.doublecluepon.com/" rel="external">Double Cluepon Software Corp.</a></h4>
+<div class="handout"></div>
+</li>
+
+<li class="slide">
+<h1>Flash Remoting</h1>
+<ul>
+    <li>Service calls (SOAP)<ul>
+        <li>Good for wide adoption</li>
+        <li>Web-accessible</li>
+        <li>Pull-only</li>
+    </ul></li>
+    <li>Remote Shared Objects (RTMP)<ul>
+        <li>Short and fast</li>
+        <li>Easily sync data between multiple clients</li>
+        <li>Pull/push</li>
+    </ul></li>
+    <li>Raw sockets (message passing)<ul>
+        <li>Flexible</li>
+        <li>Small and fast</li>
+    </ul></li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>The Major Players: BlazeDS</h1>
+<ul>
+    <li>By Adobe</li>
+    <li>Free/Open-Source (GNU LGPL)</li>
+    <li>Java
+    <li>Service calls, shared objects</li>
+    <li>Clustering
+    <li>Web-based admin console</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>The Major Players: Red5</h1>
+<ul>
+    <li>Free/Open-Source (Apache 2.0)</li>
+    <li>Java</li>
+    <li>Service calls, shared objects</li>
+    <li>Media streaming and saving</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>The Major Players: Smartfox Server</h1>
+<ul>
+    <li>Latest version: Smartfox Server 2X</li>
+    <li>Free up to 100 users, graduated fees after that</li>
+    <li>Proprietary (non-Free/Open-Source)</li>
+    <li>Java</li>
+    <li>Custom binary protocol</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>A Challenger Appears!</h1>
+<ul>
+    <li>SwfConduit</li>
+    <li>Free/Open-Source (GNU GPL)</li>
+    <li>Python</li>
+    <li>Simple</li>
+    <li><a href="https://github.com/doublecluepon/SwfConduit">
+        https://github.com/doublecluepon/SwfConduit
+    </a></li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Get SwfConduit</h1>
+<ul>
+    <li>Prerequisites:
+        <ul>
+            <li>Python 2.6</li>
+            <li>Twisted</li>
+            <li>PyAMF</li>
+        </ul>
+    </li>
+    <li><a href="https://github.com/doublecluepon/SwfConduit/wiki/Install">
+        https://github.com/doublecluepon/SwfConduit/wiki/Install
+    </a></li>
+    <li>Windows users: Command line required!</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Write a Server</h1>
+<ul>
+    <li>A simple chat server</li>
+    <li>Demonstrates message-passing</li>
+    <li>Included in the Github repo<ul>
+        <li>examples/chat.py</li>
+    </ul></li>
+    <li><a href="https://github.com/doublecluepon/SwfConduit/wiki/A-simple-chat-server">
+        https://github.com/doublecluepon/SwfConduit/wiki/A-simple-chat-server
+    </a></li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Create the Message</h1>
+<pre class="sh_python">
+# Chat message class
+from swfconduit.event import Event
+class ChatEvent( Event ):
+    # The nickname of the user sending the message
+    nickname = ""
+    # The message
+    text = ""
+</pre>
+<ul>
+    <li>Event - A SwfConduit message</li>
+    <li>AMF transfers complete objects over the wire</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>fire()</h1>
+<pre class="sh_python">
+    def fire( self, server, session ):
+        # We recieved a chat event, send it to every
+        # other person
+        for session_id in server.sessions:
+            s = server.sessions[session_id]
+            if ( s is not session ):
+                s.sendEvent( self )
+</pre>
+<ul>
+    <li>SwfConduit calls fire() when a message comes in</li>
+    <li>fire() gets the swfconduit.Server and swfconduit.Session<ul>
+        <li>Server contains server global info</li>
+        <li>Session contains user/connection info</li>
+    </ul></li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Register the Message</h1>
+<pre class="sh_python">
+# Register our ChatEvent class. the first argument is the same as the
+# registerClassAlias string in the client
+import pyamf
+pyamf.register_class( ChatEvent, "swfconduit.chat.ChatEvent" )
+</pre>
+<ul>
+    <li>Tells the client what message it is recieving</li>
+    <li>Client will need to use the same "swfconduit.chat.ChatEvent" string</li>
+    <li>Will be sent in the AMF message</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Configure the Server</h1>
+<pre class="sh_python">
+# Create the SwfConduit server
+from swfconduit.server import Server
+server = Server({ "proto" : "tcp", "port" : 8000 })
+</pre>
+<ul><li>Server object listens for TCP packets on port 8000</li></ul>
+<pre class="sh_python">
+# Load and run SwfConduit
+from swfconduit.loader import Loader
+loader = Loader()
+loader.servers.append( server );
+application = loader.get_application()
+</pre>
+<ul>
+    <li>Loader object handles all the Twisted library mumbo-jumbo</li>
+    <li>Allows multiple Server objects in the process.</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Run chat.py</h1>
+<pre>twistd -ny chat.py</pre>
+<pre style="white-space: pre-wrap">
+C:\Users\Doug\swfconduit\examples\chat&gt;twistd.py -ny chat.py
+2012-05-21 16:11:57-0500 [-] Log opened.
+2012-05-21 16:11:57-0500 [-] twistd 12.0.0 (C:\Python27\python.exe 2.7.3) starting up.
+2012-05-21 16:11:57-0500 [-] reactor class: twisted.internet.selectreactor.SelectReactor.
+2012-05-21 16:11:57-0500 [-] SocketPolicyFactory starting on 843
+2012-05-21 16:11:57-0500 [-] Starting factory &lt;swfconduit.socketpolicy.SocketPolicyFactory instance at 0x0279A760&gt;
+2012-05-21 16:11:57-0500 [-] Server starting on 8000
+2012-05-21 16:11:57-0500 [-] Starting factory &lt;swfconduit.server.Server instance at 0x026D1BC0&gt;
+</pre>
+</li>
+
+<li class="slide">
+<h1>Create the Client</h1>
+<ul>
+    <li>Needs ChatEvent class analogue</li>
+    <li>Input and output fields</li>
+    <li>SwfConduit socket library</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>ChatEvent class</h1>
+<pre class="sh_flex">
+package swfconduit.chat {
+    import swfconduit.Event;
+    public class ChatEvent extends swfconduit.Event {
+        /** The person who sent the event */
+        public var nickname:String;
+
+        /** The message being sent/received */
+        public var text:String;
+
+        /** Construct a ChatEvent. Default values are required. */
+        public function ChatEvent( nick:String="", text:String="" ) {
+            this.nickname = nick;
+            this.text = text;
+        }
+    }
+}
+</pre>
+</li>
+
+<li class="slide">
+<h1>Chat Application</h1>
+<pre class="sh_flex">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;s:Application width="400" height="300" 
+    xmlns:fx="http://ns.adobe.com/mxml/2009" 
+    xmlns:s="library://ns.adobe.com/flex/spark" 
+    xmlns:mx="library://ns.adobe.com/flex/mx" 
+&gt;
+    &lt;s:layout&gt;&lt;s:VerticalLayout /&gt;&lt;/s:layout&gt;
+    &lt;s:RichEditableText editable="false" id="chatbox" 
+            width="100%" height="250"&gt;
+        &lt;s:text&gt;*** Type /nick NEW_NAME to change your 
+            nickname&lt;/s:text&gt;
+    &lt;/s:RichEditableText&gt;
+    &lt;s:TextInput id="input" width="100%" height="25" /&gt;
+    &lt;s:Label text="You are {nickname}" height="20" /&gt;
+&lt;/s:Application&gt;
+</pre>
+</li>
+
+<li class="slide">
+<h1>Chat Application Script</h1>
+<pre class="sh_flex">
+    &lt;fx:Script&gt;&lt;![CDATA[
+        import swfconduit.Socket;
+        import swfconduit.chat.ChatEvent;
+
+        /** The server to connect to */
+        public var hostname:String = "localhost";
+
+        /** The port to connect to */
+        public var port:uint = 8000;
+
+        /** Our socket object */
+        public var socket:swfconduit.Socket;
+
+        /** The user's current nickname */
+        [Bindable]
+        public var nickname:String;
+</pre>
+</li>
+
+<li class="slide">
+<h1>Connect to the Server</h1>
+<pre class="sh_flex">
+        public function init():void {
+            // Register our event class
+            registerClassAlias( "swfconduit.chat.ChatEvent", ChatEvent );
+
+            // Connect to the server
+            socket = new swfconduit.Socket( hostname, port );
+        }
+</pre>
+<ul>
+    <li><code>registerClassAlias()</code> given the same string the server has</li>
+    <li>To make sure this function is called, add <code>applicationComplete="init()"</code> to <code>&lt;s:Application&gt;</code></li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Handle incoming chat</h1>
+<pre class="sh_flex">
+        public function handleChat(event:ChatEvent):void {
+            chatbox.appendText( "\n" + event.nickname + ": " + event.text );
+        }
+</pre>
+<ul>
+    <li>Much like a normal Flex event handler.</li>
+    <li>Get a swfconduit.Event object as an argument.</li>
+    <li>To make sure this handler is called, add <code>socket.addEventListener( "ChatEvent", handleChat );
+        </code> to <code>init()</code>
+    </li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Send outgoing chat</h1>
+<pre class="sh_flex">
+public function sendChat():void {
+    // Let the user change their nickname using /nick NewName
+    if ( input.text.match('^/nick') ) {
+        // Get everything after "/nick "
+        nickname = input.text.substr(6); 
+    }
+    else {
+        var message:ChatEvent = new ChatEvent( nickname, input.text );
+        socket.writeEvent( message );
+        chatbox.appendText( "\n" + nickname + "&gt; " + input.text );
+    }
+    input.text = "";
+}
+</pre>
+<ul>
+    <li>To execute this function when the user presses the "Enter" key, add
+    <code>enter="sendChat()"</code> to <code>s:TextInput</code></li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Run it!</h1>
+<pre>
+    # Compile chat.mxml into chat.swf
+    mxmlc -l+=swfconduit/flex chat.mxml
+</pre>
+<ul>
+    <li>Open chat.swf in Flash Player or a web browser</li>
+</ul>
+<div style="text-align: center">
+    <img src="SwfConduit/chat.png" style="border: 2px solid black;" />
+</div>
+</li>
+
+<li class="slide">
+<h1>The End!</h1>
+<ul>
+    <li>
+    Slides: <a href="http://preaction.github.com/Flex/SwfConduit.html">
+    http://preaction.github.com/Flex/SwfConduit.html
+    </a>
+    </li>
+    <li>Git repo: <a href="http://github.com/doublecluepon/SwfConduit">
+        http://github.com/doublecluepon/SwfConduit</a><ul>
+    <li>Code is in "examples" folder of SwfConduit distribution</li>
+    </ul></li>
+</ul>
+<p>Slides are licensed under a <a
+    href="http://creativecommons.org/licenses/by-sa/3.0/us/">CC-BY-SA
+    3.0 license</a>.</p> 
+<p>Code is licensed under the <a
+    href="http://www.gnu.org/licenses/gpl-3.0.txt">GNU GPL v3.0</a> or
+later (the same terms as SwfConduit itself).</p>
+</li>
+</ol>
+
+<script type="text/javascript">sh_highlightDocument();</script>
+</body>
+</html>
