@@ -359,7 +359,8 @@ public function sendChat():void {
         nickname = input.text.substr(6); 
     }
     else {
-        var message:ChatEvent = new ChatEvent( nickname, input.text );
+        var message:ChatEvent 
+            = new ChatEvent( nickname, input.text );
         socket.writeEvent( message );
         chatbox.appendText( "\n" + nickname + "&gt; " + input.text );
     }
