@@ -297,35 +297,35 @@ package swfconduit.chat {
 <li class="slide">
 <h1>Chat Application Script</h1>
 <pre class="sh_flex">
-    &lt;fx:Script&gt;&lt;![CDATA[
-        import swfconduit.Socket;
-        import swfconduit.chat.ChatEvent;
+&lt;fx:Script&gt;&lt;![CDATA[
+    import swfconduit.Socket;
+    import swfconduit.chat.ChatEvent;
 
-        /** The server to connect to */
-        public var hostname:String = "localhost";
+    /** The server to connect to */
+    public var hostname:String = "localhost";
 
-        /** The port to connect to */
-        public var port:uint = 8000;
+    /** The port to connect to */
+    public var port:uint = 8000;
 
-        /** Our socket object */
-        public var socket:swfconduit.Socket;
+    /** Our socket object */
+    public var socket:swfconduit.Socket;
 
-        /** The user's current nickname */
-        [Bindable]
-        public var nickname:String;
+    /** The user's current nickname */
+    [Bindable]
+    public var nickname:String;
 </pre>
 </li>
 
 <li class="slide">
 <h1>Connect to the Server</h1>
 <pre class="sh_flex">
-        public function init():void {
-            // Register our event class
-            registerClassAlias( "swfconduit.chat.ChatEvent", ChatEvent );
+public function init():void {
+    // Register our event class
+    registerClassAlias( "swfconduit.chat.ChatEvent", ChatEvent );
 
-            // Connect to the server
-            socket = new swfconduit.Socket( hostname, port );
-        }
+    // Connect to the server
+    socket = new swfconduit.Socket( hostname, port );
+}
 </pre>
 <ul>
     <li><code>registerClassAlias()</code> given the same string the server has</li>
@@ -336,9 +336,9 @@ package swfconduit.chat {
 <li class="slide">
 <h1>Handle incoming chat</h1>
 <pre class="sh_flex">
-        public function handleChat(event:ChatEvent):void {
-            chatbox.appendText( "\n" + event.nickname + ": " + event.text );
-        }
+public function handleChat(event:ChatEvent):void {
+    chatbox.appendText( "\n" + event.nickname + ": " + event.text );
+}
 </pre>
 <ul>
     <li>Much like a normal Flex event handler.</li>
