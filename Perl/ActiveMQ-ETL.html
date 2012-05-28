@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<title>Intro to XS/C++</title>
+<title>ActiveMQ and ETL</title>
 <!-- metadata -->
 <meta name="generator" content="S5" />
 <meta name="version" content="S5 1.2a2" />
 <meta name="author" content="Doug Bell" />
-<meta name="company" content="Bank of America Corp." />
+<meta name="company" content="Bank of America" />
 <meta name="license" content="CC-BY-SA 3.0" />
 <!-- configuration parameters -->
 <meta name="defaultView" content="slideshow" />
@@ -50,7 +50,7 @@ ul.two_column {
 <li class="slide">
 <h1>ActiveMQ and ETL</h1>
 <h3>Doug Bell</h3>
-<h4><a href="http://www.bankofamerica.com">Bank of America Corp.</a></h4>
+<h4><a href="http://www.bankofamerica.com">Bank of America</a></h4>
 <div class="handout"></div>
 </li>
 
@@ -78,7 +78,7 @@ ul.two_column {
         <li>Bloomberg</li>
         <li>NYSE</li>
     </ul></li>
-    <li>Validate and normalize raw data <ul>
+    <li>Validate and normalize raw data<ul>
         <li>Correct date</li>
         <li>Data exists</li>
         <li>Fractions to decimal</li>
@@ -114,7 +114,7 @@ ul.two_column {
 </li>
 
 <li class="slide">
-<h1>New Requirement: Asynchronous Load</h1>
+<h1>New Requirement: Async Load</h1>
 <ul>
     <li>MIM Package</li>
     <li>Self-extracting shell script</li>
@@ -166,8 +166,8 @@ ul.two_column {
 <h1>Message Queues</h1>
 <ul>
     <li>Message Broker</li>
-    <li>Accepts messages from producers</li>
-    <li>Distributes messages to consumers</li>
+    <li>Accepts messages from publishers</li>
+    <li>Distributes messages to subscribers</li>
     <li>Event Dispatching</li>
     <li>Request/Response</li>
     <li>Many Implementations<ul>
@@ -215,6 +215,197 @@ ul.two_column {
 </ul>
 </li>
 
+<li class="slide">
+<h1>The Original Code</h1>
+<pre class="sh_perl">
+# Fake code! Do not use!
+# bin/etl.pl
+use strict; use warnings;
+use ETL;
+use Reuters; 
+use MIM; 
+sub main {
+    my ( $job_name ) = @_;
+    my $job     = ETL-&gt;init( $job_name );
+    my $e_data  = Reuters-&gt;extract( $job-&gt;{feeds} );
+    my $t_data  = ETL-&gt;transform( $job, $e_data );
+    MIM-&gt;load( $t_data );
+}
+main(@ARGV); # bin/etl.pl futures
+</pre>
+</li>
+
+<li class="slide">
+<h1>Broken Into Steps -- Extract</h1>
+<pre class="sh_perl">
+# Fake code! Do not use!
+# bin/extract.pl
+use strict; use warnings;
+use ETL;
+use Reuters; 
+use Net::Stomp::Client;
+use JSON;
+sub main {
+    my ( $job_name ) = @_;
+    my $job     = ETL-&gt;init( $job_name );
+    my $e_data  = Reuters-&gt;extract( $job-&gt;{feeds} );
+    send_message( 'extract', $job, $e_data );
+}
+main(@ARGV); # bin/extract.pl futures
+</pre>
+</li>
+
+<li class="slide">
+<h1>Broken Into Steps -- send_message</h1>
+<pre class="sh_perl">
+sub send_message {
+    my ( $queue, $job, $data ) = @_;
+    my $client  = Net::Stomp::Client-&gt;new( 
+        host =&gt; 'localhost',
+        port =&gt; '61613',
+    );
+    $client-&gt;connect( login =&gt; 'dev',
+        passcode =&gt; '********', );
+    $client-&gt;send( 
+        # STOMP queues start with /queue/
+        destination =&gt; "/queue/$queue", 
+        body        =&gt; JSON-&gt;new-&gt;encode( {
+            job         =&gt; $job,
+            data        =&gt; $e_data,
+        } ),
+    );
+}
+</pre>
+</li>
+
+<li class="slide">
+<h1>Broken Into Steps - Transform</h1>
+<pre class="sh_perl">
+# Fake code! Do not use!
+# bin/transform.pl
+use strict; use warnings;
+use ETL;
+use Net::Stomp::Client;
+use JSON;
+sub main {
+    my $client = subscribe( 'extract' );
+    $client-&gt;wait_for_frames(
+        callback    =&gt; \&amp;transform,
+        timeout     =&gt; 60,
+    );
+}
+main(@ARGV); # bin/transform.pl
+</pre>
+</li>
+
+<li class="slide">
+<h1>Broken Into Steps - Subscribe</h1>
+<pre class="sh_perl">
+sub subscribe {
+    my ( $queue ) = @_;
+    my $client = Net::Stomp::Client-&gt;new(
+        host =&gt; 'localhost',
+        port =&gt; 61613,
+    );
+    $client-&gt;connect( login =&gt; 'dev', 
+        passcode =&gt; '********' );
+    $client-&gt;subscribe(
+        destination =&gt; '/queue/' . $queue,
+        id          =&gt; 'transform',
+    );
+    return $client;
+}
+</pre>
+</li>
+
+<li class="slide">
+<h1>Broken Into Steps - Transform (2)</h1>
+<pre class="sh_perl">
+sub transform {
+    my ( $frame ) = @_;
+    my $message = JSON-&gt;new-&gt;decode( $frame-&gt;body );
+    my $job     = $message-&gt;{job};
+    my $e_data  = $message-&gt;{data};
+    my $t_data  = ETL-&gt;transform( $job, $e_data );
+    send_message( 'transform', $job, $t_data );
+}
+</pre>
+</li>
+
+<li class="slide">
+<h1>Broken Into Steps - Load</h1>
+<pre class="sh_perl">
+# Fake code! Do not use!
+# bin/load.pl
+use strict; use warnings;
+use Net::Stomp::Client;
+use JSON;
+use MIM;
+sub main {
+    my $client = subscribe( 'transform' );
+    $client-&gt;wait_for_frames(
+        callback    =&gt; \&amp;load,
+        timeout     =&gt; 60,
+    );
+}
+main(@ARGV); # bin/load.pl
+</pre>
+
+<li class="slide">
+<h1>Broken Into Steps - Load</h1>
+<pre class="sh_perl">
+sub load {
+    my ( $frame ) = @_;
+    my $message = JSON-&gt;new-&gt;decode( $frame-&gt;body );
+    my $job     = $message-&gt;{job};
+    my $t_data  = $message-&gt;{data};
+    MIM-&gt;load( $t_data );
+    send_message( 'complete', $job );
+}
+</pre>
+</li>
+
+<li class="slide">
+<h1>The Result</h1>
+<ul>
+    <li>etl.pl -&gt; extract.pl && transform.pl && load.pl</li>
+    <li>Different processes, different boxes</li>
+    <li>Scale with load<ul>
+        <li>Add more processes during peak times</li>
+        <li>Add more boxes easily</li>
+    </ul></li>
+    <li>Refactor individual steps<ul>
+        <li>Replace old ETL-&gt;transform with new EpicTL-&gt;transform</li>
+        <li>Have both running at the same time</li>
+    </ul></li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Usefulness</h1>
+<ul class="two_column">
+    <li>Asynchronous Jobs</li>
+    <li>Monitoring<ul>
+        <li>Advisory Messages</li>
+        <li>Virtual Destinations (multiplexing)</li>
+    </ul></li>
+    <li>Auditing<ul>
+        <li>Dump $data out to file</li>
+        <li>Re-run by putting $data back on queue</li>
+    </ul></li>
+    <li>Request/Response<ul>
+        <li>Load Balancing</li>
+        <li>REST Interface</li>
+    </ul></li>
+    <li>Scaling<ul>
+        <li>Multiple request/job processors</li>
+        <li>Multiple ActiveMQ instances</li>
+    </ul></li>
+    <li>Coordinate a network of job-running nodes<ul>
+        <li>Message Queue becomes the public API</li>
+    </ul></li>
+</ul>
+</li>
 
 <li class="slide">
 <h1>The End!</h1>
