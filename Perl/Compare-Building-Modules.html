@@ -1,0 +1,789 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Comparison of Perl Build Systems</title>
+<!-- metadata -->
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.2a2" />
+<meta name="author" content="Doug Bell" />
+<meta name="company" content="Bank of America" />
+<meta name="license" content="CC-BY-SA 3.0" />
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<link rel="stylesheet" href="../s5/ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="../s5/ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="../s5/ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="../s5/ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+<!-- embedded styles -->
+<style type="text/css" media="all">
+ul.two_column {
+    -moz-columns: 2;
+    -webkit-columns: 2;
+    columns: 2;
+}
+pre {
+    border: 1px solid black;
+    background: #f0f0ff;
+}
+</style>
+<!-- S5 JS -->
+<script src="../s5/ui/default/slides.js" type="text/javascript"></script>
+<!-- SHJS -->
+<script type="text/javascript" src="../shjs/sh_main.min.js"></script>
+<script type="text/javascript" src="../shjs/lang/sh_perl.min.js"></script>
+<script type="text/javascript" src="../shjs/lang/sh_sh.min.js"></script>
+<link rel="stylesheet" href="../shjs/css/sh_ide-eclipse.min.css" type="text/css" />
+</head>
+<body>
+
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+<div id="footer">
+<h1>Comparison of Perl Build Systems</h1>
+<h2>Chicago.PM -- 2013-01-24</h2>
+</div>
+</div>
+
+<ol class="xoxo presentation">
+<!-- Begin presentation -->
+
+<li class="slide">
+<h1>Comparison of Perl Build Systems</h1>
+<h3>Doug Bell</h3>
+<h4><a href="http://www.bankofamerica.com">Bank of America</a></h4>
+<h4><a href="http://www.doublecluepon.com">Double Cluepon Software</a></h4>
+<div class="handout"></div>
+</li>
+
+<!-- li class="slide" -->
+<!-- pre class="sh_perl" -->
+
+<li class="slide">
+<h1>Points of Comparison</h1>
+<ul>
+    <li>Build a Perl module</li>
+    <li>Build an XS module</li>
+    <li>Build a native library</li>
+    <li>Install dependencies</li>
+    <li>Run tests</li>
+    <li>Work with CPAN</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>An Example Project</h1>
+<pre class="sh_sh">
+$ cd Term-FormatColumns
+$ find
+./lib
+./lib/Term
+./lib/Term/FormatColumns.pm
+./t
+./t/00_compile.t
+./t/format.t
+</pre>
+<ul>
+    <li>Depends on <code>Term::ReadKey</code>, <code>Sub::Exporter</code>, and
+        <code>List::MoreUtils</code></li>
+    <li>Tests depend on <code>Test::Compile</code></li>
+    <li>Github at <a href="http://github.com/preaction/Term-FormatColumns">
+        http://github.com/preaction/Term-FormatColumns</a></li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Module::Build</h1>
+<ul>
+    <li>Recommended for new projects</li>
+    <li>Pure Perl</li>
+    <li>Easy to use</li>
+    <li>Easy to extend</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Build.PL</h1>
+<pre class="sh_perl">
+use Module::Build;
+my $build = Module::Build-&gt;new(
+    module_name =&gt; 'Term::FormatColumns',
+    requires    =&gt; {
+        "List::MoreUtils" =&gt; "0.33",
+        "Sub::Exporter"   =&gt; "0.984",
+        "Term::ReadKey"   =&gt; "2.30",
+    },
+    build_requires =&gt; {
+        "Test::Compile"   =&gt; 0,
+    },
+);
+$build-&gt;create_build_script;
+</pre>
+
+<li class="slide">
+<h1>Build.PL for distribution</h1>
+<pre class="sh_perl" style="font-size: 28pt">
+use Module::Build;
+my $build = Module::Build-&gt;new(
+    module_name   =&gt; 'Term::FormatColumns',
+    dist_name     =&gt; 'Term-FormatColumns',
+    dist_abstract =&gt; "Format lists of data into columns",
+    dist_version  =&gt; '0.004',
+    dist_author   =&gt; [
+        "Doug Bell &lt;preaction\@cpan.org&gt;",
+    ],
+    license       =&gt; "perl",
+    requires      =&gt; {
+        "List::MoreUtils" =&gt; "0.33",
+        "Sub::Exporter"   =&gt; "0.984",
+        "Term::ReadKey"   =&gt; "2.30",
+    },
+    build_requires =&gt; {
+        "Test::Compile" =&gt; 0,
+    },
+);
+$build-&gt;create_build_script;
+</pre>
+
+<li class="slide">
+<h1>Building with Module::Build</h1>
+<pre class="sh_sh" style="font-size: 28pt">
+$ perl Build.PL
+No options loaded
+Created MYMETA.yml and MYMETA.json
+Creating new 'Build' script for 'Term-FormatColumns' version '0.004'
+
+$ ./Build installdeps
+No options loaded
+All prerequisites satisfied
+
+$ ./Build test
+t/00_compile.t .. ok
+t/format.t ...... ok
+All tests successful.
+Files=2, Tests=4,  0 wallclock secs ( 0.02 usr  0.03 sys +  0.06 cusr  0.20 csys =  0.31 CPU)
+Result: PASS
+
+$ ./Build install
+No options loaded
+Building Term-FormatColumns
+Installing /home/nbkyslo/perl5/lib/perl5/Term/FormatColumns.pm
+Installing /home/nbkyslo/perl5/man/man3/Term::FormatColumns.3
+</pre>
+</li>
+
+<li class="slide">
+<h1>Distributing with Module::Build</h1>
+<pre class="sh_sh">
+$ ./Build manifest
+No options loaded
+File 'MANIFEST.SKIP' does not exist: Creating a temporary 'MANIFEST.SKIP'
+Added to MANIFEST: Build.PL
+Added to MANIFEST: lib/Term/FormatColumns.pm
+Added to MANIFEST: MANIFEST
+Added to MANIFEST: META.yml
+Added to MANIFEST: t/00_compile.t
+Added to MANIFEST: t/format.t
+
+$ ./Build dist
+No options loaded
+Module::Build was not found in configure_requires! Adding it now
+automatically as: configure_requires =&gt; { 'Module::Build' =&gt; 0.40 }
+Created META.yml and META.json
+Creating Term-FormatColumns-0.004
+Creating Term-FormatColumns-0.004.tar.gz
+</pre>
+</li>
+
+<li class="slide">
+<h1>Module::Install</h1>
+<ul>
+    <li>Solves the build system deployment problem</li>
+    <li>Uses Make</li>
+    <li>Easy to use</li>
+    <li>Easy to extend</li>
+    <li>Does some questionable things</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Makefile.PL - Module::Install</h1>
+<pre class="sh_perl">
+use inc::Module::Install;
+name 'Term-FormatColumns';
+version '0.004';
+requires 'List::MoreUtils' =&gt; '0.33';
+requires 'Sub::Exporter'   =&gt; '0.984';
+requires 'Term::ReadKey'   =&gt; '2.30';
+test_requires 'Test::Compile';
+auto_install;
+WriteAll;
+</pre>
+
+<li class="slide">
+<h1>Makefile.PL (for dist) - Module::Install</h1>
+<pre class="sh_perl">
+use inc::Module::Install;
+name 'Term-FormatColumns';
+# all_from 'lib/Term/FormatColumns.pm';
+version '0.004';
+author 'Doug Bell &lt;preaction\@cpan.com&gt;';
+abstract 'Format lists of data into columns';
+license 'perl';
+requires 'List::MoreUtils' =&gt; '0.33';
+requires 'Sub::Exporter'   =&gt; '0.984';
+requires 'Term::ReadKey'   =&gt; '2.30';
+test_requires 'Test::Compile';
+auto_install;
+WriteAll;
+</pre>
+
+<li class="slide">
+<h1>Building with Module::Install</h1>
+<pre class="sh_sh">
+$ perl Makefile.PL
+include /home/nbkyslo/git/Term-FormatColumns/inc/Module/Install.pm
+include inc/Module/Install/Metadata.pm
+include inc/Module/Install/Base.pm
+include inc/Module/Install/AutoInstall.pm
+include inc/Module/Install/Include.pm
+include inc/Module/AutoInstall.pm
+*** Module::AutoInstall version 1.04
+*** Checking for Perl dependencies...
+[Core Features]
+- Test::Compile   ...loaded. (0.22)
+- List::MoreUtils ...loaded. (0.33 &gt;= 0.33)
+- Sub::Exporter   ...loaded. (0.984 &gt;= 0.984)
+- Term::ReadKey   ...loaded. (2.30 &gt;= 2.30)
+*** Module::AutoInstall configuration finished.
+include inc/Module/Install/Makefile.pm
+include inc/Module/Install/WriteAll.pm
+include inc/Module/Install/Win32.pm
+include inc/Module/Install/Can.pm
+include inc/Module/Install/Fetch.pm
+Prototype mismatch: sub main::prompt: none vs ($;$) at /usr2/local/perlbrew/perls/perl-5.14.2/lib/5.14.2/ExtUtils/MakeMaker.pm line 219.
+Writing Makefile for Term::FormatColumns
+Writing MYMETA.yml and MYMETA.json
+Writing Makefile for Term::FormatColumns
+Writing MYMETA.yml and MYMETA.json
+Writing META.yml
+No license specified, setting license = 'unknown'
+</pre>
+</li>
+
+<li class="slide">
+<h1>Building with Module::Install (2)</h1>
+<pre class="sh_sh">
+$ make test install
+cp lib/Term/FormatColumns.pm blib/lib/Term/FormatColumns.pm
+make[1]: Entering directory `/home/nbkyslo/git/Term-FormatColumns/Term-FormatColumns-0.005'
+cp lib/Term/FormatColumns.pm ../blib/lib/Term/FormatColumns.pm
+Manifying ../blib/man3/Term::FormatColumns.3
+make[1]: Leaving directory `/home/nbkyslo/git/Term-FormatColumns/Term-FormatColumns-0.005'
+PERL_DL_NONLAZY=1 /usr2/local/perlbrew/perls/perl-5.14.2/bin/perl "-MExtUtils::Command::MM" "-e" "test_harness(0, 'inc', 'blib/lib', 'blib/arch')" t/00_compile.t t/format.t
+t/00_compile.t .. ok
+t/format.t ...... ok
+All tests successful.
+Files=2, Tests=4,  0 wallclock secs ( 0.01 usr  0.07 sys +  0.06 cusr  0.21 csys =  0.35 CPU)
+Result: PASS
+make[1]: Entering directory `/home/nbkyslo/git/Term-FormatColumns/Term-FormatColumns-0.005'
+PERL_DL_NONLAZY=1 /usr2/local/perlbrew/perls/perl-5.14.2/bin/perl "-MExtUtils::Command::MM" "-e" "test_harness(0, '../blib/lib', '../blib/arch')" t/*.t
+t/00_compile.t .. ok
+t/format.t ...... ok
+All tests successful.
+Files=2, Tests=4,  0 wallclock secs ( 0.03 usr  0.06 sys +  0.06 cusr  0.22 csys =  0.37 CPU)
+Result: PASS
+make[1]: Leaving directory `/home/nbkyslo/git/Term-FormatColumns/Term-FormatColumns-0.005'
+/usr2/local/perlbrew/perls/perl-5.14.2/bin/perl "-Iinc" "-Iblib/arch" "-Iinc" "-Iblib/lib" Install.PL Install
+include /home/nbkyslo/git/Term-FormatColumns/inc/Module/Install.pm
+include inc/Module/Install/Metadata.pm
+include inc/Module/Install/Base.pm
+include inc/Module/Install/AutoInstall.pm
+include inc/Module/Install/Include.pm
+include inc/Module/AutoInstall.pm
+*** Module::AutoInstall version 1.04
+*** Checking for Perl dependencies...
+[Core Features]
+- Test::Compile   ...loaded. (0.22)
+- List::MoreUtils ...loaded. (0.33 &gt;= 0.33)
+- Sub::Exporter   ...loaded. (0.984 &gt;= 0.984)
+- Term::ReadKey   ...loaded. (2.30 &gt;= 2.30)
+*** Module::AutoInstall configuration finished.
+include inc/Module/Install/Makefile.pm
+include inc/Module/Install/WriteAll.pm
+include inc/Module/Install/Win32.pm
+include inc/Module/Install/Can.pm
+include inc/Module/Install/Fetch.pm
+Prototype mismatch: sub main::prompt: none vs ($;$) at /usr2/local/perlbrew/perls/perl-5.14.2/lib/5.14.2/ExtUtils/MakeMaker.pm line 219.
+Writing Makefile for Term::FormatColumns
+Writing MYMETA.yml and MYMETA.json
+Writing Makefile for Term::FormatColumns
+Writing MYMETA.yml and MYMETA.json
+Writing META.yml
+No license specified, setting license = 'unknown'
+Appending installation info to /home/nbkyslo/perl5/lib/perl5/x86_64-linux/perllocal.pod
+</pre>
+</li>
+
+<li class="slide">
+<h1>Distributing with Module::Install</h1>
+<pre class="sh_sh">
+$ make manifest
+/usr2/local/perlbrew/perls/perl-5.14.2/bin/perl "-Iinc" "-MExtUtils::Manifest=mkmanifest" -e mkmanifest
+Added to MANIFEST: inc/Module/AutoInstall.pm
+Added to MANIFEST: inc/Module/Install.pm
+Added to MANIFEST: inc/Module/Install/AutoInstall.pm
+Added to MANIFEST: inc/Module/Install/Base.pm
+Added to MANIFEST: inc/Module/Install/Can.pm
+Added to MANIFEST: inc/Module/Install/Fetch.pm
+Added to MANIFEST: inc/Module/Install/Include.pm
+Added to MANIFEST: inc/Module/Install/Makefile.pm
+Added to MANIFEST: inc/Module/Install/Metadata.pm
+Added to MANIFEST: inc/Module/Install/Win32.pm
+Added to MANIFEST: inc/Module/Install/WriteAll.pm
+Added to MANIFEST: lib/Term/FormatColumns.pm
+Added to MANIFEST: Makefile.PL
+Added to MANIFEST: MANIFEST
+Added to MANIFEST: META.json
+Added to MANIFEST: META.yml
+Added to MANIFEST: t/00_compile.t
+Added to MANIFEST: t/format.t
+</pre>
+</li>
+
+<li class="slide">
+<h1>Distributing with Module::Install (2)</h1>
+<pre class="sh_sh">
+$ make dist
+rm -rf Term-FormatColumns-0.004
+/usr2/local/perlbrew/perls/perl-5.14.2/bin/perl "-Iinc" "-MExtUtils::Manifest=manicopy,maniread" \
+        -e "manicopy(maniread(),'Term-FormatColumns-0.004', 'best');"
+mkdir Term-FormatColumns-0.004
+mkdir Term-FormatColumns-0.004/inc
+mkdir Term-FormatColumns-0.004/inc/Module
+mkdir Term-FormatColumns-0.004/inc/Module/Install
+mkdir Term-FormatColumns-0.004/t
+mkdir Term-FormatColumns-0.004/lib
+mkdir Term-FormatColumns-0.004/lib/Term
+/usr2/local/perlbrew/perls/perl-5.14.2/bin/perl "-Iinc" -I. "-MModule::Install::Admin" -e "dist_preop(q(Term-FormatColumns-0.004))"
+tar cvf Term-FormatColumns-0.004.tar Term-FormatColumns-0.004
+Term-FormatColumns-0.004/
+Term-FormatColumns-0.004/inc/
+Term-FormatColumns-0.004/inc/Module/
+Term-FormatColumns-0.004/inc/Module/Install.pm
+Term-FormatColumns-0.004/inc/Module/Install/
+Term-FormatColumns-0.004/inc/Module/Install/AutoInstall.pm
+Term-FormatColumns-0.004/inc/Module/Install/Makefile.pm
+Term-FormatColumns-0.004/inc/Module/Install/Include.pm
+Term-FormatColumns-0.004/inc/Module/Install/Metadata.pm
+Term-FormatColumns-0.004/inc/Module/Install/WriteAll.pm
+Term-FormatColumns-0.004/inc/Module/Install/Win32.pm
+Term-FormatColumns-0.004/inc/Module/Install/Fetch.pm
+Term-FormatColumns-0.004/inc/Module/Install/Base.pm
+Term-FormatColumns-0.004/inc/Module/Install/Can.pm
+Term-FormatColumns-0.004/inc/Module/AutoInstall.pm
+Term-FormatColumns-0.004/t/
+Term-FormatColumns-0.004/t/format.t
+Term-FormatColumns-0.004/t/00_compile.t
+Term-FormatColumns-0.004/MANIFEST
+Term-FormatColumns-0.004/META.yml
+Term-FormatColumns-0.004/META.json
+Term-FormatColumns-0.004/lib/
+Term-FormatColumns-0.004/lib/Term/
+Term-FormatColumns-0.004/lib/Term/FormatColumns.pm
+Term-FormatColumns-0.004/Makefile.PL
+rm -rf Term-FormatColumns-0.004
+gzip --best Term-FormatColumns-0.004.tar
+</pre>
+</li>
+
+<li class="slide">
+<h1>Module::Install - Teach the Controversy</h1>
+<ul>
+    <li>Version in dist is frozen</li>
+    <li>Bugfix in Module::Install means every dist using it must be re-released</li>
+</ul>
+
+<li class="slide">
+<h1>ExtUtils::MakeMaker</h1>
+<ul>
+    <li>The venerable workhorse</li>
+    <li>Uses Make</li>
+</ul>
+
+<li class="slide">
+<h1>Makefile.PL - ExtUtils::MakeMaker</h1>
+<pre class="sh_perl">
+use ExtUtils::MakeMaker;
+WriteMakefile(
+    NAME        =&gt; 'Term-FormatColumns',
+    VERSION     =&gt; '0.004',
+    PREREQ_PM   =&gt; {
+        "List::MoreUtils" =&gt; '0.33',
+        "Sub::Exporter"   =&gt; '0.984',
+        "Term::ReadKey"   =&gt; '2.30',
+    },
+    BUILD_REQUIRES =&gt; {
+        'Test::Compile'   =&gt; 0,
+    },
+);
+</pre>
+
+<li class="slide">
+<h1>Makefile.PL (for distribution) - ExtUtils::MakeMaker</h1>
+<pre class="sh_perl">
+use ExtUtils::MakeMaker;
+WriteMakefile(
+    NAME        =&gt; 'Term-FormatColumns',
+    VERSION     =&gt; '0.004',
+    ABSTRACT    =&gt; 'Format lists of data into columns',
+    AUTHOR      =&gt; 'Doug Bell &lt;doug.bell@baml.com&gt;',
+    PREREQ_PM   =&gt; {
+        "List::MoreUtils" =&gt; '0.33',
+        "Sub::Exporter"   =&gt; '0.984',
+        "Term::ReadKey"   =&gt; '2.30',
+    },
+    BUILD_REQUIRES =&gt; {
+        'Test::Compile'   =&gt; 0,
+    },
+);
+</pre>
+
+<li class="slide">
+<h1>Building with ExtUtils::MakeMaker</h1>
+<pre class="sh_sh">
+$ perl Makefile.PL
+Writing Makefile for Term-FormatColumns
+Writing MYMETA.yml and MYMETA.json
+
+$ make
+cp lib/Term/FormatColumns.pm blib/lib/Term/FormatColumns.pm
+Manifying blib/man3/Term::FormatColumns.3
+
+$ make test install
+PERL_DL_NONLAZY=1 /usr2/local/perlbrew/perls/perl-5.14.2/bin/perl "-MExtUtils::Command::MM" "-e" "test_harness(0, 'blib/lib', 'blib/arch')" t/*.t
+t/00_compile.t .. ok
+t/format.t ...... ok
+All tests successful.
+Files=2, Tests=4,  0 wallclock secs ( 0.02 usr  0.06 sys +  0.06 cusr  0.20 csys =  0.34 CPU)
+Result: PASS
+Appending installation info to /home/nbkyslo/perl5/lib/perl5/x86_64-linux/perllocal.pod
+</pre>
+</li>
+
+<li class="slide">
+<h1>Distributing with ExtUtils::MakeMaker</h1>
+<pre class="sh_sh">
+$ make manifest
+/usr2/local/perlbrew/perls/perl-5.14.2/bin/perl "-MExtUtils::Manifest=mkmanifest" -e mkmanifest
+Added to MANIFEST: lib/Term/FormatColumns.pm
+Added to MANIFEST: Makefile.PL
+Added to MANIFEST: MANIFEST
+Added to MANIFEST: META.json
+Added to MANIFEST: META.yml
+Added to MANIFEST: t/00_compile.t
+Added to MANIFEST: t/format.t
+
+$ make dist
+rm -rf Term-FormatColumns-0.004
+/usr2/local/perlbrew/perls/perl-5.14.2/bin/perl "-MExtUtils::Manifest=manicopy,maniread" \
+        -e "manicopy(maniread(),'Term-FormatColumns-0.004', 'best');"
+mkdir Term-FormatColumns-0.004
+mkdir Term-FormatColumns-0.004/lib
+mkdir Term-FormatColumns-0.004/lib/Term
+mkdir Term-FormatColumns-0.004/t
+Generating META.yml
+Generating META.json
+tar cvf Term-FormatColumns-0.004.tar Term-FormatColumns-0.004
+Term-FormatColumns-0.004/
+Term-FormatColumns-0.004/lib/
+Term-FormatColumns-0.004/lib/Term/
+Term-FormatColumns-0.004/lib/Term/FormatColumns.pm
+Term-FormatColumns-0.004/t/
+Term-FormatColumns-0.004/t/format.t
+Term-FormatColumns-0.004/t/00_compile.t
+Term-FormatColumns-0.004/MANIFEST
+Term-FormatColumns-0.004/META.yml
+Term-FormatColumns-0.004/META.json
+Term-FormatColumns-0.004/Makefile.PL
+rm -rf Term-FormatColumns-0.004
+gzip --best Term-FormatColumns-0.004.tar
+</pre>
+</li>
+
+<li class="slide">
+<h1>ExtUtils::MakeMaker in the wild</h1>
+<pre class="sh_perl">
+# NEVER DO THIS
+$ h2xs -X My::Module
+Defaulting to backwards compatibility with perl 5.14.2
+If you intend this module to be compatible with earlier perl versions, please
+specify a minimum perl version with the -b option.
+
+Writing My-Module/lib/My/Module.pm
+Writing My-Module/Makefile.PL
+Writing My-Module/README
+Writing My-Module/t/My-Module.t
+Writing My-Module/Changes
+Writing My-Module/MANIFEST
+</pre>
+</li>
+
+<li class="slide">
+<h1>A More Common Makefile.PL</h1>
+<pre class="sh_perl">
+use 5.014002;
+use ExtUtils::MakeMaker;
+# See lib/ExtUtils/MakeMaker.pm for details of how to influence
+# the contents of the Makefile that is written.
+WriteMakefile(
+    NAME              =&gt; 'My::Module',
+    VERSION_FROM      =&gt; 'lib/My/Module.pm', # finds $VERSION
+    PREREQ_PM         =&gt; {}, # e.g., Module::Name =&gt; 1.1
+    ($] &gt;= 5.005 ?     ## Add these new keywords supported since 5.005
+      (ABSTRACT_FROM  =&gt; 'lib/My/Module.pm', # retrieve abstract from module
+       AUTHOR         =&gt; 'Doug Bell &lt;preaction@cpan.org&gt;') : ()),
+);
+</pre>
+</li>
+
+<li class="slide">
+<h1>Dist::Zilla - A Meta Build System</h1>
+<ul>
+    <li>Relies on one or more of the preceeding systems
+        <ul><li>Your preference which one(s)</li></ul>
+    </li>
+    <li>Wildly pluggable
+        <ul><li>More plugins than all the other build systems</li></ul>
+    </li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>dist.ini</h1>
+<pre>
+name = Term-FormatColumns
+author = Doug Bell &lt;preaction@cpan.org&gt;
+version = 0.004
+license = Perl_5
+copyright_holder = Doug Bell
+
+[@Basic]
+[Prereqs]
+Term::ReadKey = 2.30
+List::MoreUtils = 0.33
+Sub::Exporter = 0.984
+
+[Prereqs / TestRequires]
+Test::Compile = 0
+</pre>
+</li>
+
+<li class="slide">
+<h1>Building with Dist::Zilla</h1>
+<pre class="sh_sh">
+$ dzil test
+[DZ] building distribution under .build/AGZuPsOxvb for installation
+[DZ] beginning to build Term-FormatColumns
+[DZ] guessing dist's main_module is lib/Term/FormatColumns.pm
+[DZ] extracting distribution abstract from lib/Term/FormatColumns.pm
+[DZ] writing Term-FormatColumns in .build/AGZuPsOxvb
+Checking if your kit is complete...
+Looks good
+Writing Makefile for Term::FormatColumns
+Writing MYMETA.yml and MYMETA.json
+cp lib/Term/FormatColumns.pm blib/lib/Term/FormatColumns.pm
+Manifying blib/man3/Term::FormatColumns.3
+PERL_DL_NONLAZY=1 /usr2/local/perlbrew/perls/perl-5.14.2/bin/perl "-MExtUtils::Command::MM" "-e" "test_harness(0, 'blib/lib', 'blib/arch')" t/*.t
+t/00_compile.t .. ok
+t/format.t ...... ok
+All tests successful.
+Files=2, Tests=4,  0 wallclock secs ( 0.02 usr  0.06 sys +  0.07 cusr  0.20 csys =  0.35 CPU)
+Result: PASS
+[DZ] all's well; removing .build/AGZuPsOxvb
+</pre>
+</li>
+
+<li class="slide">
+<h1>Building with Dist::Zilla (2)</h1>
+<pre class="sh_sh">
+$ dzil install
+[DZ] building distribution under .build/VaQ6FDFz7Y for installation
+[DZ] beginning to build Term-FormatColumns
+[DZ] guessing dist's main_module is lib/Term/FormatColumns.pm
+[DZ] extracting distribution abstract from lib/Term/FormatColumns.pm
+[DZ] writing Term-FormatColumns in .build/VaQ6FDFz7Y
+You are visiting the local directory
+  '.'
+  without lock, take care that concurrent processes do not do likewise.
+Going to read '/home/nbkyslo/.cpan/Metadata'
+  Database was generated on Wed, 14 Nov 2012 20:55:06 GMT
+Fetching with LWP:
+http://www.perl.org/CPAN/authors/01mailrc.txt.gz
+Going to read '/home/nbkyslo/.cpan/sources/authors/01mailrc.txt.gz'
+............................................................................DONE
+Fetching with LWP:
+http://www.perl.org/CPAN/modules/02packages.details.txt.gz
+Going to read '/home/nbkyslo/.cpan/sources/modules/02packages.details.txt.gz'
+  Database was generated on Wed, 14 Nov 2012 20:55:06 GMT
+..............................................................DONE
+Fetching with LWP:
+http://www.perl.org/CPAN/modules/03modlist.data.gz
+Going to read '/home/nbkyslo/.cpan/sources/modules/03modlist.data.gz'
+............................................................................DONE
+Going to write /home/nbkyslo/.cpan/Metadata
+You are visiting the local directory
+  '/home/nbkyslo/git/Term-FormatColumns/.build/VaQ6FDFz7Y/.'
+  without lock, take care that concurrent processes do not do likewise.
+Running make for /home/nbkyslo/git/Term-FormatColumns/.build/VaQ6FDFz7Y/.
+
+  CPAN.pm: Going to build /home/nbkyslo/git/Term-FormatColumns/.build/VaQ6FDFz7Y/.
+
+Checking if your kit is complete...
+Looks good
+Writing Makefile for Term::FormatColumns
+Writing MYMETA.yml and MYMETA.json
+cp lib/Term/FormatColumns.pm blib/lib/Term/FormatColumns.pm
+Manifying blib/man3/Term::FormatColumns.3
+  /home/nbkyslo/git/Term-FormatColumns/.build/VaQ6FDFz7Y/.
+  /usr2/local/bin/make -- OK
+Directory '/home/nbkyslo/git/Term-FormatColumns/.build/VaQ6FDFz7Y/.' not below /home/nbkyslo/.cpan/build, will not store persistent state
+Running make test
+PERL_DL_NONLAZY=1 /usr2/local/perlbrew/perls/perl-5.14.2/bin/perl "-MExtUtils::Command::MM" "-e" "test_harness(0, 'blib/lib', 'blib/arch')" t/*.t
+t/00_compile.t .. ok
+t/format.t ...... ok
+All tests successful.
+Files=2, Tests=4,  0 wallclock secs ( 0.02 usr  0.06 sys +  0.05 cusr  0.20 csys =  0.33 CPU)
+Result: PASS
+  /home/nbkyslo/git/Term-FormatColumns/.build/VaQ6FDFz7Y/.
+  /usr2/local/bin/make test -- OK
+Running make install
+Manifying blib/man3/Term::FormatColumns.3
+Appending installation info to /home/nbkyslo/perl5/lib/perl5/x86_64-linux/perllocal.pod
+  /home/nbkyslo/git/Term-FormatColumns/.build/VaQ6FDFz7Y/.
+  /usr2/local/bin/make install  -- OK
+[DZ] all's well; removing .build/VaQ6FDFz7Y
+</pre>
+</li>
+
+<li class="slide">
+<h1>Distributing with Dist::Zilla</h1>
+<pre class="sh_sh">
+$ dzil build
+[DZ] beginning to build Term-FormatColumns
+[DZ] guessing dist's main_module is lib/Term/FormatColumns.pm
+[DZ] extracting distribution abstract from lib/Term/FormatColumns.pm
+[DZ] writing Term-FormatColumns in Term-FormatColumns-0.004
+[DZ] building archive with Archive::Tar; install Archive::Tar::Wrapper for improved speed
+[DZ] writing archive to Term-FormatColumns-0.004.tar.gz
+</pre>
+</li>
+
+<li class="slide">
+<h1>Distributing with Dist::Zilla (2)</h1>
+<pre class="sh_sh" style="font-size: 26pt">
+$ dzil release
+[@Basic/TestRelease] Extracting /home/nbkyslo/git/Term-FormatColumns/Term-FormatColumns-0.004.tar.gz to .build/MlWdngYvam
+Checking if your kit is complete...
+Looks good
+Writing Makefile for Term::FormatColumns
+Writing MYMETA.yml and MYMETA.json
+cp lib/Term/FormatColumns.pm blib/lib/Term/FormatColumns.pm
+Manifying blib/man3/Term::FormatColumns.3
+PERL_DL_NONLAZY=1 /usr2/local/perlbrew/perls/perl-5.14.2/bin/perl "-MExtUtils::Command::MM" "-e" "test_harness(0, 'blib/lib', 'blib/arch')" t/*.t
+t/00_compile.t .. ok
+t/format.t ...... ok
+All tests successful.
+Files=2, Tests=4,  0 wallclock secs ( 0.01 usr  0.06 sys +  0.06 cusr  0.20 csys =  0.33 CPU)
+Result: PASS
+[@Basic/TestRelease] all's well; removing .build/MlWdngYvam
+*** Preparing to release Term-FormatColumns-0.004.tar.gz with @Basic/UploadToCPAN ***
+
+Do you want to continue the release process? [y/N]: N
+[@Basic/ConfirmRelease] Aborting release
+[@Basic/ConfirmRelease] Aborting release at /datlib/hist/ops/dev/lib/perl5/x86_64-linux/Moose/Meta/Method/Delegation.pm line 110.
+</pre>
+</li>
+
+<li class="slide">
+<h1>The Real Dist::Zilla</h1>
+<pre class="font-size: 26pt">
+name = Term-FormatColumns
+author = Doug Bell &lt;preaction@cpan.org&gt;
+license = Perl_5
+copyright_holder = Doug Bell
+
+[CopyReadmeFromBuild]
+[ReadmeMarkdownFromPod]
+[@Git]
+[Git::NextVersion]
+[PkgVersion]
+[ModuleBuild]
+
+[@Filter]
+bundle = @Basic
+remove = Readme
+
+[Prereqs]
+Term::ReadKey = 2.30
+List::MoreUtils = 0.33
+Sub::Exporter = 0.984
+
+[Prereqs / TestRequires]
+Test::Compile = 0
+</pre>
+</li>
+
+<li class="slide">
+<h1>My Plugin Set</h1>
+<ul>
+    <li>Dist::Zilla::Plugin::CopyReadMeFromBuild</li>
+    <li>Dist::Zilla::Plugin::ReadmeMarkdownFromPod</li>
+    <li>Dist::Zilla::PluginBundle::Git
+        <ul>
+            <li>Dist::Zilla::Plugin::Git::Check</li>
+            <li>Dist::Zilla::Plugin::Git::Commit</li>
+            <li>Dist::Zilla::Plugin::Git::Tag</li>
+            <li>Dist::Zilla::Plugin::Git::Push</li>
+        </ul>
+    </li>
+    <li>Dist::Zilla::Plugin::Git::NextVersion</li>
+    <li>Dist::Zilla::Plugin::PkgVersion</li>
+    <li>Dist::Zilla::Plugin::ModuleBuild</li>
+</ul>
+</li>
+
+<li class="slide">
+<h1>Plugin Conflicts</h1>
+
+</li>
+
+<li class="slide">
+<h1>The End!</h1>
+<ul>
+    <li>
+    Slides: <a href="http://preaction.github.com/Perl/Compare-Building-Modules.html">
+    http://preaction.github.com/Perl/Compare-Building-Modules.html
+    </a>
+    </li>
+</ul>
+<p>Slides are licensed under a <a
+    href="http://creativecommons.org/licenses/by-sa/3.0/us/">CC-BY-SA
+    3.0 license</a>.</p> 
+<p>Code is licensed under the <a href="http://dev.perl.org/licenses/artistic.html">
+Artistic License</a> or <a
+    href="http://www.gnu.org/licenses/gpl-1.0.txt">GNU GPL v1.0</a> or
+later (the same terms as Perl itself).</p>
+</li>
+
+<!-- Done with presentation -->
+</ol> <!-- class="xoxo presentation" -->
+
+<script type="text/javascript">sh_highlightDocument();</script>
+</body>
+</html>
+
