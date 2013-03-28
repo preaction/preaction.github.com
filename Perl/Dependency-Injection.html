@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+
+	<title>Dependency Injection (Beam::Wire)</title>
+	
+	<!-- Required stylesheet -->
+	<link rel="stylesheet" href="../deck.js/core/deck.core.css">
+	
+	<!-- Extension CSS files go here. Remove or add as needed. -->
+	<link rel="stylesheet" href="../deck.js/extensions/goto/deck.goto.css">
+	<link rel="stylesheet" href="../deck.js/extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="../deck.js/extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="../deck.js/extensions/status/deck.status.css">
+	<link rel="stylesheet" href="../deck.js/extensions/hash/deck.hash.css">
+	<link rel="stylesheet" href="../deck.js/extensions/scale/deck.scale.css">
+
+	<!-- Style theme. More available in /themes/style/ or create your own. -->
+	<link rel="stylesheet" href="../deck.js/themes/style/swiss.css">
+	
+	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
+	<link rel="stylesheet" href="../deck.js/themes/transition/horizontal-slide.css">
+	
+	<!-- Required Modernizr file -->
+	<script src="../deck.js/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Begin slides. Just make elements with a class of slide. -->
+
+<section class="slide">
+    <h2>Dependency Injection</h2>
+    <h3>Also Introducing: Beam::Wire</h3>
+    <p>
+    Doug Bell<br/>
+    Chicago.PM (03/28/2013)
+    </p>
+</section>
+
+<section class="slide">
+	<h1>The Setup</h1>
+</section>
+
+<section class="slide">
+<h2>Two Classes in Search of DBI</h2>
+<pre style="width: 40%; float: left; margin: 0 2.5%;">
+package Foo;
+use Moo;
+has dbh =&gt; (
+  is  =&gt; 'ro',
+);
+</pre>
+<pre style="width: 40%; float: left; margin: 0 2.5%;">
+package Bar;
+use Moo;
+has dbh =&gt; (
+  is  =&gt; 'ro',
+);
+</pre>
+</section>
+
+<section class="slide">
+<h2>To Each Their Own</h2>
+<pre style="width: 40%; float: left; margin: 0 2.5%;">
+package Foo;
+use Moo;
+use DBI;
+has dbh =&gt; (
+  is  =&gt; 'ro',
+  default =&gt; sub {
+    DBI-&gt;connect(
+      'dbi:SQLite:data.db'
+    );
+  },
+);
+</pre>
+<pre style="width: 40%; float: left; margin: 0 2.5%;">
+package Bar;
+use Moo;
+use DBI;
+has dbh =&gt; (
+  is  =&gt; 'ro',
+  default =&gt; sub {
+    DBI-&gt;connect(
+      'dbi:SQLite:data.db'
+    );
+  },
+);
+</pre>
+</section>
+
+<section class="slide">
+<h2>Role Traversal</h2>
+<pre style="width: 40%; float: left; margin: 0 2.5%;">
+package Role::DBI;
+use Moo::Role;
+has dbh =&gt; (
+  is  =&gt; 'ro',
+  default =&gt; sub {
+    DBI-&gt;connect(
+      'dbi:SQLite:data.db'
+    );
+  },
+);
+</pre>
+<pre style="width: 40%; float: left; margin: 0 2.5%;">
+package Foo;
+use Moo;
+use Role::DBI;
+</pre>
+<pre style="width: 40%; float: left; margin: 0 2.5%;">
+package Bar;
+use Moo;
+use Role::DBI;
+</pre>
+</section>
+
+<section class="slide">
+<h2>Singleton</h2>
+<pre style="width: 40%; float: left; margin: 0 2.5%;">
+package Role::DBI;
+use Moo::Role;
+my $dbh;
+has dbh =&gt; (
+  is  =&gt; 'ro',
+  default =&gt; sub {
+    $dbh ||= DBI-&gt;connect(
+      'dbi:SQLite:data.db'
+    );
+  },
+);
+</pre>
+<pre style="width: 40%; float: left; margin: 0 2.5%;">
+package Foo;
+use Moo;
+use Role::DBI;
+</pre>
+<pre style="width: 40%; float: left; margin: 0 2.5%;">
+package Bar;
+use Moo;
+use Role::DBI;
+</pre>
+</section>
+
+<section class="slide">
+<h2>Singleton Override</h2>
+<pre style="width: 40%; float: left; margin: 0 2.5%;">
+package Role::DBI;
+use Moo::Role;
+my $dbh;
+has dbh =&gt; (
+  is  =&gt; 'ro',
+  default =&gt; sub {
+    $dbh ||= DBI-&gt;connect(
+      'dbi:SQLite:data.db'
+    );
+  },
+);
+
+package Foo;
+use Moo;
+use Role::DBI;
+</pre>
+<pre style="width: 40%; float: left; margin: 0 2.5%;">
+package Bar;
+use Moo;
+use Role::DBI;
+
+package main;
+use DBI;
+my $dbh 
+  = DBI-&gt;connect( '...' );
+my $foo = Foo-&gt;new(
+  dbh =&gt; $dbh
+);
+my $bar = Bar-&gt;new(
+  dbh =&gt; $dbh
+);
+</pre>
+</section>
+
+<section class="slide">
+<h2>Configuration File</h2>
+<pre>
+# config.yml
+dsn: 'dbi:SQLite:data.db'
+</pre>
+<pre>
+# script.pl
+use DBI;
+my $cfg = LoadFile( 'config.yml' )
+my $dsn = $cfg-&gt;{dsn};
+my $dbh = DBI-&gt;connect( $dsn );
+my $foo = Foo-&gt;new( dbh =&gt; $dbh );
+my $bar = Bar-&gt;new( dbh =&gt; $dbh );
+</pre>
+</section>
+
+<section class="slide">
+<h2>Singleton Config</h2>
+<pre>
+package Role::DBI;
+use Moo::Role;
+use YAML::Any qw( LoadFile );
+my $dbh;
+has dbh =&gt; (
+  is  =&gt; 'ro',
+  default =&gt; sub {
+    return $dbh if $dbh;
+    my $cfg = LoadFile( 'config.yml' )
+    my $dsn = $cfg-&gt;{dsn};
+    return $dbh = DBI-&gt;connect(
+      $dsn
+    );
+  },
+);
+</pre>
+
+</section>
+
+<section class="slide">
+<h2>Config Override</h2>
+<pre style="width: 45%; float: left;">
+package Role::DBI;
+use Moo::Role;
+use YAML::Any qw( LoadFile );
+my $cfg;
+
+has cfg_fn =&gt; (
+  is  =&gt; 'ro',
+  default =&gt; sub {
+    'config.yml'
+  },
+);
+
+has cfg =&gt; (
+  is  =&gt; 'ro',
+  default =&gt; sub {
+    return $cfg
+      ||= LoadFile(
+        $_[0]-&gt;cfg_fn
+      );
+  },
+);
+</pre>
+<pre style="width: 45%; float: left;">
+my $dbh;
+has dbh =&gt; (
+  is  =&gt; 'ro',
+  default =&gt; sub {
+    return $dbh if $dbh;
+    my ( $self ) = @_;
+    return $dbh
+      = DBI-&gt;connect(
+        $self-&gt;cfg-&gt;{dsn}
+      );
+  },
+);
+</pre>
+
+</section>
+<section class="slide">
+<h2>Repeat Ad Nauseum</h2>
+<ul>
+    <li>DBI</li>
+    <li>CHI</li>
+    <li>ORM</li>
+    <li>Messaging</li>
+</ul>
+</section>
+
+<section class="slide">
+<h1>It Gets Complicated</h1>
+</section>
+
+<section class="slide">
+<h1>Give Up!</h1>
+</section>
+
+<section class="slide">
+<h1>Inversion of Control</h1>
+</section>
+
+<section class="slide">
+<h1>"Give Up Control" Pattern</h1>
+</section>
+
+<section class="slide">
+<h1>Dependency Injection</h1>
+</section>
+
+<section class="slide">
+<h2>Container</h2>
+<ul>
+    <li>Java<ul>
+        <li>Spring</li>
+        <li>Google Guice</li>
+    </ul></li>
+    <li>Perl<ul>
+        <li>IoC</li>
+        <li>Bread::Board</li>
+        <li>Beam::Wire</li>
+    </ul></li>
+</ul>
+</section>
+
+<section class="slide">
+<h1>Container Builds Objects (Services)</h1>
+</section>
+
+<section class="slide">
+<h1>Container Builds Objects' Dependencies</h1>
+</section>
+
+<section class="slide">
+<h1>You Get The Result</h1>
+</section>
+
+<section class="slide">
+<h1>Lazily Evaluated</h1>
+</section>
+
+<section class="slide">
+<h1>Configuration File</h1>
+</section>
+
+<section class="slide">
+<h2>Our Classes with DI</h2>
+<pre style="width: 40%; float: left; margin: 0 2.5%;">
+package Foo;
+use Moo;
+has dbh =&gt; (
+  is  =&gt; 'ro',
+);
+</pre>
+<pre style="width: 40%; float: left; margin: 0 2.5%;">
+package Bar;
+use Moo;
+has dbh =&gt; (
+  is  =&gt; 'ro',
+);
+</pre>
+</section>
+
+<section class="slide">
+<h2>IOC</h2>
+<pre>
+use IOC;
+
+my $container = IOC::Container-&gt;new();
+$container-&gt;register(
+  IOC::Service-&gt;new('dbh' =&gt; sub {
+    return DBI-&gt;connect( 'dbi:SQLite:data.db' );
+  })
+); 
+$container-&gt;register(
+  IOC::Service-&gt;new('foo' =&gt; sub {
+    my $c = shift;
+    return Foo-&gt;new( dbh =&gt; $c-&gt;get('dbh') );
+  })
+);
+$container-&gt;register(
+  IOC::Service-&gt;new('bar' =&gt; sub {
+    my $c = shift;
+    return Bar-&gt;new( dbh =&gt; $c-&gt;get('dbh') );
+  })
+);
+</pre>
+</section>
+
+<section class="slide">
+<h2>Bread::Board</h2>
+<pre>
+use Bread::Board;
+my $c = container 'MyApp' =&gt; as {
+  service dbh =&gt; (
+    lifecycle =&gt; 'Singleton',
+    block =&gt; sub {
+      require DBI;
+      DBI-&gt;connect( 'dbi:SQLite:data.db' );
+    },
+  );
+  service foo =&gt; (
+    class =&gt; 'Foo',
+    dependencies =&gt; {
+      dbh =&gt; depends_on('dbh'),
+    },
+  );
+  service bar =&gt; (
+    class =&gt; 'Bar',
+    dependencies =&gt; {
+      dbh =&gt; depends_on('dbh'),
+    },
+  );
+};
+</section>
+
+<section class="slide">
+<h2>Beam::Wire</h2>
+<pre>
+# wire.yml
+dbh:
+  class: DBI
+  method: connect
+  args:
+    - 'dbi:SQLite:data.db'
+foo:
+  class: Foo
+  args:
+    dbh: { ref: dbh }
+bar:
+  class: Bar
+  args:
+    dbh: { ref: dbh }
+</pre>
+<pre>
+use Beam::Wire;
+my $wire = Beam::Wire-&gt;new(
+  file =&gt; 'wire.yml'
+);
+</pre>
+</section>
+
+<section class="slide">
+<h1>Why DI?</h1>
+</section>
+
+<section class="slide">
+<h1>Write Less Code!<br/>Don't Repeat Yourself!</h1>
+</section>
+
+<section class="slide">
+<h1>Develop to Interfaces</h1>
+</section>
+
+<section class="slide">
+<h2>Roles as <span style="font-size:50%">(cheap)</span> Perl Interfaces</h2>
+<pre>
+package DAOInterface;
+requires qw( get set find delete );
+</pre>
+<pre>
+package Foo;
+use Moo;
+has dao =&gt; (
+  is =&gt; 'ro',
+  isa =&gt; sub {
+    $_[0]-&gt;does('DAOInterface');
+  },
+);
+</pre>
+</section>
+
+<section class="slide">
+<h1>Loose Coupling</h1>
+</section>
+
+<section class="slide">
+<h1>More Re-use</h1>
+</section>
+
+<section class="slide">
+<h1>Easier Testing</h1>
+</section>
+
+<section class="slide">
+<h1>Less Boilerplate</h1>
+</section>
+
+<section class="slide">
+<h2>BeamX::Service::AnyEvent <span style="font-size: 50%">(upcoming)</span></h2>
+<pre>
+# wire.yml
+ping:
+  class: BeamX::Service::AnyEvent::Ping
+slow_ping:
+  class: BeamX::Service::AnyEvent::Ping
+  args:
+    interval: 5
+</pre>
+<pre>
+$ beam-ae wire.yml ping slow_ping
+</pre>
+</section>
+
+<section class="slide">
+<h2>BeamX::Service::MXRunnable <span style="font-size: 50%">(upcoming)</span></h2>
+<pre>
+package PrintTable;
+use Moose;
+with 'MooseX::Runnable', 'MooseX::Getopt';
+has dbh =&gt; (
+  is =&gt; 'ro',
+  traits =&gt; [qw(NoGetopt)]
+);
+has table =&gt; (
+  is =&gt; 'ro',
+);
+sub run {
+  my ( $self ) = @_;
+  print $self-&gt;dbh-&gt;selectall_hashref(
+    "SELECT * FROM " . $self-&gt;table
+  );
+}
+</pre>
+</section>
+
+<section class="slide">
+<h2>BeamX::Service::MXRunnable <span style="font-size: 50%">(upcoming)</span></h2>
+<pre>
+# wire.yml
+dbh:
+  class: DBI
+  method: connect
+  args:
+    - 'dbi:SQLite:data.db'
+print_table:
+  class: PrintTable
+  args:
+    dbh: { ref: dbh }
+</pre>
+<pre>
+$ beam-mxr wire.yml print_table --table "my_table"
+</pre>
+</section>
+
+<section class="slide">
+<h2>Manually</h2>
+<pre>
+use Beam::Wire;
+use Moose;
+has container_file =&gt; (
+  is =&gt; 'ro',
+  isa =&gt; 'Str',
+  default =&gt; 'container.yml',
+);
+
+has container =&gt; (
+  is =&gt; 'ro',
+  isa =&gt; 'Beam::Wire',
+  default =&gt; sub {
+    my ( $self ) = @_;
+    return Beam::Wire-&gt;new( file =&gt; $self-&gt;container_file );
+  },
+);
+
+sub execute {
+  my ( $self, $opts, $args ) = @_;
+  my $service_name = shift @$args;
+  my $service = $self-&gt;container-&gt;get( $service_name );
+  $service-&gt;execute( $opts, $args );
+}
+</pre>
+</section>
+
+<section class="slide">
+<h1>Wrapping</h1>
+</section>
+
+<section class="slide">
+<h2>BeamX::Service::Log4perl <span style="font-size: 50%">(upcoming?)</span></h2>
+<pre>
+# wire.yml
+syslog_appender:
+  class: BeamX::Service::Log4perl::Syslog
+  args:
+    host: 'localhost'
+    port: 1514
+email_appender:
+  class: BeamX::Service::Log4perl::Email
+  args:
+    level: FATAL
+    email: root@localhost
+logger:
+  class: BeamX::Service::Log4perl
+  args:
+    appenders:
+      - { ref: syslog_appender }
+      - { ref: email_appender }
+</pre>
+</section>
+
+<section class="slide">
+<h2>BeamX::Service::Log4perl <span style="font-size: 50%">(upcoming?)</span></h2>
+<pre>
+package LoggableRunner;
+use Moose;
+with 'MooseX::Runnable', 'MooseX::Getopt';
+use Beam::Wire;
+
+has container_file =&gt; (
+  is =&gt; 'ro',
+  isa =&gt; 'Str',
+  default =&gt; 'wire.yml',
+);
+
+has container =&gt; (
+  is =&gt; 'ro',
+  isa =&gt; 'Beam::Wire',
+  lazy =&gt; 1,
+  default =&gt; sub {
+    Beam::Wire-&gt;new( file =&gt; $_[0]-&gt;container_file );
+  },
+);
+</pre>
+</section>
+
+<section class="slide">
+<h2>BeamX::Service::Log4perl <span style="font-size: 50%">(upcoming?)</span></h2>
+<pre>
+has logger_name =&gt; (
+  is =&gt; 'ro',
+  isa =&gt; 'Str',
+  default =&gt; 'logger',
+);
+
+has logger =&gt; (
+  is =&gt; 'ro',
+  lazy =&gt; 1,
+  default =&gt; sub {
+    my ( $self ) = @_;
+    $self-&gt;container-&gt;get( $self-&gt;logger_name );
+  },
+);
+</pre>
+</section>
+
+<section class="slide">
+<h2>BeamX::Service::Log4perl <span style="font-size: 50%">(upcoming?)</span></h2>
+<pre>
+sub BUILD {
+  my ( $self ) = @_;
+  $self-&gt;logger; # initialize logger
+}
+
+sub run {
+  my ( $self ) = @_;
+  # Do stuff, with logging!
+}
+</pre>
+</section>
+
+<!-- End slides. -->
+
+
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- End extension snippets. -->
+
+
+<!-- Required JS files. -->
+<script src="../deck.js/jquery-1.7.2.min.js"></script>
+<script src="../deck.js/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="../deck.js/core/deck.core.js"></script>
+<script src="../deck.js/extensions/hash/deck.hash.js"></script>
+<script src="../deck.js/extensions/menu/deck.menu.js"></script>
+<script src="../deck.js/extensions/goto/deck.goto.js"></script>
+<script src="../deck.js/extensions/status/deck.status.js"></script>
+<script src="../deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="../deck.js/extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>
