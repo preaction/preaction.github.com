@@ -333,14 +333,16 @@ has dbh =&gt; (
 package Foo;
 use Moo;
 has dbh =&gt; (
-  is  =&gt; 'ro',
+  is       =&gt; 'ro',
+  required =&gt; 1,
 );
 </pre>
 <pre style="width: 40%; float: left; margin: 0 2.5%;">
 package Bar;
 use Moo;
 has dbh =&gt; (
-  is  =&gt; 'ro',
+  is       =&gt; 'ro',
+  required =&gt; 1,
 );
 </pre>
 </section>
