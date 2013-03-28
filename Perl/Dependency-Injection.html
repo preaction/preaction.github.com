@@ -643,6 +643,56 @@ sub run {
 </pre>
 </section>
 
+<section class="slide">
+<h1>Voila! Integration</h1>
+</section>
+
+<section class="slide">
+<h1>Use Beam::Wire. Get Logging.</h1>
+</section>
+
+<section class="slide">
+<h1>You're already using DI!</h1>
+</section>
+
+<section class="slide">
+<h2>Ha-ha! Fooled You!</h2>
+<pre style="width: 40%; float: left; margin: 0 2.5%;">
+package Foo;
+use Moo;
+use DBI;
+has dbh =&gt; (
+  is  =&gt; 'ro',
+  default =&gt; sub {
+    DBI-&gt;connect(
+      'dbi:SQLite:data.db'
+    );
+  },
+);
+</pre>
+<pre style="width: 40%; float: left; margin: 0 2.5%;">
+package Bar;
+use Moo;
+use DBI;
+has dbh =&gt; (
+  is  =&gt; 'ro',
+  default =&gt; sub {
+    DBI-&gt;connect(
+      'dbi:SQLite:data.db'
+    );
+  },
+);
+</pre>
+</section>
+
+<section class="slide">
+<h1>Use Inversion of Control!</h1>
+</section>
+
+<section class="slide">
+<h1>Questions!</h1>
+</section>
+
 <!-- End slides. -->
 
 
