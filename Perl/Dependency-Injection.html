@@ -6,10 +6,10 @@
 	<meta name="viewport" content="width=1024, user-scalable=no">
 
 	<title>Dependency Injection (Beam::Wire)</title>
-	
+
 	<!-- Required stylesheet -->
 	<link rel="stylesheet" href="../deck.js/core/deck.core.css">
-	
+
 	<!-- Extension CSS files go here. Remove or add as needed. -->
 	<link rel="stylesheet" href="../deck.js/extensions/goto/deck.goto.css">
 	<link rel="stylesheet" href="../deck.js/extensions/menu/deck.menu.css">
@@ -20,10 +20,10 @@
 
 	<!-- Style theme. More available in /themes/style/ or create your own. -->
 	<link rel="stylesheet" href="../deck.js/themes/style/swiss.css">
-	
+
 	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
 	<link rel="stylesheet" href="../deck.js/themes/transition/horizontal-slide.css">
-	
+
 	<!-- Required Modernizr file -->
 	<script src="../deck.js/modernizr.custom.js"></script>
 </head>
@@ -171,7 +171,7 @@ use Role::DBI;
 
 package main;
 use DBI;
-my $dbh 
+my $dbh
   = DBI-&gt;connect( '...' );
 my $foo = Foo-&gt;new(
   dbh =&gt; $dbh
@@ -357,7 +357,7 @@ $container-&gt;register(
   IOC::Service-&gt;new('dbh' =&gt; sub {
     return DBI-&gt;connect( 'dbi:SQLite:data.db' );
   })
-); 
+);
 $container-&gt;register(
   IOC::Service-&gt;new('foo' =&gt; sub {
     my $c = shift;
@@ -699,7 +699,7 @@ has dbh =&gt; (
 <h2>It's Over!</h2>
 <ul>
   <li>Slides: <a href="http://preaction.github.com/Perl/Dependency-Injection.html">http://preaction.github.com/Perl/Dependency-Injection.html</a></li>
-  <li>Beam::Wire: <a href="http://metacpan.org/modules/Beam::Wire">Beam::Wire on metacpan.org</a></li>
+  <li>Beam::Wire: <a href="http://metacpan.org/module/Beam::Wire">Beam::Wire on metacpan.org</a></li>
 </ul>
 </section>
 
