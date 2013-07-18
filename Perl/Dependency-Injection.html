@@ -1,194 +1,230 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=1024, user-scalable=no">
+  <head>
+    <title>Git::ReleaseRepo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="/remark/remark.js" type="text/javascript">
+        {
+            "highlightStyle": "solarized_light",
+            "highlightLanguage": "no-highlight"
+        }
+    </script>
+    <style type="text/css" media="screen">
+/*
+SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
+--------- ------- ---- -------  ----------- ---------- ----------- -----------
+base03    #002b36  8/4 brblack  234 #1c1c1c 15 -12 -12   0  43  54 193 100  21
+base02    #073642  0/4 black    235 #262626 20 -12 -12   7  54  66 192  90  26
+base01    #586e75 10/7 brgreen  240 #585858 45 -07 -07  88 110 117 194  25  46
+base00    #657b83 11/7 bryellow 241 #626262 50 -07 -07 101 123 131 195  23  51
+base0     #839496 12/6 brblue   244 #808080 60 -06 -03 131 148 150 186  13  59
+base1     #93a1a1 14/4 brcyan   245 #8a8a8a 65 -05 -02 147 161 161 180   9  63
+base2     #eee8d5  7/7 white    254 #e4e4e4 92 -00  10 238 232 213  44  11  93
+base3     #fdf6e3 15/7 brwhite  230 #ffffd7 97  00  10 253 246 227  44  10  99
+yellow    #b58900  3/3 yellow   136 #af8700 60  10  65 181 137   0  45 100  71
+orange    #cb4b16  9/3 brred    166 #d75f00 50  50  55 203  75  22  18  89  80
+red       #dc322f  1/1 red      160 #d70000 50  65  45 220  50  47   1  79  86
+magenta   #d33682  5/5 magenta  125 #af005f 50  65 -05 211  54 130 331  74  83
+violet    #6c71c4 13/5 brmagenta 61 #5f5faf 50  15 -45 108 113 196 237  45  77
+blue      #268bd2  4/4 blue      33 #0087ff 55 -10 -45  38 139 210 205  82  82
+cyan      #2aa198  6/6 cyan      37 #00afaf 60 -35 -05  42 161 152 175  74  63
+green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
+*/
 
-	<title>Dependency Injection (Beam::Wire)</title>
+body {
+    font-size:        1.3em;
+}
 
-	<!-- Required stylesheet -->
-	<link rel="stylesheet" href="../deck.js/core/deck.core.css">
+.remark-slide .inverse {
+    color:            #839496; /* base0  */
+    background-color: #002b36; /* base03 */
+}
 
-	<!-- Extension CSS files go here. Remove or add as needed. -->
-	<link rel="stylesheet" href="../deck.js/extensions/goto/deck.goto.css">
-	<link rel="stylesheet" href="../deck.js/extensions/menu/deck.menu.css">
-	<link rel="stylesheet" href="../deck.js/extensions/navigation/deck.navigation.css">
-	<link rel="stylesheet" href="../deck.js/extensions/status/deck.status.css">
-	<link rel="stylesheet" href="../deck.js/extensions/hash/deck.hash.css">
-	<link rel="stylesheet" href="../deck.js/extensions/scale/deck.scale.css">
+.remark-slide {
+    color:            #657b83; /* base00 */
+    background-color: #fdf6e3; /* base3 */
+}
 
-	<!-- Style theme. More available in /themes/style/ or create your own. -->
-	<link rel="stylesheet" href="../deck.js/themes/style/swiss.css">
+.remark-slide pre, .remark-slide code {
+    color:            #586e75; /* base01 */
+    background-color: #eee8d5; /* base2 */
+}
 
-	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
-	<link rel="stylesheet" href="../deck.js/themes/transition/horizontal-slide.css">
+.remark-slide .inverse pre, .remark-slide .inverse code {
+    color:            #93a1a1; /* base1 */
+    background-color: #073642; /* base02 */
+}
 
-	<!-- Required Modernizr file -->
-	<script src="../deck.js/modernizr.custom.js"></script>
-</head>
-<body class="deck-container">
+a:link, a:visited, a:hover, a:active {
+    color:            #268bd2; /* blue */
+}
 
-<!-- Begin slides. Just make elements with a class of slide. -->
+.footnote {
+    position: absolute;
+    bottom: 3em;
+}
+.footnote.right {
+    right: 3em;
+}
+.code {
+    font-family: Monaco, monospace;
+}
 
-<section class="slide">
-    <h2>Dependency Injection</h2>
-    <h3>Also Introducing: Beam::Wire</h3>
-    <p>
-    Doug Bell<br/>
-    Chicago.PM (03/28/2013)
-    </p>
-</section>
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: inverse center middle
+# Dependency Injection
+## Also Introducing: Beam::Wire
 
-<section class="slide">
-	<h1>The Setup</h1>
-</section>
-
-<section class="slide">
-<h2>Two Classes in Search of DBI</h2>
-<pre style="width: 40%; float: left; margin: 0 2.5%;">
+Doug Bell
+Chicago.PM (03/28/2013)
+---
+class: center middle
+# The Setup
+---
+class: middle
+.center[
+# Two Classes in Search of DBI
+]
+```perl
 package Foo;
 use Moo;
 has dbh =&gt; (
   is  =&gt; 'ro',
 );
-</pre>
-<pre style="width: 40%; float: left; margin: 0 2.5%;">
+```
+```perl
 package Bar;
 use Moo;
 has dbh =&gt; (
   is  =&gt; 'ro',
 );
-</pre>
-</section>
-
-<section class="slide">
-<h2>To Each Their Own</h2>
-<pre style="width: 40%; float: left; margin: 0 2.5%;">
+```
+---
+class: middle
+.center[
+# To Each Their Own
+]
+```perl
 package Foo;
 use Moo;
 use DBI;
 has dbh =&gt; (
   is  =&gt; 'ro',
   default =&gt; sub {
-    DBI-&gt;connect(
-      'dbi:SQLite:data.db'
-    );
+    DBI-&gt;connect( 'dbi:SQLite:data.db' );
   },
 );
-</pre>
-<pre style="width: 40%; float: left; margin: 0 2.5%;">
+```
+```perl
 package Bar;
 use Moo;
 use DBI;
 has dbh =&gt; (
   is  =&gt; 'ro',
   default =&gt; sub {
-    DBI-&gt;connect(
-      'dbi:SQLite:data.db'
-    );
+    DBI-&gt;connect( 'dbi:SQLite:data.db' );
   },
 );
-</pre>
-</section>
-
-<section class="slide">
-<h2>Role Traversal</h2>
-<pre style="width: 40%; float: left; margin: 0 2.5%;">
+```
+---
+class: middle
+.center[
+# Role Traversal
+]
+```perl
 package Role::DBI;
 use Moo::Role;
 has dbh =&gt; (
   is  =&gt; 'ro',
   default =&gt; sub {
-    DBI-&gt;connect(
-      'dbi:SQLite:data.db'
-    );
+    DBI-&gt;connect( 'dbi:SQLite:data.db' );
   },
 );
-</pre>
-<pre style="width: 40%; float: left; margin: 0 2.5%;">
+```
+```perl
 package Foo;
 use Moo;
 use Role::DBI;
-</pre>
-<pre style="width: 40%; float: left; margin: 0 2.5%;">
+```
+```perl
 package Bar;
 use Moo;
 use Role::DBI;
-</pre>
-</section>
+```
 
-<section class="slide">
-<h2>Singleton</h2>
-<pre style="width: 40%; float: left; margin: 0 2.5%;">
+---
+class: middle
+.center[
+# Singleton
+]
+```perl
 package Role::DBI;
 use Moo::Role;
 my $dbh;
 has dbh =&gt; (
   is  =&gt; 'ro',
   default =&gt; sub {
-    $dbh ||= DBI-&gt;connect(
-      'dbi:SQLite:data.db'
-    );
+    $dbh ||= DBI-&gt;connect( 'dbi:SQLite:data.db' );
   },
 );
-</pre>
-<pre style="width: 40%; float: left; margin: 0 2.5%;">
+```
+```perl
 package Foo;
 use Moo;
 use Role::DBI;
-</pre>
-<pre style="width: 40%; float: left; margin: 0 2.5%;">
+```
+```perl
 package Bar;
 use Moo;
 use Role::DBI;
-</pre>
-</section>
+```
 
-<section class="slide">
-<h2>Singleton Override</h2>
-<pre style="width: 40%; float: left; margin: 0 2.5%;">
+
+---
+class: middle
+.center[
+# Singleton Override
+]
+```perl
 package Role::DBI;
 use Moo::Role;
 my $dbh;
 has dbh =&gt; (
   is  =&gt; 'ro',
   default =&gt; sub {
-    $dbh ||= DBI-&gt;connect(
-      'dbi:SQLite:data.db'
-    );
+    $dbh ||= DBI-&gt;connect( 'dbi:SQLite:data.db' );
   },
 );
 
 package Foo;
 use Moo;
 use Role::DBI;
-</pre>
-<pre style="width: 40%; float: left; margin: 0 2.5%;">
+
 package Bar;
 use Moo;
 use Role::DBI;
 
 package main;
 use DBI;
-my $dbh
-  = DBI-&gt;connect( '...' );
-my $foo = Foo-&gt;new(
-  dbh =&gt; $dbh
-);
-my $bar = Bar-&gt;new(
-  dbh =&gt; $dbh
-);
-</pre>
-</section>
+my $dbh = DBI-&gt;connect( '...' );
+my $foo = Foo-&gt;new( dbh =&gt; $dbh );
+my $bar = Bar-&gt;new( dbh =&gt; $dbh );
+```
 
-<section class="slide">
-<h2>Configuration File</h2>
-<pre>
+
+---
+class: middle
+.center[
+# Configuration File
+]
+```perl
 # config.yml
 dsn: 'dbi:SQLite:data.db'
-</pre>
-<pre>
+```
+```perl
 # script.pl
 use DBI;
 my $cfg = LoadFile( 'config.yml' )
@@ -196,12 +232,15 @@ my $dsn = $cfg-&gt;{dsn};
 my $dbh = DBI-&gt;connect( $dsn );
 my $foo = Foo-&gt;new( dbh =&gt; $dbh );
 my $bar = Bar-&gt;new( dbh =&gt; $dbh );
-</pre>
-</section>
+```
 
-<section class="slide">
-<h2>Singleton Config</h2>
-<pre>
+
+---
+class: middle
+.center[
+# Singleton Config
+]
+```perl
 package Role::DBI;
 use Moo::Role;
 use YAML::Any qw( LoadFile );
@@ -212,18 +251,17 @@ has dbh =&gt; (
     return $dbh if $dbh;
     my $cfg = LoadFile( 'config.yml' )
     my $dsn = $cfg-&gt;{dsn};
-    return $dbh = DBI-&gt;connect(
-      $dsn
-    );
+    return $dbh = DBI-&gt;connect( $dsn );
   },
 );
-</pre>
+```
 
-</section>
-
-<section class="slide">
-<h2>Config Override</h2>
-<pre style="width: 45%; float: left;">
+---
+class: middle
+.center[
+# Config Override
+]
+```perl
 package Role::DBI;
 use Moo::Role;
 use YAML::Any qw( LoadFile );
@@ -231,125 +269,130 @@ my $cfg;
 
 has cfg_fn =&gt; (
   is  =&gt; 'ro',
-  default =&gt; sub {
-    'config.yml'
-  },
+  default =&gt; 'config.yml'
 );
 
 has cfg =&gt; (
   is  =&gt; 'ro',
-  default =&gt; sub {
-    return $cfg
-      ||= LoadFile(
-        $_[0]-&gt;cfg_fn
-      );
-  },
+  default =&gt; sub { $cfg ||= LoadFile( $_[0]-&gt;cfg_fn ) },
 );
-</pre>
-<pre style="width: 45%; float: left;">
 my $dbh;
 has dbh =&gt; (
   is  =&gt; 'ro',
   default =&gt; sub {
     return $dbh if $dbh;
     my ( $self ) = @_;
-    return $dbh
-      = DBI-&gt;connect(
-        $self-&gt;cfg-&gt;{dsn}
-      );
+    return $dbh = DBI-&gt;connect( $self-&gt;cfg-&gt;{dsn} );
   },
 );
-</pre>
+```
 
-</section>
-<section class="slide">
-<h2>Repeat Ad Nauseum</h2>
-<ul>
-    <li>DBI</li>
-    <li>CHI</li>
-    <li>ORM</li>
-    <li>Messaging</li>
-</ul>
-</section>
 
-<section class="slide">
-<h1>It Gets Complicated</h1>
-</section>
+---
+class: middle
+.center[
+# Repeat Ad Nauseum
+]
 
-<section class="slide">
-<h1>Give Up!</h1>
-</section>
+* DBI
+* Caching
+* ORM
+* Messaging
 
-<section class="slide">
-<h1>Inversion of Control</h1>
-</section>
 
-<section class="slide">
-<h1>"Give Up Control" Pattern</h1>
-</section>
+---
+class: inverse center middle
+# It Gets Complicated
 
-<section class="slide">
-<h1>Dependency Injection</h1>
-</section>
 
-<section class="slide">
-<h2>Container</h2>
-<ul>
-    <li>Java<ul>
-        <li>Spring</li>
-        <li>Google Guice</li>
-    </ul></li>
-    <li>Perl<ul>
-        <li>IoC</li>
-        <li>Bread::Board</li>
-        <li>Beam::Wire</li>
-    </ul></li>
-</ul>
-</section>
+---
+class: inverse center middle
+# Give Up!
 
-<section class="slide">
-<h1>Container Builds Objects (Services)</h1>
-</section>
 
-<section class="slide">
-<h1>Container Builds Objects' Dependencies</h1>
-</section>
+---
+class: inverse center middle
+# Inversion of Control
 
-<section class="slide">
-<h1>You Get The Result</h1>
-</section>
 
-<section class="slide">
-<h1>Lazily Evaluated</h1>
-</section>
+---
+class: center middle
+# "Give Up Control" Pattern
 
-<section class="slide">
-<h1>Configuration File</h1>
-</section>
 
-<section class="slide">
-<h2>Our Classes with DI</h2>
-<pre style="width: 40%; float: left; margin: 0 2.5%;">
+---
+class: center middle
+# Dependency Injection
+
+
+---
+class: middle
+.center[
+# Container
+]
+
+* Java
+    * Spring
+    * Google Guice
+* Perl
+    * IoC
+    * Bread::Board
+    * Beam::Wire
+
+---
+class: center middle
+# Container Builds Objects (Services)
+
+
+---
+class: center middle
+# Container Builds Objects' Dependencies
+
+
+---
+class: center middle
+# You Get The Result
+
+
+---
+class: center middle
+# Lazily Evaluated
+
+
+---
+class: center middle
+# Configuration File
+
+
+---
+class: middle
+.center[
+# Our Classes with DI
+]
+```perl
 package Foo;
 use Moo;
 has dbh =&gt; (
   is       =&gt; 'ro',
   required =&gt; 1,
 );
-</pre>
-<pre style="width: 40%; float: left; margin: 0 2.5%;">
+```
+```perl
 package Bar;
 use Moo;
 has dbh =&gt; (
   is       =&gt; 'ro',
   required =&gt; 1,
 );
-</pre>
-</section>
+```
 
-<section class="slide">
-<h2>IOC</h2>
-<pre>
+
+---
+class: middle
+.center[
+# IOC
+]
+```perl
 use IOC;
 
 my $container = IOC::Container-&gt;new();
@@ -370,12 +413,15 @@ $container-&gt;register(
     return Bar-&gt;new( dbh =&gt; $c-&gt;get('dbh') );
   })
 );
-</pre>
-</section>
+```
 
-<section class="slide">
-<h2>Bread::Board</h2>
-<pre>
+
+---
+class: middle
+.center[
+# Bread::Board
+]
+```perl
 use Bread::Board;
 my $c = container 'MyApp' =&gt; as {
   service dbh =&gt; (
@@ -398,11 +444,14 @@ my $c = container 'MyApp' =&gt; as {
     },
   );
 };
-</section>
+```
 
-<section class="slide">
-<h2>Beam::Wire</h2>
-<pre>
+---
+class: middle
+.center[
+# Beam::Wire
+]
+```perl
 # wire.yml
 dbh:
   class: DBI
@@ -412,43 +461,50 @@ dbh:
 foo:
   class: Foo
   args:
-    dbh: { ref: dbh }
+    dbh: { $ref: dbh }
 bar:
   class: Bar
   args:
-    dbh: { ref: dbh }
-</pre>
-<pre>
+    dbh: { $ref: dbh }
+```
+```perl
 use Beam::Wire;
 my $wire = Beam::Wire-&gt;new(
   file =&gt; 'wire.yml'
 );
-</pre>
-</section>
+```
 
-<section class="slide">
-<h1>Why DI?</h1>
-</section>
 
-<section class="slide">
-<h1>Write Less Code!</h1>
-</section>
+---
+class: center middle
+# Why DI?
 
-<section class="slide">
-<h1>Don't Repeat Yourself!</h1>
-</section>
 
-<section class="slide">
-<h1>Develop to Interfaces</h1>
-</section>
+---
+class: center middle
+# Write Less Code!
 
-<section class="slide">
-<h2>Roles as <span style="font-size:50%">(cheap)</span> Perl Interfaces</h2>
-<pre>
+
+---
+class: center middle
+# Don't Repeat Yourself!
+
+
+---
+class: center middle
+# Develop to Interfaces
+
+
+---
+class: middle
+.center[
+# Roles as <span style="font-size:50%">(cheap)</span> Perl Interfaces
+]
+```perl
 package DAOInterface;
 requires qw( get set find delete );
-</pre>
-<pre>
+```
+```perl
 package Foo;
 use Moo;
 has dao =&gt; (
@@ -457,28 +513,35 @@ has dao =&gt; (
     $_[0]-&gt;does('DAOInterface');
   },
 );
-</pre>
-</section>
+```
 
-<section class="slide">
-<h1>Loose Coupling</h1>
-</section>
 
-<section class="slide">
-<h1>More Re-use</h1>
-</section>
+---
+class: center middle
+# Loose Coupling
 
-<section class="slide">
-<h1>Easier Testing</h1>
-</section>
 
-<section class="slide">
-<h1>Less Boilerplate</h1>
-</section>
+---
+class: center middle
+# More Re-use
 
-<section class="slide">
-<h2>BeamX::Service::AnyEvent <span style="font-size: 50%">(upcoming)</span></h2>
-<pre>
+
+---
+class: center middle
+# Easier Testing
+
+
+---
+class: center middle
+# Less Boilerplate
+
+
+---
+class: middle
+.center[
+# BeamX::Service::AnyEvent <span style="font-size: 50%">(upcoming)</span>
+]
+```perl
 # wire.yml
 ping:
   class: BeamX::Service::AnyEvent::Ping
@@ -486,15 +549,18 @@ slow_ping:
   class: BeamX::Service::AnyEvent::Ping
   args:
     interval: 5
-</pre>
-<pre>
+```
+```perl
 $ beam-ae wire.yml ping slow_ping
-</pre>
-</section>
+```
 
-<section class="slide">
-<h2>BeamX::Service::MXRunnable <span style="font-size: 50%">(upcoming)</span></h2>
-<pre>
+
+---
+class: middle
+.center[
+# BeamX::Service::MXRunnable <span style="font-size: 50%">(upcoming)</span>
+]
+```perl
 package PrintTable;
 use Moose;
 with 'MooseX::Runnable', 'MooseX::Getopt';
@@ -511,12 +577,15 @@ sub run {
     "SELECT * FROM " . $self-&gt;table
   );
 }
-</pre>
-</section>
+```
 
-<section class="slide">
-<h2>BeamX::Service::MXRunnable <span style="font-size: 50%">(upcoming)</span></h2>
-<pre>
+
+---
+class: middle
+.center[
+# BeamX::Service::MXRunnable <span style="font-size: 50%">(upcoming)</span>
+]
+```perl
 # wire.yml
 dbh:
   class: DBI
@@ -527,15 +596,18 @@ print_table:
   class: PrintTable
   args:
     dbh: { ref: dbh }
-</pre>
-<pre>
+```
+```perl
 $ beam-mxr wire.yml print_table --table "my_table"
-</pre>
-</section>
+```
 
-<section class="slide">
-<h2>Manually</h2>
-<pre>
+
+---
+class: middle
+.center[
+# Manually
+]
+```perl
 use Beam::Wire;
 use Moose;
 has container_file =&gt; (
@@ -559,16 +631,20 @@ sub execute {
   my $service = $self-&gt;container-&gt;get( $service_name );
   $service-&gt;execute( $opts, $args );
 }
-</pre>
-</section>
+```
 
-<section class="slide">
-<h1>Wrapping</h1>
-</section>
 
-<section class="slide">
-<h2>BeamX::Service::Log4perl <span style="font-size: 50%">(upcoming?)</span></h2>
-<pre>
+---
+class: center middle
+# Wrapping
+
+
+---
+class: middle
+.center[
+# BeamX::Service::Log4perl <span style="font-size: 50%">(upcoming?)</span>
+]
+```perl
 # wire.yml
 syslog_appender:
   class: BeamX::Service::Log4perl::Syslog
@@ -586,12 +662,16 @@ logger:
     appenders:
       - { ref: syslog_appender }
       - { ref: email_appender }
-</pre>
-</section>
+```
 
-<section class="slide">
-<h2>BeamX::Service::Log4perl <span style="font-size: 50%">(upcoming?)</span></h2>
-<pre>
+
+---
+class: middle
+.center[
+# BeamX::Service::Log4perl <span style="font-size: 50%">(upcoming?)</span>
+]
+
+```perl
 package LoggableRunner;
 use Moose;
 with 'MooseX::Runnable', 'MooseX::Getopt';
@@ -611,12 +691,16 @@ has container =&gt; (
     Beam::Wire-&gt;new( file =&gt; $_[0]-&gt;container_file );
   },
 );
-</pre>
-</section>
+```
 
-<section class="slide">
-<h2>BeamX::Service::Log4perl <span style="font-size: 50%">(upcoming?)</span></h2>
-<pre>
+
+---
+class: middle
+.center[
+# BeamX::Service::Log4perl <span style="font-size: 50%">(upcoming?)</span>
+]
+
+```perl
 has logger_name =&gt; (
   is =&gt; 'ro',
   isa =&gt; 'Str',
@@ -631,12 +715,16 @@ has logger =&gt; (
     $self-&gt;container-&gt;get( $self-&gt;logger_name );
   },
 );
-</pre>
-</section>
+```
 
-<section class="slide">
-<h2>BeamX::Service::Log4perl <span style="font-size: 50%">(upcoming?)</span></h2>
-<pre>
+
+---
+class: middle
+.center[
+# BeamX::Service::Log4perl <span style="font-size: 50%">(upcoming?)</span>
+]
+
+```perl
 sub BUILD {
   my ( $self ) = @_;
   $self-&gt;logger; # initialize logger
@@ -646,24 +734,30 @@ sub run {
   my ( $self ) = @_;
   # Do stuff, with logging!
 }
-</pre>
-</section>
+```
 
-<section class="slide">
-<h1>Voila! Integration</h1>
-</section>
 
-<section class="slide">
-<h1>Use Beam::Wire. Get Logging.</h1>
-</section>
+---
+class: center middle
+# Voila! Integration
 
-<section class="slide">
-<h1>You're already using DI!</h1>
-</section>
 
-<section class="slide">
-<h2>Ha-ha! Fooled You!</h2>
-<pre style="width: 40%; float: left; margin: 0 2.5%;">
+---
+class: center middle
+# Use Beam::Wire. Get Logging.
+
+
+---
+class: center middle
+# You're already using DI!
+
+
+---
+class: middle
+.center[
+# Ha-ha! Fooled You!
+]
+```perl
 package Foo;
 use Moo;
 use DBI;
@@ -675,8 +769,8 @@ has dbh =&gt; (
     );
   },
 );
-</pre>
-<pre style="width: 40%; float: left; margin: 0 2.5%;">
+```
+```perl
 package Bar;
 use Moo;
 use DBI;
@@ -688,69 +782,27 @@ has dbh =&gt; (
     );
   },
 );
-</pre>
-</section>
-
-<section class="slide">
-<h1>Use Inversion of Control!</h1>
-</section>
-
-<section class="slide">
-<h2>It's Over!</h2>
-<ul>
-  <li>Slides: <a href="http://preaction.github.com/Perl/Dependency-Injection.html">http://preaction.github.com/Perl/Dependency-Injection.html</a></li>
-  <li>Beam::Wire: <a href="http://metacpan.org/module/Beam::Wire">Beam::Wire on metacpan.org</a></li>
-</ul>
-</section>
-
-<!-- End slides. -->
+```
 
 
-<!-- Begin extension snippets. Add or remove as needed. -->
-
-<!-- deck.navigation snippet -->
-<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
-<a href="#" class="deck-next-link" title="Next">&#8594;</a>
-
-<!-- deck.status snippet -->
-<p class="deck-status">
-	<span class="deck-status-current"></span>
-	/
-	<span class="deck-status-total"></span>
-</p>
-
-<!-- deck.goto snippet -->
-<form action="." method="get" class="goto-form">
-	<label for="goto-slide">Go to slide:</label>
-	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
-	<datalist id="goto-datalist"></datalist>
-	<input type="submit" value="Go">
-</form>
-
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
-
-<!-- End extension snippets. -->
+---
+class: center middle
+# Use Inversion of Control!
 
 
-<!-- Required JS files. -->
-<script src="../deck.js/jquery-1.7.2.min.js"></script>
-<script src="../deck.js/core/deck.core.js"></script>
+---
+class: middle
+.center[
+# It's Over!
+]
 
-<!-- Extension JS files. Add or remove as needed. -->
-<script src="../deck.js/core/deck.core.js"></script>
-<script src="../deck.js/extensions/hash/deck.hash.js"></script>
-<script src="../deck.js/extensions/menu/deck.menu.js"></script>
-<script src="../deck.js/extensions/goto/deck.goto.js"></script>
-<script src="../deck.js/extensions/status/deck.status.js"></script>
-<script src="../deck.js/extensions/navigation/deck.navigation.js"></script>
-<script src="../deck.js/extensions/scale/deck.scale.js"></script>
+* Slides: [http://preaction.github.com/Perl/Dependency-Injection.html](http://preaction.github.com/Perl/Dependency-Injection.html)
+* Beam::Wire: [Beam::Wire on metacpan.org](http://metacpan.org/module/Beam::Wire)
 
-<!-- Initialize the deck. You can put this in an external file if desired. -->
-<script>
-	$(function() {
-		$.deck('.slide');
-	});
-</script>
-</body>
+    </textarea>
+    <div id="slideshow"></div>
+    <script type="text/javascript">
+        var slideshow = remark.create();
+    </script>
+  </body>
 </html>
