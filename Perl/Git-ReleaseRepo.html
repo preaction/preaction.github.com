@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Building Command-line Applications in Perl</title>
+    <title>Git::ReleaseRepo</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script src="/remark/remark.js" type="text/javascript">
         {
@@ -69,6 +69,10 @@ a:link, a:visited, a:hover, a:active {
 .code {
     font-family: Monaco, monospace;
 }
+.constrain img {
+    width: 100%;
+    height: 100%;
+}
 
     </style>
   </head>
@@ -77,6 +81,130 @@ a:link, a:visited, a:hover, a:active {
 class: inverse center middle
 # Git::ReleaseRepo
 ### The epic journey of a group of repositories with a common goal
+---
+# Two Friends
+.constrain[
+![Two Friends](Git-ReleaseRepo/1-the-modules.svg)
+]
+---
+class: middle
+.center[
+# Initializing a Release Repository
+]
+```
+$ mkdir Release
+$ cd Release
+$ git init
+$ git release init --version_prefix v
+```
+---
+class: center middle
+# .code[git release init]
+Initializes and configures the release repository
+---
+# Form a Party
+.constrain[
+![Form a Party](Git-ReleaseRepo/2-the-release-repo.svg)
+]
+---
+class: middle
+.center[
+# The first release
+]
+```
+$ git release add Foo /path/to/Foo
+$ git release add Bar /path/to/Bar
+$ git release commit
+```
+---
+class: center middle
+# .code[git release add]
+Add a brand-new module to the release
+---
+class: center middle
+# .code[git release commit]
+Commit this release and give it a version number
+---
+# Starting Their Journey
+.constrain[
+![Starting their Journey](Git-ReleaseRepo/4-first-release.svg)
+]
+---
+class: center middle
+# Branches
+A branch for each minor or major release
+
+v0.1, v0.2, v1.0
+---
+class: center middle
+# Tags
+A tag for each bugfix release
+
+v0.1.0, v0.1.1, v1.0.0
+---
+# Keeping a Journal
+.constrain[
+![Keeping a Journal](Git-ReleaseRepo/5-first-tag.svg)
+]
+---
+# Life Goes On
+.constrain[
+![Life Goes On](Git-ReleaseRepo/6-life-goes-on.svg)
+]
+---
+class: center middle
+# Commit to Modules
+Nothing is released until desired
+---
+# Life Requires Bugfixes
+.constrain[
+![Life Requires Bugfixes](Git-ReleaseRepo/7-life-requires-bugfixes.svg)
+]
+---
+class: middle
+.center[
+# Add a Bugfix
+]
+```
+$ git release checkout --bugfix
+$ git release status
+Bar (can update)
+$ git release update Bar
+$ git release status
+Bar changed
+$ git release commit
+```
+---
+# Squash The Bugs
+.constrain[
+![Squash The Bugs](Git-ReleaseRepo/8-bugfix-release.svg)
+]
+---
+# Life Goes On
+.constrain[
+![Life Goes On](Git-ReleaseRepo/9-life-goes-on.svg)
+]
+---
+class: middle
+.center[
+# A regular release
+]
+```
+$ git release checkout master
+$ git release status
+Bar (can update)
+Foo (can update)
+$ git release update -a
+$ git release status
+Bar changed
+Foo changed
+$ git release commit
+```
+---
+# A New Beginning
+.constrain[
+![A New Beginning](Git-ReleaseRepo/10-new-release.svg)
+]
 ---
     </textarea>
     <div id="slideshow"></div>
