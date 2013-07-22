@@ -224,10 +224,12 @@ class: middle
 .center[
 # Update a deployed release
 ]
+```
 $ cd Release-v0.2
 $ git release status
 On release v0.2.0 (can update to v0.2.1)
 $ git release pull
+```
 ---
 class: inverse middle center
 # Clone a Release Repo
@@ -251,12 +253,58 @@ $ git release commit
 $ git release push
 ```
 ---
+class: middle center inverse
+# Cheat Sheets
+---
+class: middle
+.center[
+# Start a new release repo
+]
+```
+$ git release init --version_prefix v
+```
+.center[
+# Clone a release repo
+]
+```
+$ git release clone ssh://user@host/release.git --version_prefix v
+```
+---
+class: middle
+.center[
+# Perform a regular release
+]
+```
+$ git release checkout master       # Check out the master branch
+$ git release add [module] [url]    # Add a new module
+$ git release update [module]       # Update an existing module
+$ git release update -a             # Update all existing modules
+$ git release commit                # Commit the release
+$ git release push                  # Push the release out
+```
+---
+class: middle
+.center[
+# Perform a bugfix release
+]
+```
+$ git release checkout --bugfix     # Check out the bugfix branch
+$ git release add [module] [url]    # Add a new module
+$ git release update [module]       # Update an existing module
+$ git release update -a             # Update all existing modules
+$ git release commit                # Commit the release
+$ git release push                  # Push the release out
+```
+---
+class: middle center inverse
+# Questions?
+---
 class: middle
 .center[
 # It's over!
 ]
 
-* [Git::ReleaseRepo presentation slides: http://preaction.github.io/Perl/Git-ReleaseRepo.html](http://preaction.github.io/Perl/Git-ReleaseRepo.html)
+* [Git::ReleaseRepo presentation slides: <br> http://preaction.github.io/Perl/Git-ReleaseRepo.html](http://preaction.github.io/Perl/Git-ReleaseRepo.html)
 * [Git::ReleaseRepo on metacpan](https://metacpan.org/module/Git::ReleaseRepo)
 
     </textarea>
