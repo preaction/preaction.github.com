@@ -102,6 +102,12 @@ class: center middle
 # .code[git release init]
 Initializes and configures the release repository
 ---
+class: center middle
+# .code[--version_prefix &lt;prefix&gt;]
+Prepends a string to every version number.
+
+Lets you share submodules with other release repositories.
+---
 # Form a Party
 .constrain[
 ![Form a Party](Git-ReleaseRepo/2-the-release-repo.svg)
@@ -214,7 +220,7 @@ class: middle
 # Deploy a release
 ]
 ```
-$ git release deploy /path/to/Release
+$ git release deploy /path/to/Release --version_prefix v
 $ cd Release-v0.2
 $ git release status
 On release v0.2.0
@@ -239,7 +245,7 @@ class: middle
 # Clone a Release Repo
 ]
 ```
-$ git release clone /path/to/Release
+$ git release clone /path/to/Release --version_prefix v
 $ cd Release
 ```
 ---
