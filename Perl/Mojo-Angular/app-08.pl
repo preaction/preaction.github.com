@@ -24,7 +24,7 @@ __DATA__
 <!DOCTYPE html>
 <html id="ng-app" ng-app="MyApp">
     <head>
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/js/bootstrap-3.0.0/dist/css/bootstrap.min.css" />
     </head>
     <body ng-controller="UserCtrl" class="container">
         <table class="table table-striped">
@@ -41,10 +41,11 @@ __DATA__
                 <td>{{user.can_play}}</td>
             </tr>
         </table>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular-resource.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/bootstrap-3.0.0/dist/js/bootstrap.min.js"></script>
+        <script src="/js/angular-1.0.7/angular.min.js"></script>
+        <script src="/js/angular-1.0.7/angular-resource.min.js"></script>
+        <script src="/js/moment.js"></script>
         <script>
             angular.module( 'MyApp', [ 'ngResource' ] )
             .factory( 'User', [ '$resource',

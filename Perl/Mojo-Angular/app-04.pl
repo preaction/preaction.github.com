@@ -38,6 +38,6 @@ __DATA__
                 <td></td>
             </tr>
         </table>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
+        <script src="/js/angular-1.0.7/angular.min.js"></script>
     </body>
 </html>
