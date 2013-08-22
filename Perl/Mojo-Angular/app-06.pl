@@ -38,8 +38,8 @@ __DATA__
                 <td>{{user.can_play}}</td>
             </tr>
         </table>
-        <script src="/js/angular-1.0.7/angular.min.js"></script>
-        <script src="/js/angular-1.0.7/angular-resource.min.js"></script>
+        <script src="/js/angular.min.js"></script>
+        <script src="/js/angular-resource.min.js"></script>
         <script>
             angular.module( 'MyApp', [ 'ngResource' ] )
             .factory( 'User', [ '$resource',

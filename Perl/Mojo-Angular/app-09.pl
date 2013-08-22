@@ -39,7 +39,7 @@ __DATA__
 <!DOCTYPE html>
 <html id="ng-app" ng-app="MyApp">
     <head>
-        <link rel="stylesheet" href="/js/bootstrap-3.0.0/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
     </head>
     <body ng-controller="UserCtrl" class="container">
         <table class="table table-striped">
@@ -57,9 +57,9 @@ __DATA__
             </tr>
         </table>
         <script src="/js/jquery.min.js"></script>
-        <script src="/js/bootstrap-3.0.0/dist/js/bootstrap.min.js"></script>
-        <script src="/js/angular-1.0.7/angular.min.js"></script>
-        <script src="/js/angular-1.0.7/angular-resource.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/angular.min.js"></script>
+        <script src="/js/angular-resource.min.js"></script>
         <script src="/js/moment.js"></script>
         <script>
             angular.module( 'MyApp', [ 'ngResource' ] )
