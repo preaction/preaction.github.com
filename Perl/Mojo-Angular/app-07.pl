@@ -27,7 +27,7 @@ __DATA__
         <link rel="stylesheet" href="/css/bootstrap.min.css" />
     </head>
     <body ng-controller="UserCtrl" class="container">
-        <table class="table table-striped">
+        <table class="table table-striped table-hover">
             <tr>
                 <th>E-mail</th>
                 <th>Created</th>

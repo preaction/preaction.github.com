@@ -4,36 +4,38 @@ use Mojolicious::Lite;
 use Mojo::JSON;
 
 use Mango;
+use Mango::BSON qw( bson_oid );
 my $mango = Mango->new;
 $mango->default_db( 'jade_kingdom' );
 
-get '/' => sub {
-    my ( $self ) = @_;
-    $self->render( 'index' );
-};
+get '/' => 'index';
 
 get '/api/user' => sub {
     my ( $self ) = @_;
     $self->render(
         json => $mango->db->collection('user')->find->all,
     );
-};
+} => 'user_list';
 
 post '/api/user/:id' => sub {
-    my ( $self, $id ) = @_;
-    my $update = Mojo::JSON->new->decode( $self->req->body );
-    $mango->db->collection('user')->update( { _id => $id }, $update );
-    $self->redirect_to( '/api/user/' . $id );
-};
+    my ( $self ) = @_;
+    my $id = $self->stash( 'id' );
+    my $update = $self->req->json;
+    $update->{_id} = bson_oid $update->{_id};
+    $mango->db->collection('user')->save( $update );
+    return $self->redirect_to( url_for('user', id => $id, method => 'GET' ) );
+} => 'user_save';
 
 get '/api/user/:id' => sub {
-    my ( $self, $id ) = @_;
+    my ( $self ) = @_;
+    my $id = bson_oid $self->stash( 'id' );
     $self->render(
-        json => $mango->db->collection('user')->find_one({ _id => $id }),
+        json => $mango->db->collection('user')->find_one({ _id => $id }) || {},
     );
-};
+} => 'user';
 
 app->start;
+
 __DATA__
 @@ index.html.ep
 <!DOCTYPE html>
@@ -58,8 +60,8 @@ __DATA__
         </table>
         <script src="/js/jquery.min.js"></script>
         <script src="/js/bootstrap.min.js"></script>
-        <script src="/js/angular.min.js"></script>
-        <script src="/js/angular-resource.min.js"></script>
+        <script src="/js/angular.js"></script>
+        <script src="/js/angular-resource.js"></script>
         <script src="/js/moment.js"></script>
         <script>
             angular.module( 'MyApp', [ 'ngResource' ] )

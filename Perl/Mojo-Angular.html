@@ -62,8 +62,6 @@ a:link, a:visited, a:hover, a:active {
 .footnote {
     position: absolute;
     bottom: 3em;
-}
-.footnote.right {
     right: 3em;
 }
 .code {
@@ -82,10 +80,227 @@ class: inverse center middle
 # Modern Web Apps
 ### Mojolicious; MongoDB; Angular.js; Bootstrap
 ---
-class: inverse center middle
+class: center middle
 # Prologue
+## A user database longs for an app
 ---
+class: inverse center middle
+# Getting Started
+## The Mojolicious Part
+---
+class: middle
+.center[
+# The Minimum App
+]
+```perl
+#!/usr/bin/env perl
 
+use Mojolicious::Lite;
+
+app-&gt;start;
+```
+.footnote[app-01.pl]
+---
+class: middle
+.center[
+# An index page
+## Our application
+]
+```perl
+#!/usr/bin/env perl
+
+use Mojolicious::Lite;
+
+get '/' =&gt; sub {
+    my ( $self ) = @_;
+    $self-&gt;render( 'index' );
+};
+
+app-&gt;start;
+__DATA__
+@@ index.html.ep
+&lt;h1&gt;It works!&lt;/h1&gt;
+```
+.footnote[app-02.pl]
+---
+class: inverse center middle
+# Database APIs
+## The MongoDB Part
+---
+class: middle
+.center[
+# All Users JSON
+]
+```perl
+use Mango;
+my $mango = Mango->new;
+$mango->default_db( 'jade_kingdom' );
+
+get '/api/user' => sub {
+    my ( $self ) = @_;
+    $self->render(
+        json => $mango->db->collection('user')->find->all,
+    );
+};
+```
+.footnote[app-03.pl]
+---
+class: inverse center middle
+# Bring In Angular
+## The Fun Part Begins
+---
+class: middle
+.center[
+# Some Basic HTML
+]
+```html
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;body&gt;
+        &lt;table&gt;
+            &lt;tr&gt;
+                &lt;th&gt;E-mail&lt;/th&gt;
+                &lt;th&gt;Created&lt;/th&gt;
+                &lt;th&gt;Last Seen&lt;/th&gt;
+                &lt;th&gt;Can Play&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+        &lt;script src="/js/angular.min.js"&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+```
+.footnote[app-04.pl]
+---
+class: middle
+.center[
+# Get The Users
+]
+```html
+        &lt;script src="/js/angular.min.js"&gt;&lt;/script&gt;
+        &lt;script src="/js/angular-resource.min.js"&gt;&lt;/script&gt;
+        &lt;script&gt;
+            angular.module( 'MyApp', [ 'ngResource' ] )
+            .factory( 'User', [ '$resource',
+                    function ( $resource ) {
+                        return $resource( '/api/user/:id', { id: '@_id' } );
+                    }
+                ]
+            )
+            .controller( 'UserCtrl', [ '$scope', 'User',
+                    function ( $scope, User ) {
+                        $scope.users = User.query();
+                    }
+                ]
+            )
+            ;
+        &lt;/script&gt;
+```
+.footnote[app-05.pl]
+---
+class: middle
+.center[
+# Integrate Angular
+]
+```html
+&lt;!DOCTYPE html&gt;
+&lt;html id="ng-app" ng-app="MyApp"&gt;
+    &lt;body ng-controller="UserCtrl"&gt;
+        &lt;table&gt;
+            &lt;tr&gt;
+                &lt;th&gt;E-mail&lt;/th&gt;
+                &lt;th&gt;Created&lt;/th&gt;
+                &lt;th&gt;Last Seen&lt;/th&gt;
+                &lt;th&gt;Can Play&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr ng-repeat="user in users"&gt;
+                &lt;td&gt;{{user.email}}&lt;/td&gt;
+                &lt;td&gt;{{user.date_created}}&lt;/td&gt;
+                &lt;td&gt;{{user.date_last_seen}}&lt;/td&gt;
+                &lt;td&gt;{{user.can_play}}&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+```
+.footnote[app-06.pl]
+---
+class: inverse center middle
+# Make It Pretty
+## The Bootstrap Part
+---
+class: middle
+.center[
+# Add Bootstrap Classes
+]
+```html
+    &lt;head&gt;
+        &lt;link rel="stylesheet" href="/css/bootstrap.min.css" /&gt;
+    &lt;/head&gt;
+    &lt;body ng-controller="UserCtrl" class="container"&gt;
+        &lt;table class="table table-striped"&gt;
+```
+.footnote[app-07.pl]
+---
+class: middle
+.center[
+# Format the dates
+]
+```html
+            &lt;tr ng-repeat="user in users"&gt;
+                &lt;td&gt;{{user.email}}&lt;/td&gt;
+                &lt;td&gt;{{format_date(user.date_created)}}&lt;/td&gt;
+                &lt;td&gt;{{format_date(user.date_last_seen)}}&lt;/td&gt;
+                &lt;td&gt;{{user.can_play}}&lt;/td&gt;
+            &lt;/tr&gt;
+```
+```js
+            .controller( 'UserCtrl', [ '$scope', 'User',
+                    function ( $scope, User ) {
+                        $scope.users = User.query();
+                        $scope.format_date = function ( epoch ) {
+                            if ( !epoch ) return;
+                            return moment( epoch ).calendar();
+                        };
+                    }
+                ]
+            )
+```
+.footnote[app-08.pl]
+---
+class: inverse center middle
+# Edit the users
+---
+# POST an update
+```perl
+post '/api/user/:id' =&gt; sub {
+    my ( $self ) = @_;
+    my $id = $self-&gt;stash( 'id' );
+    my $update = Mojo::JSON-&gt;new-&gt;decode( $self-&gt;req-&gt;body );
+    $update-&gt;{_id} = bson_oid $update-&gt;{_id};
+    $mango-&gt;db-&gt;collection('user')-&gt;save( $update );
+    return $self-&gt;redirect_to( 
+        url_for('apiuserid', id =&gt; $id, method =&gt; 'GET' ) 
+    );
+};
+
+get '/api/user/:id' =&gt; sub {
+    my ( $self ) = @_;
+    my $id = bson_oid $self-&gt;stash( 'id' );
+    $self-&gt;render(
+        json =&gt; $mango-&gt;db-&gt;collection('user')
+            -&gt;find_one({ _id =&gt; $id }) || {},
+    );
+};
+```
+```html
+                &lt;td&gt;&lt;input type="checkbox" ng-model="user.can_play" 
+                    ng-change="user.$save()" /&gt;&lt;/td&gt;
+```
+.footnote[app-09.pl]
 ---
 class: middle center inverse
 # Questions?
