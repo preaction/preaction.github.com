@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <pre>
+#!/usr/bin/env perl
+
+use Mojolicious::Lite;
+use Mojo::JSON;
+
+use Mango;
+use Mango::BSON qw( bson_oid );
+my $mango = Mango-&gt;new;
+$mango-&gt;default_db( 'jade_kingdom' );
+
+get '/' =&gt; 'index';
+
+get '/api/user' =&gt; sub {
+    my ( $self ) = @_;
+    $self-&gt;render(
+        json =&gt; $mango-&gt;db-&gt;collection('user')-&gt;find-&gt;all,
+    );
+} =&gt; 'user_list';
+
+post '/api/user/:id' =&gt; sub {
+    my ( $self ) = @_;
+    my $id = $self-&gt;stash( 'id' );
+    my $update = $self-&gt;req-&gt;json;
+    $update-&gt;{_id} = bson_oid $update-&gt;{_id};
+    $mango-&gt;db-&gt;collection('user')-&gt;save( $update );
+    return $self-&gt;redirect_to( url_for('user', id =&gt; $id, method =&gt; 'GET' ) );
+} =&gt; 'user_save';
+
+get '/api/user/:id' =&gt; sub {
+    my ( $self ) = @_;
+    my $id = bson_oid $self-&gt;stash( 'id' );
+    $self-&gt;render(
+        json =&gt; $mango-&gt;db-&gt;collection('user')-&gt;find_one({ _id =&gt; $id }) || {},
+    );
+} =&gt; 'user';
+
+app-&gt;start;
+
+__DATA__
+@@ index.html.ep
+&lt;!DOCTYPE html&gt;
+&lt;html id="ng-app" ng-app="MyApp"&gt;
+    &lt;head&gt;
+        &lt;link rel="stylesheet" href="/css/bootstrap.min.css" /&gt;
+    &lt;/head&gt;
+    &lt;body ng-controller="UserCtrl" class="container"&gt;
+        &lt;table class="table table-striped"&gt;
+            &lt;tr&gt;
+                &lt;th&gt;E-mail&lt;/th&gt;
+                &lt;th&gt;Created&lt;/th&gt;
+                &lt;th&gt;Last Seen&lt;/th&gt;
+                &lt;th&gt;Can Play&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr ng-repeat="user in users"&gt;
+                &lt;td&gt;{{user.email}}&lt;/td&gt;
+                &lt;td&gt;{{format_date(user.date_created)}}&lt;/td&gt;
+                &lt;td&gt;{{format_date(user.date_last_seen)}}&lt;/td&gt;
+                &lt;td&gt;&lt;input type="checkbox" ng-model="user.can_play" ng-change="user.$save()" /&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+        &lt;script src="/js/jquery.min.js"&gt;&lt;/script&gt;
+        &lt;script src="/js/bootstrap.min.js"&gt;&lt;/script&gt;
+        &lt;script src="/js/angular.js"&gt;&lt;/script&gt;
+        &lt;script src="/js/angular-resource.js"&gt;&lt;/script&gt;
+        &lt;script src="/js/moment.js"&gt;&lt;/script&gt;
+        &lt;script&gt;
+            angular.module( 'MyApp', [ 'ngResource' ] )
+            .factory( 'User', [ '$resource',
+                    function ( $resource ) {
+                        return $resource( '/api/user/:id', { id: '@_id' } );
+                    }
+                ]
+            )
+            .controller( 'UserCtrl', [ '$scope', 'User',
+                    function ( $scope, User ) {
+                        $scope.users = User.query();
+                        $scope.format_date = function ( epoch ) {
+                            if ( !epoch ) return;
+                            return moment( epoch ).calendar();
+                        };
+                    }
+                ]
+            )
+            ;
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+        </pre>
+    </body>
+</html>
+

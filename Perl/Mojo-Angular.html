@@ -99,7 +99,9 @@ use Mojolicious::Lite;
 
 app-&gt;start;
 ```
-.footnote[app-01.pl]
+.footnote[
+[app-01.pl](Mojo-Angular/app-01.pl.html)
+]
 ---
 class: middle
 .center[
@@ -121,7 +123,9 @@ __DATA__
 @@ index.html.ep
 &lt;h1&gt;It works!&lt;/h1&gt;
 ```
-.footnote[app-02.pl]
+.footnote[
+[app-02.pl](Mojo-Angular/app-02.pl.html)
+]
 ---
 class: inverse center middle
 # Database APIs
@@ -143,7 +147,9 @@ get '/api/user' => sub {
     );
 };
 ```
-.footnote[app-03.pl]
+.footnote[
+[app-03.pl](Mojo-Angular/app-03.pl.html)
+]
 ---
 class: inverse center middle
 # Bring In Angular
@@ -175,7 +181,9 @@ class: middle
     &lt;/body&gt;
 &lt;/html&gt;
 ```
-.footnote[app-04.pl]
+.footnote[
+[app-04.pl](Mojo-Angular/app-04.pl.html)
+]
 ---
 class: middle
 .center[
@@ -201,7 +209,9 @@ class: middle
             ;
         &lt;/script&gt;
 ```
-.footnote[app-05.pl]
+.footnote[
+[app-05.pl](Mojo-Angular/app-05.pl.html)
+]
 ---
 class: middle
 .center[
@@ -226,7 +236,9 @@ class: middle
             &lt;/tr&gt;
         &lt;/table&gt;
 ```
-.footnote[app-06.pl]
+.footnote[
+[app-06.pl](Mojo-Angular/app-06.pl.html)
+]
 ---
 class: inverse center middle
 # Make It Pretty
@@ -243,7 +255,9 @@ class: middle
     &lt;body ng-controller="UserCtrl" class="container"&gt;
         &lt;table class="table table-striped"&gt;
 ```
-.footnote[app-07.pl]
+.footnote[
+[app-07.pl](Mojo-Angular/app-07.pl.html)
+]
 ---
 class: middle
 .center[
@@ -269,7 +283,9 @@ class: middle
                 ]
             )
 ```
-.footnote[app-08.pl]
+.footnote[
+[app-08.pl](Mojo-Angular/app-08.pl.html)
+]
 ---
 class: inverse center middle
 # Edit the users
@@ -300,7 +316,9 @@ get '/api/user/:id' =&gt; sub {
                 &lt;td&gt;&lt;input type="checkbox" ng-model="user.can_play" 
                     ng-change="user.$save()" /&gt;&lt;/td&gt;
 ```
-.footnote[app-09.pl]
+.footnote[
+[app-09.pl](Mojo-Angular/app-09.pl.html)
+]
 ---
 class: middle center inverse
 # Questions?

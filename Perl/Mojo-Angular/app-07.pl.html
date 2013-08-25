@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <pre>
+#!/usr/bin/env perl
+
+use Mojolicious::Lite;
+
+use Mango;
+my $mango = Mango-&gt;new;
+$mango-&gt;default_db( 'jade_kingdom' );
+
+get '/' =&gt; sub {
+    my ( $self ) = @_;
+    $self-&gt;render( 'index' );
+};
+
+get '/api/user' =&gt; sub {
+    my ( $self ) = @_;
+    $self-&gt;render(
+        json =&gt; $mango-&gt;db-&gt;collection('user')-&gt;find-&gt;all,
+    );
+};
+
+app-&gt;start;
+__DATA__
+@@ index.html.ep
+&lt;!DOCTYPE html&gt;
+&lt;html id="ng-app" ng-app="MyApp"&gt;
+    &lt;head&gt;
+        &lt;link rel="stylesheet" href="/css/bootstrap.min.css" /&gt;
+    &lt;/head&gt;
+    &lt;body ng-controller="UserCtrl" class="container"&gt;
+        &lt;table class="table table-striped table-hover"&gt;
+            &lt;tr&gt;
+                &lt;th&gt;E-mail&lt;/th&gt;
+                &lt;th&gt;Created&lt;/th&gt;
+                &lt;th&gt;Last Seen&lt;/th&gt;
+                &lt;th&gt;Can Play&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr ng-repeat="user in users"&gt;
+                &lt;td&gt;{{user.email}}&lt;/td&gt;
+                &lt;td&gt;{{user.date_created}}&lt;/td&gt;
+                &lt;td&gt;{{user.date_last_seen}}&lt;/td&gt;
+                &lt;td&gt;{{user.can_play}}&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+        &lt;script src="/js/jquery.min.js"&gt;&lt;/script&gt;
+        &lt;script src="/js/bootstrap.min.js"&gt;&lt;/script&gt;
+        &lt;script src="/js/angular.min.js"&gt;&lt;/script&gt;
+        &lt;script src="/js/angular-resource.min.js"&gt;&lt;/script&gt;
+        &lt;script&gt;
+            angular.module( 'MyApp', [ 'ngResource' ] )
+            .factory( 'User', [ '$resource',
+                    function ( $resource ) {
+                        return $resource( '/api/user/:id', { id: '@_id' } );
+                    }
+                ]
+            )
+            .controller( 'UserCtrl', [ '$scope', 'User',
+                    function ( $scope, User ) {
+                        $scope.users = User.query();
+                    }
+                ]
+            )
+            ;
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+        </pre>
+    </body>
+</html>
+

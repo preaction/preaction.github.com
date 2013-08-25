@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <pre>
+#!/usr/bin/env perl
+
+use Mojolicious::Lite;
+
+use Mango;
+my $mango = Mango-&gt;new;
+$mango-&gt;default_db( 'jade_kingdom' );
+
+get '/' =&gt; sub {
+    my ( $self ) = @_;
+    $self-&gt;render( 'index' );
+};
+
+get '/api/user' =&gt; sub {
+    my ( $self ) = @_;
+    $self-&gt;render(
+        json =&gt; $mango-&gt;db-&gt;collection('user')-&gt;find-&gt;all,
+    );
+};
+
+app-&gt;start;
+__DATA__
+@@ index.html.ep
+&lt;h1&gt;It works!&lt;/h1&gt;
+        </pre>
+    </body>
+</html>
+

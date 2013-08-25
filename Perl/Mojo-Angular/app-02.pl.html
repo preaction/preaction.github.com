@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <pre>
+#!/usr/bin/env perl
+
+use Mojolicious::Lite;
+
+get '/' =&gt; sub {
+    my ( $self ) = @_;
+    $self-&gt;render( 'index' );
+};
+
+app-&gt;start;
+__DATA__
+@@ index.html.ep
+&lt;h1&gt;It works!&lt;/h1&gt;
+        </pre>
+    </body>
+</html>
+
