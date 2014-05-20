@@ -1,20 +1,19 @@
 #!/usr/bin/env perl
 
 use Mojolicious::Lite;
+use Mojo::JSON;
 
 use Mango;
 use Mango::BSON qw( bson_oid );
-helper mongo => sub {
-    state $mango = Mango->new( 'mongodb://localhost/jade_kingdom' );
-    return $mango->db;
-};
+my $mango = Mango->new;
+$mango->default_db( 'jade_kingdom' );
 
 get '/' => 'index';
 
 get '/api/user' => sub {
     my ( $self ) = @_;
     $self->render(
-        json => $self->mongo->collection('user')->find->all,
+        json => $mango->db->collection('user')->find->all,
     );
 } => 'user_list';
 
@@ -23,15 +22,15 @@ post '/api/user/:id' => sub {
     my $id = $self->stash( 'id' );
     my $update = $self->req->json;
     $update->{_id} = bson_oid $update->{_id};
-    $self->mongo->collection('user')->save( $update );
-    return $self->redirect_to( 'user', id => $id, method => 'GET' );
+    $mango->db->collection('user')->save( $update );
+    return $self->redirect_to( url_for('user', id => $id, method => 'GET' ) );
 } => 'user_save';
 
 get '/api/user/:id' => sub {
     my ( $self ) = @_;
     my $id = bson_oid $self->stash( 'id' );
     $self->render(
-        json => $self->mongo->collection('user')->find_one($id) || {},
+        json => $mango->db->collection('user')->find_one({ _id => $id }) || {},
     );
 } => 'user';
 
