@@ -1,0 +1,40 @@
+theme:
+    class: Statocles::Theme
+    args:
+        source_dir: share/theme/default
+
+build:
+    class: Statocles::Store
+    args:
+        path: build
+
+deploy:
+    class: Statocles::Store
+    args:
+        path: .
+
+site:
+    class: Statocles::Site::Git
+    args:
+        title: Statocles
+        nav:
+            - title: Blog
+              href: /index.html
+            - title: Presentations
+              href: /presentations.html
+        build_store:
+            $ref: build
+        deploy_store:
+            $ref: deploy
+        index: blog
+        apps:
+            blog:
+                $class: Statocles::App::Blog
+                $args:
+                    source:
+                        $class: Statocles::Store
+                        $args:
+                            path: blog
+                    url_root: /blog
+                    theme:
+                        $ref: theme
