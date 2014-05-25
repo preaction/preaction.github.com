@@ -16,7 +16,7 @@ deploy:
 site:
     class: Statocles::Site::Git
     args:
-        title: Statocles
+        title: Doug Bell
         nav:
             - title: Blog
               href: /index.html
