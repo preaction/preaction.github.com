@@ -6,11 +6,17 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <title>Doug Bell</title>
         <style type="text/css">
-            section > hgroup > h1 {
+            article > hgroup > h1,
+            main > hgroup > h1
+            {
                 border-bottom: 4px solid #045578;
             }
-            section > hgroup > h2 {
+            article > hgroup > h2,
+            main > hgroup > h2 
+            {
                 float: right;
+                clear: right;
+                margin-top: 0;
                 font-size: 12pt;
             }
             nav#tags h1 {
@@ -46,18 +52,19 @@
             <div class="row">
 
     <div class="col-md-9">
-        <section>
+        <main>
             <hgroup>
                 <h1>Test Post</h1>
+                <h2><time datetime="2014-05-19">
+                    2014-05-19
+                </time></h2>
                 <h2>preaction</h2>
             </hgroup>
-            <article>
             <h1>First Post</h1>
 
 <p>This is the first post using the Statocles blog system.</p>
 
-            </article>
-        </section>
+        </main>
     </div>
 
     <div class="col-md-3">
