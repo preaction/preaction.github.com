@@ -3,6 +3,17 @@ theme:
     args:
         source_dir: '::default'
 
+blog:
+    class: Statocles::App::Blog
+    args:
+        source:
+            $class: Statocles::Store
+            $args:
+                path: blog
+        url_root: /blog
+        theme:
+            $ref: theme
+
 build:
     class: Statocles::Store
     args:
@@ -18,10 +29,11 @@ site:
     args:
         title: Doug Bell
         nav:
-            - title: Blog
-              href: /index.html
-            - title: Presentations
-              href: /presentations.html
+            main:
+                - title: Blog
+                  href: /index.html
+                - title: Presentations
+                  href: /presentations.html
         build_store:
             $ref: build
         deploy_store:
@@ -29,12 +41,4 @@ site:
         index: blog
         apps:
             blog:
-                $class: Statocles::App::Blog
-                $args:
-                    source:
-                        $class: Statocles::Store
-                        $args:
-                            path: blog
-                    url_root: /blog
-                    theme:
-                        $ref: theme
+                $ref: blog
