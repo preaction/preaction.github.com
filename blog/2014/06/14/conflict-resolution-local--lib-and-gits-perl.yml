@@ -19,12 +19,14 @@ I ran into a frustrating problem the other day:
 I've seen this error message from Perl a lot. It basically means that I'm
 trying to load an XS module compiled for a different version of Perl. Since
 `git` is directly trying to run `/usr/bin/perl` (5.10.1) as opposed to the
-`perlbrew` Perl I have installed (5.16.3), the error comes as no surprise. What
-is more surprising is that Git explicitly uses `/usr/bin/perl` in the first
-place.
+`perlbrew` Perl I have installed (5.16.3), the error comes as no surprise:
+`PERL5LIB` is checked before Perl's built-in libraries. So if you have a
+`local::lib` (which adds its directories to `PERL5LIB` and try to use those
+modules in a different Perl, things may not work as you expected.
 
-Some Google-fu brought up a [thread on the Git mailing list about changing to
-`#!/usr/bin/env
+What is more surprising is that Git explicitly uses `/usr/bin/perl` in the
+first place. Some Google-fu brought up a [thread on the Git mailing list about
+changing to `#!/usr/bin/env
 perl`](http://article.gmane.org/gmane.comp.version-control.git/147462), but it
 appears this was rejected. According to another post in that thread, [it is
 possible to set PERL_PATH when running `make` on
