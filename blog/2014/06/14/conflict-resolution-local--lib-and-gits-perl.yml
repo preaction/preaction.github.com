@@ -21,7 +21,7 @@ trying to load an XS module compiled for a different version of Perl. Since
 `git` is directly trying to run `/usr/bin/perl` (5.10.1) as opposed to the
 `perlbrew` Perl I have installed (5.16.3), the error comes as no surprise:
 `PERL5LIB` is checked before Perl's built-in libraries. So if you have a
-`local::lib` (which adds its directories to `PERL5LIB` and try to use those
+`local::lib` (which adds its directories to `PERL5LIB`) and try to use those
 modules in a different Perl, things may not work as you expected.
 
 What is more surprising is that Git explicitly uses `/usr/bin/perl` in the
