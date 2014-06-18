@@ -11,20 +11,12 @@
             {
                 border-bottom: 4px solid #045578;
             }
-            article > hgroup > h2,
-            main > hgroup > h2 
-            {
-                float: right;
-                clear: right;
+            header aside {
                 margin-top: 0;
                 font-size: 12pt;
             }
             nav#tags h1 {
                 font-size: 14pt;
-            }
-            .crosspost {
-                margin: 0 2em;
-                font-style: italic;
             }
         </style>
     </head>
@@ -59,16 +51,23 @@
     <div class="col-md-9">
         <main>
             <article>
-                <hgroup>
+                <header>
                     <h1><a href="/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html">Conflict Resolution: local::lib and git's Perl</a></h1>
-                    <h2><time datetime="2014-06-14">
-                        2014-06-14
-                    </time></h2>
-                    <h2>preaction</h2>
-                </hgroup>
-                        <p><a class="crosspost" href="http://blogs.perl.org/users/preaction/2014/06/conflict-resolution-locallib-and-gits-perl.html">
-                            Read Conflict Resolution: local::lib and git's Perl on blogs.perl.org.
-                        </a></p>
+                    <aside>
+                        <p><time datetime="2014-06-14">
+                            Posted on 2014-06-14
+                        </time>
+                        by preaction</p>
+                    </aside>
+                    <div class="alert alert-info">
+                        <p>Originally posted as:</p>
+                        <ul>
+                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2014/06/conflict-resolution-locallib-and-gits-perl.html">
+                                <em>Conflict Resolution: local::lib and git's Perl</em> on blogs.perl.org.
+                            </a></li>
+                        </ul>
+                    </div>
+                </header>
                 <p>I ran into a frustrating problem the other day:</p>
 
 <pre><code>$ git add -i
