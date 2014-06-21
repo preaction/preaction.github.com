@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <title>Doug Bell</title>
+        <style type="text/css">
+            article > hgroup > h1,
+            main > hgroup > h1
+            {
+                border-bottom: 4px solid #045578;
+            }
+            header aside {
+                margin-top: 0;
+                font-size: 12pt;
+            }
+            nav#tags h1 {
+                font-size: 14pt;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">Doug Bell</a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="top-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/index.html">Blog</a></li>
+                            <li><a href="/presentations.html">Presentations</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="main container">
+            <div class="row">
+
+    <div class="col-md-9">
+        <main>
+            <header>
+                <h1>What's New in WebGUI 8.0 #4 -- CHI Cache</h1>
+                <aside>
+                    <p><time datetime="2011-02-18">
+                        Posted on 2011-02-18
+                    </time>
+                    by preaction</p>
+                </aside>
+                <div class="alert alert-info">
+                    <p>Originally posted as:</p>
+                    <ul>
+                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2011/02/whats-new-in-webgui-80-4----chi-cache.html">
+                            <em>What's New in WebGUI 8.0 #4 -- CHI Cache</em> on blogs.perl.org.
+                        </a></li>
+                    </ul>
+                </div>
+            </header>
+            <p>Caching is a tricky business. Having just one kind of cache won't work, because
+the production environment will greatly determine the most efficient caching
+system. A distributed production environment would be best-served with a
+distributed cache. A smaller, single-server environment could use a simple
+shared memory cache.</p>
+
+<p>Enter Jonathan Swartz's <a href="https://metacpan.org/pod/CHI">CHI</a> module, the greatest Perl module to provide a
+unified caching interface. CHI is the DBI of caching: It presents an API, and
+delegates to CHI::Driver modules to perform the heavy lifting. It
+provides a layered caching system, allowing you to have a faster, more
+volatile cache in front of a slower, more persistent cache. It also provides a
+variable expiration time, preventing a "miss stampede" where all processes try
+to recompute an expired cache item at the same time.</p>
+
+<p>By integrating CHI cache into WebGUI, we have the ability to provide any
+caching strategy that CHI can provide. We get Memcached, FastMmap, and DBI
+drivers (and more drivers can be written).</p>
+
+<p>I wrote a CHI cache driver for WebGUI 7.9 that we've been using on many of our
+shared hosting servers. The performance increase using FastMmap through CHI 
+over the old Storable+DBI cache module is dramatic: 2-5 times faster with
+CHI and FastMmap.</p>
+
+<h2>Using CHI in WebGUI</h2>
+
+<p>The fewer wrappers that WebGUI has around CPAN modules we use, the less code I
+have to write, and the more features will be available to our users without
+having to change WebGUI to use them.</p>
+
+<p>To that end, you can write a section of the configuration file that gets
+passed directly to CHI->new. Some massaging occurs to make sure a DBI cache
+driver gets the right $dbh, but otherwise you can fully configure CHI directly
+from the WebGUI config file:</p>
+
+<pre><code># The new default cache for WebGUI, FastMmap
+{
+     cache : {
+         driver : 'FastMmap',
+         root_dir : '/tmp/WebGUICache',
+         expires_variance : 0.5
+     }
+ }
+
+ # Set up a memcached cache with local memory in front
+ {
+     cache : {
+         driver : 'Memcached::libmemcached',
+         servers : [ '10.0.0.100:11211', '10.0.0.110:11211' ],
+         l1_cache : {
+            driver : 'Memory'
+         }
+     }
+ }
+</code></pre>
+
+<p>When you want to use the cache in your code, you can get a CHI object with
+$session->cache. CHI's interface is sufficiently simple, with some fun tricks:</p>
+
+<pre><code>my $cache = $session-&gt;cache; # as read
+my $value = $cache-&gt;get('cache_key');
+if ( !$value ) {
+    $value = compute_value();
+    $cache-&gt;set( 'cache_key', $value );
+}
+
+# Combine get and set with intelligence
+my $value = $cache-&gt;compute( 'cache_key', \&amp;compute_value );
+</code></pre>
+
+<h2>Future Plans</h2>
+
+<p>With a single unified cache that performs well and layers like CHI, we can
+take our current stow and scratch APIs and move them to the cache. In the case
+of stow, we remove a redundant API. In the case of scratch, we remove database
+hits.</p>
+
+<p>We've also been exploring cache-only sessions, instead of updating the session
+every time a page is requested, updating the cache only, flushing to the
+database (or not). The fewer DB calls we make per page, the better performance
+will be.</p>
+
+<p>Special thanks go out to Jonathan Swartz for such a wonderful solution.</p>
+
+<p>Stay tuned for next time when I explore our new Admin Interface. Lots of
+pretty and screenshots!</p>
+
+        </main>
+    </div>
+
+    <div class="col-md-3">
+        <nav id="tags">
+            <h1>Tags</h1>
+            <ul class="list-inline">
+                <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/index.html">error</a></li>
+                <li><a href="/blog/tag/git/index.html">git</a></li>
+                <li><a href="/blog/tag/moose/index.html">moose</a></li>
+                <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
+                <li><a href="/blog/tag/perl/index.html">perl</a></li>
+                <li><a href="/blog/tag/rants/index.html">rants</a></li>
+                <li><a href="/blog/tag/software/index.html">software</a></li>
+                <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
+                <li><a href="/blog/tag/xs/index.html">xs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+
+        </div>
+    </body>
+</html>

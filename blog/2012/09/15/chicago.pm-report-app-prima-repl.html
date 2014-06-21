@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <title>Doug Bell</title>
+        <style type="text/css">
+            article > hgroup > h1,
+            main > hgroup > h1
+            {
+                border-bottom: 4px solid #045578;
+            }
+            header aside {
+                margin-top: 0;
+                font-size: 12pt;
+            }
+            nav#tags h1 {
+                font-size: 14pt;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">Doug Bell</a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="top-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/index.html">Blog</a></li>
+                            <li><a href="/presentations.html">Presentations</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="main container">
+            <div class="row">
+
+    <div class="col-md-9">
+        <main>
+            <header>
+                <h1>Chicago.PM Report - App-Prima-REPL</h1>
+                <aside>
+                    <p><time datetime="2012-09-15">
+                        Posted on 2012-09-15
+                    </time>
+                    by preaction</p>
+                </aside>
+                <div class="alert alert-info">
+                    <p>Originally posted as:</p>
+                    <ul>
+                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/09/chicagopm-report---app-prima-repl.html">
+                            <em>Chicago.PM Report - App-Prima-REPL</em> on blogs.perl.org.
+                        </a></li>
+                    </ul>
+                </div>
+            </header>
+            <p>We had our first project night at <a href="http://chicago.pm.org">Chicago.PM</a> this
+week, where we discussed ideas and wrote code for a Perl REPL GUI program
+(<a href="http://github.com/run4flat/App-Prima-REPL">App-Prima-REPL on Github</a>) by
+David Mertens built on <a href="http://www.prima.eu.org/">Prima</a>.</p>
+
+<hr />
+
+<p>There were some small ideas to make the program more user-friendly, and some
+larger ideas like an IRC client and guided tutorials based on the same format
+that <a href="http://perltuts.com">http://perltuts.com</a> uses.</p>
+
+<p>I'm hoping that if I keep saying this, I'll be embarrassed into doing it: I
+would really love to see the <a href="http://rubykoans.com">Ruby Koans</a> translated into
+Perl (in spirit, if not in actual content). I've started writing down ideas for
+chapters, but there is a lot of content to cover.</p>
+
+<p>I added a <code>-I</code> flag and a <code>-M</code> flag to the <code>prima-repl</code> command-line launcher
+that work as close to perl's flags as I could get. This is one of the things I
+love about <code>prove</code> and <code>plackup:</code> Where it makes sense, they work like perl
+does. So now the <code>prima-repl</code> can have subs and modules imported on the
+command-line.</p>
+
+<p>Altogether it was a wonderfully productive evening and I'm looking forward to
+the next one. </p>
+
+        </main>
+    </div>
+
+    <div class="col-md-3">
+        <nav id="tags">
+            <h1>Tags</h1>
+            <ul class="list-inline">
+                <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/index.html">error</a></li>
+                <li><a href="/blog/tag/git/index.html">git</a></li>
+                <li><a href="/blog/tag/moose/index.html">moose</a></li>
+                <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
+                <li><a href="/blog/tag/perl/index.html">perl</a></li>
+                <li><a href="/blog/tag/rants/index.html">rants</a></li>
+                <li><a href="/blog/tag/software/index.html">software</a></li>
+                <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
+                <li><a href="/blog/tag/xs/index.html">xs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+
+        </div>
+    </body>
+</html>

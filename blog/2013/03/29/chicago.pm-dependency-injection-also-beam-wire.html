@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <title>Doug Bell</title>
+        <style type="text/css">
+            article > hgroup > h1,
+            main > hgroup > h1
+            {
+                border-bottom: 4px solid #045578;
+            }
+            header aside {
+                margin-top: 0;
+                font-size: 12pt;
+            }
+            nav#tags h1 {
+                font-size: 14pt;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">Doug Bell</a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="top-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/index.html">Blog</a></li>
+                            <li><a href="/presentations.html">Presentations</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="main container">
+            <div class="row">
+
+    <div class="col-md-9">
+        <main>
+            <header>
+                <h1>Chicago.PM - Dependency Injection (also: Beam::Wire)</h1>
+                <aside>
+                    <p><time datetime="2013-03-29">
+                        Posted on 2013-03-29
+                    </time>
+                    by preaction</p>
+                </aside>
+                <div class="alert alert-info">
+                    <p>Originally posted as:</p>
+                    <ul>
+                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2013/03/chicagopm---dependency-injection-also-beamwire.html">
+                            <em>Chicago.PM - Dependency Injection (also: Beam::Wire)</em> on blogs.perl.org.
+                        </a></li>
+                    </ul>
+                </div>
+            </header>
+            <p>At <a href="http://www.meetup.com/Windy-City-Perl-mongers-Meetup/events/104681992/">this month's Chicago.PM
+meeting</a>,
+I gave <a href="http://preaction.github.com/Perl/Dependency-Injection.html">a presentation on Dependency Injection and my new module,
+Beam::Wire</a>.</p>
+
+<p>[EDIT: The presentation doesn't appear to work on mobile devices. I'm trying
+deck.js, and I'm not sure I like it.]</p>
+
+<hr />
+
+<p>When I started my current job, I was introduced to the custom Dependency
+Injection framework they built. At the time, I was dismissive: "It's
+programming via config file, which is always limiting (and so, a Bad
+Idea)." "It's something that Java needs, but not Perl."</p>
+
+<p>Slowly, and with great reluctance, I learned where dependency injection fits
+into a large framework: It removes the work of creating objects. Any object.
+Anywhere.</p>
+
+<p>For an idea of how powerful this is, do a quick search through your libraries
+and scripts (except for tests) for /->new/. Hopefully, the results will only be
+defaults (otherwise you've got tight coupling, another problem DI can fix). But
+every time you call an object constructor is another place where dependency
+injection can reduce the amount of code you write and maintain.</p>
+
+<p>So, since the bureaucracy means I can't simply open-source the DI framework we
+have at $dayjob, I decided to make my own.</p>
+
+<p><a href="http://metacpan.org/modules/Beam::Wire">Beam::Wire</a> is <a href="http://search.cpan.org/~preaction/Beam-Wire/">available on
+CPAN</a>. There are a lot of
+features planned for it, so stay tuned! If you're interested, <a href="http://play-perl.org/quest/5130110d20d03f841200005b">up-vote
+Beam::Wire on play-perl</a>.</p>
+
+        </main>
+    </div>
+
+    <div class="col-md-3">
+        <nav id="tags">
+            <h1>Tags</h1>
+            <ul class="list-inline">
+                <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/index.html">error</a></li>
+                <li><a href="/blog/tag/git/index.html">git</a></li>
+                <li><a href="/blog/tag/moose/index.html">moose</a></li>
+                <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
+                <li><a href="/blog/tag/perl/index.html">perl</a></li>
+                <li><a href="/blog/tag/rants/index.html">rants</a></li>
+                <li><a href="/blog/tag/software/index.html">software</a></li>
+                <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
+                <li><a href="/blog/tag/xs/index.html">xs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+
+        </div>
+    </body>
+</html>

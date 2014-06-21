@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <title>Doug Bell</title>
+        <style type="text/css">
+            article > hgroup > h1,
+            main > hgroup > h1
+            {
+                border-bottom: 4px solid #045578;
+            }
+            header aside {
+                margin-top: 0;
+                font-size: 12pt;
+            }
+            nav#tags h1 {
+                font-size: 14pt;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">Doug Bell</a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="top-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/index.html">Blog</a></li>
+                            <li><a href="/presentations.html">Presentations</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="main container">
+            <div class="row">
+
+    <div class="col-md-9">
+        <main>
+            <header>
+                <h1>Chicago.PM - Beyond grep - Expanding the Programmer Toolset</h1>
+                <aside>
+                    <p><time datetime="2013-05-01">
+                        Posted on 2013-05-01
+                    </time>
+                    by preaction</p>
+                </aside>
+                <div class="alert alert-info">
+                    <p>Originally posted as:</p>
+                    <ul>
+                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2013/05/chicagopm---beyond-grep---expanding-the-programmer-toolset.html">
+                            <em>Chicago.PM - Beyond grep - Expanding the Programmer Toolset</em> on blogs.perl.org.
+                        </a></li>
+                    </ul>
+                </div>
+            </header>
+            <p>Last week, <a href="http://petdance.com">Andy Lester</a> (author of <a href="http://petdance.com/book/">Land the Tech Job You
+Love</a>) came to talk about tools to help programmers
+work more efficiently and the 2.0 release of his <a href="http://beyondgrep.com">Ack search
+tool</a>.</p>
+
+<hr />
+
+<p>If you haven't tried Ack, but you use long, complicated Grep lines every day,
+you're missing out on a great, time-saving tool. <a href="http://beyondgrep.com/install">Installing
+ack</a> is easy on many platforms (including
+Windows!).</p>
+
+<p>For those who have added Ack to their regular arsenal, the 2.0 release brings
+some minor breaking changes (removing the -a option for "search all files" and
+changing the default file type filter to "all text files") designed to make Ack
+more Do-What-I-Mean and more compatible with Grep (when it makes sense, ack is
+made for humans). The result being that using Ack should not take you out of
+The Zone by requiring you to check the manual every time (something I must
+confess to doing often with Grep and Find).</p>
+
+<p>I must also confess to using only the most basic Ack command-line options, but
+Andy explored a lot of functionality I was not aware of, both in Ack and Grep:</p>
+
+<pre><code># Search for full words
+ack -w
+grep -w
+
+# List the files that matched instead of the matching line
+ack -l
+grep -l
+
+# Invert the match ("does not match X")
+ack -v
+grep -v
+
+# Override the default output with capture groups
+ack 'use (\S+);' --output='$1' -h | sort -u
+
+# Search the file path for matches (Beyond Find)
+ack -f
+ack -g
+
+# Accept a list of files to search on STDIN (Built-in Xargs)
+ack -x
+</code></pre>
+
+<p>The last two features are great for chaining together Ack commands:</p>
+
+<pre><code># Find all perl files not in the 'release' repository
+ack -g -v 'release' --perl |
+
+# ... search them for the word '2.46.3207.2'
+ack -x '2.46.3207.2' -w -l | 
+
+# ... and if they match, edit them with sed
+xargs sed -i 's/2.46.3207.2/2.49.3333.12/'
+
+# This little snippet saved me some hours of manual work upgrading version numbers
+</code></pre>
+
+<p>There was also a lot of discussion on other tools to help programmers be more
+efficient. The ones I was most interested in were ctags, which I don't use
+nearly enough (I use ack instead), and cscope, which I had never heard about. </p>
+
+<p>The problem with adding new things to your toolkit is integrating them into
+your flow (the flow that can be consciously experienced is not the true flow).
+Whenever you add a new thing, especially if it replaces an existing thing,
+you're losing efficiency in the short-term in order to add potential efficiency
+in the long-term. Despite this, a lot of things are worth it, Ack more-so than
+most. </p>
+
+<p>Sometimes you don't know you're doing something inefficiently until someone
+comes along and tells you so, or shows you a solution to a problem you never
+knew you were having. Ack is a solution to a grep problem: Grep is harder to
+use in the most-common cases. That said, Grep still has its uses, just uncommon
+ones.</p>
+
+<p>A big thanks to Andy for giving a presentation on such short notice! Our next
+meeting is on May 23, so check out <a href="http://chicago.pm.org">the Chicago.pm
+website</a> and join us!</p>
+
+        </main>
+    </div>
+
+    <div class="col-md-3">
+        <nav id="tags">
+            <h1>Tags</h1>
+            <ul class="list-inline">
+                <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/index.html">error</a></li>
+                <li><a href="/blog/tag/git/index.html">git</a></li>
+                <li><a href="/blog/tag/moose/index.html">moose</a></li>
+                <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
+                <li><a href="/blog/tag/perl/index.html">perl</a></li>
+                <li><a href="/blog/tag/rants/index.html">rants</a></li>
+                <li><a href="/blog/tag/software/index.html">software</a></li>
+                <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
+                <li><a href="/blog/tag/xs/index.html">xs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+
+        </div>
+    </body>
+</html>

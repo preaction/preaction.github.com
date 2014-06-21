@@ -52,87 +52,6 @@
         <main>
             <article>
                 <header>
-                    <h1><a href="/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html">Conflict Resolution: local::lib and git's Perl</a></h1>
-                    <aside>
-                        <p><time datetime="2014-06-14">
-                            Posted on 2014-06-14
-                        </time>
-                        by preaction</p>
-                    </aside>
-                    <div class="alert alert-info">
-                        <p>Originally posted as:</p>
-                        <ul>
-                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2014/06/conflict-resolution-locallib-and-gits-perl.html">
-                                <em>Conflict Resolution: local::lib and git's Perl</em> on blogs.perl.org.
-                            </a></li>
-                        </ul>
-                    </div>
-                </header>
-                <p>I ran into a frustrating problem the other day:</p>
-
-<pre><code>$ git add -i
-/usr/bin/perl: symbol lookup error: ~/perl5/lib/perl5/x86_64-linux-thread-multi/auto/List/Util/Util.so:
-undefined symbol: Perl_xs_apiversion_bootcheck
-fatal: 'add--interactive' appears to be a git command, but we were not
-able to execute it. Maybe git-add--interactive is broken?
-</code></pre>
-
-<p>I've seen this error message from Perl a lot. It basically means that I'm
-trying to load an XS module compiled for a different version of Perl. Since
-<code>git</code> is directly trying to run <code>/usr/bin/perl</code> (5.10.1) as opposed to the
-<code>perlbrew</code> Perl I have installed (5.16.3), the error comes as no surprise:
-<code>PERL5LIB</code> is checked before Perl's built-in libraries. So if you have a
-<code>local::lib</code> (which adds its directories to <code>PERL5LIB</code>) and try to use those
-modules in a different Perl, things may not work as you expected.</p>
-
-<p>What is more surprising is that Git explicitly uses <code>/usr/bin/perl</code> in the
-first place. Some Google-fu brought up a <a href="http://article.gmane.org/gmane.comp.version-control.git/147462">thread on the Git mailing list about
-changing to <code>#!/usr/bin/env
-perl</code></a>, but it
-appears this was rejected. According to another post in that thread, <a href="http://article.gmane.org/gmane.comp.version-control.git/147475">it is
-possible to set PERL_PATH when running <code>make</code> on
-Git</a>, but that
-did not seem to work for me.</p>
-
-<p>But the Git Perl scripts all seem to have one thing in common: They all add the
-paths in the <code>GITPERLLIB</code> environment variable to the front of <code>@INC</code> as
-the first thing they do. <code>GITPERLLIB</code> is treated as a <code>:</code>-delimited list of
-directories, like <code>PERL5LIB</code>. So if we fill in <code>GITPERLLIB</code> with the right
-directories, we can ensure that the right <code>List::Util</code> version is found
-first.</p>
-
-<p>The right directories are part of Perl's <code>Config</code>. This configuration is
-available to us in Perl scripts through the <code>Config</code> module which provides a
-<code>%Config</code> hash.  There are three "layers" of Perl library paths, "core",
-"vendor", and "site", configured in the following Config keys:</p>
-
-<ul>
-<li>core    => 'archlib', 'privlib'</li>
-<li>vendor  => 'vendorarch', 'vendorlib'</li>
-<li>site    => 'sitearch', 'sitelib'</li>
-</ul>
-
-<p>The "core" libraries are just that, the core Perl 5 libraries. The "vendor"
-libraries are additional libraries that your vendor may have provided in their
-Perl distribution. The "site" libraries are the CPAN libraries you've
-downloaded and installed via the <code>cpan</code> client (unless you're using local::lib,
-which overrides the install directories).</p>
-
-<p>Armed with these Config keys, we can make a <code>GITPERLLIB</code> that overrides our local::lib
-directories. So now, in my <code>.zshrc</code>, I have:</p>
-
-<pre><code># Fix git perl scripts in case of local::lib
-# If we install modules for a different arch in local::lib, we'll get some problems
-if [[ -x /usr/bin/perl ]]; then
-    export GITPERLLIB=`/usr/bin/perl -MConfig -e'print join ":", grep { $_ } map { $Config{$_} } qw( sitearch sitelib vendorarch vendorlib archlib privlib )'`
-fi
-</code></pre>
-
-<p>Now I can do my proper <code>git add --interactive</code> again!</p>
-
-            </article>
-            <article>
-                <header>
                     <h1><a href="/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html">Chicago.PM New Website! New Meetup URL! New Presentations Project!</a></h1>
                     <aside>
                         <p><time datetime="2013-06-13">
@@ -286,173 +205,152 @@ website</a> and join us!</p>
             </article>
             <article>
                 <header>
-                    <h1><a href="/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html">I Bless You in the Name of the Stringified Object</a></h1>
+                    <h1><a href="/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html">Chicago.PM - Dependency Injection (also: Beam::Wire)</a></h1>
                     <aside>
-                        <p><time datetime="2013-04-15">
-                            Posted on 2013-04-15
+                        <p><time datetime="2013-03-29">
+                            Posted on 2013-03-29
                         </time>
                         by preaction</p>
                     </aside>
                     <div class="alert alert-info">
                         <p>Originally posted as:</p>
                         <ul>
-                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2013/04/i-bless-you-in-the-name-of-the-stringified-object.html">
-                                <em>I Bless You in the Name of the Stringified Object</em> on blogs.perl.org.
+                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2013/03/chicagopm---dependency-injection-also-beamwire.html">
+                                <em>Chicago.PM - Dependency Injection (also: Beam::Wire)</em> on blogs.perl.org.
                             </a></li>
                         </ul>
                     </div>
                 </header>
-                <p>A co-worker came to me today with a curious error message:</p>
+                <p>At <a href="http://www.meetup.com/Windy-City-Perl-mongers-Meetup/events/104681992/">this month's Chicago.PM
+meeting</a>,
+I gave <a href="http://preaction.github.com/Perl/Dependency-Injection.html">a presentation on Dependency Injection and my new module,
+Beam::Wire</a>.</p>
 
-<pre><code>use DateTime;
-my $date = DateTime-&gt;new( year =&gt; 2013, month =&gt; 4, day =&gt; 15 );
-$date-&gt;set_time_zone("Australia/Sydney");
-print $date-&gt;today;'
-</code></pre>
-
-<p>This code gives the error <code>Can't locate object method "_normalize_nanoseconds"
-via package "2013-04-15T00:00:00" at
-/usr2/local/perlbrew/perls/perl-5.16.3/lib/site_perl/5.16.3/x86_64-linux-thread-multi/DateTime.pm
-line 252.</code></p>
-
-<p>The package "2013-04-15T00:00:00" is the curious part: It looks like a
-stringified DateTime, but who could possibly be stringifying a DateTime object
-and then using that as a package name?</p>
+<p>[EDIT: The presentation doesn't appear to work on mobile devices. I'm trying
+deck.js, and I'm not sure I like it.]</p>
 
 <hr />
 
-<p>It turns out the problem is at <code>$date-&gt;today</code>. <code>today()</code> is a constructor,
-constructors are class methods, constructors inevitably call <code>bless</code> on the
-class they are invoked with. But, we called this constructor with an object
-instance (a blessed reference), not a class.</p>
+<p>When I started my current job, I was introduced to the custom Dependency
+Injection framework they built. At the time, I was dismissive: "It's
+programming via config file, which is always limiting (and so, a Bad
+Idea)." "It's something that Java needs, but not Perl."</p>
 
-<p>In an object without overloads, this fails (as expected) with an error message:
-<code>Attempt to bless into a reference</code>. But DateTime overloads stringification. So
-instead of trying to use an object as a package name, the object gets
-stringified and that string gets used as a package name.</p>
+<p>Slowly, and with great reluctance, I learned where dependency injection fits
+into a large framework: It removes the work of creating objects. Any object.
+Anywhere.</p>
 
-<p>This problem could be mitigated by checking for refs in the constructor, dying
-as a result. I'm not sure if it would be a good idea to disallow
-stringification during a call to <code>bless</code>, for historical reasons (it's not a
-bug if it's working as expected, it is a bug if a change breaks code).</p>
+<p>For an idea of how powerful this is, do a quick search through your libraries
+and scripts (except for tests) for /->new/. Hopefully, the results will only be
+defaults (otherwise you've got tight coupling, another problem DI can fix). But
+every time you call an object constructor is another place where dependency
+injection can reduce the amount of code you write and maintain.</p>
 
-<p>Here's some sample code to play around with the problem. Enable/disable the
-overload (comment out the <code>use overload (...)</code>) and see what changes:</p>
+<p>So, since the bureaucracy means I can't simply open-source the DI framework we
+have at $dayjob, I decided to make my own.</p>
 
-<pre><code>use strict;
-use warnings;
-
-package Foo;
-
-use overload (
-    q{""} =&gt; sub { return "Bar" },
-);
-
-sub new {
-    my ( $class ) = @_;
-    return bless {}, $class;
-}
-
-sub greet {
-    print "Hello, World!\n";
-}
-
-package main;
-
-my $obj = Foo-&gt;new;
-$obj-&gt;greet;
-
-my $clone = $obj-&gt;new;
-$clone-&gt;greet;
-</code></pre>
+<p><a href="http://metacpan.org/modules/Beam::Wire">Beam::Wire</a> is <a href="http://search.cpan.org/~preaction/Beam-Wire/">available on
+CPAN</a>. There are a lot of
+features planned for it, so stay tuned! If you're interested, <a href="http://play-perl.org/quest/5130110d20d03f841200005b">up-vote
+Beam::Wire on play-perl</a>.</p>
 
             </article>
             <article>
                 <header>
-                    <h1><a href="/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html">Thoughts while changing the API of a massive framework...</a></h1>
+                    <h1><a href="/blog/2013/03/14/chicago.pm-mojolicious.html">Chicago.PM - Mojolicious</a></h1>
                     <aside>
-                        <p><time datetime="2013-04-11">
-                            Posted on 2013-04-11
+                        <p><time datetime="2013-03-14">
+                            Posted on 2013-03-14
                         </time>
                         by preaction</p>
                     </aside>
                     <div class="alert alert-info">
                         <p>Originally posted as:</p>
                         <ul>
-                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2013/04/thoughts-while-changing-the-api-of-a-massive-framework.html">
-                                <em>Thoughts while changing the API of a massive framework...</em> on blogs.perl.org.
+                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2013/03/chicagopm---mojolicious.html">
+                                <em>Chicago.PM - Mojolicious</em> on blogs.perl.org.
                             </a></li>
                         </ul>
                     </div>
                 </header>
-                <p>At the Bank we have a home-grown ETL framework that we've been using for quite
-some time. We recently completed a total rewrite, but unfortunately we left out
-a few changes. Had I gotten those changes in 5 months ago, I would have only
-had to break the API of about 10 modules. Today, in order to make those
-changes, I have to break the API of 122 modules.</p>
+                <p>February's meeting was about the <a href="http://mojolicio.us">Mojolicious Web
+Framework</a>. <a href="http://blogs.perl.org/users/joel_berger/">Joel
+Berger</a> has written a <a href="https://metacpan.org/module/Galileo">minimal Perl
+CMS called Galileo</a>, and agreed to give a
+talk about the benefits of Mojolicious.</p>
 
-<p>What follows is an account of this ordeal, provided for entertainment value
-only. There will be a future post that explains some of the things I did to
-make this task surmountable.</p>
+<p>Best of all, <a href="https://github.com/jberger/MojoliciousIntroduction">the talk itself was written in
+Mojolicious</a>! As Joel was
+talking, he was able to edit the code and display the results, showing off
+various features of Mojolicious like:</p>
+
+<ul>
+<li>Websockets</li>
+<li>Easy testing (even of websockets)</li>
+<li>Helper scripts</li>
+<li>Mojo templates</li>
+</ul>
+
+<p>There are quite a few interesting parts of Mojolicious that make it worth
+giving a look to, and I hope to be able to do so with some web projects that
+have been sitting in my queue for a while (I wrote a nice ticket tracker with
+AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
+
+            </article>
+            <article>
+                <header>
+                    <h1><a href="/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html">Chicago.PM - Scripting Git With Perl</a></h1>
+                    <aside>
+                        <p><time datetime="2012-10-28">
+                            Posted on 2012-10-28
+                        </time>
+                        by preaction</p>
+                    </aside>
+                    <div class="alert alert-info">
+                        <p>Originally posted as:</p>
+                        <ul>
+                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/10/chicagopm-report---scripting-git-with-perl.html">
+                                <em>Chicago.PM - Scripting Git With Perl</em> on blogs.perl.org.
+                            </a></li>
+                        </ul>
+                    </div>
+                </header>
+                <p>This month's presentation was on the
+<a href="http://search.cpan.org/dist/Git-Repository/">Git::Repository</a> Perl module,
+given by me. In both my jobs, I use the Git::Repository module to automate
+releases.</p>
 
 <hr />
 
-<h2>Day 1</h2>
+<p>At <a href="http://www.doublecluepon.com">Double Cluepon</a>, I use it to create the
+release packages based on tagged commits, so that releasing our software is
+exactly: <code>git tag vX.X.X &amp;&amp; git push --tags</code>. A Perl script builds every package
+and then pushes them to our update server, where the game will check for a new
+release.</p>
 
-<ul>
-<li>3:45pm - 122 modules left</li>
-<li>4:31pm - 112 modules left - And then I remember there's another feature to
-add that will require another migration of all these modules I will have to do.</li>
-<li>4:52pm - 106 modules left -
-<a href="https://metacpan.org/module/Test::Continuous">Test::Continuous</a> removes 3
-steps for each module. Total time saved: HOLY FUCK THAT'S AWESOME</li>
-<li>5:35pm - 97 modules left - Every commit message during this ordeal is another
-love note to those who put off this migration five months ago, when there were
-only 10 modules to migrate.</li>
-<li>6:09pm - 94 modules left - New API to change: Create a role to do it for me!
-+100 experience points!</li>
-<li>6:15pm - 93 modules left - Why unpack the hash of args passed-in to the
-method if the method you're calling takes exactly the same arguments? <code>my
-$arg_name = $args{arg_name}; return $self-&gt;method( arg_name =&gt; $arg_name )</code>
-should never happen!</li>
-<li>6:37pm - 87 modules left - A thought: If the other team using this project
-ultimately rejects this API change, I get to write my own brand-new ETL
-framework from scratch! Temptation, thy name is Zoidberg.</li>
-<li>6:51pm - 84 modules left - Found a bug in the new API! Finally something
-interesting to do!</li>
-<li>7:00pm - 80 modules left - Every time you copy/paste code in tests, God
-inflicts another programmer with carpal tunnel. Please think of the
-programmers.</li>
-</ul>
+<p>At Bank of America, we use it to combine our 20-30 Perl distributions into a
+single release. Using git submodules, we have a "release repository" that holds
+references to all the modules for each team's releases (some are team-specific,
+others are shared between teams). A Perl script manages the submodules,
+determines when the submodule refs need to be updated, tags and branches for
+each release, and finally builds and installs our modules using
+<a href="http://search.cpan.org/dist/Module-Build/">Module::Build</a> and
+<a href="http://search.cpan.org/dist/local-lib/">local::lib</a>.</p>
 
-<h2>Day 2</h2>
+<p>All this Git stuff gave me some ideas for possible useful code I can release,
+perhaps leading to me finally recovering my CPAN ID.</p>
 
-<ul>
-<li>3:02pm - 80 modules left - Let's see if I remember all the macros I left in
-vim over the weekend... Test::Continuous is still running, which is nice</li>
-<li>3:18pm - 71 modules left - The end is in sight!</li>
-<li>4:30pm - 52 modules left - Perhaps I was premature...</li>
-<li>6:30pm - 41 modules left - Caught up putting out fires in other places.
-Derail.</li>
-</ul>
+<p><a href="http://preaction.github.com/Perl/Scripting-Git.html">The slides for my Scripting Git With Perl
+talk</a></p>
 
-<h2>Day 3</h2>
-
-<ul>
-<li>1:35pm - 41 modules left - Another bug in the new API. Doing it this way is
-certainly shaking out the bugs.</li>
-<li>2:21pm - 20 modules left - Smooth sailing at last...</li>
-<li>3:47pm - 0 modules left - AND THE CROWD GOES WILD!</li>
-</ul>
-
-<p>Total time elapsed: 3.25+3.5+2.25 = 9 hours. Not bad for 130 commits to migrate
-122 modules.</p>
+<p><a href="https://gist.github.com/3943302">The code for the script that automatically builds releases tagged like
+"vX.X.X"</a></p>
 
             </article>
         </main>
         <ul class="pager">
             <li class="previous ">
-                <a rel="next" href="/blog/page-2.html">&larr; Older</a>
+                <a rel="next" href="/blog/tag/chicago.pm/page-2.html">&larr; Older</a>
             </li>
             <li class="next disabled">
                 <span>Newer &rarr;</span>

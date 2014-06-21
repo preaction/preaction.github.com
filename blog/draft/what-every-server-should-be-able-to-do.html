@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <title>Doug Bell</title>
+        <style type="text/css">
+            article > hgroup > h1,
+            main > hgroup > h1
+            {
+                border-bottom: 4px solid #045578;
+            }
+            header aside {
+                margin-top: 0;
+                font-size: 12pt;
+            }
+            nav#tags h1 {
+                font-size: 14pt;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">Doug Bell</a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="top-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/index.html">Blog</a></li>
+                            <li><a href="/presentations.html">Presentations</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="main container">
+            <div class="row">
+
+    <div class="col-md-9">
+        <main>
+            <header>
+                <h1>What Every Server Should Be Able To Do</h1>
+                <aside>
+                    <p><time datetime="1970-01-01">
+                        Posted on 1970-01-01
+                    </time>
+                    by preaction</p>
+                </aside>
+            </header>
+            <p>When I develop software, there is a minimum level of functionality that must be
+provided by the OS for me to do my job. Frequently, this functionality is
+disabled or destroyed by the system administrators, making my job a lot harder,
+since I am forced to develop workarounds that are inevitably more bug-prone,
+slower, and less robust than the solutions that already exist.</p>
+
+<p>Just this week I was forced to write an e-mail queueing system that jumps in
+when our mail relay is down, but only for certain e-mails because that's the
+only set of e-mails I could hook into. A local smtpd that only responded to
+localhost would have provided me this functionality for every e-mail with no
+change to my application...</p>
+
+<p>If you are a sysadmin of a server I develop on, your system should be able to:</p>
+
+<ul>
+<li>Relay mail from localhost</li>
+<li>Run tasks on a schedule (cron)</li>
+<li>Access to logs for the above (mail, cron)</li>
+<li>Resolve the DNS I need (likely the whole Internet)</li>
+<li>Resolve to DNS</li>
+<li>Log in using plain text (ssh)</li>
+<li>Persist my login sessions (tmux/screen)</li>
+<li>Access my dev toolbox (vim, git, and github.com)</li>
+</ul>
+
+<p>Every single server is going to need these things. No server should be without
+any of them. I especially should not have to track someone down at 8:00 PM to
+look at a log because one my cron jobs failed to run (and somehow failed to
+send e-mail) and clients are screaming at me.</p>
+
+        </main>
+    </div>
+
+    <div class="col-md-3">
+        <nav id="tags">
+            <h1>Tags</h1>
+            <ul class="list-inline">
+                <li><a href="/blog/tag/devops/index.html">devops</a></li>
+                <li><a href="/blog/tag/git/index.html">git</a></li>
+                <li><a href="/blog/tag/openbsd/index.html">openbsd</a></li>
+                <li><a href="/blog/tag/perl/index.html">perl</a></li>
+                <li><a href="/blog/tag/personal/index.html">personal</a></li>
+                <li><a href="/blog/tag/xs/index.html">xs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+
+        </div>
+    </body>
+</html>

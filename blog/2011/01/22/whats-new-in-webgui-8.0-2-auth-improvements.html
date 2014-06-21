@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <title>Doug Bell</title>
+        <style type="text/css">
+            article > hgroup > h1,
+            main > hgroup > h1
+            {
+                border-bottom: 4px solid #045578;
+            }
+            header aside {
+                margin-top: 0;
+                font-size: 12pt;
+            }
+            nav#tags h1 {
+                font-size: 14pt;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">Doug Bell</a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="top-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/index.html">Blog</a></li>
+                            <li><a href="/presentations.html">Presentations</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="main container">
+            <div class="row">
+
+    <div class="col-md-9">
+        <main>
+            <header>
+                <h1>What's New in WebGUI 8 #2: Auth Improvements</h1>
+                <aside>
+                    <p><time datetime="2011-01-22">
+                        Posted on 2011-01-22
+                    </time>
+                    by preaction</p>
+                </aside>
+                <div class="alert alert-info">
+                    <p>Originally posted as:</p>
+                    <ul>
+                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2011/01/whats-new-in-webgui-8-2-auth-improvements.html">
+                            <em>What's New in WebGUI 8 #2: Auth Improvements</em> on blogs.perl.org.
+                        </a></li>
+                    </ul>
+                </div>
+            </header>
+            <h2>Auth changes</h2>
+
+<p>WebGUI::Auth was developed as part of 6.0.0, back in 2003. To put that into
+perspective:</p>
+
+<ul>
+<li>Auth predates Facebook, which was founded in 2004.</li>
+<li>Since Auth, there have been two Summer Olympiads.</li>
+<li>Auth was written when I was still in college.</li>
+</ul>
+
+<p>Since then, it has not fundamentally changed, though everything about the
+Internet surely has.</p>
+
+<hr />
+
+<p>We began our planning for 8.0 with the idea to completely rebuild Auth from
+scratch, but that quickly got scrapped when we realized both the scope of that
+project. But since Auth is one of the most visible parts of a WebGUI site for
+the end-user, who must be able to quickly and simply create an account and log
+in to participate in the community of your website, we decided to take a closer
+look at what we could do to improve the Auth API.</p>
+
+<p>What resulted were a series of small changes (and only one break) that has made
+it far easier to create convenient choices for your users.</p>
+
+<h2>Multiple Methods</h2>
+
+<p>One of the largest changes in how the Internet works since Auth was created was
+the propagation of Single-Sign-On systems like OpenID and OAuth. Now, instead
+of requiring a username and password for every site you visit, websites will
+allow you to sign in with your existing Facebook, Twitter, or Google ID. This
+makes it easier for users to interact with your site, which improves the return
+rate.</p>
+
+<p>Historically, a WebGUI user would have only one way to login. If they had a
+username/password, they could only use that. If they were an LDAP user, they
+could only use that. Worse, only one Auth plugin could be chosen as "default",
+which means that new users could only create themselves with that single
+plugin.</p>
+
+<p>In 7.9, we added the ability for new users to choose what they use to create
+their account and login. Now, by passing in the name of the auth plugin, we can
+offer users multiple ways to join our site. As a test, we added a Twitter-based
+auth plugin based on the Net::Twitter module, and a Facebook auth plugin based
+on Facebook::Graph.</p>
+
+<p>![](/blog/images/whats-new-in-webgui-8.0-2-auth-improvements/Screen shot 2011-01-21 at 2.02.13 PM.png)</p>
+
+<p>Fig 1,294: A WebGUI site with username/password and Facebook login</p>
+
+<p>In addition, once the user has logged-in via Facebook or Twitter, they have the
+ability to set a password. In the extremely unlikely case that Facebook or
+Twitter goes down, they can still get into your site with their WebGUI
+password.</p>
+
+<h2>API cleanup</h2>
+
+<p>As one of the few features of WebGUI that predates the Asset system (our
+application plugins), the Auth API stuck out from our future API direction. In
+order to instantiate an Auth object, you had to call the superclass constructor
+and rebless the object. In order to call an Auth method from the web, you had
+to mark it using setCallable(). In order to update the user information for the
+Auth method, you had to call saveParams() and pass in the name of the auth
+method and the user to work with (which were both known by the object anyway).</p>
+
+<pre><code># old-style Auth plugin for Twitter
+package WebGUI::Auth::Twitter;
+
+sub new {
+    my ( $class, $session, $name, $userId ) = @_;
+    my $self = $class-&gt;SUPER::new( $session, $name, $userId );
+    $self-&gt;setCallable( [ qw( createAccount createAccountSave displayLogin login ... ) ] );
+    return bless $self, $class;
+}
+
+sub createAccountSave {
+    my ( $self ) = @_;
+    my %formData = ();
+    # ... validate data coming in, and then...
+    $self-&gt;saveParams( $self-&gt;user, $self-&gt;authMethod, \%formData );
+}
+</code></pre>
+
+<p>Now, we've massaged the Auth API to look like our other APIs. The constructor
+was fixed to not require re-blessing. Instead of setCallable(), we use www_
+methods to mark which methods can be called from the web. This sets those
+methods apart from non-web methods, and removes the need to explicitly say
+which methods are web methods. Finally, saveParams() was changed to update()
+and works the same as the other updates: Take a hash or hashref, put it in the
+database table.</p>
+
+<pre><code># new-style Auth plugin for Twitter
+package WebGUI::Auth::Twitter;
+
+# Don't need to override constructor anymore! 
+# no re-bless. no setCallable. authMethod name is determined automatically
+
+sub www_createAccountSave {
+    my ( $self ) = @_;
+    my %formData = ();
+    # ... validate data coming in, and then...
+    $self-&gt;update( %formData );
+}
+</code></pre>
+
+<p>The most important part of this is that now if you understand the update() and
+www_ methods from the Asset system, the Form system, the Workflow system, the
+Operation system, and the Shop system, you understand the update() and www_
+methods from the Auth system. When there are many valid ways of doing
+something, it doesn't matter which one you pick, as long as you are consistent
+in that choice throughout the project.</p>
+
+<p>The only downside to the new Auth API is the one backwards incompatible change:
+The method signature of the new() method has changed, there is no authMethod
+name passed in. Luckily for most people, the migration is easy: Delete your
+new() method, and rename your web-callable subs to start with www_ and it will
+just work.</p>
+
+<h2>Future Plans</h2>
+
+<p>Through our massage of the Auth API, we've gotten new ideas on how Auth plugins
+should work. In the future, users will be able to configure as many auth
+methods as they want. Those choices will all be available from a single account
+screen. With FormBuilder (discussed later), we can make it even easier to
+create full-featured Auth methods. An auth method can inherit a form, add a few
+fields, and present that new form to the user.</p>
+
+<p>To increase flexibility, we're going to refactor the Auth API to be more easily
+extensible. The default Auth methods can be used as stepping-stones to more
+specific auth methods, decreasing the development time for your site, and
+making a more stable platform for your organization.</p>
+
+<p>Stay tuned for next time where I'll go over our brand-new upgrade system.</p>
+
+        </main>
+    </div>
+
+    <div class="col-md-3">
+        <nav id="tags">
+            <h1>Tags</h1>
+            <ul class="list-inline">
+                <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/index.html">error</a></li>
+                <li><a href="/blog/tag/git/index.html">git</a></li>
+                <li><a href="/blog/tag/moose/index.html">moose</a></li>
+                <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
+                <li><a href="/blog/tag/perl/index.html">perl</a></li>
+                <li><a href="/blog/tag/rants/index.html">rants</a></li>
+                <li><a href="/blog/tag/software/index.html">software</a></li>
+                <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
+                <li><a href="/blog/tag/xs/index.html">xs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <title>Doug Bell</title>
+        <style type="text/css">
+            article > hgroup > h1,
+            main > hgroup > h1
+            {
+                border-bottom: 4px solid #045578;
+            }
+            header aside {
+                margin-top: 0;
+                font-size: 12pt;
+            }
+            nav#tags h1 {
+                font-size: 14pt;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">Doug Bell</a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="top-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/index.html">Blog</a></li>
+                            <li><a href="/presentations.html">Presentations</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="main container">
+            
+<div class="row">
+
+    <div class="col-md-9">
+        <main>
+            <article>
+                <header>
+                    <h1><a href="/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html">I Bless You in the Name of the Stringified Object</a></h1>
+                    <aside>
+                        <p><time datetime="2013-04-15">
+                            Posted on 2013-04-15
+                        </time>
+                        by preaction</p>
+                    </aside>
+                    <div class="alert alert-info">
+                        <p>Originally posted as:</p>
+                        <ul>
+                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2013/04/i-bless-you-in-the-name-of-the-stringified-object.html">
+                                <em>I Bless You in the Name of the Stringified Object</em> on blogs.perl.org.
+                            </a></li>
+                        </ul>
+                    </div>
+                </header>
+                <p>A co-worker came to me today with a curious error message:</p>
+
+<pre><code>use DateTime;
+my $date = DateTime-&gt;new( year =&gt; 2013, month =&gt; 4, day =&gt; 15 );
+$date-&gt;set_time_zone("Australia/Sydney");
+print $date-&gt;today;'
+</code></pre>
+
+<p>This code gives the error <code>Can't locate object method "_normalize_nanoseconds"
+via package "2013-04-15T00:00:00" at
+/usr2/local/perlbrew/perls/perl-5.16.3/lib/site_perl/5.16.3/x86_64-linux-thread-multi/DateTime.pm
+line 252.</code></p>
+
+<p>The package "2013-04-15T00:00:00" is the curious part: It looks like a
+stringified DateTime, but who could possibly be stringifying a DateTime object
+and then using that as a package name?</p>
+
+<hr />
+
+<p>It turns out the problem is at <code>$date-&gt;today</code>. <code>today()</code> is a constructor,
+constructors are class methods, constructors inevitably call <code>bless</code> on the
+class they are invoked with. But, we called this constructor with an object
+instance (a blessed reference), not a class.</p>
+
+<p>In an object without overloads, this fails (as expected) with an error message:
+<code>Attempt to bless into a reference</code>. But DateTime overloads stringification. So
+instead of trying to use an object as a package name, the object gets
+stringified and that string gets used as a package name.</p>
+
+<p>This problem could be mitigated by checking for refs in the constructor, dying
+as a result. I'm not sure if it would be a good idea to disallow
+stringification during a call to <code>bless</code>, for historical reasons (it's not a
+bug if it's working as expected, it is a bug if a change breaks code).</p>
+
+<p>Here's some sample code to play around with the problem. Enable/disable the
+overload (comment out the <code>use overload (...)</code>) and see what changes:</p>
+
+<pre><code>use strict;
+use warnings;
+
+package Foo;
+
+use overload (
+    q{""} =&gt; sub { return "Bar" },
+);
+
+sub new {
+    my ( $class ) = @_;
+    return bless {}, $class;
+}
+
+sub greet {
+    print "Hello, World!\n";
+}
+
+package main;
+
+my $obj = Foo-&gt;new;
+$obj-&gt;greet;
+
+my $clone = $obj-&gt;new;
+$clone-&gt;greet;
+</code></pre>
+
+            </article>
+        </main>
+        <ul class="pager">
+            <li class="previous disabled">
+                <span>&larr; Older</span>
+            </li>
+            <li class="next disabled">
+                <span>Newer &rarr;</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-md-3">
+        <nav id="tags">
+            <h1>Tags</h1>
+            <ul class="list-inline">
+                <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/index.html">error</a></li>
+                <li><a href="/blog/tag/git/index.html">git</a></li>
+                <li><a href="/blog/tag/moose/index.html">moose</a></li>
+                <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
+                <li><a href="/blog/tag/perl/index.html">perl</a></li>
+                <li><a href="/blog/tag/rants/index.html">rants</a></li>
+                <li><a href="/blog/tag/software/index.html">software</a></li>
+                <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
+                <li><a href="/blog/tag/xs/index.html">xs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+
+        </div>
+    </body>
+</html>
