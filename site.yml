@@ -28,6 +28,7 @@ site:
     class: Statocles::Site::Git
     args:
         title: Doug Bell
+        base_url: http://preaction.github.io
         nav:
             main:
                 - title: Blog
