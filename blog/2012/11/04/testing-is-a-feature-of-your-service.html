@@ -45,18 +45,93 @@
             </nav>
         </header>
         <div class="main container">
-            Global symbol "$app" requires explicit package name at /Users/doug/perl5/perlbrew/perls/perl-5.16.3/lib/site_perl/5.16.3/auto/share/dist/Statocles/theme/default/blog/post.html.ep line 34.
-29: 
-30:     <div class="col-md-3">
-31:         <nav id="tags">
-32:             <h1>Tags</h1>
-33:             <ul class="list-inline">
-34:             % for my $tag ( $app->tags ) {
-35:                 <li><a href="<%= $tag->{href} %>"><%= $tag->{title} %></a></li>
-36:             % }
-37:             </ul>
-38:         </nav>
-39:     </div>
+            <div class="row">
+
+    <div class="col-md-9">
+        <main>
+            <header>
+                <h1>Testing is a Feature of Your Service</h1>
+                <aside>
+                    <p><time datetime="2012-11-04">
+                        Posted on 2012-11-04
+                    </time>
+                    by preaction</p>
+                </aside>
+                <div class="alert alert-info">
+                    <p>Originally posted as:</p>
+                    <ul>
+                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/11/testing-is-a-feature-of-your-service.html">
+                            <em>Testing is a Feature of Your Service</em> on blogs.perl.org.
+                        </a></li>
+                    </ul>
+                </div>
+            </header>
+            <p>My job at Bank of America consists largely of data collection and storage. To
+collect data in Perl, I have to write XS modules to interface with the
+vendor-supplied native libraries. Because I want to know my code works, my XS
+modules come with robust test suites, testing that everything works correctly.</p>
+
+<p>Since the XS module was intended to be used by other, larger systems, I decided
+to help those larger systems test their dependency on my module: I included a
+<a href="http://search.cpan.org/perldoc?Test::MockObject">Test::MockObject</a> that mocked
+my module's interface. By using my test module, the tests can try some data and
+see if their code works.</p>
+
+<p>But the hardest part to test is always the failures. How do they test if the
+news service goes down in the middle of a data pull? How about if it goes down
+between data pulls but still inside the same process? How do they test if the
+user has input an invalid ID for data?</p>
+
+<hr />
+
+<p>To help them write good error-checking and recovery, I added specific
+Test::MockObjects that return failure conditions. Want to know what happens if
+an ID is invalid? Use the Test::Feed::InvalidId mock API. Want to know what
+happens if the feed goes down in the middle of a process? Use the
+Test::Feed::RandomDisconnect mock API.</p>
+
+<p>By providing these mock objects, users can write more robust code more simply.
+Then, in the eventuality that the service fails, they know exactly what their
+code won't do: Wake them up at 3 in the morning because of an unexpected,
+unhandled error. These mock objects don't even need an external connection to
+operate, so they can be as fast as possible.</p>
+
+<p>Unfortunately, this is a limited solution that covers only what I know about.
+If the service changes, or has an error I didn't cover, the code still fails.
+For this reason, for the web services I build, I build in explicit ways to get
+errors. When the service itself gives the exact error output it gives in
+exceptional circumstances, it can be tested and handled. Instead of a mock
+service, it's the real service (perhaps on a dev system), with real input,
+returning a real (but desired) error message.</p>
+
+<p>By providing as much help as possible to the users of my code, I can make sure
+they can create robust applications that make their own users happy. By helping
+users respond to and deal with the error conditions of my code, I can cut down
+on the support requests and bug reports. Being proactive about testing helps
+everyone write better code.</p>
+
+        </main>
+    </div>
+
+    <div class="col-md-3">
+        <nav id="tags">
+            <h1>Tags</h1>
+            <ul class="list-inline">
+                <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/index.html">error</a></li>
+                <li><a href="/blog/tag/git/index.html">git</a></li>
+                <li><a href="/blog/tag/moose/index.html">moose</a></li>
+                <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
+                <li><a href="/blog/tag/perl/index.html">perl</a></li>
+                <li><a href="/blog/tag/rants/index.html">rants</a></li>
+                <li><a href="/blog/tag/software/index.html">software</a></li>
+                <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
+                <li><a href="/blog/tag/xs/index.html">xs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
 
         </div>
     </body>

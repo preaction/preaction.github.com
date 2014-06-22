@@ -47,18 +47,123 @@
             </nav>
         </header>
         <div class="main container">
-            Global symbol "$app" requires explicit package name at /Users/doug/perl5/perlbrew/perls/perl-5.16.3/lib/site_perl/5.16.3/auto/share/dist/Statocles/theme/default/blog/index.html.ep line 58.
-53: 
-54:     <div class="col-md-3">
-55:         <nav id="tags">
-56:             <h1>Tags</h1>
-57:             <ul class="list-inline">
-58:             % for my $tag ( $app->tags ) {
-59:                 <li><a href="<%= $tag->{href} %>"><%= $tag->{title} %></a></li>
-60:             % }
-61:             </ul>
-62:         </nav>
-63:     </div>
+            
+<div class="row">
+
+    <div class="col-md-9">
+        <main>
+            <article>
+                <header>
+                    <h1><a href="/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html">Thoughts while changing the API of a massive framework...</a></h1>
+                    <aside>
+                        <p><time datetime="2013-04-11">
+                            Posted on 2013-04-11
+                        </time>
+                        by preaction</p>
+                    </aside>
+                    <div class="alert alert-info">
+                        <p>Originally posted as:</p>
+                        <ul>
+                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2013/04/thoughts-while-changing-the-api-of-a-massive-framework.html">
+                                <em>Thoughts while changing the API of a massive framework...</em> on blogs.perl.org.
+                            </a></li>
+                        </ul>
+                    </div>
+                </header>
+                <p>At the Bank we have a home-grown ETL framework that we've been using for quite
+some time. We recently completed a total rewrite, but unfortunately we left out
+a few changes. Had I gotten those changes in 5 months ago, I would have only
+had to break the API of about 10 modules. Today, in order to make those
+changes, I have to break the API of 122 modules.</p>
+
+<p>What follows is an account of this ordeal, provided for entertainment value
+only. There will be a future post that explains some of the things I did to
+make this task surmountable.</p>
+
+<hr />
+
+<h2>Day 1</h2>
+
+<ul>
+<li>3:45pm - 122 modules left</li>
+<li>4:31pm - 112 modules left - And then I remember there's another feature to
+add that will require another migration of all these modules I will have to do.</li>
+<li>4:52pm - 106 modules left -
+<a href="https://metacpan.org/module/Test::Continuous">Test::Continuous</a> removes 3
+steps for each module. Total time saved: HOLY FUCK THAT'S AWESOME</li>
+<li>5:35pm - 97 modules left - Every commit message during this ordeal is another
+love note to those who put off this migration five months ago, when there were
+only 10 modules to migrate.</li>
+<li>6:09pm - 94 modules left - New API to change: Create a role to do it for me!
++100 experience points!</li>
+<li>6:15pm - 93 modules left - Why unpack the hash of args passed-in to the
+method if the method you're calling takes exactly the same arguments? <code>my
+$arg_name = $args{arg_name}; return $self-&gt;method( arg_name =&gt; $arg_name )</code>
+should never happen!</li>
+<li>6:37pm - 87 modules left - A thought: If the other team using this project
+ultimately rejects this API change, I get to write my own brand-new ETL
+framework from scratch! Temptation, thy name is Zoidberg.</li>
+<li>6:51pm - 84 modules left - Found a bug in the new API! Finally something
+interesting to do!</li>
+<li>7:00pm - 80 modules left - Every time you copy/paste code in tests, God
+inflicts another programmer with carpal tunnel. Please think of the
+programmers.</li>
+</ul>
+
+<h2>Day 2</h2>
+
+<ul>
+<li>3:02pm - 80 modules left - Let's see if I remember all the macros I left in
+vim over the weekend... Test::Continuous is still running, which is nice</li>
+<li>3:18pm - 71 modules left - The end is in sight!</li>
+<li>4:30pm - 52 modules left - Perhaps I was premature...</li>
+<li>6:30pm - 41 modules left - Caught up putting out fires in other places.
+Derail.</li>
+</ul>
+
+<h2>Day 3</h2>
+
+<ul>
+<li>1:35pm - 41 modules left - Another bug in the new API. Doing it this way is
+certainly shaking out the bugs.</li>
+<li>2:21pm - 20 modules left - Smooth sailing at last...</li>
+<li>3:47pm - 0 modules left - AND THE CROWD GOES WILD!</li>
+</ul>
+
+<p>Total time elapsed: 3.25+3.5+2.25 = 9 hours. Not bad for 130 commits to migrate
+122 modules.</p>
+
+            </article>
+        </main>
+        <ul class="pager">
+            <li class="previous disabled">
+                <span>&larr; Older</span>
+            </li>
+            <li class="next disabled">
+                <span>Newer &rarr;</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-md-3">
+        <nav id="tags">
+            <h1>Tags</h1>
+            <ul class="list-inline">
+                <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/index.html">error</a></li>
+                <li><a href="/blog/tag/git/index.html">git</a></li>
+                <li><a href="/blog/tag/moose/index.html">moose</a></li>
+                <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
+                <li><a href="/blog/tag/perl/index.html">perl</a></li>
+                <li><a href="/blog/tag/rants/index.html">rants</a></li>
+                <li><a href="/blog/tag/software/index.html">software</a></li>
+                <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
+                <li><a href="/blog/tag/xs/index.html">xs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
 
         </div>
     </body>

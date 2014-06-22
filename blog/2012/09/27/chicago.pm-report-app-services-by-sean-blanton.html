@@ -45,18 +45,87 @@
             </nav>
         </header>
         <div class="main container">
-            Global symbol "$app" requires explicit package name at /Users/doug/perl5/perlbrew/perls/perl-5.16.3/lib/site_perl/5.16.3/auto/share/dist/Statocles/theme/default/blog/post.html.ep line 34.
-29: 
-30:     <div class="col-md-3">
-31:         <nav id="tags">
-32:             <h1>Tags</h1>
-33:             <ul class="list-inline">
-34:             % for my $tag ( $app->tags ) {
-35:                 <li><a href="<%= $tag->{href} %>"><%= $tag->{title} %></a></li>
-36:             % }
-37:             </ul>
-38:         </nav>
-39:     </div>
+            <div class="row">
+
+    <div class="col-md-9">
+        <main>
+            <header>
+                <h1>Chicago.PM Report - App::Services by Sean Blanton</h1>
+                <aside>
+                    <p><time datetime="2012-09-27">
+                        Posted on 2012-09-27
+                    </time>
+                    by preaction</p>
+                </aside>
+                <div class="alert alert-info">
+                    <p>Originally posted as:</p>
+                    <ul>
+                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/09/chicagopm-report---appservices-by-sean-blanton.html">
+                            <em>Chicago.PM Report - App::Services by Sean Blanton</em> on blogs.perl.org.
+                        </a></li>
+                    </ul>
+                </div>
+            </header>
+            <p>This month's technical presentation at <a href="http://chicago.pm.org">Chicago Perl
+Mongers</a> was about <a href="http://seanblanton.com">Sean
+Blanton</a>'s project called
+<a href="https://github.com/sblanton/App-Services">App::Services</a>. It's an interesting
+project that uses <a href="http://search.cpan.org/perldoc?Bread::Board">Bread::Board</a>
+to access resources like databases, logging, ssh, and others.</p>
+
+<hr />
+
+<p>Along the way, we discussed logging practices (most of us are using
+<a href="http://search.cpan.org/perldoc?Log%3A%3ALog4perl">Log::Log4perl</a>), and the
+best way to get a Perl module ready for CPAN (I suggested using
+<a href="http://search.cpan.org/perldoc?Module%3A%3ABuild">Module::Build</a> directly, but
+<a href="http://search.cpan.org/perldoc?Dist::Zilla">Dist::Zilla</a> outvoted me).</p>
+
+<p>Sean mentioned in passing the <a href="http://saltstack.org">Salt stack</a> for executing
+commands across multiple machines, which looks like a very interesting
+alternative to more detailed tools like Puppet or Chef. Salt seems to be just a
+simple way to execute commands on multiple machines. Those commands could be
+administrative (restart httpd), or they could be the application.</p>
+
+<p>One other very interesting thing from App::Services was providing a role for
+the larger system to use. So one creates App::Service::Log::Log4perl and
+App::Service::Log::Role, and in other services you consume the
+App::Service::Log::Role and then can use the Log4perl service. What's
+interesting about this is that the role is provided alongside the logging
+service, it isn't something that you have to create yourself. Doing it this way
+improves interoperability and simplifies adoption by giving you the tedious
+bits already. It's the difference between "Here's a service, figure out how to
+use it best" and "Here's a service, and here's a good way to use it" (I've been
+doing something similar by providing Test::MockObject implementations of my
+modules for testing purposes in the same distribution as the module itself. An
+"official" mock object).</p>
+
+<p>In two weeks we have another project night, which I'm hoping is as productive
+as the last. If you're in the Chicago area, check us out on the <a href="http://www.meetup.com/Windy-City-Perl-mongers-Meetup/">Chicago Perl
+Mongers meetup page</a>.</p>
+
+        </main>
+    </div>
+
+    <div class="col-md-3">
+        <nav id="tags">
+            <h1>Tags</h1>
+            <ul class="list-inline">
+                <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/index.html">error</a></li>
+                <li><a href="/blog/tag/git/index.html">git</a></li>
+                <li><a href="/blog/tag/moose/index.html">moose</a></li>
+                <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
+                <li><a href="/blog/tag/perl/index.html">perl</a></li>
+                <li><a href="/blog/tag/rants/index.html">rants</a></li>
+                <li><a href="/blog/tag/software/index.html">software</a></li>
+                <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
+                <li><a href="/blog/tag/xs/index.html">xs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
 
         </div>
     </body>
