@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/chicago.pm/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T00:10:24Z</updated>
+    <updated>2014-06-22T02:08:16Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/chicago.pm.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/chicago.pm/index.html"/>
     <generator version="0.013">Statocles</generator>
@@ -48,7 +48,7 @@ other learning materials as time goes on. Let us know if you want to help!</p>
 
         ]]></content>
         <updated>2013-06-13T00:00:00Z</updated>
-        <category term="ARRAY(0x7fc0bc6a6358)" />
+        <category term="ARRAY(0x7fb0918832e8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</id>
@@ -139,7 +139,7 @@ website</a> and join us!</p>
 
         ]]></content>
         <updated>2013-05-01T00:00:00Z</updated>
-        <category term="ARRAY(0x7fc0bc6a60a0)" />
+        <category term="ARRAY(0x7fb091883030)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html</id>
@@ -182,7 +182,7 @@ Beam::Wire on play-perl</a>.</p>
 
         ]]></content>
         <updated>2013-03-29T00:00:00Z</updated>
-        <category term="ARRAY(0x7fc0bc6a5878)" />
+        <category term="ARRAY(0x7fb091882808)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/03/14/chicago.pm-mojolicious.html</id>
@@ -215,7 +215,7 @@ AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
 
         ]]></content>
         <updated>2013-03-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7fc0bc69db98)" />
+        <category term="ARRAY(0x7fb091882550)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html</id>
@@ -256,7 +256,7 @@ talk</a></p>
 
         ]]></content>
         <updated>2012-10-28T00:00:00Z</updated>
-        <category term="ARRAY(0x7fc0bc69d628)" />
+        <category term="ARRAY(0x7fb09187e7b8)" />
     </entry>
 </feed>
 

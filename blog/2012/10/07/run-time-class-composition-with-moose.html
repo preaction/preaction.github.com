@@ -45,106 +45,18 @@
             </nav>
         </header>
         <div class="main container">
-            <div class="row">
-
-    <div class="col-md-9">
-        <main>
-            <header>
-                <h1>Run-time Class Composition With Moose</h1>
-                <aside>
-                    <p><time datetime="2012-10-07">
-                        Posted on 2012-10-07
-                    </time>
-                    by preaction</p>
-                </aside>
-                <div class="alert alert-info">
-                    <p>Originally posted as:</p>
-                    <ul>
-                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/10/run-time-class-composition-with-moose.html">
-                            <em>Run-time Class Composition With Moose</em> on blogs.perl.org.
-                        </a></li>
-                    </ul>
-                </div>
-            </header>
-            <p>Moose is great! At its very basic, it simplifies the boilerplate required to
-create Perl objects immensely, providing attributes with type constraints,
-method modifiers for semantic enhancement, and role-based class composition for
-better code re-use.</p>
-
-<p>Moose is built on top of Class::MOP. MOP stands for Meta-Object Protocol. A
-meta-object is an object that describes an object. So, each attribute and
-method in your class has a corresponding entry in the meta-object describing
-it. The meta-object is where you can find out what type constraints are on an
-attribute, or what methods a class has available.</p>
-
-<p>Since the meta-object is a Plain Old Perl Object, we can call methods on it at
-runtime. Using those meta-object methods to add an attribute would modify our
-object, adding that attribute to the object. Using Class::MOP, we can compose
-classes at runtime!</p>
-
-<hr />
-
-<p>I have recently used this to great effect in a custom dependency injection and
-configuration framework we have at Bank of America. By adding a "with" key to
-the configuration YAML file, the DI will create a new, anonymous class that
-composes the roles specified.</p>
-
-<pre><code>{
-    name: "Repository",
-    class: "Bank::HistoricalData::DailyRepository",
-    with: [ "Bank::Role::FlattenIntraday", "Bank::Role::CalculateHighLow" ],
-    constructor_args: { }
-}
-</code></pre>
-
-<p>So, when I ask the DI for the "Repository" object, it will get the meta-object
-for Bank::HistoricalData::DailyRepository, create an anonymous class that
-extends Bank::HistoricalData::DailyRepository, and then compose the two roles
-into the new class.</p>
-
-<p>The code to do all this is extremely short:</p>
-
-<pre><code>my $class = $conf-&gt;{class};
-my $meta = Moose::Meta::Class-&gt;create_anon_class( 
-    superclasses =&gt; [ $class ],
-    roles =&gt; $conf-&gt;{with},
-);
-$meta-&gt;make_immutable; # for performance
-my $object = $meta-&gt;name-&gt;new( %{ $conf-&gt;{constructor_args} } );
-return $object;
-</code></pre>
-
-<p>If a lot of objects end up composing the same roles, I can create a concrete
-class to get a bit of a performance boost. Since I create a new, anonymous
-meta-class, I don't have to worry about the class I'm extending being modified,
-or being made mutable again ($class->meta->make_immutable speeds up a lot of
-things, but doesn't allow us to add attributes or methods).</p>
-
-<p>With this, I can be a lot more flexible about my dependencies, adding whatever
-role I want to change their behavior whenever I need.</p>
-
-        </main>
-    </div>
-
-    <div class="col-md-3">
-        <nav id="tags">
-            <h1>Tags</h1>
-            <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
-                <li><a href="/blog/tag/error/index.html">error</a></li>
-                <li><a href="/blog/tag/git/index.html">git</a></li>
-                <li><a href="/blog/tag/moose/index.html">moose</a></li>
-                <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
-                <li><a href="/blog/tag/perl/index.html">perl</a></li>
-                <li><a href="/blog/tag/rants/index.html">rants</a></li>
-                <li><a href="/blog/tag/software/index.html">software</a></li>
-                <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
-                <li><a href="/blog/tag/xs/index.html">xs</a></li>
-            </ul>
-        </nav>
-    </div>
-
-</div>
+            Global symbol "$app" requires explicit package name at /Users/doug/perl5/perlbrew/perls/perl-5.16.3/lib/site_perl/5.16.3/auto/share/dist/Statocles/theme/default/blog/post.html.ep line 34.
+29: 
+30:     <div class="col-md-3">
+31:         <nav id="tags">
+32:             <h1>Tags</h1>
+33:             <ul class="list-inline">
+34:             % for my $tag ( $app->tags ) {
+35:                 <li><a href="<%= $tag->{href} %>"><%= $tag->{title} %></a></li>
+36:             % }
+37:             </ul>
+38:         </nav>
+39:     </div>
 
         </div>
     </body>

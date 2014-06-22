@@ -45,72 +45,18 @@
             </nav>
         </header>
         <div class="main container">
-            <div class="row">
-
-    <div class="col-md-9">
-        <main>
-            <header>
-                <h1>Chicago.PM - Mojolicious</h1>
-                <aside>
-                    <p><time datetime="2013-03-14">
-                        Posted on 2013-03-14
-                    </time>
-                    by preaction</p>
-                </aside>
-                <div class="alert alert-info">
-                    <p>Originally posted as:</p>
-                    <ul>
-                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2013/03/chicagopm---mojolicious.html">
-                            <em>Chicago.PM - Mojolicious</em> on blogs.perl.org.
-                        </a></li>
-                    </ul>
-                </div>
-            </header>
-            <p>February's meeting was about the <a href="http://mojolicio.us">Mojolicious Web
-Framework</a>. <a href="http://blogs.perl.org/users/joel_berger/">Joel
-Berger</a> has written a <a href="https://metacpan.org/module/Galileo">minimal Perl
-CMS called Galileo</a>, and agreed to give a
-talk about the benefits of Mojolicious.</p>
-
-<p>Best of all, <a href="https://github.com/jberger/MojoliciousIntroduction">the talk itself was written in
-Mojolicious</a>! As Joel was
-talking, he was able to edit the code and display the results, showing off
-various features of Mojolicious like:</p>
-
-<ul>
-<li>Websockets</li>
-<li>Easy testing (even of websockets)</li>
-<li>Helper scripts</li>
-<li>Mojo templates</li>
-</ul>
-
-<p>There are quite a few interesting parts of Mojolicious that make it worth
-giving a look to, and I hope to be able to do so with some web projects that
-have been sitting in my queue for a while (I wrote a nice ticket tracker with
-AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
-
-        </main>
-    </div>
-
-    <div class="col-md-3">
-        <nav id="tags">
-            <h1>Tags</h1>
-            <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
-                <li><a href="/blog/tag/error/index.html">error</a></li>
-                <li><a href="/blog/tag/git/index.html">git</a></li>
-                <li><a href="/blog/tag/moose/index.html">moose</a></li>
-                <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
-                <li><a href="/blog/tag/perl/index.html">perl</a></li>
-                <li><a href="/blog/tag/rants/index.html">rants</a></li>
-                <li><a href="/blog/tag/software/index.html">software</a></li>
-                <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
-                <li><a href="/blog/tag/xs/index.html">xs</a></li>
-            </ul>
-        </nav>
-    </div>
-
-</div>
+            Global symbol "$app" requires explicit package name at /Users/doug/perl5/perlbrew/perls/perl-5.16.3/lib/site_perl/5.16.3/auto/share/dist/Statocles/theme/default/blog/post.html.ep line 34.
+29: 
+30:     <div class="col-md-3">
+31:         <nav id="tags">
+32:             <h1>Tags</h1>
+33:             <ul class="list-inline">
+34:             % for my $tag ( $app->tags ) {
+35:                 <li><a href="<%= $tag->{href} %>"><%= $tag->{title} %></a></li>
+36:             % }
+37:             </ul>
+38:         </nav>
+39:     </div>
 
         </div>
     </body>

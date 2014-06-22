@@ -19,6 +19,8 @@
                 font-size: 14pt;
             }
         </style>
+            <link rel="alternate" href="/blog/tag/xs.atom" type="application/atom+xml" />
+            <link rel="alternate" href="/blog/tag/xs.rss" type="application/rss+xml" />
     </head>
     <body>
         <header>
@@ -45,172 +47,18 @@
             </nav>
         </header>
         <div class="main container">
-            
-<div class="row">
-
-    <div class="col-md-9">
-        <main>
-            <article>
-                <header>
-                    <h1><a href="/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html">Adventures in Debugging C/XS 2: Debugging Boogaloo</a></h1>
-                    <aside>
-                        <p><time datetime="2012-03-20">
-                            Posted on 2012-03-20
-                        </time>
-                        by preaction</p>
-                    </aside>
-                </header>
-                <p>... or "Ask Not To Whom The Pointer Points, It Points To Thee."</p>
-
-<p>TL;DR: A pointer is not a reference. A pointer knows nothing about the data
-being pointed to. Returning multiple values requires actual work.</p>
-
-<p>Everything went wrong when I wanted a string with a <code>NUL</code> character inside it.
-C strings are not Perl scalars, they don't know how long they are. So to mark
-the end of a string, C uses the <code>NUL</code> character, <code>\0</code>. The <code>strcpy</code> function will
-copy to your destination until the first <code>\0</code> from your source. When you want to
-have a string with a <code>\0</code> inside of it that does not mark the end of the string,
-you need to know exactly how long the string is. This is not difficult to do,
-but you also have to return that length from the function that creates your
-string.</p>
-
-<p>C functions do not have more than one return value.</p>
-
-<pre><code>(char* buffer, int bufferSize) = get_string_with_nuls();
-// You thought it could be that easy?
-</code></pre>
-
-<p>So in order for your function to result in more than one value, you have to
-pass in references to be used to fill in with actual values.</p>
-
-<pre><code>char* buffer;
-int bufferSize = get_string_with_nuls( buffer );
-// C programmers will already know what I did wrong here
-</code></pre>
-
-<p>Thinking like a Perl programmer, I thought I could just pass in the pointer to
-the function and the function could fill it with data. Two problems:</p>
-
-<ol>
-<li>I passed in the pointer itself, not a reference to the pointer: <code>&amp;buffer</code></li>
-<li>I did not initialize the pointer to anything.</li>
-</ol>
-
-<p>A more correct way would be:</p>
-
-<pre><code>char* buffer = malloc( 128 * sizeof( char ) );
-int bufferSize = get_string_with_nuls( &amp;buffer );
-</code></pre>
-
-<p>But this suffers from another problem: I have to know beforehand how big my
-string is going to be and allocate that much memory beforehand.</p>
-
-<p>The way I ended up succeeding was:</p>
-
-<pre><code>int bufferSize;
-char* buffer = get_string_with_nuls( &amp;bufferSize );
-</code></pre>
-
-<p>This way, <code>get_string_with_nuls</code> can handle the <code>malloc</code> with exactly the correct
-size and give it to me. I don't have to guess at a size beforehand.</p>
-
-<p>Of course, a struct could do this better, or since I'm actually in C++, an
-object. I'll be planning a new API as soon as I confirm this one actually
-works and has proper tests (written in Perl, of course).</p>
-
-            </article>
-            <article>
-                <header>
-                    <h1><a href="/blog/2011/11/16/adventures-in-debugging-c-xs.html">Adventures in Debugging C/XS</a></h1>
-                    <aside>
-                        <p><time datetime="2011-11-16">
-                            Posted on 2011-11-16
-                        </time>
-                        by preaction</p>
-                    </aside>
-                    <div class="alert alert-info">
-                        <p>Originally posted as:</p>
-                        <ul>
-                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2011/11/adventures-in-debugging-cxs.html">
-                                <em>Adventures in Debugging C/XS</em> on blogs.perl.org.
-                            </a></li>
-                        </ul>
-                    </div>
-                </header>
-                <p>... or Why A Good Perl Developer Is Not Automatically A Good C Developer, the
-Story of C Programming via Google.</p>
-
-<p>My tests failed, but only sometimes. I was building an XS module to interface
-with a C wrapper around a C++ library (wrapper unnecessary? probably). <code>make
-test</code> was failing with exit code 11. Some quick searching revealed that I had
-an intermittent segfault. Calling a function <code>as_xml</code> would fail with a SEGV in
-<code>strlen()</code>. This only happened in perl after <code>as_xml</code> when perl was making a SV
-out of the return value. This also only mainly happened during <code>make test</code>.
-Doing <code>prove</code> myself would succeed 19 times out of 20, where make test would
-fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
-
-<hr />
-
-<p>I changed everything I could think of: Using a debugging perl and keeping debug
-symbols in my C library and XS module made the failures happen less frequently
-(making debugging ever more frustrating). perlbrew was a big help here, letting
-me switch between different versions of perl, debugging perl, threaded perl,
-and combinations thereof.</p>
-
-<p>After playing with GDB (once again succeeding 19 times out of 20), I gave up
-and searched the web. I found <a href="http://bit.ly/vwnMbb">the same mailing list
-thread</a> multiple times, and read it multiple times, not
-coming up with anything that was relevant to my situation.</p>
-
-<p>Until I read the thread again after another frustrating half-hour with GDB: I
-had forgotten to put a prototype in the .h file, causing the char* pointer
-being returned to be treated as an int. On my 64-bit system, this causes
-segfaults. The compiler was warning me of this, "<tt>warning: initialization
-makes pointer from integer without a cast</tt>", but I didn't understand the
-warning (and the web was not helpful on that one).</p>
-
-<p>Adding the function prototype to the C wrapper header and recompiling fixed the
-problem.</p>
-
-<p>And that is why I need to learn a lot more about C. Function prototypes?
-Header files? Why are those necessary (I'm asking rhetorically, of course)?
-Heap and stack? Might as well be herp and derp.</p>
-
-<p>Lesson reinforced: Depth of knowledge does not equal breadth of knowledge.</p>
-
-<p>Also, having IRC at work might have saved me a few hours of hassle.</p>
-
-            </article>
-        </main>
-        <ul class="pager">
-            <li class="previous disabled">
-                <span>&larr; Older</span>
-            </li>
-            <li class="next disabled">
-                <span>Newer &rarr;</span>
-            </li>
-        </ul>
-    </div>
-
-    <div class="col-md-3">
-        <nav id="tags">
-            <h1>Tags</h1>
-            <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
-                <li><a href="/blog/tag/error/index.html">error</a></li>
-                <li><a href="/blog/tag/git/index.html">git</a></li>
-                <li><a href="/blog/tag/moose/index.html">moose</a></li>
-                <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
-                <li><a href="/blog/tag/perl/index.html">perl</a></li>
-                <li><a href="/blog/tag/rants/index.html">rants</a></li>
-                <li><a href="/blog/tag/software/index.html">software</a></li>
-                <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
-                <li><a href="/blog/tag/xs/index.html">xs</a></li>
-            </ul>
-        </nav>
-    </div>
-
-</div>
+            Global symbol "$app" requires explicit package name at /Users/doug/perl5/perlbrew/perls/perl-5.16.3/lib/site_perl/5.16.3/auto/share/dist/Statocles/theme/default/blog/index.html.ep line 58.
+53: 
+54:     <div class="col-md-3">
+55:         <nav id="tags">
+56:             <h1>Tags</h1>
+57:             <ul class="list-inline">
+58:             % for my $tag ( $app->tags ) {
+59:                 <li><a href="<%= $tag->{href} %>"><%= $tag->{title} %></a></li>
+60:             % }
+61:             </ul>
+62:         </nav>
+63:     </div>
 
         </div>
     </body>

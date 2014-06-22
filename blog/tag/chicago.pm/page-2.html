@@ -19,6 +19,8 @@
                 font-size: 14pt;
             }
         </style>
+            <link rel="alternate" href="/blog/tag/chicago.pm.atom" type="application/atom+xml" />
+            <link rel="alternate" href="/blog/tag/chicago.pm.rss" type="application/rss+xml" />
     </head>
     <body>
         <header>
@@ -45,181 +47,18 @@
             </nav>
         </header>
         <div class="main container">
-            
-<div class="row">
-
-    <div class="col-md-9">
-        <main>
-            <article>
-                <header>
-                    <h1><a href="/blog/2012/10/15/chicago.pm-report-project-night-alien-base.html">Chicago.PM Report - Project Night: Alien::Base</a></h1>
-                    <aside>
-                        <p><time datetime="2012-10-15">
-                            Posted on 2012-10-15
-                        </time>
-                        by preaction</p>
-                    </aside>
-                    <div class="alert alert-info">
-                        <p>Originally posted as:</p>
-                        <ul>
-                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2013/05/chicagopm---beyond-grep---expanding-the-programmer-toolset.html">
-                                <em>Chicago.PM Report - Project Night: Alien::Base</em> on blogs.perl.org.
-                            </a></li>
-                        </ul>
-                    </div>
-                </header>
-                <p>This month's project night focused on Joel Berger's Alien::Base module. The
-final bugs are either squashed or very close, and we got an introduction to how
-the whole thing works.</p>
-
-<hr />
-
-<p>I learned some interesting things about DynaLoader that helped cement the idea
-that it's an interface on to the system's dynamic linker. I've never dealt with
-DynaLoader from the Perl side of things, except when it broke, and I would
-solve those problems in system-specific ways. I learned that DynaLoader could
-solve those problems in a cross-platform way.</p>
-
-<p>I started writing my own Alien::Base module for libusb, but unfortunately ran
-out of time. We had some interesting side-discussion on human interface devices
-and augmented reality.</p>
-
-<p>In two weeks, I'll be <a href="http://www.meetup.com/Windy-City-Perl-mongers-Meetup/events/85508372/">giving a talk on scripting Git with
-Perl</a>.
-Come on down and check it out!</p>
-
-            </article>
-            <article>
-                <header>
-                    <h1><a href="/blog/2012/09/27/chicago.pm-report-app-services-by-sean-blanton.html">Chicago.PM Report - App::Services by Sean Blanton</a></h1>
-                    <aside>
-                        <p><time datetime="2012-09-27">
-                            Posted on 2012-09-27
-                        </time>
-                        by preaction</p>
-                    </aside>
-                    <div class="alert alert-info">
-                        <p>Originally posted as:</p>
-                        <ul>
-                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/09/chicagopm-report---appservices-by-sean-blanton.html">
-                                <em>Chicago.PM Report - App::Services by Sean Blanton</em> on blogs.perl.org.
-                            </a></li>
-                        </ul>
-                    </div>
-                </header>
-                <p>This month's technical presentation at <a href="http://chicago.pm.org">Chicago Perl
-Mongers</a> was about <a href="http://seanblanton.com">Sean
-Blanton</a>'s project called
-<a href="https://github.com/sblanton/App-Services">App::Services</a>. It's an interesting
-project that uses <a href="http://search.cpan.org/perldoc?Bread::Board">Bread::Board</a>
-to access resources like databases, logging, ssh, and others.</p>
-
-<hr />
-
-<p>Along the way, we discussed logging practices (most of us are using
-<a href="http://search.cpan.org/perldoc?Log%3A%3ALog4perl">Log::Log4perl</a>), and the
-best way to get a Perl module ready for CPAN (I suggested using
-<a href="http://search.cpan.org/perldoc?Module%3A%3ABuild">Module::Build</a> directly, but
-<a href="http://search.cpan.org/perldoc?Dist::Zilla">Dist::Zilla</a> outvoted me).</p>
-
-<p>Sean mentioned in passing the <a href="http://saltstack.org">Salt stack</a> for executing
-commands across multiple machines, which looks like a very interesting
-alternative to more detailed tools like Puppet or Chef. Salt seems to be just a
-simple way to execute commands on multiple machines. Those commands could be
-administrative (restart httpd), or they could be the application.</p>
-
-<p>One other very interesting thing from App::Services was providing a role for
-the larger system to use. So one creates App::Service::Log::Log4perl and
-App::Service::Log::Role, and in other services you consume the
-App::Service::Log::Role and then can use the Log4perl service. What's
-interesting about this is that the role is provided alongside the logging
-service, it isn't something that you have to create yourself. Doing it this way
-improves interoperability and simplifies adoption by giving you the tedious
-bits already. It's the difference between "Here's a service, figure out how to
-use it best" and "Here's a service, and here's a good way to use it" (I've been
-doing something similar by providing Test::MockObject implementations of my
-modules for testing purposes in the same distribution as the module itself. An
-"official" mock object).</p>
-
-<p>In two weeks we have another project night, which I'm hoping is as productive
-as the last. If you're in the Chicago area, check us out on the <a href="http://www.meetup.com/Windy-City-Perl-mongers-Meetup/">Chicago Perl
-Mongers meetup page</a>.</p>
-
-            </article>
-            <article>
-                <header>
-                    <h1><a href="/blog/2012/09/15/chicago.pm-report-app-prima-repl.html">Chicago.PM Report - App-Prima-REPL</a></h1>
-                    <aside>
-                        <p><time datetime="2012-09-15">
-                            Posted on 2012-09-15
-                        </time>
-                        by preaction</p>
-                    </aside>
-                    <div class="alert alert-info">
-                        <p>Originally posted as:</p>
-                        <ul>
-                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/09/chicagopm-report---app-prima-repl.html">
-                                <em>Chicago.PM Report - App-Prima-REPL</em> on blogs.perl.org.
-                            </a></li>
-                        </ul>
-                    </div>
-                </header>
-                <p>We had our first project night at <a href="http://chicago.pm.org">Chicago.PM</a> this
-week, where we discussed ideas and wrote code for a Perl REPL GUI program
-(<a href="http://github.com/run4flat/App-Prima-REPL">App-Prima-REPL on Github</a>) by
-David Mertens built on <a href="http://www.prima.eu.org/">Prima</a>.</p>
-
-<hr />
-
-<p>There were some small ideas to make the program more user-friendly, and some
-larger ideas like an IRC client and guided tutorials based on the same format
-that <a href="http://perltuts.com">http://perltuts.com</a> uses.</p>
-
-<p>I'm hoping that if I keep saying this, I'll be embarrassed into doing it: I
-would really love to see the <a href="http://rubykoans.com">Ruby Koans</a> translated into
-Perl (in spirit, if not in actual content). I've started writing down ideas for
-chapters, but there is a lot of content to cover.</p>
-
-<p>I added a <code>-I</code> flag and a <code>-M</code> flag to the <code>prima-repl</code> command-line launcher
-that work as close to perl's flags as I could get. This is one of the things I
-love about <code>prove</code> and <code>plackup:</code> Where it makes sense, they work like perl
-does. So now the <code>prima-repl</code> can have subs and modules imported on the
-command-line.</p>
-
-<p>Altogether it was a wonderfully productive evening and I'm looking forward to
-the next one. </p>
-
-            </article>
-        </main>
-        <ul class="pager">
-            <li class="previous disabled">
-                <span>&larr; Older</span>
-            </li>
-            <li class="next ">
-                <a rel="prev" href="/blog/tag/chicago.pm/index.html">Newer &rarr;</a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="col-md-3">
-        <nav id="tags">
-            <h1>Tags</h1>
-            <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
-                <li><a href="/blog/tag/error/index.html">error</a></li>
-                <li><a href="/blog/tag/git/index.html">git</a></li>
-                <li><a href="/blog/tag/moose/index.html">moose</a></li>
-                <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
-                <li><a href="/blog/tag/perl/index.html">perl</a></li>
-                <li><a href="/blog/tag/rants/index.html">rants</a></li>
-                <li><a href="/blog/tag/software/index.html">software</a></li>
-                <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
-                <li><a href="/blog/tag/xs/index.html">xs</a></li>
-            </ul>
-        </nav>
-    </div>
-
-</div>
+            Global symbol "$app" requires explicit package name at /Users/doug/perl5/perlbrew/perls/perl-5.16.3/lib/site_perl/5.16.3/auto/share/dist/Statocles/theme/default/blog/index.html.ep line 58.
+53: 
+54:     <div class="col-md-3">
+55:         <nav id="tags">
+56:             <h1>Tags</h1>
+57:             <ul class="list-inline">
+58:             % for my $tag ( $app->tags ) {
+59:                 <li><a href="<%= $tag->{href} %>"><%= $tag->{title} %></a></li>
+60:             % }
+61:             </ul>
+62:         </nav>
+63:     </div>
 
         </div>
     </body>

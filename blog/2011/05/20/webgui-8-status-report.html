@@ -45,73 +45,18 @@
             </nav>
         </header>
         <div class="main container">
-            <div class="row">
-
-    <div class="col-md-9">
-        <main>
-            <header>
-                <h1>WebGUI 8 Status Report</h1>
-                <aside>
-                    <p><time datetime="2011-05-20">
-                        Posted on 2011-05-20
-                    </time>
-                    by preaction</p>
-                </aside>
-                <div class="alert alert-info">
-                    <p>Originally posted as:</p>
-                    <ul>
-                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2011/05/webgui-8-status-report.html">
-                            <em>WebGUI 8 Status Report</em> on blogs.perl.org.
-                        </a></li>
-                    </ul>
-                </div>
-            </header>
-            <p>A major milestone in WebGUI 8 development was reached this week: A dry-run of
-the WebGUI 8 upgrade was successfully run against the plainblack.com database.
-This means the only thing remaining from releasing an alpha 8.0.0 is updating
-all the custom code on <a href="http://plainblack.com">http://plainblack.com</a> and
-<a href="http://webgui.org">http://webgui.org</a>. As always, plainblack.com and
-webgui.org will be the first sites running the latest bleeding-edge version of
-WebGUI (unless one of you wants to beat me to the punch).</p>
-
-<p>This month, I also gave a presentation to <a href="http://madmongers.org">Madison.PM</a>
-about <a href="http://preaction.github.com/WebGUI/8-apps.html">building applications in WebGUI
-8</a>, a quick introduction to
-Assets and an overview of the most important changes to how they work. The
-slides are available at
-<a href="http://preaction.github.com/">http://preaction.github.com/</a> and the code
-samples are linked at the end.</p>
-
-<p>On an unrelated topic, I really enjoyed using
-<a href="http://meyerweb.com/eric/tools/s5/">S5</a> to build my slides,
-<a href="http://shjs.sourceforge.net/">SHJS</a> to highlight the code inside, and <a href="http://pages.github.com/">Github
-Pages</a> to host the whole thing. I plan on doing the
-same for all my presentations: They look good, readable without a special
-program, editable without a special program, anyone can fork and update my
-presentations, and they're served by a nice, fast, free host.</p>
-
-        </main>
-    </div>
-
-    <div class="col-md-3">
-        <nav id="tags">
-            <h1>Tags</h1>
-            <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
-                <li><a href="/blog/tag/error/index.html">error</a></li>
-                <li><a href="/blog/tag/git/index.html">git</a></li>
-                <li><a href="/blog/tag/moose/index.html">moose</a></li>
-                <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
-                <li><a href="/blog/tag/perl/index.html">perl</a></li>
-                <li><a href="/blog/tag/rants/index.html">rants</a></li>
-                <li><a href="/blog/tag/software/index.html">software</a></li>
-                <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
-                <li><a href="/blog/tag/xs/index.html">xs</a></li>
-            </ul>
-        </nav>
-    </div>
-
-</div>
+            Global symbol "$app" requires explicit package name at /Users/doug/perl5/perlbrew/perls/perl-5.16.3/lib/site_perl/5.16.3/auto/share/dist/Statocles/theme/default/blog/post.html.ep line 34.
+29: 
+30:     <div class="col-md-3">
+31:         <nav id="tags">
+32:             <h1>Tags</h1>
+33:             <ul class="list-inline">
+34:             % for my $tag ( $app->tags ) {
+35:                 <li><a href="<%= $tag->{href} %>"><%= $tag->{title} %></a></li>
+36:             % }
+37:             </ul>
+38:         </nav>
+39:     </div>
 
         </div>
     </body>

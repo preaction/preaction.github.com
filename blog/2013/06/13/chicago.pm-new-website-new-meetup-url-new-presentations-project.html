@@ -45,83 +45,18 @@
             </nav>
         </header>
         <div class="main container">
-            <div class="row">
-
-    <div class="col-md-9">
-        <main>
-            <header>
-                <h1>Chicago.PM New Website! New Meetup URL! New Presentations Project!</h1>
-                <aside>
-                    <p><time datetime="2013-06-13">
-                        Posted on 2013-06-13
-                    </time>
-                    by preaction</p>
-                </aside>
-                <div class="alert alert-info">
-                    <p>Originally posted as:</p>
-                    <ul>
-                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2013/06/chicagopm-new-website-new-meetup-url-new-presentations-project.html">
-                            <em>Chicago.PM New Website! New Meetup URL! New Presentations Project!</em> on blogs.perl.org.
-                        </a></li>
-                    </ul>
-                </div>
-            </header>
-            <p>Lots of news for the Chicago.PM group! We've got a <a href="http://chicago.pm.org">new Chicago.PM
-website</a>, powered by <a href="http://github.com">Github</a>, up at
-<a href="http://chicago.pm.org">http://chicago.pm.org</a>. The website is completely
-editable via Github using the <a href="http://octopress.org">Octopress</a> system. We hope
-to start sharing resources about Perl on our website, increasing the exposure
-of the good tutorials and learning sites.</p>
-
-<hr />
-
-<p>In addition to the new website, we've changed our Meetup URL, so <a href="http://meetup.com/ChicagoPM">the
-Chicago.PM Meetup group</a> is now at
-<a href="http://meetup.com/ChicagoPM">http://meetup.com/ChicagoPM</a>.</p>
-
-<p>Finally, with our new website, we're starting a project to help teach some
-topics with more depth, to help fill in the gaps between the beginner's
-materials and writing useful, maintainable code using the best CPAN has to
-offer. We've started <a href="http://github.com/ChicagoPM">the Chicago.PM Github
-Organization</a>, where we will be developing
-presentations that can be used freely by anyone wishing to learn more about
-Perl, or wanting to teach others about Perl. The presentations and the code
-inside is licensed under the same terms as Perl itself, so if you can use Perl,
-you can use and edit the presentations to suit your needs.</p>
-
-<p>The first presentation we're releasing is about <a href="https://github.com/ChicagoPM/Command-Line-Apps">building command-line
-applications in Perl</a>. I've
-given this presentation twice now, to excellent reviews. There is still some
-content that can be added to make it a more robust presentation (especially in
-the <a href="App::Cmd">http://metacpan.org/release/App-Cmd</a> section), but it's a good
-talk on going from "Just read my first Perl book and my first Linux book" to
-"Wielding Perl to build command-line applications."</p>
-
-<p>We hope to build more presentations of this type in the future, as well as
-other learning materials as time goes on. Let us know if you want to help!</p>
-
-        </main>
-    </div>
-
-    <div class="col-md-3">
-        <nav id="tags">
-            <h1>Tags</h1>
-            <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
-                <li><a href="/blog/tag/error/index.html">error</a></li>
-                <li><a href="/blog/tag/git/index.html">git</a></li>
-                <li><a href="/blog/tag/moose/index.html">moose</a></li>
-                <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
-                <li><a href="/blog/tag/perl/index.html">perl</a></li>
-                <li><a href="/blog/tag/rants/index.html">rants</a></li>
-                <li><a href="/blog/tag/software/index.html">software</a></li>
-                <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
-                <li><a href="/blog/tag/xs/index.html">xs</a></li>
-            </ul>
-        </nav>
-    </div>
-
-</div>
+            Global symbol "$app" requires explicit package name at /Users/doug/perl5/perlbrew/perls/perl-5.16.3/lib/site_perl/5.16.3/auto/share/dist/Statocles/theme/default/blog/post.html.ep line 34.
+29: 
+30:     <div class="col-md-3">
+31:         <nav id="tags">
+32:             <h1>Tags</h1>
+33:             <ul class="list-inline">
+34:             % for my $tag ( $app->tags ) {
+35:                 <li><a href="<%= $tag->{href} %>"><%= $tag->{title} %></a></li>
+36:             % }
+37:             </ul>
+38:         </nav>
+39:     </div>
 
         </div>
     </body>
