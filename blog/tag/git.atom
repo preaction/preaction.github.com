@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://preaction.github.io/blog/tag/git/index.html</id>
+    <title>Doug Bell</title>
+    <updated>2014-06-22T00:00:39Z</updated>
+    <link rel="self" href="http://preaction.github.io/blog/tag/git.atom"/>
+    <link rel="alternate" href="http://preaction.github.io/blog/tag/git/index.html"/>
+    <generator version="0.013">Statocles</generator>
+    <entry>
+        <id>/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
+        <title>Conflict Resolution: local::lib and git's Perl</title>
+        <author><name>preaction</name></author>
+        <link rel="alternate" href="http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html" />
+        <content><![[CDATA
+            <p>I ran into a frustrating problem the other day:</p>
+
+<pre><code>$ git add -i
+/usr/bin/perl: symbol lookup error: ~/perl5/lib/perl5/x86_64-linux-thread-multi/auto/List/Util/Util.so:
+undefined symbol: Perl_xs_apiversion_bootcheck
+fatal: 'add--interactive' appears to be a git command, but we were not
+able to execute it. Maybe git-add--interactive is broken?
+</code></pre>
+
+<p>I've seen this error message from Perl a lot. It basically means that I'm
+trying to load an XS module compiled for a different version of Perl. Since
+<code>git</code> is directly trying to run <code>/usr/bin/perl</code> (5.10.1) as opposed to the
+<code>perlbrew</code> Perl I have installed (5.16.3), the error comes as no surprise:
+<code>PERL5LIB</code> is checked before Perl's built-in libraries. So if you have a
+<code>local::lib</code> (which adds its directories to <code>PERL5LIB</code>) and try to use those
+modules in a different Perl, things may not work as you expected.</p>
+
+<p>What is more surprising is that Git explicitly uses <code>/usr/bin/perl</code> in the
+first place. Some Google-fu brought up a <a href="http://article.gmane.org/gmane.comp.version-control.git/147462">thread on the Git mailing list about
+changing to <code>#!/usr/bin/env
+perl</code></a>, but it
+appears this was rejected. According to another post in that thread, <a href="http://article.gmane.org/gmane.comp.version-control.git/147475">it is
+possible to set PERL_PATH when running <code>make</code> on
+Git</a>, but that
+did not seem to work for me.</p>
+
+<p>But the Git Perl scripts all seem to have one thing in common: They all add the
+paths in the <code>GITPERLLIB</code> environment variable to the front of <code>@INC</code> as
+the first thing they do. <code>GITPERLLIB</code> is treated as a <code>:</code>-delimited list of
+directories, like <code>PERL5LIB</code>. So if we fill in <code>GITPERLLIB</code> with the right
+directories, we can ensure that the right <code>List::Util</code> version is found
+first.</p>
+
+<p>The right directories are part of Perl's <code>Config</code>. This configuration is
+available to us in Perl scripts through the <code>Config</code> module which provides a
+<code>%Config</code> hash.  There are three "layers" of Perl library paths, "core",
+"vendor", and "site", configured in the following Config keys:</p>
+
+<ul>
+<li>core    => 'archlib', 'privlib'</li>
+<li>vendor  => 'vendorarch', 'vendorlib'</li>
+<li>site    => 'sitearch', 'sitelib'</li>
+</ul>
+
+<p>The "core" libraries are just that, the core Perl 5 libraries. The "vendor"
+libraries are additional libraries that your vendor may have provided in their
+Perl distribution. The "site" libraries are the CPAN libraries you've
+downloaded and installed via the <code>cpan</code> client (unless you're using local::lib,
+which overrides the install directories).</p>
+
+<p>Armed with these Config keys, we can make a <code>GITPERLLIB</code> that overrides our local::lib
+directories. So now, in my <code>.zshrc</code>, I have:</p>
+
+<pre><code># Fix git perl scripts in case of local::lib
+# If we install modules for a different arch in local::lib, we'll get some problems
+if [[ -x /usr/bin/perl ]]; then
+    export GITPERLLIB=`/usr/bin/perl -MConfig -e'print join ":", grep { $_ } map { $Config{$_} } qw( sitearch sitelib vendorarch vendorlib archlib privlib )'`
+fi
+</code></pre>
+
+<p>Now I can do my proper <code>git add --interactive</code> again!</p>
+
+        ]]></content>
+        <updated>
+            2014-06-14T00:00:00Z
+        </updated>
+        <category term="ARRAY(0x7f8e96026750)" />
+    </entry>
+</rss>
+

@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Doug Bell</title>
+        <link>http://preaction.github.io/blog/tag/perl/index.html</link>
+        <description>Blog feed of Doug Bell</description>
+        <generator>Statocles 0.013</generator>
+        <item>
+            <title>Conflict Resolution: local::lib and git's Perl</title>
+            <link>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</link>
+            <description><![[CDATA
+                <p>I ran into a frustrating problem the other day:</p>
+
+<pre><code>$ git add -i
+/usr/bin/perl: symbol lookup error: ~/perl5/lib/perl5/x86_64-linux-thread-multi/auto/List/Util/Util.so:
+undefined symbol: Perl_xs_apiversion_bootcheck
+fatal: 'add--interactive' appears to be a git command, but we were not
+able to execute it. Maybe git-add--interactive is broken?
+</code></pre>
+
+<p>I've seen this error message from Perl a lot. It basically means that I'm
+trying to load an XS module compiled for a different version of Perl. Since
+<code>git</code> is directly trying to run <code>/usr/bin/perl</code> (5.10.1) as opposed to the
+<code>perlbrew</code> Perl I have installed (5.16.3), the error comes as no surprise:
+<code>PERL5LIB</code> is checked before Perl's built-in libraries. So if you have a
+<code>local::lib</code> (which adds its directories to <code>PERL5LIB</code>) and try to use those
+modules in a different Perl, things may not work as you expected.</p>
+
+<p>What is more surprising is that Git explicitly uses <code>/usr/bin/perl</code> in the
+first place. Some Google-fu brought up a <a href="http://article.gmane.org/gmane.comp.version-control.git/147462">thread on the Git mailing list about
+changing to <code>#!/usr/bin/env
+perl</code></a>, but it
+appears this was rejected. According to another post in that thread, <a href="http://article.gmane.org/gmane.comp.version-control.git/147475">it is
+possible to set PERL_PATH when running <code>make</code> on
+Git</a>, but that
+did not seem to work for me.</p>
+
+<p>But the Git Perl scripts all seem to have one thing in common: They all add the
+paths in the <code>GITPERLLIB</code> environment variable to the front of <code>@INC</code> as
+the first thing they do. <code>GITPERLLIB</code> is treated as a <code>:</code>-delimited list of
+directories, like <code>PERL5LIB</code>. So if we fill in <code>GITPERLLIB</code> with the right
+directories, we can ensure that the right <code>List::Util</code> version is found
+first.</p>
+
+<p>The right directories are part of Perl's <code>Config</code>. This configuration is
+available to us in Perl scripts through the <code>Config</code> module which provides a
+<code>%Config</code> hash.  There are three "layers" of Perl library paths, "core",
+"vendor", and "site", configured in the following Config keys:</p>
+
+<ul>
+<li>core    => 'archlib', 'privlib'</li>
+<li>vendor  => 'vendorarch', 'vendorlib'</li>
+<li>site    => 'sitearch', 'sitelib'</li>
+</ul>
+
+<p>The "core" libraries are just that, the core Perl 5 libraries. The "vendor"
+libraries are additional libraries that your vendor may have provided in their
+Perl distribution. The "site" libraries are the CPAN libraries you've
+downloaded and installed via the <code>cpan</code> client (unless you're using local::lib,
+which overrides the install directories).</p>
+
+<p>Armed with these Config keys, we can make a <code>GITPERLLIB</code> that overrides our local::lib
+directories. So now, in my <code>.zshrc</code>, I have:</p>
+
+<pre><code># Fix git perl scripts in case of local::lib
+# If we install modules for a different arch in local::lib, we'll get some problems
+if [[ -x /usr/bin/perl ]]; then
+    export GITPERLLIB=`/usr/bin/perl -MConfig -e'print join ":", grep { $_ } map { $Config{$_} } qw( sitearch sitelib vendorarch vendorlib archlib privlib )'`
+fi
+</code></pre>
+
+<p>Now I can do my proper <code>git add --interactive</code> again!</p>
+
+            ]]></description>
+            <pubDate>
+                Sat, 14 Jun 2014 00:00:00 UTC
+            </pubDate>
+        </item>
+        <item>
+            <title>Adventures in Debugging C/XS 2: Debugging Boogaloo</title>
+            <link>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</link>
+            <description><![[CDATA
+                <p>... or "Ask Not To Whom The Pointer Points, It Points To Thee."</p>
+
+<p>TL;DR: A pointer is not a reference. A pointer knows nothing about the data
+being pointed to. Returning multiple values requires actual work.</p>
+
+<p>Everything went wrong when I wanted a string with a <code>NUL</code> character inside it.
+C strings are not Perl scalars, they don't know how long they are. So to mark
+the end of a string, C uses the <code>NUL</code> character, <code>\0</code>. The <code>strcpy</code> function will
+copy to your destination until the first <code>\0</code> from your source. When you want to
+have a string with a <code>\0</code> inside of it that does not mark the end of the string,
+you need to know exactly how long the string is. This is not difficult to do,
+but you also have to return that length from the function that creates your
+string.</p>
+
+<p>C functions do not have more than one return value.</p>
+
+<pre><code>(char* buffer, int bufferSize) = get_string_with_nuls();
+// You thought it could be that easy?
+</code></pre>
+
+<p>So in order for your function to result in more than one value, you have to
+pass in references to be used to fill in with actual values.</p>
+
+<pre><code>char* buffer;
+int bufferSize = get_string_with_nuls( buffer );
+// C programmers will already know what I did wrong here
+</code></pre>
+
+<p>Thinking like a Perl programmer, I thought I could just pass in the pointer to
+the function and the function could fill it with data. Two problems:</p>
+
+<ol>
+<li>I passed in the pointer itself, not a reference to the pointer: <code>&amp;buffer</code></li>
+<li>I did not initialize the pointer to anything.</li>
+</ol>
+
+<p>A more correct way would be:</p>
+
+<pre><code>char* buffer = malloc( 128 * sizeof( char ) );
+int bufferSize = get_string_with_nuls( &amp;buffer );
+</code></pre>
+
+<p>But this suffers from another problem: I have to know beforehand how big my
+string is going to be and allocate that much memory beforehand.</p>
+
+<p>The way I ended up succeeding was:</p>
+
+<pre><code>int bufferSize;
+char* buffer = get_string_with_nuls( &amp;bufferSize );
+</code></pre>
+
+<p>This way, <code>get_string_with_nuls</code> can handle the <code>malloc</code> with exactly the correct
+size and give it to me. I don't have to guess at a size beforehand.</p>
+
+<p>Of course, a struct could do this better, or since I'm actually in C++, an
+object. I'll be planning a new API as soon as I confirm this one actually
+works and has proper tests (written in Perl, of course).</p>
+
+            ]]></description>
+            <pubDate>
+                Tue, 20 Mar 2012 00:00:00 UTC
+            </pubDate>
+        </item>
+    </channel>
+</rss>
+

@@ -1,0 +1,359 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Doug Bell</title>
+        <link>http://preaction.github.io/index.html</link>
+        <description>Blog feed of Doug Bell</description>
+        <generator>Statocles 0.013</generator>
+        <item>
+            <title>Conflict Resolution: local::lib and git's Perl</title>
+            <link>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</link>
+            <description><![[CDATA
+                <p>I ran into a frustrating problem the other day:</p>
+
+<pre><code>$ git add -i
+/usr/bin/perl: symbol lookup error: ~/perl5/lib/perl5/x86_64-linux-thread-multi/auto/List/Util/Util.so:
+undefined symbol: Perl_xs_apiversion_bootcheck
+fatal: 'add--interactive' appears to be a git command, but we were not
+able to execute it. Maybe git-add--interactive is broken?
+</code></pre>
+
+<p>I've seen this error message from Perl a lot. It basically means that I'm
+trying to load an XS module compiled for a different version of Perl. Since
+<code>git</code> is directly trying to run <code>/usr/bin/perl</code> (5.10.1) as opposed to the
+<code>perlbrew</code> Perl I have installed (5.16.3), the error comes as no surprise:
+<code>PERL5LIB</code> is checked before Perl's built-in libraries. So if you have a
+<code>local::lib</code> (which adds its directories to <code>PERL5LIB</code>) and try to use those
+modules in a different Perl, things may not work as you expected.</p>
+
+<p>What is more surprising is that Git explicitly uses <code>/usr/bin/perl</code> in the
+first place. Some Google-fu brought up a <a href="http://article.gmane.org/gmane.comp.version-control.git/147462">thread on the Git mailing list about
+changing to <code>#!/usr/bin/env
+perl</code></a>, but it
+appears this was rejected. According to another post in that thread, <a href="http://article.gmane.org/gmane.comp.version-control.git/147475">it is
+possible to set PERL_PATH when running <code>make</code> on
+Git</a>, but that
+did not seem to work for me.</p>
+
+<p>But the Git Perl scripts all seem to have one thing in common: They all add the
+paths in the <code>GITPERLLIB</code> environment variable to the front of <code>@INC</code> as
+the first thing they do. <code>GITPERLLIB</code> is treated as a <code>:</code>-delimited list of
+directories, like <code>PERL5LIB</code>. So if we fill in <code>GITPERLLIB</code> with the right
+directories, we can ensure that the right <code>List::Util</code> version is found
+first.</p>
+
+<p>The right directories are part of Perl's <code>Config</code>. This configuration is
+available to us in Perl scripts through the <code>Config</code> module which provides a
+<code>%Config</code> hash.  There are three "layers" of Perl library paths, "core",
+"vendor", and "site", configured in the following Config keys:</p>
+
+<ul>
+<li>core    => 'archlib', 'privlib'</li>
+<li>vendor  => 'vendorarch', 'vendorlib'</li>
+<li>site    => 'sitearch', 'sitelib'</li>
+</ul>
+
+<p>The "core" libraries are just that, the core Perl 5 libraries. The "vendor"
+libraries are additional libraries that your vendor may have provided in their
+Perl distribution. The "site" libraries are the CPAN libraries you've
+downloaded and installed via the <code>cpan</code> client (unless you're using local::lib,
+which overrides the install directories).</p>
+
+<p>Armed with these Config keys, we can make a <code>GITPERLLIB</code> that overrides our local::lib
+directories. So now, in my <code>.zshrc</code>, I have:</p>
+
+<pre><code># Fix git perl scripts in case of local::lib
+# If we install modules for a different arch in local::lib, we'll get some problems
+if [[ -x /usr/bin/perl ]]; then
+    export GITPERLLIB=`/usr/bin/perl -MConfig -e'print join ":", grep { $_ } map { $Config{$_} } qw( sitearch sitelib vendorarch vendorlib archlib privlib )'`
+fi
+</code></pre>
+
+<p>Now I can do my proper <code>git add --interactive</code> again!</p>
+
+            ]]></description>
+            <pubDate>
+                Sat, 14 Jun 2014 00:00:00 UTC
+            </pubDate>
+        </item>
+        <item>
+            <title>Chicago.PM New Website! New Meetup URL! New Presentations Project!</title>
+            <link>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</link>
+            <description><![[CDATA
+                <p>Lots of news for the Chicago.PM group! We've got a <a href="http://chicago.pm.org">new Chicago.PM
+website</a>, powered by <a href="http://github.com">Github</a>, up at
+<a href="http://chicago.pm.org">http://chicago.pm.org</a>. The website is completely
+editable via Github using the <a href="http://octopress.org">Octopress</a> system. We hope
+to start sharing resources about Perl on our website, increasing the exposure
+of the good tutorials and learning sites.</p>
+
+<hr />
+
+<p>In addition to the new website, we've changed our Meetup URL, so <a href="http://meetup.com/ChicagoPM">the
+Chicago.PM Meetup group</a> is now at
+<a href="http://meetup.com/ChicagoPM">http://meetup.com/ChicagoPM</a>.</p>
+
+<p>Finally, with our new website, we're starting a project to help teach some
+topics with more depth, to help fill in the gaps between the beginner's
+materials and writing useful, maintainable code using the best CPAN has to
+offer. We've started <a href="http://github.com/ChicagoPM">the Chicago.PM Github
+Organization</a>, where we will be developing
+presentations that can be used freely by anyone wishing to learn more about
+Perl, or wanting to teach others about Perl. The presentations and the code
+inside is licensed under the same terms as Perl itself, so if you can use Perl,
+you can use and edit the presentations to suit your needs.</p>
+
+<p>The first presentation we're releasing is about <a href="https://github.com/ChicagoPM/Command-Line-Apps">building command-line
+applications in Perl</a>. I've
+given this presentation twice now, to excellent reviews. There is still some
+content that can be added to make it a more robust presentation (especially in
+the <a href="App::Cmd">http://metacpan.org/release/App-Cmd</a> section), but it's a good
+talk on going from "Just read my first Perl book and my first Linux book" to
+"Wielding Perl to build command-line applications."</p>
+
+<p>We hope to build more presentations of this type in the future, as well as
+other learning materials as time goes on. Let us know if you want to help!</p>
+
+            ]]></description>
+            <pubDate>
+                Thu, 13 Jun 2013 00:00:00 UTC
+            </pubDate>
+        </item>
+        <item>
+            <title>Chicago.PM - Beyond grep - Expanding the Programmer Toolset</title>
+            <link>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</link>
+            <description><![[CDATA
+                <p>Last week, <a href="http://petdance.com">Andy Lester</a> (author of <a href="http://petdance.com/book/">Land the Tech Job You
+Love</a>) came to talk about tools to help programmers
+work more efficiently and the 2.0 release of his <a href="http://beyondgrep.com">Ack search
+tool</a>.</p>
+
+<hr />
+
+<p>If you haven't tried Ack, but you use long, complicated Grep lines every day,
+you're missing out on a great, time-saving tool. <a href="http://beyondgrep.com/install">Installing
+ack</a> is easy on many platforms (including
+Windows!).</p>
+
+<p>For those who have added Ack to their regular arsenal, the 2.0 release brings
+some minor breaking changes (removing the -a option for "search all files" and
+changing the default file type filter to "all text files") designed to make Ack
+more Do-What-I-Mean and more compatible with Grep (when it makes sense, ack is
+made for humans). The result being that using Ack should not take you out of
+The Zone by requiring you to check the manual every time (something I must
+confess to doing often with Grep and Find).</p>
+
+<p>I must also confess to using only the most basic Ack command-line options, but
+Andy explored a lot of functionality I was not aware of, both in Ack and Grep:</p>
+
+<pre><code># Search for full words
+ack -w
+grep -w
+
+# List the files that matched instead of the matching line
+ack -l
+grep -l
+
+# Invert the match ("does not match X")
+ack -v
+grep -v
+
+# Override the default output with capture groups
+ack 'use (\S+);' --output='$1' -h | sort -u
+
+# Search the file path for matches (Beyond Find)
+ack -f
+ack -g
+
+# Accept a list of files to search on STDIN (Built-in Xargs)
+ack -x
+</code></pre>
+
+<p>The last two features are great for chaining together Ack commands:</p>
+
+<pre><code># Find all perl files not in the 'release' repository
+ack -g -v 'release' --perl |
+
+# ... search them for the word '2.46.3207.2'
+ack -x '2.46.3207.2' -w -l | 
+
+# ... and if they match, edit them with sed
+xargs sed -i 's/2.46.3207.2/2.49.3333.12/'
+
+# This little snippet saved me some hours of manual work upgrading version numbers
+</code></pre>
+
+<p>There was also a lot of discussion on other tools to help programmers be more
+efficient. The ones I was most interested in were ctags, which I don't use
+nearly enough (I use ack instead), and cscope, which I had never heard about. </p>
+
+<p>The problem with adding new things to your toolkit is integrating them into
+your flow (the flow that can be consciously experienced is not the true flow).
+Whenever you add a new thing, especially if it replaces an existing thing,
+you're losing efficiency in the short-term in order to add potential efficiency
+in the long-term. Despite this, a lot of things are worth it, Ack more-so than
+most. </p>
+
+<p>Sometimes you don't know you're doing something inefficiently until someone
+comes along and tells you so, or shows you a solution to a problem you never
+knew you were having. Ack is a solution to a grep problem: Grep is harder to
+use in the most-common cases. That said, Grep still has its uses, just uncommon
+ones.</p>
+
+<p>A big thanks to Andy for giving a presentation on such short notice! Our next
+meeting is on May 23, so check out <a href="http://chicago.pm.org">the Chicago.pm
+website</a> and join us!</p>
+
+            ]]></description>
+            <pubDate>
+                Wed, 01 May 2013 00:00:00 UTC
+            </pubDate>
+        </item>
+        <item>
+            <title>I Bless You in the Name of the Stringified Object</title>
+            <link>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</link>
+            <description><![[CDATA
+                <p>A co-worker came to me today with a curious error message:</p>
+
+<pre><code>use DateTime;
+my $date = DateTime-&gt;new( year =&gt; 2013, month =&gt; 4, day =&gt; 15 );
+$date-&gt;set_time_zone("Australia/Sydney");
+print $date-&gt;today;'
+</code></pre>
+
+<p>This code gives the error <code>Can't locate object method "_normalize_nanoseconds"
+via package "2013-04-15T00:00:00" at
+/usr2/local/perlbrew/perls/perl-5.16.3/lib/site_perl/5.16.3/x86_64-linux-thread-multi/DateTime.pm
+line 252.</code></p>
+
+<p>The package "2013-04-15T00:00:00" is the curious part: It looks like a
+stringified DateTime, but who could possibly be stringifying a DateTime object
+and then using that as a package name?</p>
+
+<hr />
+
+<p>It turns out the problem is at <code>$date-&gt;today</code>. <code>today()</code> is a constructor,
+constructors are class methods, constructors inevitably call <code>bless</code> on the
+class they are invoked with. But, we called this constructor with an object
+instance (a blessed reference), not a class.</p>
+
+<p>In an object without overloads, this fails (as expected) with an error message:
+<code>Attempt to bless into a reference</code>. But DateTime overloads stringification. So
+instead of trying to use an object as a package name, the object gets
+stringified and that string gets used as a package name.</p>
+
+<p>This problem could be mitigated by checking for refs in the constructor, dying
+as a result. I'm not sure if it would be a good idea to disallow
+stringification during a call to <code>bless</code>, for historical reasons (it's not a
+bug if it's working as expected, it is a bug if a change breaks code).</p>
+
+<p>Here's some sample code to play around with the problem. Enable/disable the
+overload (comment out the <code>use overload (...)</code>) and see what changes:</p>
+
+<pre><code>use strict;
+use warnings;
+
+package Foo;
+
+use overload (
+    q{""} =&gt; sub { return "Bar" },
+);
+
+sub new {
+    my ( $class ) = @_;
+    return bless {}, $class;
+}
+
+sub greet {
+    print "Hello, World!\n";
+}
+
+package main;
+
+my $obj = Foo-&gt;new;
+$obj-&gt;greet;
+
+my $clone = $obj-&gt;new;
+$clone-&gt;greet;
+</code></pre>
+
+            ]]></description>
+            <pubDate>
+                Mon, 15 Apr 2013 00:00:00 UTC
+            </pubDate>
+        </item>
+        <item>
+            <title>Thoughts while changing the API of a massive framework...</title>
+            <link>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</link>
+            <description><![[CDATA
+                <p>At the Bank we have a home-grown ETL framework that we've been using for quite
+some time. We recently completed a total rewrite, but unfortunately we left out
+a few changes. Had I gotten those changes in 5 months ago, I would have only
+had to break the API of about 10 modules. Today, in order to make those
+changes, I have to break the API of 122 modules.</p>
+
+<p>What follows is an account of this ordeal, provided for entertainment value
+only. There will be a future post that explains some of the things I did to
+make this task surmountable.</p>
+
+<hr />
+
+<h2>Day 1</h2>
+
+<ul>
+<li>3:45pm - 122 modules left</li>
+<li>4:31pm - 112 modules left - And then I remember there's another feature to
+add that will require another migration of all these modules I will have to do.</li>
+<li>4:52pm - 106 modules left -
+<a href="https://metacpan.org/module/Test::Continuous">Test::Continuous</a> removes 3
+steps for each module. Total time saved: HOLY FUCK THAT'S AWESOME</li>
+<li>5:35pm - 97 modules left - Every commit message during this ordeal is another
+love note to those who put off this migration five months ago, when there were
+only 10 modules to migrate.</li>
+<li>6:09pm - 94 modules left - New API to change: Create a role to do it for me!
++100 experience points!</li>
+<li>6:15pm - 93 modules left - Why unpack the hash of args passed-in to the
+method if the method you're calling takes exactly the same arguments? <code>my
+$arg_name = $args{arg_name}; return $self-&gt;method( arg_name =&gt; $arg_name )</code>
+should never happen!</li>
+<li>6:37pm - 87 modules left - A thought: If the other team using this project
+ultimately rejects this API change, I get to write my own brand-new ETL
+framework from scratch! Temptation, thy name is Zoidberg.</li>
+<li>6:51pm - 84 modules left - Found a bug in the new API! Finally something
+interesting to do!</li>
+<li>7:00pm - 80 modules left - Every time you copy/paste code in tests, God
+inflicts another programmer with carpal tunnel. Please think of the
+programmers.</li>
+</ul>
+
+<h2>Day 2</h2>
+
+<ul>
+<li>3:02pm - 80 modules left - Let's see if I remember all the macros I left in
+vim over the weekend... Test::Continuous is still running, which is nice</li>
+<li>3:18pm - 71 modules left - The end is in sight!</li>
+<li>4:30pm - 52 modules left - Perhaps I was premature...</li>
+<li>6:30pm - 41 modules left - Caught up putting out fires in other places.
+Derail.</li>
+</ul>
+
+<h2>Day 3</h2>
+
+<ul>
+<li>1:35pm - 41 modules left - Another bug in the new API. Doing it this way is
+certainly shaking out the bugs.</li>
+<li>2:21pm - 20 modules left - Smooth sailing at last...</li>
+<li>3:47pm - 0 modules left - AND THE CROWD GOES WILD!</li>
+</ul>
+
+<p>Total time elapsed: 3.25+3.5+2.25 = 9 hours. Not bad for 130 commits to migrate
+122 modules.</p>
+
+            ]]></description>
+            <pubDate>
+                Thu, 11 Apr 2013 00:00:00 UTC
+            </pubDate>
+        </item>
+    </channel>
+</rss>
+

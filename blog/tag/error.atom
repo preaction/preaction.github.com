@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://preaction.github.io/blog/tag/error/index.html</id>
+    <title>Doug Bell</title>
+    <updated>2014-06-22T00:00:39Z</updated>
+    <link rel="self" href="http://preaction.github.io/blog/tag/error.atom"/>
+    <link rel="alternate" href="http://preaction.github.io/blog/tag/error/index.html"/>
+    <generator version="0.013">Statocles</generator>
+    <entry>
+        <id>/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</id>
+        <title>I Bless You in the Name of the Stringified Object</title>
+        <author><name>preaction</name></author>
+        <link rel="alternate" href="http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html" />
+        <content><![[CDATA
+            <p>A co-worker came to me today with a curious error message:</p>
+
+<pre><code>use DateTime;
+my $date = DateTime-&gt;new( year =&gt; 2013, month =&gt; 4, day =&gt; 15 );
+$date-&gt;set_time_zone("Australia/Sydney");
+print $date-&gt;today;'
+</code></pre>
+
+<p>This code gives the error <code>Can't locate object method "_normalize_nanoseconds"
+via package "2013-04-15T00:00:00" at
+/usr2/local/perlbrew/perls/perl-5.16.3/lib/site_perl/5.16.3/x86_64-linux-thread-multi/DateTime.pm
+line 252.</code></p>
+
+<p>The package "2013-04-15T00:00:00" is the curious part: It looks like a
+stringified DateTime, but who could possibly be stringifying a DateTime object
+and then using that as a package name?</p>
+
+<hr />
+
+<p>It turns out the problem is at <code>$date-&gt;today</code>. <code>today()</code> is a constructor,
+constructors are class methods, constructors inevitably call <code>bless</code> on the
+class they are invoked with. But, we called this constructor with an object
+instance (a blessed reference), not a class.</p>
+
+<p>In an object without overloads, this fails (as expected) with an error message:
+<code>Attempt to bless into a reference</code>. But DateTime overloads stringification. So
+instead of trying to use an object as a package name, the object gets
+stringified and that string gets used as a package name.</p>
+
+<p>This problem could be mitigated by checking for refs in the constructor, dying
+as a result. I'm not sure if it would be a good idea to disallow
+stringification during a call to <code>bless</code>, for historical reasons (it's not a
+bug if it's working as expected, it is a bug if a change breaks code).</p>
+
+<p>Here's some sample code to play around with the problem. Enable/disable the
+overload (comment out the <code>use overload (...)</code>) and see what changes:</p>
+
+<pre><code>use strict;
+use warnings;
+
+package Foo;
+
+use overload (
+    q{""} =&gt; sub { return "Bar" },
+);
+
+sub new {
+    my ( $class ) = @_;
+    return bless {}, $class;
+}
+
+sub greet {
+    print "Hello, World!\n";
+}
+
+package main;
+
+my $obj = Foo-&gt;new;
+$obj-&gt;greet;
+
+my $clone = $obj-&gt;new;
+$clone-&gt;greet;
+</code></pre>
+
+        ]]></content>
+        <updated>
+            2013-04-15T00:00:00Z
+        </updated>
+        <category term="ARRAY(0x7f8e96025e98)" />
+    </entry>
+</rss>
+
