@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T02:52:30Z</updated>
+    <updated>2014-06-22T02:58:00Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/index.atom"/>
     <link rel="alternate" href="http://preaction.github.io/index.html"/>
     <generator version="0.013">Statocles</generator>
@@ -76,7 +76,7 @@ fi
 
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff40d295c68)" />
+        <category term="ARRAY(0x7fbbf96b8868)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</id>
@@ -120,7 +120,7 @@ other learning materials as time goes on. Let us know if you want to help!</p>
 
         ]]></content>
         <updated>2013-06-13T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff40d295920)" />
+        <category term="ARRAY(0x7fbbf96b8520)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</id>
@@ -211,7 +211,7 @@ website</a> and join us!</p>
 
         ]]></content>
         <updated>2013-05-01T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff40d292240)" />
+        <category term="ARRAY(0x7fbbf96aaa40)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</id>
@@ -285,7 +285,7 @@ $clone-&gt;greet;
 
         ]]></content>
         <updated>2013-04-15T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff40d291f88)" />
+        <category term="ARRAY(0x7fbbf96aa788)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</id>
@@ -358,7 +358,7 @@ certainly shaking out the bugs.</li>
 
         ]]></content>
         <updated>2013-04-11T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff40d291cd0)" />
+        <category term="ARRAY(0x7fbbf96aa4d0)" />
     </entry>
 </feed>
 

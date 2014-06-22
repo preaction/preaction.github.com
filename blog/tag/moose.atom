@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/moose/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T02:52:30Z</updated>
+    <updated>2014-06-22T02:58:00Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/moose.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/moose/index.html"/>
     <generator version="0.013">Statocles</generator>
@@ -146,7 +146,7 @@ more very useful tool in a robust toolbox.</p>
 
         ]]></content>
         <updated>2012-10-22T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff40d273b10)" />
+        <category term="ARRAY(0x7fbbf96a0d10)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html</id>
@@ -213,7 +213,7 @@ role I want to change their behavior whenever I need.</p>
 
         ]]></content>
         <updated>2012-10-07T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff40d2735a0)" />
+        <category term="ARRAY(0x7fbbf96a07a0)" />
     </entry>
 </feed>
 

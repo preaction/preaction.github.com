@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/webgui/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T02:52:30Z</updated>
+    <updated>2014-06-22T02:58:01Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/webgui.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/webgui/index.html"/>
     <generator version="0.013">Statocles</generator>
@@ -38,7 +38,7 @@ presentations, and they're served by a nice, fast, free host.</p>
 
         ]]></content>
         <updated>2011-05-20T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff40d27b9b8)" />
+        <category term="ARRAY(0x7fbbf96a29b8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/03/09/chi-saves-the-day.html</id>
@@ -193,7 +193,7 @@ the day!</p>
 
         ]]></content>
         <updated>2011-03-09T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff40b0d2318)" />
+        <category term="ARRAY(0x7fbbfa80ad18)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/03/05/whats-new-in-webgui-8.0-5-asset-helpers.html</id>
@@ -354,7 +354,7 @@ back next time when I introduce WebGUI::FormBuilder.</p>
 
         ]]></content>
         <updated>2011-03-05T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff40d27b460)" />
+        <category term="ARRAY(0x7fbbf96a2460)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/02/18/whats-new-in-webgui-8.0-4-chi-cache.html</id>
@@ -450,7 +450,7 @@ pretty and screenshots!</p>
 
         ]]></content>
         <updated>2011-02-18T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff40b0d2d80)" />
+        <category term="ARRAY(0x7fbbfa80b780)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/02/04/whats-new-in-webgui-8.0-3-upgrade-system.html</id>
@@ -628,7 +628,7 @@ it easier to evolve with it.</p>
 
         ]]></content>
         <updated>2011-02-04T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff40b0d2ac8)" />
+        <category term="ARRAY(0x7fbbfa80b4c8)" />
     </entry>
 </feed>
 
