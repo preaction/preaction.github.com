@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/git/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T02:16:07Z</updated>
+    <updated>2014-06-22T02:20:15Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/git.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/git/index.html"/>
     <generator version="0.013">Statocles</generator>
@@ -76,7 +76,7 @@ fi
 
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7f8cb65abee8)" />
+        <category term="ARRAY(0x7fe715a866e8)" />
     </entry>
 </feed>
 
