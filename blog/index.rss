@@ -8,6 +8,7 @@
         <item>
             <title>Conflict Resolution: local::lib and git's Perl</title>
             <link>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</link>
+            <guid>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</guid>
             <description><![CDATA[
                 <p>I ran into a frustrating problem the other day:</p>
 
@@ -73,12 +74,13 @@ fi
 
             ]]></description>
             <pubDate>
-                Sat, 14 Jun 14 00:00:00 -0600
+                Sat, 14 Jun 2014 00:00:00 -0600
             </pubDate>
         </item>
         <item>
             <title>Chicago.PM New Website! New Meetup URL! New Presentations Project!</title>
             <link>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</link>
+            <guid>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</guid>
             <description><![CDATA[
                 <p>Lots of news for the Chicago.PM group! We've got a <a href="http://chicago.pm.org">new Chicago.PM
 website</a>, powered by <a href="http://github.com">Github</a>, up at
@@ -116,12 +118,13 @@ other learning materials as time goes on. Let us know if you want to help!</p>
 
             ]]></description>
             <pubDate>
-                Thu, 13 Jun 13 00:00:00 -0600
+                Thu, 13 Jun 2013 00:00:00 -0600
             </pubDate>
         </item>
         <item>
             <title>Chicago.PM - Beyond grep - Expanding the Programmer Toolset</title>
             <link>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</link>
+            <guid>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</guid>
             <description><![CDATA[
                 <p>Last week, <a href="http://petdance.com">Andy Lester</a> (author of <a href="http://petdance.com/book/">Land the Tech Job You
 Love</a>) came to talk about tools to help programmers
@@ -206,12 +209,13 @@ website</a> and join us!</p>
 
             ]]></description>
             <pubDate>
-                Wed, 01 May 13 00:00:00 -0600
+                Wed, 01 May 2013 00:00:00 -0600
             </pubDate>
         </item>
         <item>
             <title>I Bless You in the Name of the Stringified Object</title>
             <link>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</link>
+            <guid>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</guid>
             <description><![CDATA[
                 <p>A co-worker came to me today with a curious error message:</p>
 
@@ -279,12 +283,13 @@ $clone-&gt;greet;
 
             ]]></description>
             <pubDate>
-                Mon, 15 Apr 13 00:00:00 -0600
+                Mon, 15 Apr 2013 00:00:00 -0600
             </pubDate>
         </item>
         <item>
             <title>Thoughts while changing the API of a massive framework...</title>
             <link>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</link>
+            <guid>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</guid>
             <description><![CDATA[
                 <p>At the Bank we have a home-grown ETL framework that we've been using for quite
 some time. We recently completed a total rewrite, but unfortunately we left out
@@ -351,7 +356,7 @@ certainly shaking out the bugs.</li>
 
             ]]></description>
             <pubDate>
-                Thu, 11 Apr 13 00:00:00 -0600
+                Thu, 11 Apr 2013 00:00:00 -0600
             </pubDate>
         </item>
     </channel>

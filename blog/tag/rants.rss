@@ -8,6 +8,7 @@
         <item>
             <title>Thoughts while changing the API of a massive framework...</title>
             <link>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</link>
+            <guid>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</guid>
             <description><![CDATA[
                 <p>At the Bank we have a home-grown ETL framework that we've been using for quite
 some time. We recently completed a total rewrite, but unfortunately we left out
@@ -74,7 +75,7 @@ certainly shaking out the bugs.</li>
 
             ]]></description>
             <pubDate>
-                Thu, 11 Apr 13 00:00:00 -0600
+                Thu, 11 Apr 2013 00:00:00 -0600
             </pubDate>
         </item>
     </channel>

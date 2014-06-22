@@ -8,6 +8,7 @@
         <item>
             <title>Using MooseX::Types to Inflate Config Values</title>
             <link>http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html</link>
+            <guid>http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html</guid>
             <description><![CDATA[
                 <p>For a large application, configuration files become a necessity. They help
 flexible code be used in multiple instances across multiple modules. But they
@@ -143,12 +144,13 @@ more very useful tool in a robust toolbox.</p>
 
             ]]></description>
             <pubDate>
-                Mon, 22 Oct 12 00:00:00 -0600
+                Mon, 22 Oct 2012 00:00:00 -0600
             </pubDate>
         </item>
         <item>
             <title>Run-time Class Composition With Moose</title>
             <link>http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html</link>
+            <guid>http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html</guid>
             <description><![CDATA[
                 <p>Moose is great! At its very basic, it simplifies the boilerplate required to
 create Perl objects immensely, providing attributes with type constraints,
@@ -209,7 +211,7 @@ role I want to change their behavior whenever I need.</p>
 
             ]]></description>
             <pubDate>
-                Sun, 07 Oct 12 00:00:00 -0600
+                Sun, 07 Oct 2012 00:00:00 -0600
             </pubDate>
         </item>
     </channel>

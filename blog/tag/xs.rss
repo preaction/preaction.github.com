@@ -8,6 +8,7 @@
         <item>
             <title>Adventures in Debugging C/XS 2: Debugging Boogaloo</title>
             <link>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</link>
+            <guid>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</guid>
             <description><![CDATA[
                 <p>... or "Ask Not To Whom The Pointer Points, It Points To Thee."</p>
 
@@ -69,12 +70,13 @@ works and has proper tests (written in Perl, of course).</p>
 
             ]]></description>
             <pubDate>
-                Tue, 20 Mar 12 00:00:00 -0600
+                Tue, 20 Mar 2012 00:00:00 -0600
             </pubDate>
         </item>
         <item>
             <title>Adventures in Debugging C/XS</title>
             <link>http://preaction.github.io/blog/2011/11/16/adventures-in-debugging-c-xs.html</link>
+            <guid>http://preaction.github.io/blog/2011/11/16/adventures-in-debugging-c-xs.html</guid>
             <description><![CDATA[
                 <p>... or Why A Good Perl Developer Is Not Automatically A Good C Developer, the
 Story of C Programming via Google.</p>
@@ -121,7 +123,7 @@ Heap and stack? Might as well be herp and derp.</p>
 
             ]]></description>
             <pubDate>
-                Wed, 16 Nov 11 00:00:00 -0600
+                Wed, 16 Nov 2011 00:00:00 -0600
             </pubDate>
         </item>
     </channel>

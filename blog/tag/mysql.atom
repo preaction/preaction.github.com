@@ -2,16 +2,16 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/mysql/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T00:04:03Z</updated>
+    <updated>2014-06-22T00:08:23Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/mysql.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/mysql/index.html"/>
     <generator version="0.013">Statocles</generator>
     <entry>
-        <id>/blog/2011/03/09/chi-saves-the-day.html</id>
+        <id>http://preaction.github.io/blog/2011/03/09/chi-saves-the-day.html</id>
         <title>CHI Saves The Day</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2011/03/09/chi-saves-the-day.html" />
-        <content><![CDATA[
+        <content type="text/html"><![CDATA[
             <h2>The Server Is Down</h2>
 
 <ol>
@@ -158,10 +158,8 @@ hours (the peak time for this site), but right now it looks like CHI has saved
 the day!</p>
 
         ]]></content>
-        <updated>
-            2011-03-09T00:00:00Z
-        </updated>
-        <category term="ARRAY(0x7fa07e00b350)" />
+        <updated>2011-03-09T00:00:00Z</updated>
+        <category term="ARRAY(0x7fbf6b80b350)" />
     </entry>
-</rss>
+</feed>
 

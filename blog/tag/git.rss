@@ -8,6 +8,7 @@
         <item>
             <title>Conflict Resolution: local::lib and git's Perl</title>
             <link>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</link>
+            <guid>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</guid>
             <description><![CDATA[
                 <p>I ran into a frustrating problem the other day:</p>
 
@@ -73,7 +74,7 @@ fi
 
             ]]></description>
             <pubDate>
-                Sat, 14 Jun 14 00:00:00 -0600
+                Sat, 14 Jun 2014 00:00:00 -0600
             </pubDate>
         </item>
     </channel>

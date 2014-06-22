@@ -8,6 +8,7 @@
         <item>
             <title>I Bless You in the Name of the Stringified Object</title>
             <link>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</link>
+            <guid>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</guid>
             <description><![CDATA[
                 <p>A co-worker came to me today with a curious error message:</p>
 
@@ -75,7 +76,7 @@ $clone-&gt;greet;
 
             ]]></description>
             <pubDate>
-                Mon, 15 Apr 13 00:00:00 -0600
+                Mon, 15 Apr 2013 00:00:00 -0600
             </pubDate>
         </item>
     </channel>

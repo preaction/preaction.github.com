@@ -2,16 +2,16 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/moose/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T00:04:03Z</updated>
+    <updated>2014-06-22T00:08:22Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/moose.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/moose/index.html"/>
     <generator version="0.013">Statocles</generator>
     <entry>
-        <id>/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html</id>
+        <id>http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html</id>
         <title>Using MooseX::Types to Inflate Config Values</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html" />
-        <content><![CDATA[
+        <content type="text/html"><![CDATA[
             <p>For a large application, configuration files become a necessity. They help
 flexible code be used in multiple instances across multiple modules. But they
 are, for the most part, only data structures, which can be a problem if the
@@ -145,17 +145,15 @@ force-uppercase a string so that Log4perl would do its job. Coercions are one
 more very useful tool in a robust toolbox.</p>
 
         ]]></content>
-        <updated>
-            2012-10-22T00:00:00Z
-        </updated>
-        <category term="ARRAY(0x7fa07e010170)" />
+        <updated>2012-10-22T00:00:00Z</updated>
+        <category term="ARRAY(0x7fbf6b821f70)" />
     </entry>
     <entry>
-        <id>/blog/2012/10/07/run-time-class-composition-with-moose.html</id>
+        <id>http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html</id>
         <title>Run-time Class Composition With Moose</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html" />
-        <content><![CDATA[
+        <content type="text/html"><![CDATA[
             <p>Moose is great! At its very basic, it simplifies the boilerplate required to
 create Perl objects immensely, providing attributes with type constraints,
 method modifiers for semantic enhancement, and role-based class composition for
@@ -214,10 +212,8 @@ things, but doesn't allow us to add attributes or methods).</p>
 role I want to change their behavior whenever I need.</p>
 
         ]]></content>
-        <updated>
-            2012-10-07T00:00:00Z
-        </updated>
-        <category term="ARRAY(0x7fa07e0185d8)" />
+        <updated>2012-10-07T00:00:00Z</updated>
+        <category term="ARRAY(0x7fbf6b8195d8)" />
     </entry>
-</rss>
+</feed>
 

@@ -8,6 +8,7 @@
         <item>
             <title>WebGUI 8 Status Report</title>
             <link>http://preaction.github.io/blog/2011/05/20/webgui-8-status-report.html</link>
+            <guid>http://preaction.github.io/blog/2011/05/20/webgui-8-status-report.html</guid>
             <description><![CDATA[
                 <p>A major milestone in WebGUI 8 development was reached this week: A dry-run of
 the WebGUI 8 upgrade was successfully run against the plainblack.com database.
@@ -35,12 +36,13 @@ presentations, and they're served by a nice, fast, free host.</p>
 
             ]]></description>
             <pubDate>
-                Fri, 20 May 11 00:00:00 -0600
+                Fri, 20 May 2011 00:00:00 -0600
             </pubDate>
         </item>
         <item>
             <title>CHI Saves The Day</title>
             <link>http://preaction.github.io/blog/2011/03/09/chi-saves-the-day.html</link>
+            <guid>http://preaction.github.io/blog/2011/03/09/chi-saves-the-day.html</guid>
             <description><![CDATA[
                 <h2>The Server Is Down</h2>
 
@@ -189,12 +191,13 @@ the day!</p>
 
             ]]></description>
             <pubDate>
-                Wed, 09 Mar 11 00:00:00 -0600
+                Wed, 09 Mar 2011 00:00:00 -0600
             </pubDate>
         </item>
         <item>
             <title>What's New in WebGUI 8.0 #5 - Asset Helpers</title>
             <link>http://preaction.github.io/blog/2011/03/05/whats-new-in-webgui-8.0-5-asset-helpers.html</link>
+            <guid>http://preaction.github.io/blog/2011/03/05/whats-new-in-webgui-8.0-5-asset-helpers.html</guid>
             <description><![CDATA[
                 <p>By far the biggest change we've made in WebGUI 8 is the new Admin Console.
 Though parts of it may look familiar, it has been completely rewritten from
@@ -349,12 +352,13 @@ back next time when I introduce WebGUI::FormBuilder.</p>
 
             ]]></description>
             <pubDate>
-                Sat, 05 Mar 11 00:00:00 -0600
+                Sat, 05 Mar 2011 00:00:00 -0600
             </pubDate>
         </item>
         <item>
             <title>What's New in WebGUI 8.0 #4 -- CHI Cache</title>
             <link>http://preaction.github.io/blog/2011/02/18/whats-new-in-webgui-8.0-4-chi-cache.html</link>
+            <guid>http://preaction.github.io/blog/2011/02/18/whats-new-in-webgui-8.0-4-chi-cache.html</guid>
             <description><![CDATA[
                 <p>Caching is a tricky business. Having just one kind of cache won't work, because
 the production environment will greatly determine the most efficient caching
@@ -444,12 +448,13 @@ pretty and screenshots!</p>
 
             ]]></description>
             <pubDate>
-                Fri, 18 Feb 11 00:00:00 -0600
+                Fri, 18 Feb 2011 00:00:00 -0600
             </pubDate>
         </item>
         <item>
             <title>What's New in WebGUI 8.0 #3: Upgrade System</title>
             <link>http://preaction.github.io/blog/2011/02/04/whats-new-in-webgui-8.0-3-upgrade-system.html</link>
+            <guid>http://preaction.github.io/blog/2011/02/04/whats-new-in-webgui-8.0-3-upgrade-system.html</guid>
             <description><![CDATA[
                 <h2>Following The Path</h2>
 
@@ -621,7 +626,7 @@ it easier to evolve with it.</p>
 
             ]]></description>
             <pubDate>
-                Fri, 04 Feb 11 00:00:00 -0600
+                Fri, 04 Feb 2011 00:00:00 -0600
             </pubDate>
         </item>
     </channel>

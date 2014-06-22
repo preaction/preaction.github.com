@@ -2,16 +2,16 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/perl/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T00:04:03Z</updated>
+    <updated>2014-06-22T00:08:23Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/perl.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/perl/index.html"/>
     <generator version="0.013">Statocles</generator>
     <entry>
-        <id>/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
+        <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
         <title>Conflict Resolution: local::lib and git's Perl</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html" />
-        <content><![CDATA[
+        <content type="text/html"><![CDATA[
             <p>I ran into a frustrating problem the other day:</p>
 
 <pre><code>$ git add -i
@@ -75,17 +75,15 @@ fi
 <p>Now I can do my proper <code>git add --interactive</code> again!</p>
 
         ]]></content>
-        <updated>
-            2014-06-14T00:00:00Z
-        </updated>
-        <category term="ARRAY(0x7fa07e0270a0)" />
+        <updated>2014-06-14T00:00:00Z</updated>
+        <category term="ARRAY(0x7fbf6b8150a0)" />
     </entry>
     <entry>
-        <id>/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</id>
+        <id>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</id>
         <title>Adventures in Debugging C/XS 2: Debugging Boogaloo</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html" />
-        <content><![CDATA[
+        <content type="text/html"><![CDATA[
             <p>... or "Ask Not To Whom The Pointer Points, It Points To Thee."</p>
 
 <p>TL;DR: A pointer is not a reference. A pointer knows nothing about the data
@@ -145,10 +143,8 @@ object. I'll be planning a new API as soon as I confirm this one actually
 works and has proper tests (written in Perl, of course).</p>
 
         ]]></content>
-        <updated>
-            2012-03-20T00:00:00Z
-        </updated>
-        <category term="ARRAY(0x7fa07e00c188)" />
+        <updated>2012-03-20T00:00:00Z</updated>
+        <category term="ARRAY(0x7fbf6b80c188)" />
     </entry>
-</rss>
+</feed>
 

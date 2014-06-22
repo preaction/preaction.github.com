@@ -2,16 +2,16 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/rants/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T00:04:03Z</updated>
+    <updated>2014-06-22T00:08:23Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/rants.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/rants/index.html"/>
     <generator version="0.013">Statocles</generator>
     <entry>
-        <id>/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</id>
+        <id>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</id>
         <title>Thoughts while changing the API of a massive framework...</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html" />
-        <content><![CDATA[
+        <content type="text/html"><![CDATA[
             <p>At the Bank we have a home-grown ETL framework that we've been using for quite
 some time. We recently completed a total rewrite, but unfortunately we left out
 a few changes. Had I gotten those changes in 5 months ago, I would have only
@@ -76,10 +76,8 @@ certainly shaking out the bugs.</li>
 122 modules.</p>
 
         ]]></content>
-        <updated>
-            2013-04-11T00:00:00Z
-        </updated>
-        <category term="ARRAY(0x7fa07e026530)" />
+        <updated>2013-04-11T00:00:00Z</updated>
+        <category term="ARRAY(0x7fbf6b814530)" />
     </entry>
-</rss>
+</feed>
 
