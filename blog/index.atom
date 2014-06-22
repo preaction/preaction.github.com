@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T00:08:22Z</updated>
+    <updated>2014-06-22T00:10:24Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/index.atom"/>
     <link rel="alternate" href="http://preaction.github.io/index.html"/>
     <generator version="0.013">Statocles</generator>
@@ -11,7 +11,7 @@
         <title>Conflict Resolution: local::lib and git's Perl</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html" />
-        <content type="text/html"><![CDATA[
+        <content type="html"><![CDATA[
             <p>I ran into a frustrating problem the other day:</p>
 
 <pre><code>$ git add -i
@@ -76,14 +76,14 @@ fi
 
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7fbf6b8150a0)" />
+        <category term="ARRAY(0x7fc0bc6a66a0)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</id>
         <title>Chicago.PM New Website! New Meetup URL! New Presentations Project!</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html" />
-        <content type="text/html"><![CDATA[
+        <content type="html"><![CDATA[
             <p>Lots of news for the Chicago.PM group! We've got a <a href="http://chicago.pm.org">new Chicago.PM
 website</a>, powered by <a href="http://github.com">Github</a>, up at
 <a href="http://chicago.pm.org">http://chicago.pm.org</a>. The website is completely
@@ -120,14 +120,14 @@ other learning materials as time goes on. Let us know if you want to help!</p>
 
         ]]></content>
         <updated>2013-06-13T00:00:00Z</updated>
-        <category term="ARRAY(0x7fbf6b814d58)" />
+        <category term="ARRAY(0x7fc0bc6a6358)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</id>
         <title>Chicago.PM - Beyond grep - Expanding the Programmer Toolset</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html" />
-        <content type="text/html"><![CDATA[
+        <content type="html"><![CDATA[
             <p>Last week, <a href="http://petdance.com">Andy Lester</a> (author of <a href="http://petdance.com/book/">Land the Tech Job You
 Love</a>) came to talk about tools to help programmers
 work more efficiently and the 2.0 release of his <a href="http://beyondgrep.com">Ack search
@@ -211,14 +211,14 @@ website</a> and join us!</p>
 
         ]]></content>
         <updated>2013-05-01T00:00:00Z</updated>
-        <category term="ARRAY(0x7fbf6b814aa0)" />
+        <category term="ARRAY(0x7fc0bc6a60a0)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</id>
         <title>I Bless You in the Name of the Stringified Object</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html" />
-        <content type="text/html"><![CDATA[
+        <content type="html"><![CDATA[
             <p>A co-worker came to me today with a curious error message:</p>
 
 <pre><code>use DateTime;
@@ -285,14 +285,14 @@ $clone-&gt;greet;
 
         ]]></content>
         <updated>2013-04-15T00:00:00Z</updated>
-        <category term="ARRAY(0x7fbf6b8147e8)" />
+        <category term="ARRAY(0x7fc0bc6a5de8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</id>
         <title>Thoughts while changing the API of a massive framework...</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html" />
-        <content type="text/html"><![CDATA[
+        <content type="html"><![CDATA[
             <p>At the Bank we have a home-grown ETL framework that we've been using for quite
 some time. We recently completed a total rewrite, but unfortunately we left out
 a few changes. Had I gotten those changes in 5 months ago, I would have only
@@ -358,7 +358,7 @@ certainly shaking out the bugs.</li>
 
         ]]></content>
         <updated>2013-04-11T00:00:00Z</updated>
-        <category term="ARRAY(0x7fbf6b814530)" />
+        <category term="ARRAY(0x7fc0bc6a5b30)" />
     </entry>
 </feed>
 

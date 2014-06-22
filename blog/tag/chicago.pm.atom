@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/chicago.pm/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T00:08:23Z</updated>
+    <updated>2014-06-22T00:10:24Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/chicago.pm.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/chicago.pm/index.html"/>
     <generator version="0.013">Statocles</generator>
@@ -11,7 +11,7 @@
         <title>Chicago.PM New Website! New Meetup URL! New Presentations Project!</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html" />
-        <content type="text/html"><![CDATA[
+        <content type="html"><![CDATA[
             <p>Lots of news for the Chicago.PM group! We've got a <a href="http://chicago.pm.org">new Chicago.PM
 website</a>, powered by <a href="http://github.com">Github</a>, up at
 <a href="http://chicago.pm.org">http://chicago.pm.org</a>. The website is completely
@@ -48,14 +48,14 @@ other learning materials as time goes on. Let us know if you want to help!</p>
 
         ]]></content>
         <updated>2013-06-13T00:00:00Z</updated>
-        <category term="ARRAY(0x7fbf6b814d58)" />
+        <category term="ARRAY(0x7fc0bc6a6358)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</id>
         <title>Chicago.PM - Beyond grep - Expanding the Programmer Toolset</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html" />
-        <content type="text/html"><![CDATA[
+        <content type="html"><![CDATA[
             <p>Last week, <a href="http://petdance.com">Andy Lester</a> (author of <a href="http://petdance.com/book/">Land the Tech Job You
 Love</a>) came to talk about tools to help programmers
 work more efficiently and the 2.0 release of his <a href="http://beyondgrep.com">Ack search
@@ -139,14 +139,14 @@ website</a> and join us!</p>
 
         ]]></content>
         <updated>2013-05-01T00:00:00Z</updated>
-        <category term="ARRAY(0x7fbf6b814aa0)" />
+        <category term="ARRAY(0x7fc0bc6a60a0)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html</id>
         <title>Chicago.PM - Dependency Injection (also: Beam::Wire)</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html" />
-        <content type="text/html"><![CDATA[
+        <content type="html"><![CDATA[
             <p>At <a href="http://www.meetup.com/Windy-City-Perl-mongers-Meetup/events/104681992/">this month's Chicago.PM
 meeting</a>,
 I gave <a href="http://preaction.github.com/Perl/Dependency-Injection.html">a presentation on Dependency Injection and my new module,
@@ -182,14 +182,14 @@ Beam::Wire on play-perl</a>.</p>
 
         ]]></content>
         <updated>2013-03-29T00:00:00Z</updated>
-        <category term="ARRAY(0x7fbf6b814278)" />
+        <category term="ARRAY(0x7fc0bc6a5878)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/03/14/chicago.pm-mojolicious.html</id>
         <title>Chicago.PM - Mojolicious</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2013/03/14/chicago.pm-mojolicious.html" />
-        <content type="text/html"><![CDATA[
+        <content type="html"><![CDATA[
             <p>February's meeting was about the <a href="http://mojolicio.us">Mojolicious Web
 Framework</a>. <a href="http://blogs.perl.org/users/joel_berger/">Joel
 Berger</a> has written a <a href="https://metacpan.org/module/Galileo">minimal Perl
@@ -215,14 +215,14 @@ AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
 
         ]]></content>
         <updated>2013-03-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7fbf6b822798)" />
+        <category term="ARRAY(0x7fc0bc69db98)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html</id>
         <title>Chicago.PM - Scripting Git With Perl</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html" />
-        <content type="text/html"><![CDATA[
+        <content type="html"><![CDATA[
             <p>This month's presentation was on the
 <a href="http://search.cpan.org/dist/Git-Repository/">Git::Repository</a> Perl module,
 given by me. In both my jobs, I use the Git::Repository module to automate
@@ -256,7 +256,7 @@ talk</a></p>
 
         ]]></content>
         <updated>2012-10-28T00:00:00Z</updated>
-        <category term="ARRAY(0x7fbf6b822228)" />
+        <category term="ARRAY(0x7fc0bc69d628)" />
     </entry>
 </feed>
 

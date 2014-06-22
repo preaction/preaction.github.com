@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/mysql/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T00:08:23Z</updated>
+    <updated>2014-06-22T00:10:24Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/mysql.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/mysql/index.html"/>
     <generator version="0.013">Statocles</generator>
@@ -11,7 +11,7 @@
         <title>CHI Saves The Day</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2011/03/09/chi-saves-the-day.html" />
-        <content type="text/html"><![CDATA[
+        <content type="html"><![CDATA[
             <h2>The Server Is Down</h2>
 
 <ol>
@@ -159,7 +159,7 @@ the day!</p>
 
         ]]></content>
         <updated>2011-03-09T00:00:00Z</updated>
-        <category term="ARRAY(0x7fbf6b80b350)" />
+        <category term="ARRAY(0x7fc0bc68b350)" />
     </entry>
 </feed>
 
