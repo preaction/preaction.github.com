@@ -8,7 +8,7 @@
         <item>
             <title>Using MooseX::Types to Inflate Config Values</title>
             <link>http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html</link>
-            <description><![[CDATA
+            <description><![CDATA[
                 <p>For a large application, configuration files become a necessity. They help
 flexible code be used in multiple instances across multiple modules. But they
 are, for the most part, only data structures, which can be a problem if the
@@ -149,7 +149,7 @@ more very useful tool in a robust toolbox.</p>
         <item>
             <title>Run-time Class Composition With Moose</title>
             <link>http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html</link>
-            <description><![[CDATA
+            <description><![CDATA[
                 <p>Moose is great! At its very basic, it simplifies the boilerplate required to
 create Perl objects immensely, providing attributes with type constraints,
 method modifiers for semantic enhancement, and role-based class composition for

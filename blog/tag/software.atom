@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/software/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T00:00:39Z</updated>
+    <updated>2014-06-22T00:02:07Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/software.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/software/index.html"/>
     <generator version="0.013">Statocles</generator>
@@ -11,7 +11,7 @@
         <title>Testing is a Feature of Your Service</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2012/11/04/testing-is-a-feature-of-your-service.html" />
-        <content><![[CDATA
+        <content><![CDATA[
             <p>My job at Bank of America consists largely of data collection and storage. To
 collect data in Perl, I have to write XS modules to interface with the
 vendor-supplied native libraries. Because I want to know my code works, my XS
@@ -60,14 +60,14 @@ everyone write better code.</p>
         <updated>
             2012-11-04T00:00:00Z
         </updated>
-        <category term="ARRAY(0x7f8e9601b790)" />
+        <category term="ARRAY(0x7fc972ea1190)" />
     </entry>
     <entry>
         <id>/blog/2012/09/23/plan-software-to-live-forever.html</id>
         <title>Chicago.PM - Beyond grep - Expanding the Programmer Toolset</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2012/09/23/plan-software-to-live-forever.html" />
-        <content><![[CDATA
+        <content><![CDATA[
             <p>How often have I told myself, "I'll kludge this now and rewrite it later"? And
 how many times did I actually go back and rewrite that kludgy bit? "Too often"
 and "not enough". Many job postings include the phrase "update legacy
@@ -131,7 +131,7 @@ minimum effort.</p>
         <updated>
             2012-09-23T00:00:00Z
         </updated>
-        <category term="ARRAY(0x7f8e9600d330)" />
+        <category term="ARRAY(0x7fc972eb2730)" />
     </entry>
 </rss>
 

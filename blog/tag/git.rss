@@ -8,7 +8,7 @@
         <item>
             <title>Conflict Resolution: local::lib and git's Perl</title>
             <link>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</link>
-            <description><![[CDATA
+            <description><![CDATA[
                 <p>I ran into a frustrating problem the other day:</p>
 
 <pre><code>$ git add -i

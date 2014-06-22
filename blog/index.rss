@@ -8,7 +8,7 @@
         <item>
             <title>Conflict Resolution: local::lib and git's Perl</title>
             <link>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</link>
-            <description><![[CDATA
+            <description><![CDATA[
                 <p>I ran into a frustrating problem the other day:</p>
 
 <pre><code>$ git add -i
@@ -79,7 +79,7 @@ fi
         <item>
             <title>Chicago.PM New Website! New Meetup URL! New Presentations Project!</title>
             <link>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</link>
-            <description><![[CDATA
+            <description><![CDATA[
                 <p>Lots of news for the Chicago.PM group! We've got a <a href="http://chicago.pm.org">new Chicago.PM
 website</a>, powered by <a href="http://github.com">Github</a>, up at
 <a href="http://chicago.pm.org">http://chicago.pm.org</a>. The website is completely
@@ -122,7 +122,7 @@ other learning materials as time goes on. Let us know if you want to help!</p>
         <item>
             <title>Chicago.PM - Beyond grep - Expanding the Programmer Toolset</title>
             <link>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</link>
-            <description><![[CDATA
+            <description><![CDATA[
                 <p>Last week, <a href="http://petdance.com">Andy Lester</a> (author of <a href="http://petdance.com/book/">Land the Tech Job You
 Love</a>) came to talk about tools to help programmers
 work more efficiently and the 2.0 release of his <a href="http://beyondgrep.com">Ack search
@@ -212,7 +212,7 @@ website</a> and join us!</p>
         <item>
             <title>I Bless You in the Name of the Stringified Object</title>
             <link>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</link>
-            <description><![[CDATA
+            <description><![CDATA[
                 <p>A co-worker came to me today with a curious error message:</p>
 
 <pre><code>use DateTime;
@@ -285,7 +285,7 @@ $clone-&gt;greet;
         <item>
             <title>Thoughts while changing the API of a massive framework...</title>
             <link>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</link>
-            <description><![[CDATA
+            <description><![CDATA[
                 <p>At the Bank we have a home-grown ETL framework that we've been using for quite
 some time. We recently completed a total rewrite, but unfortunately we left out
 a few changes. Had I gotten those changes in 5 months ago, I would have only

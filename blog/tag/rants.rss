@@ -8,7 +8,7 @@
         <item>
             <title>Thoughts while changing the API of a massive framework...</title>
             <link>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</link>
-            <description><![[CDATA
+            <description><![CDATA[
                 <p>At the Bank we have a home-grown ETL framework that we've been using for quite
 some time. We recently completed a total rewrite, but unfortunately we left out
 a few changes. Had I gotten those changes in 5 months ago, I would have only

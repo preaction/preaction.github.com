@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/git/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T00:00:39Z</updated>
+    <updated>2014-06-22T00:02:07Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/git.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/git/index.html"/>
     <generator version="0.013">Statocles</generator>
@@ -11,7 +11,7 @@
         <title>Conflict Resolution: local::lib and git's Perl</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html" />
-        <content><![[CDATA
+        <content><![CDATA[
             <p>I ran into a frustrating problem the other day:</p>
 
 <pre><code>$ git add -i
@@ -78,7 +78,7 @@ fi
         <updated>
             2014-06-14T00:00:00Z
         </updated>
-        <category term="ARRAY(0x7f8e96026750)" />
+        <category term="ARRAY(0x7fc972ec0b50)" />
     </entry>
 </rss>
 

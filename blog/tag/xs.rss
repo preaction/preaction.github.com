@@ -8,7 +8,7 @@
         <item>
             <title>Adventures in Debugging C/XS 2: Debugging Boogaloo</title>
             <link>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</link>
-            <description><![[CDATA
+            <description><![CDATA[
                 <p>... or "Ask Not To Whom The Pointer Points, It Points To Thee."</p>
 
 <p>TL;DR: A pointer is not a reference. A pointer knows nothing about the data
@@ -75,7 +75,7 @@ works and has proper tests (written in Perl, of course).</p>
         <item>
             <title>Adventures in Debugging C/XS</title>
             <link>http://preaction.github.io/blog/2011/11/16/adventures-in-debugging-c-xs.html</link>
-            <description><![[CDATA
+            <description><![CDATA[
                 <p>... or Why A Good Perl Developer Is Not Automatically A Good C Developer, the
 Story of C Programming via Google.</p>
 
