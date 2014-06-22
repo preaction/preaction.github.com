@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/xs/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T02:08:16Z</updated>
+    <updated>2014-06-22T02:14:38Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/xs.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/xs/index.html"/>
     <generator version="0.013">Statocles</generator>
@@ -72,7 +72,7 @@ works and has proper tests (written in Perl, of course).</p>
 
         ]]></content>
         <updated>2012-03-20T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb093180b18)" />
+        <category term="ARRAY(0x7fd2b704d718)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/11/16/adventures-in-debugging-c-xs.html</id>
@@ -125,7 +125,7 @@ Heap and stack? Might as well be herp and derp.</p>
 
         ]]></content>
         <updated>2011-11-16T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb091804060)" />
+        <category term="ARRAY(0x7fd2b7051460)" />
     </entry>
 </feed>
 
