@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/rants/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T00:02:07Z</updated>
+    <updated>2014-06-22T00:04:03Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/rants.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/rants/index.html"/>
     <generator version="0.013">Statocles</generator>
@@ -79,7 +79,7 @@ certainly shaking out the bugs.</li>
         <updated>
             2013-04-11T00:00:00Z
         </updated>
-        <category term="ARRAY(0x7fc972ebffe0)" />
+        <category term="ARRAY(0x7fa07e026530)" />
     </entry>
 </rss>
 

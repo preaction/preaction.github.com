@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T00:02:07Z</updated>
+    <updated>2014-06-22T00:04:03Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/index.atom"/>
     <link rel="alternate" href="http://preaction.github.io/index.html"/>
     <generator version="0.013">Statocles</generator>
@@ -78,7 +78,7 @@ fi
         <updated>
             2014-06-14T00:00:00Z
         </updated>
-        <category term="ARRAY(0x7fc972ec0b50)" />
+        <category term="ARRAY(0x7fa07e0270a0)" />
     </entry>
     <entry>
         <id>/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</id>
@@ -124,7 +124,7 @@ other learning materials as time goes on. Let us know if you want to help!</p>
         <updated>
             2013-06-13T00:00:00Z
         </updated>
-        <category term="ARRAY(0x7fc972ec0808)" />
+        <category term="ARRAY(0x7fa07e026d58)" />
     </entry>
     <entry>
         <id>/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</id>
@@ -217,7 +217,7 @@ website</a> and join us!</p>
         <updated>
             2013-05-01T00:00:00Z
         </updated>
-        <category term="ARRAY(0x7fc972ec0550)" />
+        <category term="ARRAY(0x7fa07e026aa0)" />
     </entry>
     <entry>
         <id>/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</id>
@@ -293,7 +293,7 @@ $clone-&gt;greet;
         <updated>
             2013-04-15T00:00:00Z
         </updated>
-        <category term="ARRAY(0x7fc972ec0298)" />
+        <category term="ARRAY(0x7fa07e0267e8)" />
     </entry>
     <entry>
         <id>/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</id>
@@ -368,7 +368,7 @@ certainly shaking out the bugs.</li>
         <updated>
             2013-04-11T00:00:00Z
         </updated>
-        <category term="ARRAY(0x7fc972ebffe0)" />
+        <category term="ARRAY(0x7fa07e026530)" />
     </entry>
 </rss>
 
