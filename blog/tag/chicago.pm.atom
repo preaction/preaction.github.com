@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/chicago.pm/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-25T00:16:06Z</updated>
+    <updated>2014-06-25T00:17:04Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/chicago.pm.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/chicago.pm/index.html"/>
     <generator version="0.014">Statocles</generator>
@@ -22,7 +22,7 @@ of the good tutorials and learning sites.</p>
             <p><a href="http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html#section-2">Continue reading...</a></p>
         ]]></content>
         <updated>2013-06-13T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff0a0f89060)" />
+        <category term="ARRAY(0x7f9aeaea2e60)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</id>
@@ -38,7 +38,7 @@ tool</a>.</p>
             <p><a href="http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html#section-2">Continue reading...</a></p>
         ]]></content>
         <updated>2013-05-01T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff0a0f84180)" />
+        <category term="ARRAY(0x7f9aeae9df80)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html</id>
@@ -57,7 +57,7 @@ deck.js, and I'm not sure I like it.]</p>
             <p><a href="http://preaction.github.io/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html#section-2">Continue reading...</a></p>
         ]]></content>
         <updated>2013-03-29T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff0a0f83958)" />
+        <category term="ARRAY(0x7f9aeae9d758)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/03/14/chicago.pm-mojolicious.html</id>
@@ -90,7 +90,7 @@ AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
 
         ]]></content>
         <updated>2013-03-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff0a0f836a0)" />
+        <category term="ARRAY(0x7f9aeae9d4a0)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html</id>
@@ -106,7 +106,7 @@ releases.</p>
             <p><a href="http://preaction.github.io/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html#section-2">Continue reading...</a></p>
         ]]></content>
         <updated>2012-10-28T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff0a0f7ab08)" />
+        <category term="ARRAY(0x7f9aeae90508)" />
     </entry>
 </feed>
 

@@ -76,7 +76,9 @@ fatal: 'add--interactive' appears to be a git command, but we were not
 able to execute it. Maybe git-add--interactive is broken?
 </code></pre>
 
-<p>I've seen this error message from Perl a lot. It basically means that I'm
+            </section>
+            <section id="section-2">
+                <p>I've seen this error message from Perl a lot. It basically means that I'm
 trying to load an XS module compiled for a different version of Perl. Since
 <code>git</code> is directly trying to run <code>/usr/bin/perl</code> (5.10.1) as opposed to the
 <code>perlbrew</code> Perl I have installed (5.16.3), the error comes as no surprise:

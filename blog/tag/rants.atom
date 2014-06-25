@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/rants/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-25T00:16:06Z</updated>
+    <updated>2014-06-25T00:17:04Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/rants.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/rants/index.html"/>
     <generator version="0.014">Statocles</generator>
@@ -25,7 +25,7 @@ make this task surmountable.</p>
             <p><a href="http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html#section-2">Continue reading...</a></p>
         ]]></content>
         <updated>2013-04-11T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff0a0f83c10)" />
+        <category term="ARRAY(0x7f9aeae9da10)" />
     </entry>
 </feed>
 
