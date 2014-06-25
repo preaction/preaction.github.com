@@ -69,6 +69,7 @@ size and give it to me. I don't have to guess at a size beforehand.</p>
 object. I'll be planning a new API as soon as I confirm this one actually
 works and has proper tests (written in Perl, of course).</p>
 
+                    <p><a href="http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html#section-2">Continue reading...</a></p>
             ]]></description>
             <pubDate>
                 Tue, 20 Mar 2012 00:00:00 -0600
@@ -91,7 +92,14 @@ out of the return value. This also only mainly happened during <code>make test</
 Doing <code>prove</code> myself would succeed 19 times out of 20, where make test would
 fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
 
-                <p><a href="http://preaction.github.io/blog/2011/11/16/adventures-in-debugging-c-xs.html#section-2">Continue reading...</a></p>
+                    <ul>
+                        <li><a href="http://blogs.perl.org/users/preaction/2011/11/adventures-in-debugging-cxs.html">
+                            Continue reading <em>Adventures in Debugging C/XS</em> on blogs.perl.org...
+                        </a></li>
+                        <li><a href="http://preaction.github.io/blog/2011/11/16/adventures-in-debugging-c-xs.html#section-2">
+                            Continue reading on Doug Bell
+                        </a></li>
+                    </ul>
             ]]></description>
             <pubDate>
                 Wed, 16 Nov 2011 00:00:00 -0600

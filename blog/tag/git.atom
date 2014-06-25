@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/git/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-25T00:17:03Z</updated>
+    <updated>2014-06-25T00:27:36Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/git.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/git/index.html"/>
     <generator version="0.014">Statocles</generator>
@@ -21,10 +21,17 @@ fatal: 'add--interactive' appears to be a git command, but we were not
 able to execute it. Maybe git-add--interactive is broken?
 </code></pre>
 
-            <p><a href="http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html#section-2">Continue reading...</a></p>
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2014/06/conflict-resolution-locallib-and-gits-perl.html">
+                        Continue reading <em>Conflict Resolution: local::lib and git's Perl</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html#section-2">
+                        Continue reading on Doug Bell
+                    </a></li>
+                </ul>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7f9aeaea31a8)" />
+        <category term="ARRAY(0x7fdfca827da8)" />
     </entry>
 </feed>
 

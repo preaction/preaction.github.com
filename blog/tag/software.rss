@@ -27,7 +27,14 @@ news service goes down in the middle of a data pull? How about if it goes down
 between data pulls but still inside the same process? How do they test if the
 user has input an invalid ID for data?</p>
 
-                <p><a href="http://preaction.github.io/blog/2012/11/04/testing-is-a-feature-of-your-service.html#section-2">Continue reading...</a></p>
+                    <ul>
+                        <li><a href="http://blogs.perl.org/users/preaction/2012/11/testing-is-a-feature-of-your-service.html">
+                            Continue reading <em>Testing is a Feature of Your Service</em> on blogs.perl.org...
+                        </a></li>
+                        <li><a href="http://preaction.github.io/blog/2012/11/04/testing-is-a-feature-of-your-service.html#section-2">
+                            Continue reading on Doug Bell
+                        </a></li>
+                    </ul>
             ]]></description>
             <pubDate>
                 Sun, 04 Nov 2012 00:00:00 -0600
@@ -47,7 +54,14 @@ healthy dose of cargo-culting thrown in. Lately, I've been learning to plan for
 a likely possibility: My code will survive to haunt my bug lists and my resume
 for a long time.</p>
 
-                <p><a href="http://preaction.github.io/blog/2012/09/23/plan-software-to-live-forever.html#section-2">Continue reading...</a></p>
+                    <ul>
+                        <li><a href="http://blogs.perl.org/users/preaction/2012/09/plan-software-to-live-forever.html">
+                            Continue reading <em>Chicago.PM - Beyond grep - Expanding the Programmer Toolset</em> on blogs.perl.org...
+                        </a></li>
+                        <li><a href="http://preaction.github.io/blog/2012/09/23/plan-software-to-live-forever.html#section-2">
+                            Continue reading on Doug Bell
+                        </a></li>
+                    </ul>
             ]]></description>
             <pubDate>
                 Sun, 23 Sep 2012 00:00:00 -0600

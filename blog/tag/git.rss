@@ -20,7 +20,14 @@ fatal: 'add--interactive' appears to be a git command, but we were not
 able to execute it. Maybe git-add--interactive is broken?
 </code></pre>
 
-                <p><a href="http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html#section-2">Continue reading...</a></p>
+                    <ul>
+                        <li><a href="http://blogs.perl.org/users/preaction/2014/06/conflict-resolution-locallib-and-gits-perl.html">
+                            Continue reading <em>Conflict Resolution: local::lib and git's Perl</em> on blogs.perl.org...
+                        </a></li>
+                        <li><a href="http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html#section-2">
+                            Continue reading on Doug Bell
+                        </a></li>
+                    </ul>
             ]]></description>
             <pubDate>
                 Sat, 14 Jun 2014 00:00:00 -0600

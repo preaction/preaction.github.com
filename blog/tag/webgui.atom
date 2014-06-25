@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/webgui/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-25T00:17:04Z</updated>
+    <updated>2014-06-25T00:27:36Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/webgui.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/webgui/index.html"/>
     <generator version="0.014">Statocles</generator>
@@ -36,9 +36,17 @@ same for all my presentations: They look good, readable without a special
 program, editable without a special program, anyone can fork and update my
 presentations, and they're served by a nice, fast, free host.</p>
 
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2011/05/webgui-8-status-report.html">
+                        Continue reading <em>WebGUI 8 Status Report</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2011/05/20/webgui-8-status-report.html#section-2">
+                        Continue reading on Doug Bell
+                    </a></li>
+                </ul>
         ]]></content>
         <updated>2011-05-20T00:00:00Z</updated>
-        <category term="ARRAY(0x7f9aeae8baf8)" />
+        <category term="ARRAY(0x7fdfca8092f8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/03/09/chi-saves-the-day.html</id>
@@ -191,9 +199,17 @@ unresponsive server. We'll see how things go tomorrow during normal business
 hours (the peak time for this site), but right now it looks like CHI has saved
 the day!</p>
 
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2011/03/chi-saves-the-day.html">
+                        Continue reading <em>CHI Saves The Day</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2011/03/09/chi-saves-the-day.html#section-2">
+                        Continue reading on Doug Bell
+                    </a></li>
+                </ul>
         ]]></content>
         <updated>2011-03-09T00:00:00Z</updated>
-        <category term="ARRAY(0x7f9aeae83458)" />
+        <category term="ARRAY(0x7fdfca806e58)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/03/05/whats-new-in-webgui-8.0-5-asset-helpers.html</id>
@@ -209,10 +225,17 @@ making calls to JSON services in Perl.</p>
 <p>I could talk about how to use the admin interface, but I don't think that's
 why you would read this blog, so instead I'm going to talk about how you can add functionality to it.</p>
 
-            <p><a href="http://preaction.github.io/blog/2011/03/05/whats-new-in-webgui-8.0-5-asset-helpers.html#section-2">Continue reading...</a></p>
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2011/03/whats-new-in-webgui-80-5---asset-helpers.html">
+                        Continue reading <em>What's New in WebGUI 8.0 #5 - Asset Helpers</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2011/03/05/whats-new-in-webgui-8.0-5-asset-helpers.html#section-2">
+                        Continue reading on Doug Bell
+                    </a></li>
+                </ul>
         ]]></content>
         <updated>2011-03-05T00:00:00Z</updated>
-        <category term="ARRAY(0x7f9aeae84178)" />
+        <category term="ARRAY(0x7fdfca807b78)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/02/18/whats-new-in-webgui-8.0-4-chi-cache.html</id>
@@ -306,9 +329,17 @@ will be.</p>
 <p>Stay tuned for next time when I explore our new Admin Interface. Lots of
 pretty and screenshots!</p>
 
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2011/02/whats-new-in-webgui-80-4----chi-cache.html">
+                        Continue reading <em>What's New in WebGUI 8.0 #4 -- CHI Cache</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2011/02/18/whats-new-in-webgui-8.0-4-chi-cache.html#section-2">
+                        Continue reading on Doug Bell
+                    </a></li>
+                </ul>
         ]]></content>
         <updated>2011-02-18T00:00:00Z</updated>
-        <category term="ARRAY(0x7f9aeae83ec0)" />
+        <category term="ARRAY(0x7fdfca8078c0)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/02/04/whats-new-in-webgui-8.0-3-upgrade-system.html</id>
@@ -484,9 +515,17 @@ it easier to evolve with it.</p>
 
 <p>Stay tuned for next time where I'll show off our CHI-based caching system.</p>
 
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2011/02/whats-new-in-webgui-80-3-upgrade-system.html">
+                        Continue reading <em>What's New in WebGUI 8.0 #3: Upgrade System</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2011/02/04/whats-new-in-webgui-8.0-3-upgrade-system.html#section-2">
+                        Continue reading on Doug Bell
+                    </a></li>
+                </ul>
         ]]></content>
         <updated>2011-02-04T00:00:00Z</updated>
-        <category term="ARRAY(0x7f9aeae83c08)" />
+        <category term="ARRAY(0x7fdfca807608)" />
     </entry>
 </feed>
 

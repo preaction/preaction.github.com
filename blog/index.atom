@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-25T00:17:03Z</updated>
+    <updated>2014-06-25T00:27:36Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/index.atom"/>
     <link rel="alternate" href="http://preaction.github.io/index.html"/>
     <generator version="0.014">Statocles</generator>
@@ -21,10 +21,17 @@ fatal: 'add--interactive' appears to be a git command, but we were not
 able to execute it. Maybe git-add--interactive is broken?
 </code></pre>
 
-            <p><a href="http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html#section-2">Continue reading...</a></p>
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2014/06/conflict-resolution-locallib-and-gits-perl.html">
+                        Continue reading <em>Conflict Resolution: local::lib and git's Perl</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html#section-2">
+                        Continue reading on Doug Bell
+                    </a></li>
+                </ul>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7f9aeaea31a8)" />
+        <category term="ARRAY(0x7fdfca827da8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</id>
@@ -39,10 +46,17 @@ editable via Github using the <a href="http://octopress.org">Octopress</a> syste
 to start sharing resources about Perl on our website, increasing the exposure
 of the good tutorials and learning sites.</p>
 
-            <p><a href="http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html#section-2">Continue reading...</a></p>
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2013/06/chicagopm-new-website-new-meetup-url-new-presentations-project.html">
+                        Continue reading <em>Chicago.PM New Website! New Meetup URL! New Presentations Project!</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html#section-2">
+                        Continue reading on Doug Bell
+                    </a></li>
+                </ul>
         ]]></content>
         <updated>2013-06-13T00:00:00Z</updated>
-        <category term="ARRAY(0x7f9aeaea2e60)" />
+        <category term="ARRAY(0x7fdfca827a60)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</id>
@@ -55,10 +69,17 @@ Love</a>) came to talk about tools to help programmers
 work more efficiently and the 2.0 release of his <a href="http://beyondgrep.com">Ack search
 tool</a>.</p>
 
-            <p><a href="http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html#section-2">Continue reading...</a></p>
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2013/05/chicagopm---beyond-grep---expanding-the-programmer-toolset.html">
+                        Continue reading <em>Chicago.PM - Beyond grep - Expanding the Programmer Toolset</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html#section-2">
+                        Continue reading on Doug Bell
+                    </a></li>
+                </ul>
         ]]></content>
         <updated>2013-05-01T00:00:00Z</updated>
-        <category term="ARRAY(0x7f9aeae9df80)" />
+        <category term="ARRAY(0x7fdfca81f380)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</id>
@@ -83,10 +104,17 @@ line 252.</code></p>
 stringified DateTime, but who could possibly be stringifying a DateTime object
 and then using that as a package name?</p>
 
-            <p><a href="http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html#section-2">Continue reading...</a></p>
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2013/04/i-bless-you-in-the-name-of-the-stringified-object.html">
+                        Continue reading <em>I Bless You in the Name of the Stringified Object</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html#section-2">
+                        Continue reading on Doug Bell
+                    </a></li>
+                </ul>
         ]]></content>
         <updated>2013-04-15T00:00:00Z</updated>
-        <category term="ARRAY(0x7f9aeae9dcc8)" />
+        <category term="ARRAY(0x7fdfca81f0c8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</id>
@@ -104,10 +132,17 @@ changes, I have to break the API of 122 modules.</p>
 only. There will be a future post that explains some of the things I did to
 make this task surmountable.</p>
 
-            <p><a href="http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html#section-2">Continue reading...</a></p>
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2013/04/thoughts-while-changing-the-api-of-a-massive-framework.html">
+                        Continue reading <em>Thoughts while changing the API of a massive framework...</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html#section-2">
+                        Continue reading on Doug Bell
+                    </a></li>
+                </ul>
         ]]></content>
         <updated>2013-04-11T00:00:00Z</updated>
-        <category term="ARRAY(0x7f9aeae9da10)" />
+        <category term="ARRAY(0x7fdfca81ee10)" />
     </entry>
 </feed>
 

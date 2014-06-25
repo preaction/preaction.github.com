@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/software/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-25T00:17:04Z</updated>
+    <updated>2014-06-25T00:27:37Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/software.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/software/index.html"/>
     <generator version="0.014">Statocles</generator>
@@ -28,10 +28,17 @@ news service goes down in the middle of a data pull? How about if it goes down
 between data pulls but still inside the same process? How do they test if the
 user has input an invalid ID for data?</p>
 
-            <p><a href="http://preaction.github.io/blog/2012/11/04/testing-is-a-feature-of-your-service.html#section-2">Continue reading...</a></p>
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2012/11/testing-is-a-feature-of-your-service.html">
+                        Continue reading <em>Testing is a Feature of Your Service</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2012/11/04/testing-is-a-feature-of-your-service.html#section-2">
+                        Continue reading on Doug Bell
+                    </a></li>
+                </ul>
         ]]></content>
         <updated>2012-11-04T00:00:00Z</updated>
-        <category term="ARRAY(0x7f9aeae907c0)" />
+        <category term="ARRAY(0x7fdfca81adc0)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/09/23/plan-software-to-live-forever.html</id>
@@ -48,10 +55,17 @@ healthy dose of cargo-culting thrown in. Lately, I've been learning to plan for
 a likely possibility: My code will survive to haunt my bug lists and my resume
 for a long time.</p>
 
-            <p><a href="http://preaction.github.io/blog/2012/09/23/plan-software-to-live-forever.html#section-2">Continue reading...</a></p>
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2012/09/plan-software-to-live-forever.html">
+                        Continue reading <em>Chicago.PM - Beyond grep - Expanding the Programmer Toolset</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2012/09/23/plan-software-to-live-forever.html#section-2">
+                        Continue reading on Doug Bell
+                    </a></li>
+                </ul>
         ]]></content>
         <updated>2012-09-23T00:00:00Z</updated>
-        <category term="ARRAY(0x7f9aeae8c560)" />
+        <category term="ARRAY(0x7fdfca809d60)" />
     </entry>
 </feed>
 

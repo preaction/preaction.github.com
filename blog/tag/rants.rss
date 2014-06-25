@@ -21,7 +21,14 @@ changes, I have to break the API of 122 modules.</p>
 only. There will be a future post that explains some of the things I did to
 make this task surmountable.</p>
 
-                <p><a href="http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html#section-2">Continue reading...</a></p>
+                    <ul>
+                        <li><a href="http://blogs.perl.org/users/preaction/2013/04/thoughts-while-changing-the-api-of-a-massive-framework.html">
+                            Continue reading <em>Thoughts while changing the API of a massive framework...</em> on blogs.perl.org...
+                        </a></li>
+                        <li><a href="http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html#section-2">
+                            Continue reading on Doug Bell
+                        </a></li>
+                    </ul>
             ]]></description>
             <pubDate>
                 Thu, 11 Apr 2013 00:00:00 -0600

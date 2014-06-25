@@ -18,7 +18,14 @@ editable via Github using the <a href="http://octopress.org">Octopress</a> syste
 to start sharing resources about Perl on our website, increasing the exposure
 of the good tutorials and learning sites.</p>
 
-                <p><a href="http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html#section-2">Continue reading...</a></p>
+                    <ul>
+                        <li><a href="http://blogs.perl.org/users/preaction/2013/06/chicagopm-new-website-new-meetup-url-new-presentations-project.html">
+                            Continue reading <em>Chicago.PM New Website! New Meetup URL! New Presentations Project!</em> on blogs.perl.org...
+                        </a></li>
+                        <li><a href="http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html#section-2">
+                            Continue reading on Doug Bell
+                        </a></li>
+                    </ul>
             ]]></description>
             <pubDate>
                 Thu, 13 Jun 2013 00:00:00 -0600
@@ -34,7 +41,14 @@ Love</a>) came to talk about tools to help programmers
 work more efficiently and the 2.0 release of his <a href="http://beyondgrep.com">Ack search
 tool</a>.</p>
 
-                <p><a href="http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html#section-2">Continue reading...</a></p>
+                    <ul>
+                        <li><a href="http://blogs.perl.org/users/preaction/2013/05/chicagopm---beyond-grep---expanding-the-programmer-toolset.html">
+                            Continue reading <em>Chicago.PM - Beyond grep - Expanding the Programmer Toolset</em> on blogs.perl.org...
+                        </a></li>
+                        <li><a href="http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html#section-2">
+                            Continue reading on Doug Bell
+                        </a></li>
+                    </ul>
             ]]></description>
             <pubDate>
                 Wed, 01 May 2013 00:00:00 -0600
@@ -53,7 +67,14 @@ Beam::Wire</a>.</p>
 <p>[EDIT: The presentation doesn't appear to work on mobile devices. I'm trying
 deck.js, and I'm not sure I like it.]</p>
 
-                <p><a href="http://preaction.github.io/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html#section-2">Continue reading...</a></p>
+                    <ul>
+                        <li><a href="http://blogs.perl.org/users/preaction/2013/03/chicagopm---dependency-injection-also-beamwire.html">
+                            Continue reading <em>Chicago.PM - Dependency Injection (also: Beam::Wire)</em> on blogs.perl.org...
+                        </a></li>
+                        <li><a href="http://preaction.github.io/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html#section-2">
+                            Continue reading on Doug Bell
+                        </a></li>
+                    </ul>
             ]]></description>
             <pubDate>
                 Fri, 29 Mar 2013 00:00:00 -0600
@@ -87,6 +108,14 @@ giving a look to, and I hope to be able to do so with some web projects that
 have been sitting in my queue for a while (I wrote a nice ticket tracker with
 AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
 
+                    <ul>
+                        <li><a href="http://blogs.perl.org/users/preaction/2013/03/chicagopm---mojolicious.html">
+                            Continue reading <em>Chicago.PM - Mojolicious</em> on blogs.perl.org...
+                        </a></li>
+                        <li><a href="http://preaction.github.io/blog/2013/03/14/chicago.pm-mojolicious.html#section-2">
+                            Continue reading on Doug Bell
+                        </a></li>
+                    </ul>
             ]]></description>
             <pubDate>
                 Thu, 14 Mar 2013 00:00:00 -0600
@@ -102,7 +131,14 @@ AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
 given by me. In both my jobs, I use the Git::Repository module to automate
 releases.</p>
 
-                <p><a href="http://preaction.github.io/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html#section-2">Continue reading...</a></p>
+                    <ul>
+                        <li><a href="http://blogs.perl.org/users/preaction/2012/10/chicagopm-report---scripting-git-with-perl.html">
+                            Continue reading <em>Chicago.PM - Scripting Git With Perl</em> on blogs.perl.org...
+                        </a></li>
+                        <li><a href="http://preaction.github.io/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html#section-2">
+                            Continue reading on Doug Bell
+                        </a></li>
+                    </ul>
             ]]></description>
             <pubDate>
                 Sun, 28 Oct 2012 00:00:00 -0600

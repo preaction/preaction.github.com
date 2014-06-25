@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/mysql/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-25T00:17:04Z</updated>
+    <updated>2014-06-25T00:27:37Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/mysql.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/mysql/index.html"/>
     <generator version="0.014">Statocles</generator>
@@ -157,9 +157,17 @@ unresponsive server. We'll see how things go tomorrow during normal business
 hours (the peak time for this site), but right now it looks like CHI has saved
 the day!</p>
 
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2011/03/chi-saves-the-day.html">
+                        Continue reading <em>CHI Saves The Day</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2011/03/09/chi-saves-the-day.html#section-2">
+                        Continue reading on Doug Bell
+                    </a></li>
+                </ul>
         ]]></content>
         <updated>2011-03-09T00:00:00Z</updated>
-        <category term="ARRAY(0x7f9aeae83458)" />
+        <category term="ARRAY(0x7fdfca806e58)" />
     </entry>
 </feed>
 

@@ -28,7 +28,14 @@ line 252.</code></p>
 stringified DateTime, but who could possibly be stringifying a DateTime object
 and then using that as a package name?</p>
 
-                <p><a href="http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html#section-2">Continue reading...</a></p>
+                    <ul>
+                        <li><a href="http://blogs.perl.org/users/preaction/2013/04/i-bless-you-in-the-name-of-the-stringified-object.html">
+                            Continue reading <em>I Bless You in the Name of the Stringified Object</em> on blogs.perl.org...
+                        </a></li>
+                        <li><a href="http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html#section-2">
+                            Continue reading on Doug Bell
+                        </a></li>
+                    </ul>
             ]]></description>
             <pubDate>
                 Mon, 15 Apr 2013 00:00:00 -0600

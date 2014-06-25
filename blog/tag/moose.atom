@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/moose/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-25T00:17:03Z</updated>
+    <updated>2014-06-25T00:27:36Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/moose.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/moose/index.html"/>
     <generator version="0.014">Statocles</generator>
@@ -17,10 +17,17 @@ flexible code be used in multiple instances across multiple modules. But they
 are, for the most part, only data structures, which can be a problem if the
 configured object is expecting another configured object.</p>
 
-            <p><a href="http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html#section-2">Continue reading...</a></p>
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2012/10/using-moosextypes-to-inflate-config-values.html">
+                        Continue reading <em>Using MooseX::Types to Inflate Config Values</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html#section-2">
+                        Continue reading on Doug Bell
+                    </a></li>
+                </ul>
         ]]></content>
         <updated>2012-10-22T00:00:00Z</updated>
-        <category term="ARRAY(0x7f9aeae90250)" />
+        <category term="ARRAY(0x7fdfca81a850)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html</id>
@@ -44,10 +51,17 @@ runtime. Using those meta-object methods to add an attribute would modify our
 object, adding that attribute to the object. Using Class::MOP, we can compose
 classes at runtime!</p>
 
-            <p><a href="http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html#section-2">Continue reading...</a></p>
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2012/10/run-time-class-composition-with-moose.html">
+                        Continue reading <em>Run-time Class Composition With Moose</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html#section-2">
+                        Continue reading on Doug Bell
+                    </a></li>
+                </ul>
         ]]></content>
         <updated>2012-10-07T00:00:00Z</updated>
-        <category term="ARRAY(0x7f9aeae8fce0)" />
+        <category term="ARRAY(0x7fdfca81a2e0)" />
     </entry>
 </feed>
 

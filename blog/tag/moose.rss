@@ -16,7 +16,14 @@ flexible code be used in multiple instances across multiple modules. But they
 are, for the most part, only data structures, which can be a problem if the
 configured object is expecting another configured object.</p>
 
-                <p><a href="http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html#section-2">Continue reading...</a></p>
+                    <ul>
+                        <li><a href="http://blogs.perl.org/users/preaction/2012/10/using-moosextypes-to-inflate-config-values.html">
+                            Continue reading <em>Using MooseX::Types to Inflate Config Values</em> on blogs.perl.org...
+                        </a></li>
+                        <li><a href="http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html#section-2">
+                            Continue reading on Doug Bell
+                        </a></li>
+                    </ul>
             ]]></description>
             <pubDate>
                 Mon, 22 Oct 2012 00:00:00 -0600
@@ -43,7 +50,14 @@ runtime. Using those meta-object methods to add an attribute would modify our
 object, adding that attribute to the object. Using Class::MOP, we can compose
 classes at runtime!</p>
 
-                <p><a href="http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html#section-2">Continue reading...</a></p>
+                    <ul>
+                        <li><a href="http://blogs.perl.org/users/preaction/2012/10/run-time-class-composition-with-moose.html">
+                            Continue reading <em>Run-time Class Composition With Moose</em> on blogs.perl.org...
+                        </a></li>
+                        <li><a href="http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html#section-2">
+                            Continue reading on Doug Bell
+                        </a></li>
+                    </ul>
             ]]></description>
             <pubDate>
                 Sun, 07 Oct 2012 00:00:00 -0600
