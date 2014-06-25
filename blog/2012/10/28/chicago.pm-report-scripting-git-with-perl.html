@@ -66,14 +66,15 @@
                     </ul>
                 </div>
             </header>
-            <p>This month's presentation was on the
+            <section id="section-1">
+                <p>This month's presentation was on the
 <a href="http://search.cpan.org/dist/Git-Repository/">Git::Repository</a> Perl module,
 given by me. In both my jobs, I use the Git::Repository module to automate
 releases.</p>
 
-<hr />
-
-<p>At <a href="http://www.doublecluepon.com">Double Cluepon</a>, I use it to create the
+            </section>
+            <section id="section-2">
+                <p>At <a href="http://www.doublecluepon.com">Double Cluepon</a>, I use it to create the
 release packages based on tagged commits, so that releasing our software is
 exactly: <code>git tag vX.X.X &amp;&amp; git push --tags</code>. A Perl script builds every package
 and then pushes them to our update server, where the game will check for a new
@@ -97,6 +98,7 @@ talk</a></p>
 <p><a href="https://gist.github.com/3943302">The code for the script that automatically builds releases tagged like
 "vX.X.X"</a></p>
 
+            </section>
         </main>
     </div>
 

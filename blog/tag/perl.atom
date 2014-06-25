@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/perl/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T02:58:01Z</updated>
+    <updated>2014-06-25T00:16:06Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/perl.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/perl/index.html"/>
-    <generator version="0.013">Statocles</generator>
+    <generator version="0.014">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
         <title>Conflict Resolution: local::lib and git's Perl</title>
@@ -76,7 +76,7 @@ fi
 
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7fbbf96b8868)" />
+        <category term="ARRAY(0x7ff0a0f893a8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</id>
@@ -144,7 +144,7 @@ works and has proper tests (written in Perl, of course).</p>
 
         ]]></content>
         <updated>2012-03-20T00:00:00Z</updated>
-        <category term="ARRAY(0x7fbbf96a2550)" />
+        <category term="ARRAY(0x7ff0a0f6ba90)" />
     </entry>
 </feed>
 

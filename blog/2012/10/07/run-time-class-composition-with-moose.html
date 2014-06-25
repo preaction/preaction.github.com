@@ -66,7 +66,8 @@
                     </ul>
                 </div>
             </header>
-            <p>Moose is great! At its very basic, it simplifies the boilerplate required to
+            <section id="section-1">
+                <p>Moose is great! At its very basic, it simplifies the boilerplate required to
 create Perl objects immensely, providing attributes with type constraints,
 method modifiers for semantic enhancement, and role-based class composition for
 better code re-use.</p>
@@ -82,9 +83,9 @@ runtime. Using those meta-object methods to add an attribute would modify our
 object, adding that attribute to the object. Using Class::MOP, we can compose
 classes at runtime!</p>
 
-<hr />
-
-<p>I have recently used this to great effect in a custom dependency injection and
+            </section>
+            <section id="section-2">
+                <p>I have recently used this to great effect in a custom dependency injection and
 configuration framework we have at Bank of America. By adding a "with" key to
 the configuration YAML file, the DI will create a new, anonymous class that
 composes the roles specified.</p>
@@ -123,6 +124,7 @@ things, but doesn't allow us to add attributes or methods).</p>
 <p>With this, I can be a lot more flexible about my dependencies, adding whatever
 role I want to change their behavior whenever I need.</p>
 
+            </section>
         </main>
     </div>
 

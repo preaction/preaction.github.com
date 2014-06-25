@@ -66,7 +66,8 @@
                     </ul>
                 </div>
             </header>
-            <p>A co-worker came to me today with a curious error message:</p>
+            <section id="section-1">
+                <p>A co-worker came to me today with a curious error message:</p>
 
 <pre><code>use DateTime;
 my $date = DateTime-&gt;new( year =&gt; 2013, month =&gt; 4, day =&gt; 15 );
@@ -83,9 +84,9 @@ line 252.</code></p>
 stringified DateTime, but who could possibly be stringifying a DateTime object
 and then using that as a package name?</p>
 
-<hr />
-
-<p>It turns out the problem is at <code>$date-&gt;today</code>. <code>today()</code> is a constructor,
+            </section>
+            <section id="section-2">
+                <p>It turns out the problem is at <code>$date-&gt;today</code>. <code>today()</code> is a constructor,
 constructors are class methods, constructors inevitably call <code>bless</code> on the
 class they are invoked with. But, we called this constructor with an object
 instance (a blessed reference), not a class.</p>
@@ -130,6 +131,7 @@ my $clone = $obj-&gt;new;
 $clone-&gt;greet;
 </code></pre>
 
+            </section>
         </main>
     </div>
 

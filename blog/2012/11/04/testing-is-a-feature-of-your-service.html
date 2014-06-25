@@ -66,7 +66,8 @@
                     </ul>
                 </div>
             </header>
-            <p>My job at Bank of America consists largely of data collection and storage. To
+            <section id="section-1">
+                <p>My job at Bank of America consists largely of data collection and storage. To
 collect data in Perl, I have to write XS modules to interface with the
 vendor-supplied native libraries. Because I want to know my code works, my XS
 modules come with robust test suites, testing that everything works correctly.</p>
@@ -82,9 +83,9 @@ news service goes down in the middle of a data pull? How about if it goes down
 between data pulls but still inside the same process? How do they test if the
 user has input an invalid ID for data?</p>
 
-<hr />
-
-<p>To help them write good error-checking and recovery, I added specific
+            </section>
+            <section id="section-2">
+                <p>To help them write good error-checking and recovery, I added specific
 Test::MockObjects that return failure conditions. Want to know what happens if
 an ID is invalid? Use the Test::Feed::InvalidId mock API. Want to know what
 happens if the feed goes down in the middle of a process? Use the
@@ -110,6 +111,7 @@ users respond to and deal with the error conditions of my code, I can cut down
 on the support requests and bug reports. Being proactive about testing helps
 everyone write better code.</p>
 
+            </section>
         </main>
     </div>
 

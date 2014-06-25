@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/chicago.pm/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-22T02:58:01Z</updated>
+    <updated>2014-06-25T00:16:06Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/chicago.pm.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/chicago.pm/index.html"/>
-    <generator version="0.013">Statocles</generator>
+    <generator version="0.014">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</id>
         <title>Chicago.PM New Website! New Meetup URL! New Presentations Project!</title>
@@ -19,36 +19,10 @@ editable via Github using the <a href="http://octopress.org">Octopress</a> syste
 to start sharing resources about Perl on our website, increasing the exposure
 of the good tutorials and learning sites.</p>
 
-<hr />
-
-<p>In addition to the new website, we've changed our Meetup URL, so <a href="http://meetup.com/ChicagoPM">the
-Chicago.PM Meetup group</a> is now at
-<a href="http://meetup.com/ChicagoPM">http://meetup.com/ChicagoPM</a>.</p>
-
-<p>Finally, with our new website, we're starting a project to help teach some
-topics with more depth, to help fill in the gaps between the beginner's
-materials and writing useful, maintainable code using the best CPAN has to
-offer. We've started <a href="http://github.com/ChicagoPM">the Chicago.PM Github
-Organization</a>, where we will be developing
-presentations that can be used freely by anyone wishing to learn more about
-Perl, or wanting to teach others about Perl. The presentations and the code
-inside is licensed under the same terms as Perl itself, so if you can use Perl,
-you can use and edit the presentations to suit your needs.</p>
-
-<p>The first presentation we're releasing is about <a href="https://github.com/ChicagoPM/Command-Line-Apps">building command-line
-applications in Perl</a>. I've
-given this presentation twice now, to excellent reviews. There is still some
-content that can be added to make it a more robust presentation (especially in
-the <a href="App::Cmd">http://metacpan.org/release/App-Cmd</a> section), but it's a good
-talk on going from "Just read my first Perl book and my first Linux book" to
-"Wielding Perl to build command-line applications."</p>
-
-<p>We hope to build more presentations of this type in the future, as well as
-other learning materials as time goes on. Let us know if you want to help!</p>
-
+            <p><a href="http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html#section-2">Continue reading...</a></p>
         ]]></content>
         <updated>2013-06-13T00:00:00Z</updated>
-        <category term="ARRAY(0x7fbbf96b8520)" />
+        <category term="ARRAY(0x7ff0a0f89060)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</id>
@@ -61,85 +35,10 @@ Love</a>) came to talk about tools to help programmers
 work more efficiently and the 2.0 release of his <a href="http://beyondgrep.com">Ack search
 tool</a>.</p>
 
-<hr />
-
-<p>If you haven't tried Ack, but you use long, complicated Grep lines every day,
-you're missing out on a great, time-saving tool. <a href="http://beyondgrep.com/install">Installing
-ack</a> is easy on many platforms (including
-Windows!).</p>
-
-<p>For those who have added Ack to their regular arsenal, the 2.0 release brings
-some minor breaking changes (removing the -a option for "search all files" and
-changing the default file type filter to "all text files") designed to make Ack
-more Do-What-I-Mean and more compatible with Grep (when it makes sense, ack is
-made for humans). The result being that using Ack should not take you out of
-The Zone by requiring you to check the manual every time (something I must
-confess to doing often with Grep and Find).</p>
-
-<p>I must also confess to using only the most basic Ack command-line options, but
-Andy explored a lot of functionality I was not aware of, both in Ack and Grep:</p>
-
-<pre><code># Search for full words
-ack -w
-grep -w
-
-# List the files that matched instead of the matching line
-ack -l
-grep -l
-
-# Invert the match ("does not match X")
-ack -v
-grep -v
-
-# Override the default output with capture groups
-ack 'use (\S+);' --output='$1' -h | sort -u
-
-# Search the file path for matches (Beyond Find)
-ack -f
-ack -g
-
-# Accept a list of files to search on STDIN (Built-in Xargs)
-ack -x
-</code></pre>
-
-<p>The last two features are great for chaining together Ack commands:</p>
-
-<pre><code># Find all perl files not in the 'release' repository
-ack -g -v 'release' --perl |
-
-# ... search them for the word '2.46.3207.2'
-ack -x '2.46.3207.2' -w -l | 
-
-# ... and if they match, edit them with sed
-xargs sed -i 's/2.46.3207.2/2.49.3333.12/'
-
-# This little snippet saved me some hours of manual work upgrading version numbers
-</code></pre>
-
-<p>There was also a lot of discussion on other tools to help programmers be more
-efficient. The ones I was most interested in were ctags, which I don't use
-nearly enough (I use ack instead), and cscope, which I had never heard about. </p>
-
-<p>The problem with adding new things to your toolkit is integrating them into
-your flow (the flow that can be consciously experienced is not the true flow).
-Whenever you add a new thing, especially if it replaces an existing thing,
-you're losing efficiency in the short-term in order to add potential efficiency
-in the long-term. Despite this, a lot of things are worth it, Ack more-so than
-most. </p>
-
-<p>Sometimes you don't know you're doing something inefficiently until someone
-comes along and tells you so, or shows you a solution to a problem you never
-knew you were having. Ack is a solution to a grep problem: Grep is harder to
-use in the most-common cases. That said, Grep still has its uses, just uncommon
-ones.</p>
-
-<p>A big thanks to Andy for giving a presentation on such short notice! Our next
-meeting is on May 23, so check out <a href="http://chicago.pm.org">the Chicago.pm
-website</a> and join us!</p>
-
+            <p><a href="http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html#section-2">Continue reading...</a></p>
         ]]></content>
         <updated>2013-05-01T00:00:00Z</updated>
-        <category term="ARRAY(0x7fbbf96aaa40)" />
+        <category term="ARRAY(0x7ff0a0f84180)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html</id>
@@ -155,34 +54,10 @@ Beam::Wire</a>.</p>
 <p>[EDIT: The presentation doesn't appear to work on mobile devices. I'm trying
 deck.js, and I'm not sure I like it.]</p>
 
-<hr />
-
-<p>When I started my current job, I was introduced to the custom Dependency
-Injection framework they built. At the time, I was dismissive: "It's
-programming via config file, which is always limiting (and so, a Bad
-Idea)." "It's something that Java needs, but not Perl."</p>
-
-<p>Slowly, and with great reluctance, I learned where dependency injection fits
-into a large framework: It removes the work of creating objects. Any object.
-Anywhere.</p>
-
-<p>For an idea of how powerful this is, do a quick search through your libraries
-and scripts (except for tests) for /->new/. Hopefully, the results will only be
-defaults (otherwise you've got tight coupling, another problem DI can fix). But
-every time you call an object constructor is another place where dependency
-injection can reduce the amount of code you write and maintain.</p>
-
-<p>So, since the bureaucracy means I can't simply open-source the DI framework we
-have at $dayjob, I decided to make my own.</p>
-
-<p><a href="http://metacpan.org/modules/Beam::Wire">Beam::Wire</a> is <a href="http://search.cpan.org/~preaction/Beam-Wire/">available on
-CPAN</a>. There are a lot of
-features planned for it, so stay tuned! If you're interested, <a href="http://play-perl.org/quest/5130110d20d03f841200005b">up-vote
-Beam::Wire on play-perl</a>.</p>
-
+            <p><a href="http://preaction.github.io/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html#section-2">Continue reading...</a></p>
         ]]></content>
         <updated>2013-03-29T00:00:00Z</updated>
-        <category term="ARRAY(0x7fbbf96aa218)" />
+        <category term="ARRAY(0x7ff0a0f83958)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/03/14/chicago.pm-mojolicious.html</id>
@@ -215,7 +90,7 @@ AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
 
         ]]></content>
         <updated>2013-03-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7fbbf96a9f60)" />
+        <category term="ARRAY(0x7ff0a0f836a0)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html</id>
@@ -228,35 +103,10 @@ AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
 given by me. In both my jobs, I use the Git::Repository module to automate
 releases.</p>
 
-<hr />
-
-<p>At <a href="http://www.doublecluepon.com">Double Cluepon</a>, I use it to create the
-release packages based on tagged commits, so that releasing our software is
-exactly: <code>git tag vX.X.X &amp;&amp; git push --tags</code>. A Perl script builds every package
-and then pushes them to our update server, where the game will check for a new
-release.</p>
-
-<p>At Bank of America, we use it to combine our 20-30 Perl distributions into a
-single release. Using git submodules, we have a "release repository" that holds
-references to all the modules for each team's releases (some are team-specific,
-others are shared between teams). A Perl script manages the submodules,
-determines when the submodule refs need to be updated, tags and branches for
-each release, and finally builds and installs our modules using
-<a href="http://search.cpan.org/dist/Module-Build/">Module::Build</a> and
-<a href="http://search.cpan.org/dist/local-lib/">local::lib</a>.</p>
-
-<p>All this Git stuff gave me some ideas for possible useful code I can release,
-perhaps leading to me finally recovering my CPAN ID.</p>
-
-<p><a href="http://preaction.github.com/Perl/Scripting-Git.html">The slides for my Scripting Git With Perl
-talk</a></p>
-
-<p><a href="https://gist.github.com/3943302">The code for the script that automatically builds releases tagged like
-"vX.X.X"</a></p>
-
+            <p><a href="http://preaction.github.io/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html#section-2">Continue reading...</a></p>
         ]]></content>
         <updated>2012-10-28T00:00:00Z</updated>
-        <category term="ARRAY(0x7fbbf96a0fc8)" />
+        <category term="ARRAY(0x7ff0a0f7ab08)" />
     </entry>
 </feed>
 

@@ -66,7 +66,8 @@
                     </ul>
                 </div>
             </header>
-            <p>... or Why A Good Perl Developer Is Not Automatically A Good C Developer, the
+            <section id="section-1">
+                <p>... or Why A Good Perl Developer Is Not Automatically A Good C Developer, the
 Story of C Programming via Google.</p>
 
 <p>My tests failed, but only sometimes. I was building an XS module to interface
@@ -78,9 +79,9 @@ out of the return value. This also only mainly happened during <code>make test</
 Doing <code>prove</code> myself would succeed 19 times out of 20, where make test would
 fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
 
-<hr />
-
-<p>I changed everything I could think of: Using a debugging perl and keeping debug
+            </section>
+            <section id="section-2">
+                <p>I changed everything I could think of: Using a debugging perl and keeping debug
 symbols in my C library and XS module made the failures happen less frequently
 (making debugging ever more frustrating). perlbrew was a big help here, letting
 me switch between different versions of perl, debugging perl, threaded perl,
@@ -109,6 +110,7 @@ Heap and stack? Might as well be herp and derp.</p>
 
 <p>Also, having IRC at work might have saved me a few hours of hassle.</p>
 
+            </section>
         </main>
     </div>
 

@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/xs/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/xs.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of Doug Bell</description>
-        <generator>Statocles 0.013</generator>
+        <generator>Statocles 0.014</generator>
         <item>
             <title>Adventures in Debugging C/XS 2: Debugging Boogaloo</title>
             <link>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</link>
@@ -91,37 +91,7 @@ out of the return value. This also only mainly happened during <code>make test</
 Doing <code>prove</code> myself would succeed 19 times out of 20, where make test would
 fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
 
-<hr />
-
-<p>I changed everything I could think of: Using a debugging perl and keeping debug
-symbols in my C library and XS module made the failures happen less frequently
-(making debugging ever more frustrating). perlbrew was a big help here, letting
-me switch between different versions of perl, debugging perl, threaded perl,
-and combinations thereof.</p>
-
-<p>After playing with GDB (once again succeeding 19 times out of 20), I gave up
-and searched the web. I found <a href="http://bit.ly/vwnMbb">the same mailing list
-thread</a> multiple times, and read it multiple times, not
-coming up with anything that was relevant to my situation.</p>
-
-<p>Until I read the thread again after another frustrating half-hour with GDB: I
-had forgotten to put a prototype in the .h file, causing the char* pointer
-being returned to be treated as an int. On my 64-bit system, this causes
-segfaults. The compiler was warning me of this, "<tt>warning: initialization
-makes pointer from integer without a cast</tt>", but I didn't understand the
-warning (and the web was not helpful on that one).</p>
-
-<p>Adding the function prototype to the C wrapper header and recompiling fixed the
-problem.</p>
-
-<p>And that is why I need to learn a lot more about C. Function prototypes?
-Header files? Why are those necessary (I'm asking rhetorically, of course)?
-Heap and stack? Might as well be herp and derp.</p>
-
-<p>Lesson reinforced: Depth of knowledge does not equal breadth of knowledge.</p>
-
-<p>Also, having IRC at work might have saved me a few hours of hassle.</p>
-
+                <p><a href="http://preaction.github.io/blog/2011/11/16/adventures-in-debugging-c-xs.html#section-2">Continue reading...</a></p>
             ]]></description>
             <pubDate>
                 Wed, 16 Nov 2011 00:00:00 -0600

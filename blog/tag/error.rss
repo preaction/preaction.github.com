@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/error/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/error.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of Doug Bell</description>
-        <generator>Statocles 0.013</generator>
+        <generator>Statocles 0.014</generator>
         <item>
             <title>I Bless You in the Name of the Stringified Object</title>
             <link>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</link>
@@ -28,53 +28,7 @@ line 252.</code></p>
 stringified DateTime, but who could possibly be stringifying a DateTime object
 and then using that as a package name?</p>
 
-<hr />
-
-<p>It turns out the problem is at <code>$date-&gt;today</code>. <code>today()</code> is a constructor,
-constructors are class methods, constructors inevitably call <code>bless</code> on the
-class they are invoked with. But, we called this constructor with an object
-instance (a blessed reference), not a class.</p>
-
-<p>In an object without overloads, this fails (as expected) with an error message:
-<code>Attempt to bless into a reference</code>. But DateTime overloads stringification. So
-instead of trying to use an object as a package name, the object gets
-stringified and that string gets used as a package name.</p>
-
-<p>This problem could be mitigated by checking for refs in the constructor, dying
-as a result. I'm not sure if it would be a good idea to disallow
-stringification during a call to <code>bless</code>, for historical reasons (it's not a
-bug if it's working as expected, it is a bug if a change breaks code).</p>
-
-<p>Here's some sample code to play around with the problem. Enable/disable the
-overload (comment out the <code>use overload (...)</code>) and see what changes:</p>
-
-<pre><code>use strict;
-use warnings;
-
-package Foo;
-
-use overload (
-    q{""} =&gt; sub { return "Bar" },
-);
-
-sub new {
-    my ( $class ) = @_;
-    return bless {}, $class;
-}
-
-sub greet {
-    print "Hello, World!\n";
-}
-
-package main;
-
-my $obj = Foo-&gt;new;
-$obj-&gt;greet;
-
-my $clone = $obj-&gt;new;
-$clone-&gt;greet;
-</code></pre>
-
+                <p><a href="http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html#section-2">Continue reading...</a></p>
             ]]></description>
             <pubDate>
                 Mon, 15 Apr 2013 00:00:00 -0600

@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/moose/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/moose.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of Doug Bell</description>
-        <generator>Statocles 0.013</generator>
+        <generator>Statocles 0.014</generator>
         <item>
             <title>Using MooseX::Types to Inflate Config Values</title>
             <link>http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html</link>
@@ -16,133 +16,7 @@ flexible code be used in multiple instances across multiple modules. But they
 are, for the most part, only data structures, which can be a problem if the
 configured object is expecting another configured object.</p>
 
-<hr />
-
-<pre><code>package FakeRepository;
-
-use Moose;
-use TimeSeries;
-has timeseries =&gt; (
-        is =&gt; 'rw',
-        isa =&gt; 'TimeSeries',
-        required =&gt; 1,
-);
-
-package TimeSeries;
-
-use Moose;
-has dates =&gt; (
-        is =&gt; 'rw',
-        isa =&gt; 'HashRef[Number]', # Date =&gt; Value pairs
-        default =&gt; sub { {} },
-);
-</code></pre>
-
-<p>Here we have a FakeRepository that requires a TimeSeries object. Certainly,
-this is where a Dependency Injection framework could step in and inject the
-required TimeSeries. The drawback is the indirection: The two configured
-objects are completely separate, joined only by the reference, like so:</p>
-
-<pre><code># dependency.yml
-- service:
-        name: 'test_repo'
-        class: 'FakeRepository'
-        constructor_args:
-                timeseries: { ref: test_data }
-
-- service:
-        name: 'test_data'
-        class: 'TimeSeries'
-        constructor_args:
-                dates:
-                        2012-01-01: 1.56
-                        2012-01-02: 1.69
-                        2012-01-03: 1.45
-</code></pre>
-
-<p>So here, we define two services (objects), test_repo and test_data, and
-test_repo uses test_data to fill its timeseries attribute. test_data fills
-in its dates attribute directly from the configuration file.</p>
-
-<p>This works great if test_data is needed by more than just test_repo. It also
-works fine as-is, the dependency injection framework does the work. But what if
-we wanted to specify the timeseries value directly, instead of indirectly?</p>
-
-<p>Moose's typing system allows us to do just that. By creating a custom type with
-a coercion from the data structure in our configuration file, we can create the
-dependency that our test_repo needs.</p>
-
-<pre><code>package My::Types;
-
-use MooseX::Types qw( HashRef Number );
-use TimeSeries;
-
-# declare our TimeSeries class as a type
-class_type TimeSeriesType;
-# coerce a TimeSeries from a hash of date =&gt; value pairs
-coerce TimeSeriesType, from HashRef[Number], via sub {
-        # coercions put the value to be coerce in $_
-        return TimeSeries-&gt;new( data =&gt; $_ );
-};
-</code></pre>
-
-<p>Once we have our new custom types, we must use them in our package.</p>
-
-<pre><code>package FakeRepository;
-
-use Moose;
-use My::Types qw( TimeSeriesType );
-
-has timeseries =&gt; qw(
-        is =&gt; 'rw',
-        isa =&gt; TimeSeriesType,  # Not quoted!
-        coerce =&gt; 1,                    # Activate coercion powers!
-        required =&gt; 1,
-);
-</code></pre>
-
-<p>Now, we can configure our TimeSeries directly from our configuration file,
-without indirection.</p>
-
-<pre><code># dependency.yml
-- service:
-        name: 'test_repo'
-        class: 'FakeRepository'
-        constructor_args:
-                timeseries:
-                        2012-01-01: 1.56
-                        2012-01-02: 1.69
-                        2012-01-03: 1.45
-</code></pre>
-
-<p>Moose will create the object for us using our defined coercion.</p>
-
-<p>There are other ways to solve this: Enhance the Dependency Injection framework
-to allow anonymous objects (instead of providing a ref: to an object, provide a
-full object definition with class: and constructor_args:), but having these
-coercions in place also helps when writing test code:</p>
-
-<pre><code>use Test::More;
-use FakeRepository;
-my $repo = FakeRepository-&gt;new(
-        timeseries =&gt; {
-                '2012-01-01' =&gt; 1.56,
-                '2012-01-02' =&gt; 1.69,
-                '2012-01-03' =&gt; 1.45,
-        },
-);
-</code></pre>
-
-<p>No need to increase the apparent coverage of the test by including the
-TimeSeries class, we never have to refer to it at all. No need to lock the
-interface to a specific TimeSeries class (if that's a desired goal of the
-project), the coercion takes care of creating the actual object used.</p>
-
-<p>Coercions are a powerful feature. I've used them to build complicated trees
-from arrays of arrays (more on that later), and I've used them to simply
-force-uppercase a string so that Log4perl would do its job. Coercions are one
-more very useful tool in a robust toolbox.</p>
-
+                <p><a href="http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html#section-2">Continue reading...</a></p>
             ]]></description>
             <pubDate>
                 Mon, 22 Oct 2012 00:00:00 -0600
@@ -169,47 +43,7 @@ runtime. Using those meta-object methods to add an attribute would modify our
 object, adding that attribute to the object. Using Class::MOP, we can compose
 classes at runtime!</p>
 
-<hr />
-
-<p>I have recently used this to great effect in a custom dependency injection and
-configuration framework we have at Bank of America. By adding a "with" key to
-the configuration YAML file, the DI will create a new, anonymous class that
-composes the roles specified.</p>
-
-<pre><code>{
-    name: "Repository",
-    class: "Bank::HistoricalData::DailyRepository",
-    with: [ "Bank::Role::FlattenIntraday", "Bank::Role::CalculateHighLow" ],
-    constructor_args: { }
-}
-</code></pre>
-
-<p>So, when I ask the DI for the "Repository" object, it will get the meta-object
-for Bank::HistoricalData::DailyRepository, create an anonymous class that
-extends Bank::HistoricalData::DailyRepository, and then compose the two roles
-into the new class.</p>
-
-<p>The code to do all this is extremely short:</p>
-
-<pre><code>my $class = $conf-&gt;{class};
-my $meta = Moose::Meta::Class-&gt;create_anon_class( 
-    superclasses =&gt; [ $class ],
-    roles =&gt; $conf-&gt;{with},
-);
-$meta-&gt;make_immutable; # for performance
-my $object = $meta-&gt;name-&gt;new( %{ $conf-&gt;{constructor_args} } );
-return $object;
-</code></pre>
-
-<p>If a lot of objects end up composing the same roles, I can create a concrete
-class to get a bit of a performance boost. Since I create a new, anonymous
-meta-class, I don't have to worry about the class I'm extending being modified,
-or being made mutable again ($class->meta->make_immutable speeds up a lot of
-things, but doesn't allow us to add attributes or methods).</p>
-
-<p>With this, I can be a lot more flexible about my dependencies, adding whatever
-role I want to change their behavior whenever I need.</p>
-
+                <p><a href="http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html#section-2">Continue reading...</a></p>
             ]]></description>
             <pubDate>
                 Sun, 07 Oct 2012 00:00:00 -0600
