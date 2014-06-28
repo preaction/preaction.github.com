@@ -6,8 +6,7 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <title>Doug Bell</title>
         <style type="text/css">
-            article > hgroup > h1,
-            main > hgroup > h1
+            main header h1
             {
                 border-bottom: 4px solid #045578;
             }
@@ -18,6 +17,13 @@
             .sidebar h1 {
                 font-size: 14pt;
             }
+
+            /** Add a line when using the "Continue reading..." link */
+            section:target {
+                padding-top: 0.5em;
+                border-top: 4px solid #045578;
+            }
+
         </style>
             <link rel="alternate" href="/blog/tag/perl.atom" type="application/atom+xml" />
             <link rel="alternate" href="/blog/tag/perl.rss" type="application/rss+xml" />
@@ -79,14 +85,7 @@ fatal: 'add--interactive' appears to be a git command, but we were not
 able to execute it. Maybe git-add--interactive is broken?
 </code></pre>
 
-                        <ul>
-                            <li><a href="http://blogs.perl.org/users/preaction/2014/06/conflict-resolution-locallib-and-gits-perl.html">
-                                Continue reading <em>Conflict Resolution: local::lib and git's Perl</em> on blogs.perl.org...
-                            </a></li>
-                            <li><a href="/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html#section-2">
-                                Continue reading on this site...
-                            </a></li>
-                        </ul>
+                    <p><a href="/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html#section-2">Continue reading Conflict Resolution: local::lib and git's Perl...</a></p>
             </article>
             <article>
                 <header>

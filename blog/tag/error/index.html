@@ -6,8 +6,7 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <title>Doug Bell</title>
         <style type="text/css">
-            article > hgroup > h1,
-            main > hgroup > h1
+            main header h1
             {
                 border-bottom: 4px solid #045578;
             }
@@ -18,6 +17,13 @@
             .sidebar h1 {
                 font-size: 14pt;
             }
+
+            /** Add a line when using the "Continue reading..." link */
+            section:target {
+                padding-top: 0.5em;
+                border-top: 4px solid #045578;
+            }
+
         </style>
             <link rel="alternate" href="/blog/tag/error.atom" type="application/atom+xml" />
             <link rel="alternate" href="/blog/tag/error.rss" type="application/rss+xml" />
@@ -87,14 +93,7 @@ line 252.</code></p>
 stringified DateTime, but who could possibly be stringifying a DateTime object
 and then using that as a package name?</p>
 
-                        <ul>
-                            <li><a href="http://blogs.perl.org/users/preaction/2013/04/i-bless-you-in-the-name-of-the-stringified-object.html">
-                                Continue reading <em>I Bless You in the Name of the Stringified Object</em> on blogs.perl.org...
-                            </a></li>
-                            <li><a href="/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html#section-2">
-                                Continue reading on this site...
-                            </a></li>
-                        </ul>
+                    <p><a href="/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html#section-2">Continue reading I Bless You in the Name of the Stringified Object...</a></p>
             </article>
         </main>
         <ul class="pager">

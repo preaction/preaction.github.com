@@ -6,8 +6,7 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <title>Doug Bell</title>
         <style type="text/css">
-            article > hgroup > h1,
-            main > hgroup > h1
+            main header h1
             {
                 border-bottom: 4px solid #045578;
             }
@@ -18,6 +17,13 @@
             .sidebar h1 {
                 font-size: 14pt;
             }
+
+            /** Add a line when using the "Continue reading..." link */
+            section:target {
+                padding-top: 0.5em;
+                border-top: 4px solid #045578;
+            }
+
         </style>
             <link rel="alternate" href="/blog/tag/rants.atom" type="application/atom+xml" />
             <link rel="alternate" href="/blog/tag/rants.rss" type="application/rss+xml" />
@@ -80,14 +86,7 @@ changes, I have to break the API of 122 modules.</p>
 only. There will be a future post that explains some of the things I did to
 make this task surmountable.</p>
 
-                        <ul>
-                            <li><a href="http://blogs.perl.org/users/preaction/2013/04/thoughts-while-changing-the-api-of-a-massive-framework.html">
-                                Continue reading <em>Thoughts while changing the API of a massive framework...</em> on blogs.perl.org...
-                            </a></li>
-                            <li><a href="/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html#section-2">
-                                Continue reading on this site...
-                            </a></li>
-                        </ul>
+                    <p><a href="/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html#section-2">Continue reading Thoughts while changing the API of a massive framework......</a></p>
             </article>
         </main>
         <ul class="pager">

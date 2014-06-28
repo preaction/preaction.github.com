@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/perl/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-25T00:27:36Z</updated>
+    <updated>2014-06-27T23:05:42Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/perl.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/perl/index.html"/>
-    <generator version="0.014">Statocles</generator>
+    <generator version="0.015">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
         <title>Conflict Resolution: local::lib and git's Perl</title>
@@ -31,7 +31,7 @@ able to execute it. Maybe git-add--interactive is broken?
                 </ul>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7fdfca827da8)" />
+        <category term="ARRAY(0x7f91c2827fa8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</id>
@@ -100,7 +100,7 @@ works and has proper tests (written in Perl, of course).</p>
                 <p><a href="http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html#section-2">Continue reading...</a></p>
         ]]></content>
         <updated>2012-03-20T00:00:00Z</updated>
-        <category term="ARRAY(0x7fdfca808e90)" />
+        <category term="ARRAY(0x7f91c2811e90)" />
     </entry>
 </feed>
 

@@ -6,8 +6,7 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <title>Doug Bell</title>
         <style type="text/css">
-            article > hgroup > h1,
-            main > hgroup > h1
+            main header h1
             {
                 border-bottom: 4px solid #045578;
             }
@@ -18,6 +17,13 @@
             .sidebar h1 {
                 font-size: 14pt;
             }
+
+            /** Add a line when using the "Continue reading..." link */
+            section:target {
+                padding-top: 0.5em;
+                border-top: 4px solid #045578;
+            }
+
         </style>
             <link rel="alternate" href="/blog/index.atom" type="application/atom+xml" />
             <link rel="alternate" href="/blog/index.rss" type="application/rss+xml" />
@@ -78,14 +84,7 @@ Beam::Wire</a>.</p>
 <p>[EDIT: The presentation doesn't appear to work on mobile devices. I'm trying
 deck.js, and I'm not sure I like it.]</p>
 
-                        <ul>
-                            <li><a href="http://blogs.perl.org/users/preaction/2013/03/chicagopm---dependency-injection-also-beamwire.html">
-                                Continue reading <em>Chicago.PM - Dependency Injection (also: Beam::Wire)</em> on blogs.perl.org...
-                            </a></li>
-                            <li><a href="/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html#section-2">
-                                Continue reading on this site...
-                            </a></li>
-                        </ul>
+                    <p><a href="/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html#section-2">Continue reading Chicago.PM - Dependency Injection (also: Beam::Wire)...</a></p>
             </article>
             <article>
                 <header>
@@ -163,14 +162,7 @@ news service goes down in the middle of a data pull? How about if it goes down
 between data pulls but still inside the same process? How do they test if the
 user has input an invalid ID for data?</p>
 
-                        <ul>
-                            <li><a href="http://blogs.perl.org/users/preaction/2012/11/testing-is-a-feature-of-your-service.html">
-                                Continue reading <em>Testing is a Feature of Your Service</em> on blogs.perl.org...
-                            </a></li>
-                            <li><a href="/blog/2012/11/04/testing-is-a-feature-of-your-service.html#section-2">
-                                Continue reading on this site...
-                            </a></li>
-                        </ul>
+                    <p><a href="/blog/2012/11/04/testing-is-a-feature-of-your-service.html#section-2">Continue reading Testing is a Feature of Your Service...</a></p>
             </article>
             <article>
                 <header>
@@ -195,14 +187,7 @@ user has input an invalid ID for data?</p>
 given by me. In both my jobs, I use the Git::Repository module to automate
 releases.</p>
 
-                        <ul>
-                            <li><a href="http://blogs.perl.org/users/preaction/2012/10/chicagopm-report---scripting-git-with-perl.html">
-                                Continue reading <em>Chicago.PM - Scripting Git With Perl</em> on blogs.perl.org...
-                            </a></li>
-                            <li><a href="/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html#section-2">
-                                Continue reading on this site...
-                            </a></li>
-                        </ul>
+                    <p><a href="/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html#section-2">Continue reading Chicago.PM - Scripting Git With Perl...</a></p>
             </article>
             <article>
                 <header>
@@ -227,14 +212,7 @@ flexible code be used in multiple instances across multiple modules. But they
 are, for the most part, only data structures, which can be a problem if the
 configured object is expecting another configured object.</p>
 
-                        <ul>
-                            <li><a href="http://blogs.perl.org/users/preaction/2012/10/using-moosextypes-to-inflate-config-values.html">
-                                Continue reading <em>Using MooseX::Types to Inflate Config Values</em> on blogs.perl.org...
-                            </a></li>
-                            <li><a href="/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html#section-2">
-                                Continue reading on this site...
-                            </a></li>
-                        </ul>
+                    <p><a href="/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html#section-2">Continue reading Using MooseX::Types to Inflate Config Values...</a></p>
             </article>
         </main>
         <ul class="pager">

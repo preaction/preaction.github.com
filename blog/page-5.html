@@ -6,8 +6,7 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <title>Doug Bell</title>
         <style type="text/css">
-            article > hgroup > h1,
-            main > hgroup > h1
+            main header h1
             {
                 border-bottom: 4px solid #045578;
             }
@@ -18,6 +17,13 @@
             .sidebar h1 {
                 font-size: 14pt;
             }
+
+            /** Add a line when using the "Continue reading..." link */
+            section:target {
+                padding-top: 0.5em;
+                border-top: 4px solid #045578;
+            }
+
         </style>
             <link rel="alternate" href="/blog/index.atom" type="application/atom+xml" />
             <link rel="alternate" href="/blog/index.rss" type="application/rss+xml" />
@@ -376,14 +382,7 @@ perspective:</p>
 <p>Since then, it has not fundamentally changed, though everything about the
 Internet surely has.</p>
 
-                        <ul>
-                            <li><a href="http://blogs.perl.org/users/preaction/2011/01/whats-new-in-webgui-8-2-auth-improvements.html">
-                                Continue reading <em>What's New in WebGUI 8 #2: Auth Improvements</em> on blogs.perl.org...
-                            </a></li>
-                            <li><a href="/blog/2011/01/22/whats-new-in-webgui-8.0-2-auth-improvements.html#section-2">
-                                Continue reading on this site...
-                            </a></li>
-                        </ul>
+                    <p><a href="/blog/2011/01/22/whats-new-in-webgui-8.0-2-auth-improvements.html#section-2">Continue reading What's New in WebGUI 8 #2: Auth Improvements...</a></p>
             </article>
             <article>
                 <header>

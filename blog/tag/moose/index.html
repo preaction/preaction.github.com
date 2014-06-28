@@ -6,8 +6,7 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <title>Doug Bell</title>
         <style type="text/css">
-            article > hgroup > h1,
-            main > hgroup > h1
+            main header h1
             {
                 border-bottom: 4px solid #045578;
             }
@@ -18,6 +17,13 @@
             .sidebar h1 {
                 font-size: 14pt;
             }
+
+            /** Add a line when using the "Continue reading..." link */
+            section:target {
+                padding-top: 0.5em;
+                border-top: 4px solid #045578;
+            }
+
         </style>
             <link rel="alternate" href="/blog/tag/moose.atom" type="application/atom+xml" />
             <link rel="alternate" href="/blog/tag/moose.rss" type="application/rss+xml" />
@@ -75,14 +81,7 @@ flexible code be used in multiple instances across multiple modules. But they
 are, for the most part, only data structures, which can be a problem if the
 configured object is expecting another configured object.</p>
 
-                        <ul>
-                            <li><a href="http://blogs.perl.org/users/preaction/2012/10/using-moosextypes-to-inflate-config-values.html">
-                                Continue reading <em>Using MooseX::Types to Inflate Config Values</em> on blogs.perl.org...
-                            </a></li>
-                            <li><a href="/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html#section-2">
-                                Continue reading on this site...
-                            </a></li>
-                        </ul>
+                    <p><a href="/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html#section-2">Continue reading Using MooseX::Types to Inflate Config Values...</a></p>
             </article>
             <article>
                 <header>
@@ -118,14 +117,7 @@ runtime. Using those meta-object methods to add an attribute would modify our
 object, adding that attribute to the object. Using Class::MOP, we can compose
 classes at runtime!</p>
 
-                        <ul>
-                            <li><a href="http://blogs.perl.org/users/preaction/2012/10/run-time-class-composition-with-moose.html">
-                                Continue reading <em>Run-time Class Composition With Moose</em> on blogs.perl.org...
-                            </a></li>
-                            <li><a href="/blog/2012/10/07/run-time-class-composition-with-moose.html#section-2">
-                                Continue reading on this site...
-                            </a></li>
-                        </ul>
+                    <p><a href="/blog/2012/10/07/run-time-class-composition-with-moose.html#section-2">Continue reading Run-time Class Composition With Moose...</a></p>
             </article>
         </main>
         <ul class="pager">
