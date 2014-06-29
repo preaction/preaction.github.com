@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/index.html</id>
+    <id>http://preaction.github.io/blog/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-28T19:37:42Z</updated>
+    <updated>2014-06-28T23:14:01Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/index.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/index.html"/>
+    <link rel="alternate" href="http://preaction.github.io/blog/index.html"/>
     <generator version="0.016">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
@@ -31,7 +31,7 @@ able to execute it. Maybe git-add--interactive is broken?
                 </ul>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa64582da68)" />
+        <category term="ARRAY(0x7fb6ec801a50)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</id>
@@ -56,7 +56,7 @@ of the good tutorials and learning sites.</p>
                 </ul>
         ]]></content>
         <updated>2013-06-13T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa64582d720)" />
+        <category term="ARRAY(0x7fb6ec801708)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</id>
@@ -79,7 +79,7 @@ tool</a>.</p>
                 </ul>
         ]]></content>
         <updated>2013-05-01T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa645828840)" />
+        <category term="ARRAY(0x7fb6ec806228)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</id>
@@ -114,7 +114,7 @@ and then using that as a package name?</p>
                 </ul>
         ]]></content>
         <updated>2013-04-15T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa645828588)" />
+        <category term="ARRAY(0x7fb6ec805f70)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</id>
@@ -142,7 +142,7 @@ make this task surmountable.</p>
                 </ul>
         ]]></content>
         <updated>2013-04-11T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa6458282d0)" />
+        <category term="ARRAY(0x7fb6ec805cb8)" />
     </entry>
 </feed>
 

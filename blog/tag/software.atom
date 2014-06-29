@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/software/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-28T19:37:42Z</updated>
+    <updated>2014-06-28T23:14:02Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/software.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/software/index.html"/>
     <generator version="0.016">Statocles</generator>
@@ -38,7 +38,7 @@ user has input an invalid ID for data?</p>
                 </ul>
         ]]></content>
         <updated>2012-11-04T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa645827aa8)" />
+        <category term="ARRAY(0x7fb6ec805490)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/09/23/plan-software-to-live-forever.html</id>
@@ -65,7 +65,7 @@ for a long time.</p>
                 </ul>
         ]]></content>
         <updated>2012-09-23T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa645811a48)" />
+        <category term="ARRAY(0x7fb6e9028a30)" />
     </entry>
 </feed>
 
