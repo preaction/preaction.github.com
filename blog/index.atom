@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-28T23:14:01Z</updated>
+    <updated>2014-06-28T23:35:21Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/index.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/index.html"/>
     <generator version="0.016">Statocles</generator>
@@ -31,7 +31,7 @@ able to execute it. Maybe git-add--interactive is broken?
                 </ul>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb6ec801a50)" />
+        <category term="ARRAY(0x7fe4018f13b8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</id>
@@ -56,7 +56,7 @@ of the good tutorials and learning sites.</p>
                 </ul>
         ]]></content>
         <updated>2013-06-13T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb6ec801708)" />
+        <category term="ARRAY(0x7fe4018f1070)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</id>
@@ -79,7 +79,7 @@ tool</a>.</p>
                 </ul>
         ]]></content>
         <updated>2013-05-01T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb6ec806228)" />
+        <category term="ARRAY(0x7fe4018eb590)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</id>
@@ -114,7 +114,7 @@ and then using that as a package name?</p>
                 </ul>
         ]]></content>
         <updated>2013-04-15T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb6ec805f70)" />
+        <category term="ARRAY(0x7fe4018eb2d8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</id>
@@ -142,7 +142,7 @@ make this task surmountable.</p>
                 </ul>
         ]]></content>
         <updated>2013-04-11T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb6ec805cb8)" />
+        <category term="ARRAY(0x7fe4018eb020)" />
     </entry>
 </feed>
 

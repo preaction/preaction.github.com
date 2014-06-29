@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/git/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-28T23:14:01Z</updated>
+    <updated>2014-06-28T23:35:21Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/git.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/git/index.html"/>
     <generator version="0.016">Statocles</generator>
@@ -31,7 +31,7 @@ able to execute it. Maybe git-add--interactive is broken?
                 </ul>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb6ec801a50)" />
+        <category term="ARRAY(0x7fe4018f13b8)" />
     </entry>
 </feed>
 
