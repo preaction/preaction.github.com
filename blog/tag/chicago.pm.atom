@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/chicago.pm/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-27T23:05:42Z</updated>
+    <updated>2014-06-28T19:37:43Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/chicago.pm.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/chicago.pm/index.html"/>
-    <generator version="0.015">Statocles</generator>
+    <generator version="0.016">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</id>
         <title>Chicago.PM New Website! New Meetup URL! New Presentations Project!</title>
@@ -29,7 +29,7 @@ of the good tutorials and learning sites.</p>
                 </ul>
         ]]></content>
         <updated>2013-06-13T00:00:00Z</updated>
-        <category term="ARRAY(0x7f91c2827c60)" />
+        <category term="ARRAY(0x7fa64582d720)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</id>
@@ -52,7 +52,7 @@ tool</a>.</p>
                 </ul>
         ]]></content>
         <updated>2013-05-01T00:00:00Z</updated>
-        <category term="ARRAY(0x7f91c2819980)" />
+        <category term="ARRAY(0x7fa645828840)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html</id>
@@ -78,7 +78,7 @@ deck.js, and I'm not sure I like it.]</p>
                 </ul>
         ]]></content>
         <updated>2013-03-29T00:00:00Z</updated>
-        <category term="ARRAY(0x7f91c2819158)" />
+        <category term="ARRAY(0x7fa645828018)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/03/14/chicago.pm-mojolicious.html</id>
@@ -119,7 +119,7 @@ AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
                 </ul>
         ]]></content>
         <updated>2013-03-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7f91c2818ea0)" />
+        <category term="ARRAY(0x7fa645827d60)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html</id>
@@ -142,7 +142,7 @@ releases.</p>
                 </ul>
         ]]></content>
         <updated>2012-10-28T00:00:00Z</updated>
-        <category term="ARRAY(0x7f91c281d908)" />
+        <category term="ARRAY(0x7fa6458127c8)" />
     </entry>
 </feed>
 

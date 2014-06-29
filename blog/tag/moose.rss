@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/moose/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/moose.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of Doug Bell</description>
-        <generator>Statocles 0.015</generator>
+        <generator>Statocles 0.016</generator>
         <item>
             <title>Using MooseX::Types to Inflate Config Values</title>
             <link>http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html</link>

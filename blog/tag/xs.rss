@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/xs/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/xs.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of Doug Bell</description>
-        <generator>Statocles 0.015</generator>
+        <generator>Statocles 0.016</generator>
         <item>
             <title>Adventures in Debugging C/XS 2: Debugging Boogaloo</title>
             <link>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</link>
