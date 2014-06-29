@@ -1,28 +1,9 @@
-theme:
-    class: Statocles::Theme
-    args:
-        source_dir: '::default'
-
-blog:
+blog_app:
     class: Statocles::App::Blog
     args:
-        store:
-            $class: Statocles::Store
-            $args:
-                path: blog
+        store: 'blog'
         url_root: /blog
-        theme:
-            $ref: theme
-
-build:
-    class: Statocles::Store
-    args:
-        path: build
-
-deploy:
-    class: Statocles::Store
-    args:
-        path: .
+        theme: '::default'
 
 site:
     class: Statocles::Site::Git
@@ -35,11 +16,9 @@ site:
                   href: /index.html
                 - title: Presentations
                   href: /presentations.html
-        build_store:
-            $ref: build
-        deploy_store:
-            $ref: deploy
-        index: blog
+        build_store: 'build'
+        deploy_store: '.'
+        index: blog_app
         apps:
             blog:
-                $ref: blog
+                $ref: blog_app
