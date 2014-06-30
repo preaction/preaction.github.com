@@ -78,11 +78,19 @@
                         </time>
                         by preaction</p>
                     </aside>
+                    <div class="alert alert-info">
+                        <p>Originally posted as:</p>
+                        <ul>
+                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2014/06/perlsloc---count-perl-source-lines-with-perltidy.html">
+                                <em>perlsloc - Count Perl Source Lines with Perl::Tidy</em> on blogs.perl.org.
+                            </a></li>
+                        </ul>
+                    </div>
                 </header>
                 <p>While spending some time putting together my own <a href="https://github.com/preaction/dot-files/blob/master/perltidyrc">perltidyrc
 file</a>, I became
 intimately familiar with the <a href="https://metacpan.org/pod/distribution/Perl-Tidy/bin/perltidy">Perl::Tidy
-documentation</a>. </p>
+documentation</a>.</p>
 
 <p>One day, I decided to find out exactly how much code I was maintaining. Since
 perltidy can strip comments and POD, and also normalize the source code to make
@@ -92,9 +100,23 @@ a fair measurement, it's a perfect tool for counting Source Lines of Code
 <p>Here's a small shell script using <code>ack</code>, <code>perltidy</code>, <code>xargs</code>, and <code>wc</code> to count
 the source lines of code in any number of directories.</p>
 
-<p><code>
-ack -f --perl $@ | xargs -L 1 perltidy --noprofile --delete-pod --mbl=0 --standard-output | wc -l
-</code></p>
+<pre><code>ack -f --perl $@ | xargs -L 1 perltidy --noprofile --delete-pod --mbl=0 --standard-output | wc -l
+</code></pre>
+
+<p><code>ack -f</code> lists the files that would be searched, and <code>--perl</code> searches Perl
+files, so we get ack's heuristics for finding Perl files. <code>xargs -L 1</code> invokes
+the following command for every 1 line of input. The <code>perltidy</code> command strips
+the pod and tightens up the whitespace and writes the result to stdout, which
+<code>wc -l</code> will then count, line by line.</p>
+
+<p>So, as an example, the current <a href="http://metacpan.org/release/Statocles">Statocles</a> release
+has 50% more test lines than source lines:</p>
+
+<pre><code>» perlsloc lib bin
+    1034
+» perlsloc t
+    1633
+</code></pre>
 
             </article>
         </main>

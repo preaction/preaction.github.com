@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/error/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-29T22:28:55Z</updated>
+    <updated>2014-06-29T22:50:47Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/error.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/error/index.html"/>
     <generator version="0.017">Statocles</generator>
@@ -39,7 +39,7 @@ and then using that as a package name?</p>
                 </ul>
         ]]></content>
         <updated>2013-04-15T00:00:00Z</updated>
-        <category term="ARRAY(0x7f933905f220)" />
+        <category term="ARRAY(0x7fa9df823f70)" />
     </entry>
 </feed>
 
