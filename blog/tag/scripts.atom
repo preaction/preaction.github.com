@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://preaction.github.io/blog/tag/scripts/index.html</id>
+    <title>Doug Bell</title>
+    <updated>2014-06-29T22:28:55Z</updated>
+    <link rel="self" href="http://preaction.github.io/blog/tag/scripts.atom"/>
+    <link rel="alternate" href="http://preaction.github.io/blog/tag/scripts/index.html"/>
+    <generator version="0.017">Statocles</generator>
+    <entry>
+        <id>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</id>
+        <title>perlsloc - Count Perl Source Lines with Perl::Tidy</title>
+        <author><name>preaction</name></author>
+        <link rel="alternate" href="http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html" />
+        <content type="html"><![CDATA[
+            <p>While spending some time putting together my own <a href="https://github.com/preaction/dot-files/blob/master/perltidyrc">perltidyrc
+file</a>, I became
+intimately familiar with the <a href="https://metacpan.org/pod/distribution/Perl-Tidy/bin/perltidy">Perl::Tidy
+documentation</a>. </p>
+
+<p>One day, I decided to find out exactly how much code I was maintaining. Since
+perltidy can strip comments and POD, and also normalize the source code to make
+a fair measurement, it's a perfect tool for counting Source Lines of Code
+(SLOC).</p>
+
+<p>Here's a small shell script using <code>ack</code>, <code>perltidy</code>, <code>xargs</code>, and <code>wc</code> to count
+the source lines of code in any number of directories.</p>
+
+<p><code>
+ack -f --perl $@ | xargs -L 1 perltidy --noprofile --delete-pod --mbl=0 --standard-output | wc -l
+</code></p>
+
+                <p><a href="http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html#section-2">Continue reading...</a></p>
+        ]]></content>
+        <updated>2014-06-29T00:00:00Z</updated>
+        <category term="ARRAY(0x7f933905f3e8)" />
+    </entry>
+</feed>
+

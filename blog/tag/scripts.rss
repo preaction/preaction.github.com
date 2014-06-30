@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Doug Bell</title>
+        <link>http://preaction.github.io/blog/tag/scripts/index.html</link>
+        <atom:link href="http://preaction.github.io/blog/tag/scripts.rss" rel="self" type="application/rss+xml" />
+        <description>Blog feed of Doug Bell</description>
+        <generator>Statocles 0.017</generator>
+        <item>
+            <title>perlsloc - Count Perl Source Lines with Perl::Tidy</title>
+            <link>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</link>
+            <guid>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</guid>
+            <description><![CDATA[
+                <p>While spending some time putting together my own <a href="https://github.com/preaction/dot-files/blob/master/perltidyrc">perltidyrc
+file</a>, I became
+intimately familiar with the <a href="https://metacpan.org/pod/distribution/Perl-Tidy/bin/perltidy">Perl::Tidy
+documentation</a>. </p>
+
+<p>One day, I decided to find out exactly how much code I was maintaining. Since
+perltidy can strip comments and POD, and also normalize the source code to make
+a fair measurement, it's a perfect tool for counting Source Lines of Code
+(SLOC).</p>
+
+<p>Here's a small shell script using <code>ack</code>, <code>perltidy</code>, <code>xargs</code>, and <code>wc</code> to count
+the source lines of code in any number of directories.</p>
+
+<p><code>
+ack -f --perl $@ | xargs -L 1 perltidy --noprofile --delete-pod --mbl=0 --standard-output | wc -l
+</code></p>
+
+                    <p><a href="http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Sun, 29 Jun 2014 00:00:00 -0600
+            </pubDate>
+        </item>
+    </channel>
+</rss>
+

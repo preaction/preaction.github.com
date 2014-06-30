@@ -1,11 +1,39 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/blog/index.html</id>
+    <id>http://preaction.github.io/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-28T23:35:21Z</updated>
+    <updated>2014-06-29T22:28:54Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/index.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/blog/index.html"/>
-    <generator version="0.016">Statocles</generator>
+    <link rel="alternate" href="http://preaction.github.io/index.html"/>
+    <generator version="0.017">Statocles</generator>
+    <entry>
+        <id>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</id>
+        <title>perlsloc - Count Perl Source Lines with Perl::Tidy</title>
+        <author><name>preaction</name></author>
+        <link rel="alternate" href="http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html" />
+        <content type="html"><![CDATA[
+            <p>While spending some time putting together my own <a href="https://github.com/preaction/dot-files/blob/master/perltidyrc">perltidyrc
+file</a>, I became
+intimately familiar with the <a href="https://metacpan.org/pod/distribution/Perl-Tidy/bin/perltidy">Perl::Tidy
+documentation</a>. </p>
+
+<p>One day, I decided to find out exactly how much code I was maintaining. Since
+perltidy can strip comments and POD, and also normalize the source code to make
+a fair measurement, it's a perfect tool for counting Source Lines of Code
+(SLOC).</p>
+
+<p>Here's a small shell script using <code>ack</code>, <code>perltidy</code>, <code>xargs</code>, and <code>wc</code> to count
+the source lines of code in any number of directories.</p>
+
+<p><code>
+ack -f --perl $@ | xargs -L 1 perltidy --noprofile --delete-pod --mbl=0 --standard-output | wc -l
+</code></p>
+
+                <p><a href="http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html#section-2">Continue reading...</a></p>
+        ]]></content>
+        <updated>2014-06-29T00:00:00Z</updated>
+        <category term="ARRAY(0x7f933905f3e8)" />
+    </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
         <title>Conflict Resolution: local::lib and git's Perl</title>
@@ -31,7 +59,7 @@ able to execute it. Maybe git-add--interactive is broken?
                 </ul>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4018f13b8)" />
+        <category term="ARRAY(0x7f933905fad8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</id>
@@ -56,7 +84,7 @@ of the good tutorials and learning sites.</p>
                 </ul>
         ]]></content>
         <updated>2013-06-13T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4018f1070)" />
+        <category term="ARRAY(0x7f933905f790)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</id>
@@ -79,7 +107,7 @@ tool</a>.</p>
                 </ul>
         ]]></content>
         <updated>2013-05-01T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4018eb590)" />
+        <category term="ARRAY(0x7f933905f4d8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</id>
@@ -114,35 +142,7 @@ and then using that as a package name?</p>
                 </ul>
         ]]></content>
         <updated>2013-04-15T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4018eb2d8)" />
-    </entry>
-    <entry>
-        <id>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</id>
-        <title>Thoughts while changing the API of a massive framework...</title>
-        <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html" />
-        <content type="html"><![CDATA[
-            <p>At the Bank we have a home-grown ETL framework that we've been using for quite
-some time. We recently completed a total rewrite, but unfortunately we left out
-a few changes. Had I gotten those changes in 5 months ago, I would have only
-had to break the API of about 10 modules. Today, in order to make those
-changes, I have to break the API of 122 modules.</p>
-
-<p>What follows is an account of this ordeal, provided for entertainment value
-only. There will be a future post that explains some of the things I did to
-make this task surmountable.</p>
-
-                <ul>
-                    <li><a href="http://blogs.perl.org/users/preaction/2013/04/thoughts-while-changing-the-api-of-a-massive-framework.html">
-                        Continue reading <em>Thoughts while changing the API of a massive framework...</em> on blogs.perl.org...
-                    </a></li>
-                    <li><a href="http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html#section-2">
-                        Continue reading on Doug Bell
-                    </a></li>
-                </ul>
-        ]]></content>
-        <updated>2013-04-11T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4018eb020)" />
+        <category term="ARRAY(0x7f933905f220)" />
     </entry>
 </feed>
 

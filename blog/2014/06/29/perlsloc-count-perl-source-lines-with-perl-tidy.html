@@ -67,60 +67,31 @@
     <div class="col-md-9">
         <main>
             <header>
-                <h1>Chicago.PM Report - App::Services by Sean Blanton</h1>
+                <h1>perlsloc - Count Perl Source Lines with Perl::Tidy</h1>
                 <aside>
-                    <p><time datetime="2012-09-27">
-                        Posted on 2012-09-27
+                    <p><time datetime="2014-06-29">
+                        Posted on 2014-06-29
                     </time>
                     by preaction</p>
                 </aside>
-                <div class="alert alert-info">
-                    <p>Originally posted as:</p>
-                    <ul>
-                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/09/chicagopm-report---appservices-by-sean-blanton.html">
-                            <em>Chicago.PM Report - App::Services by Sean Blanton</em> on blogs.perl.org.
-                        </a></li>
-                    </ul>
-                </div>
             </header>
             <section id="section-1">
-                <p>This month's technical presentation at <a href="http://chicago.pm.org">Chicago Perl
-Mongers</a> was about <a href="http://seanblanton.com">Sean
-Blanton</a>'s project called
-<a href="https://github.com/sblanton/App-Services">App::Services</a>. It's an interesting
-project that uses <a href="http://search.cpan.org/perldoc?Bread::Board">Bread::Board</a>
-to access resources like databases, logging, ssh, and others.</p>
+                <p>While spending some time putting together my own <a href="https://github.com/preaction/dot-files/blob/master/perltidyrc">perltidyrc
+file</a>, I became
+intimately familiar with the <a href="https://metacpan.org/pod/distribution/Perl-Tidy/bin/perltidy">Perl::Tidy
+documentation</a>. </p>
 
-            </section>
-            <section id="section-2">
-                <p>Along the way, we discussed logging practices (most of us are using
-<a href="http://search.cpan.org/perldoc?Log%3A%3ALog4perl">Log::Log4perl</a>), and the
-best way to get a Perl module ready for CPAN (I suggested using
-<a href="http://search.cpan.org/perldoc?Module%3A%3ABuild">Module::Build</a> directly, but
-<a href="http://search.cpan.org/perldoc?Dist::Zilla">Dist::Zilla</a> outvoted me).</p>
+<p>One day, I decided to find out exactly how much code I was maintaining. Since
+perltidy can strip comments and POD, and also normalize the source code to make
+a fair measurement, it's a perfect tool for counting Source Lines of Code
+(SLOC).</p>
 
-<p>Sean mentioned in passing the <a href="http://saltstack.org">Salt stack</a> for executing
-commands across multiple machines, which looks like a very interesting
-alternative to more detailed tools like Puppet or Chef. Salt seems to be just a
-simple way to execute commands on multiple machines. Those commands could be
-administrative (restart httpd), or they could be the application.</p>
+<p>Here's a small shell script using <code>ack</code>, <code>perltidy</code>, <code>xargs</code>, and <code>wc</code> to count
+the source lines of code in any number of directories.</p>
 
-<p>One other very interesting thing from App::Services was providing a role for
-the larger system to use. So one creates App::Service::Log::Log4perl and
-App::Service::Log::Role, and in other services you consume the
-App::Service::Log::Role and then can use the Log4perl service. What's
-interesting about this is that the role is provided alongside the logging
-service, it isn't something that you have to create yourself. Doing it this way
-improves interoperability and simplifies adoption by giving you the tedious
-bits already. It's the difference between "Here's a service, figure out how to
-use it best" and "Here's a service, and here's a good way to use it" (I've been
-doing something similar by providing Test::MockObject implementations of my
-modules for testing purposes in the same distribution as the module itself. An
-"official" mock object).</p>
-
-<p>In two weeks we have another project night, which I'm hoping is as productive
-as the last. If you're in the Chicago area, check us out on the <a href="http://www.meetup.com/Windy-City-Perl-mongers-Meetup/">Chicago Perl
-Mongers meetup page</a>.</p>
+<p><code>
+ack -f --perl $@ | xargs -L 1 perltidy --noprofile --delete-pod --mbl=0 --standard-output | wc -l
+</code></p>
 
             </section>
         </main>

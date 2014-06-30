@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/webgui/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-28T23:35:21Z</updated>
+    <updated>2014-06-29T22:28:54Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/webgui.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/webgui/index.html"/>
-    <generator version="0.016">Statocles</generator>
+    <generator version="0.017">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2011/05/20/webgui-8-status-report.html</id>
         <title>WebGUI 8 Status Report</title>
@@ -46,7 +46,7 @@ presentations, and they're served by a nice, fast, free host.</p>
                 </ul>
         ]]></content>
         <updated>2011-05-20T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4018ba908)" />
+        <category term="ARRAY(0x7f933d001e28)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/03/09/chi-saves-the-day.html</id>
@@ -209,7 +209,7 @@ the day!</p>
                 </ul>
         ]]></content>
         <updated>2011-03-09T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4018cdc68)" />
+        <category term="ARRAY(0x7f93390c1928)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/03/05/whats-new-in-webgui-8.0-5-asset-helpers.html</id>
@@ -235,7 +235,7 @@ why you would read this blog, so instead I'm going to talk about how you can add
                 </ul>
         ]]></content>
         <updated>2011-03-05T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4018ba3b0)" />
+        <category term="ARRAY(0x7f933d0018d0)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/02/18/whats-new-in-webgui-8.0-4-chi-cache.html</id>
@@ -339,7 +339,7 @@ pretty and screenshots!</p>
                 </ul>
         ]]></content>
         <updated>2011-02-18T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4018ce6d0)" />
+        <category term="ARRAY(0x7f933d001618)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/02/04/whats-new-in-webgui-8.0-3-upgrade-system.html</id>
@@ -525,7 +525,7 @@ it easier to evolve with it.</p>
                 </ul>
         ]]></content>
         <updated>2011-02-04T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4018ce418)" />
+        <category term="ARRAY(0x7f933d001360)" />
     </entry>
 </feed>
 

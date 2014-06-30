@@ -2,10 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Doug Bell</title>
-        <link>http://preaction.github.io/blog/index.html</link>
+        <link>http://preaction.github.io/index.html</link>
         <atom:link href="http://preaction.github.io/blog/index.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of Doug Bell</description>
-        <generator>Statocles 0.016</generator>
+        <generator>Statocles 0.017</generator>
+        <item>
+            <title>perlsloc - Count Perl Source Lines with Perl::Tidy</title>
+            <link>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</link>
+            <guid>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</guid>
+            <description><![CDATA[
+                <p>While spending some time putting together my own <a href="https://github.com/preaction/dot-files/blob/master/perltidyrc">perltidyrc
+file</a>, I became
+intimately familiar with the <a href="https://metacpan.org/pod/distribution/Perl-Tidy/bin/perltidy">Perl::Tidy
+documentation</a>. </p>
+
+<p>One day, I decided to find out exactly how much code I was maintaining. Since
+perltidy can strip comments and POD, and also normalize the source code to make
+a fair measurement, it's a perfect tool for counting Source Lines of Code
+(SLOC).</p>
+
+<p>Here's a small shell script using <code>ack</code>, <code>perltidy</code>, <code>xargs</code>, and <code>wc</code> to count
+the source lines of code in any number of directories.</p>
+
+<p><code>
+ack -f --perl $@ | xargs -L 1 perltidy --noprofile --delete-pod --mbl=0 --standard-output | wc -l
+</code></p>
+
+                    <p><a href="http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html#section-2">Continue reading...</a></p>
+            ]]></description>
+            <pubDate>
+                Sun, 29 Jun 2014 00:00:00 -0600
+            </pubDate>
+        </item>
         <item>
             <title>Conflict Resolution: local::lib and git's Perl</title>
             <link>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</link>
@@ -114,34 +142,6 @@ and then using that as a package name?</p>
             ]]></description>
             <pubDate>
                 Mon, 15 Apr 2013 00:00:00 -0600
-            </pubDate>
-        </item>
-        <item>
-            <title>Thoughts while changing the API of a massive framework...</title>
-            <link>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</link>
-            <guid>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</guid>
-            <description><![CDATA[
-                <p>At the Bank we have a home-grown ETL framework that we've been using for quite
-some time. We recently completed a total rewrite, but unfortunately we left out
-a few changes. Had I gotten those changes in 5 months ago, I would have only
-had to break the API of about 10 modules. Today, in order to make those
-changes, I have to break the API of 122 modules.</p>
-
-<p>What follows is an account of this ordeal, provided for entertainment value
-only. There will be a future post that explains some of the things I did to
-make this task surmountable.</p>
-
-                    <ul>
-                        <li><a href="http://blogs.perl.org/users/preaction/2013/04/thoughts-while-changing-the-api-of-a-massive-framework.html">
-                            Continue reading <em>Thoughts while changing the API of a massive framework...</em> on blogs.perl.org...
-                        </a></li>
-                        <li><a href="http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html#section-2">
-                            Continue reading on Doug Bell
-                        </a></li>
-                    </ul>
-            ]]></description>
-            <pubDate>
-                Thu, 11 Apr 2013 00:00:00 -0600
             </pubDate>
         </item>
     </channel>

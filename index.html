@@ -71,6 +71,34 @@
         <main>
             <article>
                 <header>
+                    <h1><a href="/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html">perlsloc - Count Perl Source Lines with Perl::Tidy</a></h1>
+                    <aside>
+                        <p><time datetime="2014-06-29">
+                            Posted on 2014-06-29
+                        </time>
+                        by preaction</p>
+                    </aside>
+                </header>
+                <p>While spending some time putting together my own <a href="https://github.com/preaction/dot-files/blob/master/perltidyrc">perltidyrc
+file</a>, I became
+intimately familiar with the <a href="https://metacpan.org/pod/distribution/Perl-Tidy/bin/perltidy">Perl::Tidy
+documentation</a>. </p>
+
+<p>One day, I decided to find out exactly how much code I was maintaining. Since
+perltidy can strip comments and POD, and also normalize the source code to make
+a fair measurement, it's a perfect tool for counting Source Lines of Code
+(SLOC).</p>
+
+<p>Here's a small shell script using <code>ack</code>, <code>perltidy</code>, <code>xargs</code>, and <code>wc</code> to count
+the source lines of code in any number of directories.</p>
+
+<p><code>
+ack -f --perl $@ | xargs -L 1 perltidy --noprofile --delete-pod --mbl=0 --standard-output | wc -l
+</code></p>
+
+            </article>
+            <article>
+                <header>
                     <h1><a href="/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html">Conflict Resolution: local::lib and git's Perl</a></h1>
                     <aside>
                         <p><time datetime="2014-06-14">
@@ -187,36 +215,6 @@ and then using that as a package name?</p>
 
                     <p><a href="/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html#section-2">Continue reading I Bless You in the Name of the Stringified Object...</a></p>
             </article>
-            <article>
-                <header>
-                    <h1><a href="/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html">Thoughts while changing the API of a massive framework...</a></h1>
-                    <aside>
-                        <p><time datetime="2013-04-11">
-                            Posted on 2013-04-11
-                        </time>
-                        by preaction</p>
-                    </aside>
-                    <div class="alert alert-info">
-                        <p>Originally posted as:</p>
-                        <ul>
-                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2013/04/thoughts-while-changing-the-api-of-a-massive-framework.html">
-                                <em>Thoughts while changing the API of a massive framework...</em> on blogs.perl.org.
-                            </a></li>
-                        </ul>
-                    </div>
-                </header>
-                <p>At the Bank we have a home-grown ETL framework that we've been using for quite
-some time. We recently completed a total rewrite, but unfortunately we left out
-a few changes. Had I gotten those changes in 5 months ago, I would have only
-had to break the API of about 10 modules. Today, in order to make those
-changes, I have to break the API of 122 modules.</p>
-
-<p>What follows is an account of this ordeal, provided for entertainment value
-only. There will be a future post that explains some of the things I did to
-make this task surmountable.</p>
-
-                    <p><a href="/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html#section-2">Continue reading Thoughts while changing the API of a massive framework......</a></p>
-            </article>
         </main>
         <ul class="pager">
             <li class="previous ">
@@ -238,6 +236,7 @@ make this task surmountable.</p>
             <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
             <li><a href="/blog/tag/perl/index.html">perl</a></li>
             <li><a href="/blog/tag/rants/index.html">rants</a></li>
+            <li><a href="/blog/tag/scripts/index.html">scripts</a></li>
             <li><a href="/blog/tag/software/index.html">software</a></li>
             <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
             <li><a href="/blog/tag/xs/index.html">xs</a></li>
