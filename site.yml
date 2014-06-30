@@ -18,7 +18,7 @@ site:
                   href: /presentations.html
         build_store: 'build'
         deploy_store: '.'
-        index: blog_app
+        index: blog
         apps:
             blog:
                 $ref: blog_app
