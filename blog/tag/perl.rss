@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/perl/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/perl.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of Doug Bell</description>
-        <generator>Statocles 0.017</generator>
+        <generator>Statocles 0.018</generator>
         <item>
             <title>Conflict Resolution: local::lib and git's Perl</title>
             <link>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</link>
@@ -28,6 +28,10 @@ able to execute it. Maybe git-add--interactive is broken?
                             Continue reading on Doug Bell
                         </a></li>
                     </ul>
+                <p>Tags:
+                    <a href="/blog/tag/perl/index.html">perl</a>
+                    <a href="/blog/tag/git/index.html">git</a>
+                </p>
             ]]></description>
             <pubDate>
                 Sat, 14 Jun 2014 00:00:00 -0600
@@ -97,6 +101,10 @@ object. I'll be planning a new API as soon as I confirm this one actually
 works and has proper tests (written in Perl, of course).</p>
 
                     <p><a href="http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html#section-2">Continue reading...</a></p>
+                <p>Tags:
+                    <a href="/blog/tag/perl/index.html">perl</a>
+                    <a href="/blog/tag/xs/index.html">xs</a>
+                </p>
             ]]></description>
             <pubDate>
                 Tue, 20 Mar 2012 00:00:00 -0600

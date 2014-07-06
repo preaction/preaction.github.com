@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/mysql/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/mysql.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of Doug Bell</description>
-        <generator>Statocles 0.017</generator>
+        <generator>Statocles 0.018</generator>
         <item>
             <title>CHI Saves The Day</title>
             <link>http://preaction.github.io/blog/2011/03/09/chi-saves-the-day.html</link>
@@ -164,6 +164,10 @@ the day!</p>
                             Continue reading on Doug Bell
                         </a></li>
                     </ul>
+                <p>Tags:
+                    <a href="/blog/tag/webgui/index.html">webgui</a>
+                    <a href="/blog/tag/mysql/index.html">mysql</a>
+                </p>
             ]]></description>
             <pubDate>
                 Wed, 09 Mar 2011 00:00:00 -0600

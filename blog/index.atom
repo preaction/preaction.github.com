@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-29T22:50:46Z</updated>
+    <updated>2014-07-05T22:37:52Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/index.atom"/>
     <link rel="alternate" href="http://preaction.github.io/index.html"/>
-    <generator version="0.017">Statocles</generator>
+    <generator version="0.018">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</id>
         <title>perlsloc - Count Perl Source Lines with Perl::Tidy</title>
@@ -51,9 +51,12 @@ has 50% more test lines than source lines:</p>
                         Continue reading on Doug Bell
                     </a></li>
                 </ul>
+            <p>Tags:
+                <a href="/blog/tag/scripts/index.html">scripts</a>
+            </p>
         ]]></content>
         <updated>2014-06-29T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa9df824138)" />
+        <category term="ARRAY(0x7fe4f4648fa0)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
@@ -78,9 +81,13 @@ able to execute it. Maybe git-add--interactive is broken?
                         Continue reading on Doug Bell
                     </a></li>
                 </ul>
+            <p>Tags:
+                <a href="/blog/tag/perl/index.html">perl</a>
+                <a href="/blog/tag/git/index.html">git</a>
+            </p>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa9df824828)" />
+        <category term="ARRAY(0x7fe4f4648ee0)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</id>
@@ -103,9 +110,12 @@ of the good tutorials and learning sites.</p>
                         Continue reading on Doug Bell
                     </a></li>
                 </ul>
+            <p>Tags:
+                <a href="/blog/tag/chicago.pm/index.html">chicago.pm</a>
+            </p>
         ]]></content>
         <updated>2013-06-13T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa9df8244e0)" />
+        <category term="ARRAY(0x7fe4f4648a48)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</id>
@@ -126,9 +136,12 @@ tool</a>.</p>
                         Continue reading on Doug Bell
                     </a></li>
                 </ul>
+            <p>Tags:
+                <a href="/blog/tag/chicago.pm/index.html">chicago.pm</a>
+            </p>
         ]]></content>
         <updated>2013-05-01T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa9df824228)" />
+        <category term="ARRAY(0x7fe4f5e8dd90)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</id>
@@ -161,9 +174,12 @@ and then using that as a package name?</p>
                         Continue reading on Doug Bell
                     </a></li>
                 </ul>
+            <p>Tags:
+                <a href="/blog/tag/error/index.html">error</a>
+            </p>
         ]]></content>
         <updated>2013-04-15T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa9df823f70)" />
+        <category term="ARRAY(0x7fe4f45aa760)" />
     </entry>
 </feed>
 

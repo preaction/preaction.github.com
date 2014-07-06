@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/moose/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/moose.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of Doug Bell</description>
-        <generator>Statocles 0.017</generator>
+        <generator>Statocles 0.018</generator>
         <item>
             <title>Using MooseX::Types to Inflate Config Values</title>
             <link>http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html</link>
@@ -24,6 +24,9 @@ configured object is expecting another configured object.</p>
                             Continue reading on Doug Bell
                         </a></li>
                     </ul>
+                <p>Tags:
+                    <a href="/blog/tag/moose/index.html">moose</a>
+                </p>
             ]]></description>
             <pubDate>
                 Mon, 22 Oct 2012 00:00:00 -0600
@@ -58,6 +61,9 @@ classes at runtime!</p>
                             Continue reading on Doug Bell
                         </a></li>
                     </ul>
+                <p>Tags:
+                    <a href="/blog/tag/moose/index.html">moose</a>
+                </p>
             ]]></description>
             <pubDate>
                 Sun, 07 Oct 2012 00:00:00 -0600

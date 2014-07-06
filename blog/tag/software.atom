@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/software/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-29T22:50:47Z</updated>
+    <updated>2014-07-05T22:37:52Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/software.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/software/index.html"/>
-    <generator version="0.017">Statocles</generator>
+    <generator version="0.018">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2012/11/04/testing-is-a-feature-of-your-service.html</id>
         <title>Testing is a Feature of Your Service</title>
@@ -36,9 +36,12 @@ user has input an invalid ID for data?</p>
                         Continue reading on Doug Bell
                     </a></li>
                 </ul>
+            <p>Tags:
+                <a href="/blog/tag/software/index.html">software</a>
+            </p>
         ]]></content>
         <updated>2012-11-04T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa9df819668)" />
+        <category term="ARRAY(0x7fe4f45aa238)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/09/23/plan-software-to-live-forever.html</id>
@@ -63,9 +66,12 @@ for a long time.</p>
                         Continue reading on Doug Bell
                     </a></li>
                 </ul>
+            <p>Tags:
+                <a href="/blog/tag/software/index.html">software</a>
+            </p>
         ]]></content>
         <updated>2012-09-23T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa9df814a08)" />
+        <category term="ARRAY(0x7fe4f45a9818)" />
     </entry>
 </feed>
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/xs/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-29T22:50:47Z</updated>
+    <updated>2014-07-05T22:37:53Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/xs.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/xs/index.html"/>
-    <generator version="0.017">Statocles</generator>
+    <generator version="0.018">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</id>
         <title>Adventures in Debugging C/XS 2: Debugging Boogaloo</title>
@@ -71,9 +71,13 @@ object. I'll be planning a new API as soon as I confirm this one actually
 works and has proper tests (written in Perl, of course).</p>
 
                 <p><a href="http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html#section-2">Continue reading...</a></p>
+            <p>Tags:
+                <a href="/blog/tag/perl/index.html">perl</a>
+                <a href="/blog/tag/xs/index.html">xs</a>
+            </p>
         ]]></content>
         <updated>2012-03-20T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa9df808310)" />
+        <category term="ARRAY(0x7fe4f4392f80)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/11/16/adventures-in-debugging-c-xs.html</id>
@@ -101,9 +105,12 @@ fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
                         Continue reading on Doug Bell
                     </a></li>
                 </ul>
+            <p>Tags:
+                <a href="/blog/tag/xs/index.html">xs</a>
+            </p>
         ]]></content>
         <updated>2011-11-16T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa9df814258)" />
+        <category term="ARRAY(0x7fe4f41285a8)" />
     </entry>
 </feed>
 

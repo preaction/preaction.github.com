@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/webgui/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-06-29T22:50:46Z</updated>
+    <updated>2014-07-05T22:37:52Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/webgui.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/webgui/index.html"/>
-    <generator version="0.017">Statocles</generator>
+    <generator version="0.018">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2011/05/20/webgui-8-status-report.html</id>
         <title>WebGUI 8 Status Report</title>
@@ -44,9 +44,12 @@ presentations, and they're served by a nice, fast, free host.</p>
                         Continue reading on Doug Bell
                     </a></li>
                 </ul>
+            <p>Tags:
+                <a href="/blog/tag/webgui/index.html">webgui</a>
+            </p>
         ]]></content>
         <updated>2011-05-20T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa9df808778)" />
+        <category term="ARRAY(0x7fe4f41286c8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/03/09/chi-saves-the-day.html</id>
@@ -207,9 +210,13 @@ the day!</p>
                         Continue reading on Doug Bell
                     </a></li>
                 </ul>
+            <p>Tags:
+                <a href="/blog/tag/webgui/index.html">webgui</a>
+                <a href="/blog/tag/mysql/index.html">mysql</a>
+            </p>
         ]]></content>
         <updated>2011-03-09T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa9df807478)" />
+        <category term="ARRAY(0x7fe4f4128ab8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/03/05/whats-new-in-webgui-8.0-5-asset-helpers.html</id>
@@ -233,9 +240,12 @@ why you would read this blog, so instead I'm going to talk about how you can add
                         Continue reading on Doug Bell
                     </a></li>
                 </ul>
+            <p>Tags:
+                <a href="/blog/tag/webgui/index.html">webgui</a>
+            </p>
         ]]></content>
         <updated>2011-03-05T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa9df808220)" />
+        <category term="ARRAY(0x7fe4f4393778)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/02/18/whats-new-in-webgui-8.0-4-chi-cache.html</id>
@@ -337,9 +347,12 @@ pretty and screenshots!</p>
                         Continue reading on Doug Bell
                     </a></li>
                 </ul>
+            <p>Tags:
+                <a href="/blog/tag/webgui/index.html">webgui</a>
+            </p>
         ]]></content>
         <updated>2011-02-18T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa9df807f68)" />
+        <category term="ARRAY(0x7fe4f5e8d258)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/02/04/whats-new-in-webgui-8.0-3-upgrade-system.html</id>
@@ -523,9 +536,12 @@ it easier to evolve with it.</p>
                         Continue reading on Doug Bell
                     </a></li>
                 </ul>
+            <p>Tags:
+                <a href="/blog/tag/webgui/index.html">webgui</a>
+            </p>
         ]]></content>
         <updated>2011-02-04T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa9df807cb0)" />
+        <category term="ARRAY(0x7fe4f4392fe0)" />
     </entry>
 </feed>
 
