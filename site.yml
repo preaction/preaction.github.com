@@ -4,6 +4,7 @@ blog_app:
         store: 'blog'
         url_root: /blog
         theme: '::default'
+        index_tags: [ '-personal' ]
 
 site:
     class: Statocles::Site::Git
