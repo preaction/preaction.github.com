@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/rants/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/rants.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of Doug Bell</description>
-        <generator>Statocles 0.018</generator>
+        <generator>Statocles 0.020</generator>
         <item>
             <title>Thoughts while changing the API of a massive framework...</title>
             <link>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</link>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/webgui/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-07-05T22:37:52Z</updated>
+    <updated>2014-07-07T22:49:56Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/webgui.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/webgui/index.html"/>
-    <generator version="0.018">Statocles</generator>
+    <generator version="0.020">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2011/05/20/webgui-8-status-report.html</id>
         <title>WebGUI 8 Status Report</title>
@@ -49,7 +49,7 @@ presentations, and they're served by a nice, fast, free host.</p>
             </p>
         ]]></content>
         <updated>2011-05-20T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4f41286c8)" />
+        <category term="ARRAY(0x7fe60e8348a0)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/03/09/chi-saves-the-day.html</id>
@@ -87,7 +87,7 @@ I poll mysql for its process list.</p>
 
 <p>A pattern emerges: The load spikes and server goes unresponsive when this happens:</p>
 
-<p><img style="width: 100%" src="/blog/images/chi-saves-the-day/Screen shot 2011-03-08 at 10.43.37 PM.png"/></p>
+<p><img src="/blog/images/chi-saves-the-day/Screen shot 2011-03-08 at 10.43.37 PM.png"/></p>
 
 <p>This table shows 12 different processes are trying to update the same cache
 location (process ID 2-3, 5-8, 10, 12-13, 18, 23, and 26). Because of MyISAM's
@@ -195,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `chi__CHI_METACACHE` (
 
 <h2>Results</h2>
 
-<p><img style="width: 100%" src="/blog/images/chi-saves-the-day/Screen shot 2011-03-08 at 10.20.55 PM.png" /></p>
+<p><img src="/blog/images/chi-saves-the-day/Screen shot 2011-03-08 at 10.20.55 PM.png" /></p>
 
 <p>The server is stable again! Spikes do not turn into out-of-control loads and
 unresponsive server. We'll see how things go tomorrow during normal business
@@ -216,7 +216,7 @@ the day!</p>
             </p>
         ]]></content>
         <updated>2011-03-09T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4f4128ab8)" />
+        <category term="ARRAY(0x7fe60e834570)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/03/05/whats-new-in-webgui-8.0-5-asset-helpers.html</id>
@@ -245,7 +245,7 @@ why you would read this blog, so instead I'm going to talk about how you can add
             </p>
         ]]></content>
         <updated>2011-03-05T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4f4393778)" />
+        <category term="ARRAY(0x7fe60e834330)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/02/18/whats-new-in-webgui-8.0-4-chi-cache.html</id>
@@ -352,7 +352,7 @@ pretty and screenshots!</p>
             </p>
         ]]></content>
         <updated>2011-02-18T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4f5e8d258)" />
+        <category term="ARRAY(0x7fe60e834090)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/02/04/whats-new-in-webgui-8.0-3-upgrade-system.html</id>
@@ -541,7 +541,7 @@ it easier to evolve with it.</p>
             </p>
         ]]></content>
         <updated>2011-02-04T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4f4392fe0)" />
+        <category term="ARRAY(0x7fe60e8317b0)" />
     </entry>
 </feed>
 

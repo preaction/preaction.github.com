@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/scripts/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-07-05T22:37:53Z</updated>
+    <updated>2014-07-07T22:49:56Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/scripts.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/scripts/index.html"/>
-    <generator version="0.018">Statocles</generator>
+    <generator version="0.020">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</id>
         <title>perlsloc - Count Perl Source Lines with Perl::Tidy</title>
@@ -56,7 +56,7 @@ has 50% more test lines than source lines:</p>
             </p>
         ]]></content>
         <updated>2014-06-29T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4f4648fa0)" />
+        <category term="ARRAY(0x7fe60e83c4a0)" />
     </entry>
 </feed>
 

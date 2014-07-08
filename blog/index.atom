@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-07-05T22:37:52Z</updated>
+    <updated>2014-07-07T22:49:55Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/index.atom"/>
     <link rel="alternate" href="http://preaction.github.io/index.html"/>
-    <generator version="0.018">Statocles</generator>
+    <generator version="0.020">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</id>
         <title>perlsloc - Count Perl Source Lines with Perl::Tidy</title>
@@ -56,7 +56,7 @@ has 50% more test lines than source lines:</p>
             </p>
         ]]></content>
         <updated>2014-06-29T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4f4648fa0)" />
+        <category term="ARRAY(0x7fe60e83c4a0)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
@@ -87,7 +87,7 @@ able to execute it. Maybe git-add--interactive is broken?
             </p>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4f4648ee0)" />
+        <category term="ARRAY(0x7fe60e83bdc8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</id>
@@ -115,7 +115,7 @@ of the good tutorials and learning sites.</p>
             </p>
         ]]></content>
         <updated>2013-06-13T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4f4648a48)" />
+        <category term="ARRAY(0x7fe60e83bff0)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</id>
@@ -141,7 +141,7 @@ tool</a>.</p>
             </p>
         ]]></content>
         <updated>2013-05-01T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4f5e8dd90)" />
+        <category term="ARRAY(0x7fe60e83bd38)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</id>
@@ -179,7 +179,7 @@ and then using that as a package name?</p>
             </p>
         ]]></content>
         <updated>2013-04-15T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe4f45aa760)" />
+        <category term="ARRAY(0x7fe60e84b458)" />
     </entry>
 </feed>
 
