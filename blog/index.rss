@@ -90,6 +90,28 @@ able to execute it. Maybe git-add--interactive is broken?
             </pubDate>
         </item>
         <item>
+            <title>Raw Feed of OpenBSD's Work on Cleaning Up OpenSSL</title>
+            <link>http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html</link>
+            <guid>http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html</guid>
+            <description><![CDATA[
+                <p><a href="http://freshbsd.org/search?project=openbsd&amp;q=file.name:libssl">Raw Feed of OpenBSD's Work on Cleaning Up OpenSSL</a></p>
+
+<p>This is an amazing timeline of how much and how quickly work can get done with
+a determined, dedicated team of hackers.</p>
+
+<p>Here are some gems:</p>
+
+                    <p><a href="http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html#section-2">Continue reading...</a></p>
+                <p>Tags:
+                    <a href="/blog/tag/openbsd/index.html">openbsd</a>
+                    <a href="/blog/tag/funny/index.html">funny</a>
+                </p>
+            ]]></description>
+            <pubDate>
+                Sat, 19 Apr 2014 00:00:00 -0600
+            </pubDate>
+        </item>
+        <item>
             <title>Chicago.PM New Website! New Meetup URL! New Presentations Project!</title>
             <link>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</link>
             <guid>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</guid>
@@ -141,44 +163,6 @@ tool</a>.</p>
             ]]></description>
             <pubDate>
                 Wed, 01 May 2013 00:00:00 -0600
-            </pubDate>
-        </item>
-        <item>
-            <title>I Bless You in the Name of the Stringified Object</title>
-            <link>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</link>
-            <guid>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</guid>
-            <description><![CDATA[
-                <p>A co-worker came to me today with a curious error message:</p>
-
-<pre><code>use DateTime;
-my $date = DateTime-&gt;new( year =&gt; 2013, month =&gt; 4, day =&gt; 15 );
-$date-&gt;set_time_zone("Australia/Sydney");
-print $date-&gt;today;'
-</code></pre>
-
-<p>This code gives the error <code>Can't locate object method "_normalize_nanoseconds"
-via package "2013-04-15T00:00:00" at
-/usr2/local/perlbrew/perls/perl-5.16.3/lib/site_perl/5.16.3/x86_64-linux-thread-multi/DateTime.pm
-line 252.</code></p>
-
-<p>The package "2013-04-15T00:00:00" is the curious part: It looks like a
-stringified DateTime, but who could possibly be stringifying a DateTime object
-and then using that as a package name?</p>
-
-                    <ul>
-                        <li><a href="http://blogs.perl.org/users/preaction/2013/04/i-bless-you-in-the-name-of-the-stringified-object.html">
-                            Continue reading <em>I Bless You in the Name of the Stringified Object</em> on blogs.perl.org...
-                        </a></li>
-                        <li><a href="http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html#section-2">
-                            Continue reading on Doug Bell
-                        </a></li>
-                    </ul>
-                <p>Tags:
-                    <a href="/blog/tag/error/index.html">error</a>
-                </p>
-            ]]></description>
-            <pubDate>
-                Mon, 15 Apr 2013 00:00:00 -0600
             </pubDate>
         </item>
     </channel>

@@ -78,90 +78,55 @@
     <div class="col-md-9">
         <main>
             <header>
-                <h1>Conflict Resolution: local::lib and git's Perl</h1>
+                <h1>It Begins in Fear</h1>
                 <p class="tags">Tags:
-                    <a href="/blog/tag/perl/index.html" rel="tag">perl</a>
-                    <a href="/blog/tag/git/index.html" rel="tag">git</a>
+                    <a href="/blog/tag/personal/index.html" rel="tag">personal</a>
                 </p>
                 <aside>
-                    <p><time datetime="2014-06-14">
-                        Posted on 2014-06-14
+                    <p><time datetime="2013-01-06">
+                        Posted on 2013-01-06
                     </time>
                     by preaction</p>
                 </aside>
-                <div class="alert alert-info">
-                    <p>Originally posted as:</p>
-                    <ul>
-                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2014/06/conflict-resolution-locallib-and-gits-perl.html">
-                            <em>Conflict Resolution: local::lib and git's Perl</em> on blogs.perl.org.
-                        </a></li>
-                    </ul>
-                </div>
             </header>
             <section id="section-1">
-                <p>I ran into a frustrating problem the other day:</p>
+                <p>A long time ago, I used to blog about my feelings.</p>
 
-<pre><code>$ git add -i
-/usr/bin/perl: symbol lookup error: ~/perl5/lib/perl5/x86_64-linux-thread-multi/auto/List/Util/Util.so:
-undefined symbol: Perl_xs_apiversion_bootcheck
-fatal: 'add--interactive' appears to be a git command, but we were not
-able to execute it. Maybe git-add--interactive is broken?
-</code></pre>
+<p>Obviously, since I’m a dude, I’m not supposed to have feelings. At least, I am
+not supposed to have the feelings I confessed to having. At least, I am not
+supposed to have those feelings if I am in sound mind.</p>
+
+<p>I still have those posts from Livejournal or from my personal sites. I don’t
+look at them anymore, but they’re there if I ever want to retread the mental
+pathways of memory.</p>
+
+<p>A long time ago, I used to talk about my feelings.</p>
 
             </section>
             <section id="section-2">
-                <p>I've seen this error message from Perl a lot. It basically means that I'm
-trying to load an XS module compiled for a different version of Perl. Since
-<code>git</code> is directly trying to run <code>/usr/bin/perl</code> (5.10.1) as opposed to the
-<code>perlbrew</code> Perl I have installed (5.16.3), the error comes as no surprise:
-<code>PERL5LIB</code> is checked before Perl's built-in libraries. So if you have a
-<code>local::lib</code> (which adds its directories to <code>PERL5LIB</code>) and try to use those
-modules in a different Perl, things may not work as you expected.</p>
+                <p>The blog was the beginning, or the middle, or the end, but it was part of the
+self-examination. The blog was just one way to explore and exhume and explain
+and examine my feelings about my life thus far.</p>
 
-<p>What is more surprising is that Git explicitly uses <code>/usr/bin/perl</code> in the
-first place. Some Google-fu brought up a <a href="http://article.gmane.org/gmane.comp.version-control.git/147462">thread on the Git mailing list about
-changing to <code>#!/usr/bin/env
-perl</code></a>, but it
-appears this was rejected. According to another post in that thread, <a href="http://article.gmane.org/gmane.comp.version-control.git/147475">it is
-possible to set PERL_PATH when running <code>make</code> on
-Git</a>, but that
-did not seem to work for me.</p>
+<p>A long time ago, I used to care about my feelings.</p>
 
-<p>But the Git Perl scripts all seem to have one thing in common: They all add the
-paths in the <code>GITPERLLIB</code> environment variable to the front of <code>@INC</code> as
-the first thing they do. <code>GITPERLLIB</code> is treated as a <code>:</code>-delimited list of
-directories, like <code>PERL5LIB</code>. So if we fill in <code>GITPERLLIB</code> with the right
-directories, we can ensure that the right <code>List::Util</code> version is found
-first.</p>
+<p>They were bad feelings. They were narcissistic, self-centered, obtuse, and even
+hurtful. I used them, or they used me, to inflict pain on other people. I do
+not mention this to ask for forgiveness; I think I need the guilt. I mention
+this informationally, casually, with that detached air I have carefully
+cultivated.</p>
 
-<p>The right directories are part of Perl's <code>Config</code>. This configuration is
-available to us in Perl scripts through the <code>Config</code> module which provides a
-<code>%Config</code> hash.  There are three "layers" of Perl library paths, "core",
-"vendor", and "site", configured in the following Config keys:</p>
+<p>I became afraid of feeling, over time. My anger had gotten the best of me a few
+times, and my fists were raised, extended, retracted, lowered. My words, a more
+elegant and effective weapon, were used more often.</p>
 
-<ul>
-<li>core    => 'archlib', 'privlib'</li>
-<li>vendor  => 'vendorarch', 'vendorlib'</li>
-<li>site    => 'sitearch', 'sitelib'</li>
-</ul>
+<p>Over time, the people went away, some driven and some drifted, but no new
+people came to replace them. I’ve become withdrawn, sheltered. I don’t talk a
+lot, and when I do I always say the wrong things.</p>
 
-<p>The "core" libraries are just that, the core Perl 5 libraries. The "vendor"
-libraries are additional libraries that your vendor may have provided in their
-Perl distribution. The "site" libraries are the CPAN libraries you've
-downloaded and installed via the <code>cpan</code> client (unless you're using local::lib,
-which overrides the install directories).</p>
+<p>I think it’s time to feel again.</p>
 
-<p>Armed with these Config keys, we can make a <code>GITPERLLIB</code> that overrides our local::lib
-directories. So now, in my <code>.zshrc</code>, I have:</p>
-
-<pre><code># Fix git perl scripts in case of local::lib
-# If we install modules for a different arch in local::lib, we'll get some problems
-if [[ -x /usr/bin/perl ]]; then
-    export GITPERLLIB=`/usr/bin/perl -MConfig -e'print join ":", grep { $_ } map { $Config{$_} } qw( sitearch sitelib vendorarch vendorlib archlib privlib )'`
-fi
-</code></pre>
-
-<p>Now I can do my proper <code>git add --interactive</code> again!</p>
+<p>I think it’s time to get over my fear of feelings.</p>
 
             </section>
         </main>

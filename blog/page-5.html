@@ -82,6 +82,174 @@
         <main>
             <article>
                 <header>
+                    <h1><a href="/blog/2011/03/09/chi-saves-the-day.html">CHI Saves The Day</a></h1>
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/webgui/index.html" rel="tag">webgui</a>
+                        <a href="/blog/tag/mysql/index.html" rel="tag">mysql</a>
+                    </p>
+                    <aside>
+                        <p><time datetime="2011-03-09">
+                            Posted on 2011-03-09
+                        </time>
+                        by preaction</p>
+                    </aside>
+                    <div class="alert alert-info">
+                        <p>Originally posted as:</p>
+                        <ul>
+                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2011/03/chi-saves-the-day.html">
+                                <em>CHI Saves The Day</em> on blogs.perl.org.
+                            </a></li>
+                        </ul>
+                    </div>
+                </header>
+                <h2>The Server Is Down</h2>
+
+<ol>
+<li>No it isn't, I didn't get paged.</li>
+<li>Wait a minute, why didn't I get paged?</li>
+<li>FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU--</li>
+<li>CHALLENGE ACCEPTED</li>
+</ol>
+
+<h2>Diagnosis</h2>
+
+<p>The client reported that the site sometimes took more than a minute to load.
+Doesn't respond very slowly to me, and the pager is only primed to ping me if
+there is a sustained downtime (hiccups are not something I want to wake up for
+every night at 3:00am).</p>
+
+<p>Strangely, load hovered around 7 most of the time, only spiking to 13 every
+few minutes. With a 16-core processor, this was well within operating
+parameters, if just a little worrisome. Nothing in the log files.</p>
+
+<p>Oops, now I get a slow page load. Takes 30 seconds to load a page. Refresh
+again, and the page loads just fine. Clear browser cache, and the page still
+loads just fine.</p>
+
+<p>top kept MySQL at the top of the CPU list. Not surprising, as this server is
+the master database server for a two node cluster. So I keep an eye on top as
+I poll mysql for its process list.</p>
+
+<p>A pattern emerges: The load spikes and server goes unresponsive when this happens:</p>
+
+<p><img src="/blog/images/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.43.37%20PM.png" alt="" /></p>
+
+<p>This table shows 12 different processes are trying to update the same cache
+location (process ID 2-3, 5-8, 10, 12-13, 18, 23, and 26). Because of MyISAM's
+table-level lock, any request to get from the cache has to wait for 12 REPLACE
+INTO requests to complete. They've already taken 1 second, if each replace
+takes 2 seconds, that's 24 seconds of non-responsive website.</p>
+
+<p>These 12 processes all saw that the cache item had expired and are trying to
+update it. This is called a "cache stampede". Only one of them needs to update
+the cache, the rest are just wasting resources. Worse, they're doing all the
+work to update the cache, which is much more expensive than getting the value
+from the cache. If it's expensive enough, the site goes down hard.</p>
+
+<h2>Management</h2>
+
+<p>How can we stop the cache stampede? One way is to mildly randomize the actual
+expiration date when checking if the cache is expired:</p>
+
+<pre><code>sub is_expired {
+    my ( $self, $key ) = @_;
+    my $expires = $self-&gt;get_expires( $key );
+    # Randomize the expiration by up to 5% +/-
+    # by first removing 5% and then adding 0-10%
+    $expires = $expires - ( $expires * 0.05 ) + ( $expires * 0.10 * rand );
+    # Compare against now
+    return $expires &gt; time;
+}
+</code></pre>
+
+<p>In this very simple case, if you are within 5% of the expiration time, you
+have a chance to have an expired cache item. The chance grows as time passes,
+reaching 50% at the actual expiration time, and 100% at 5% past the expiration
+time.</p>
+
+<p>Rather than add this expiration variance to our custom database cache, I
+instead opted to move this site over to CHI, which has this protection
+built-in.</p>
+
+<pre><code>my $cache   = CHI-&gt;new(
+    driver              =&gt; 'DBI',
+    namespace           =&gt; 'localhost',
+    dbh                 =&gt; $dbh,
+    expires_variance    =&gt; '0.10',
+);
+</code></pre>
+
+<p>This stops the cache stampede, but we're still hitting the database a lot.
+Remember we have two web nodes hitting one database node. The fewer database
+hits we make, the better performance we can get without having to ask for more
+hardware from the client (which takes time, and forms, and more forms, and
+meetings, and forms, and more meetings, and probably some forms).</p>
+
+<p>Because this is a distributed system, we need a distributed, synchronized
+cache. We cannot use memcached, as WebGUI 7.x does not support it (but WebGUI
+8 does). So for now we must use the database as our synchronized cache, but
+what if we put a faster, local cache in front of the slower, synchronized
+cache?</p>
+
+<p>CHI has an awesome way to do this: Add an l1_cache</p>
+
+<pre><code>my $cache   = CHI-&gt;new(
+    driver              =&gt; 'DBI',
+    namespace           =&gt; 'localhost',
+    dbh                 =&gt; $dbh,
+    expires_variance    =&gt; '0.10',
+    l1_cache            =&gt; {
+        driver      =&gt; 'FastMmap',
+        root_dir    =&gt; '/tmp/cache',
+    },
+);
+</code></pre>
+
+<p>Now we're using FastMmap to share an in-memory cache between our web
+processes, and if the L1 cache is expired or missing, we look for content from
+the DBI cache. If that cache is missing or expired, we have a cache miss and
+have to recompute the value.</p>
+
+<h2>Hurdles</h2>
+
+<p>I had to install the DB tables myself, which was not difficult, just
+undocumented (bug report filed). MySQL only allows a 1000-byte key, and the
+CHI::Driver::DBI tries to create a 600-character key. This is fine in the
+Latin-1 charset, but MySQL complains if you're using UTF-8 by default.</p>
+
+<p>The driver also tries to create a TEXT field to hold the cache value, but
+MySQL expects a text field to hold characters in a known character set. After
+noticing that my cache values were empty, I changed to a LONGBLOB.</p>
+
+<p>The full create table statements are below:</p>
+
+<pre><code>-- primary cache table: chi_&lt;namespace&gt; --
+CREATE TABLE IF NOT EXISTS `chi_localhost` (
+    `key` VARCHAR(255),
+    `value` LONGBLOB,
+    PRIMARY KEY ( `key` )
+);
+
+-- CHI metacache table --
+CREATE TABLE IF NOT EXISTS `chi__CHI_METACACHE` (
+    `key` VARCHAR(255),
+    `value` LONGBLOB,
+    PRIMARY KEY ( `key` )
+);
+</code></pre>
+
+<h2>Results</h2>
+
+<p><img src="/blog/images/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.20.55%20PM.png" alt="" /></p>
+
+<p>The server is stable again! Spikes do not turn into out-of-control loads and
+unresponsive server. We'll see how things go tomorrow during normal business
+hours (the peak time for this site), but right now it looks like CHI has saved
+the day!</p>
+
+            </article>
+            <article>
+                <header>
                     <h1><a href="/blog/2011/03/05/whats-new-in-webgui-8.0-5-asset-helpers.html">What's New in WebGUI 8.0 #5 - Asset Helpers</a></h1>
                     <p class="tags">Tags:
                         <a href="/blog/tag/webgui/index.html" rel="tag">webgui</a>
@@ -446,152 +614,10 @@ Internet surely has.</p>
 
                     <p><a href="/blog/2011/01/22/whats-new-in-webgui-8.0-2-auth-improvements.html#section-2">Continue reading What's New in WebGUI 8 #2: Auth Improvements...</a></p>
             </article>
-            <article>
-                <header>
-                    <h1><a href="/blog/2011/01/08/whats-new-in-webgui-8.0-1-psgi-plack.html">What's new in WebGUI 8.0 #1 - PSGI/Plack</a></h1>
-                    <p class="tags">Tags:
-                        <a href="/blog/tag/webgui/index.html" rel="tag">webgui</a>
-                    </p>
-                    <aside>
-                        <p><time datetime="2011-01-08">
-                            Posted on 2011-01-08
-                        </time>
-                        by preaction</p>
-                    </aside>
-                    <div class="alert alert-info">
-                        <p>Originally posted as:</p>
-                        <ul>
-                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2011/01/whats-new-in-webgui-80-1---psgiplack.html">
-                                <em>What's new in WebGUI 8.0 #1 - PSGI/Plack</em> on blogs.perl.org.
-                            </a></li>
-                        </ul>
-                    </div>
-                </header>
-                <h2>Overview</h2>
-
-<p>On September 9, 2009, WebGUI 8 was announced. Since it was the first major API
-change since WebGUI 7, we started planning WebGUI 8 with high expectations.
-Over the course of the last 16 months:</p>
-
-<ul>
-<li>We've adopted PSGI/Plack as our platform, enabling us to work in any HTTP
-environment.</li>
-<li>We've made massive changes to the Asset system to make them easier to build.</li>
-<li>We've reworked Auth to make it easier to add Twitter and Facebook
-authentication for your users.</li>
-<li>We've rebuilt the upgrade system to be easier for developers and system
-administrators.</li>
-<li>There is a new caching system enabling memcached and local memory caches.</li>
-<li>The entire content management interface was rebuilt from scratch with the
-latest buzzword-worthy technologies.</li>
-<li>Assets are now based on Moose, the new object-oriented system for Perl.</li>
-<li>We've created WebGUI::FormBuilder, a way to make introspect-able forms.</li>
-<li>We're migrating to InnoDB to take advantage of transactions and foreign key
-constraints.</li>
-<li>We're making a brand-new WRE based on Nginx, and Server::Starter for more
-efficient resource usage and no-downtime restarts.</li>
-</ul>
-
-<p>And these are just the major features. We've cleaned up and straightened out a
-lot of the crooked parts of programming in WebGUI, and we have plans to do even
-more. We've greatly improved the flexibility of WebGUI without compromising any
-more backward compatibility.</p>
-
-<h2>Ambition is the first step</h2>
-
-<p>Unfortunately, our ambitious goals have taken longer than we thought. We had
-promised a WebGUI 8.0 Beta in January, and I have to say that isn't possible.
-The way things look right now, WebGUI 8.0 will be ready this summer.</p>
-
-<p>So, as atonement and apology, I offer this series of bi-weekly blog posts about
-all the new stuff in WebGUI 8.</p>
-
-<h2>PSGI / Plack</h2>
-
-<p>The most exciting change in WebGUI 8 is the move to PSGI using Plack. WebGUI is
-no longer just an Apache/mod_perl application, though it can certainly still
-run under Apache/mod_perl. Now, WebGUI can also run under Starman, a
-high-performance web server specifically for PSGI applications. WebGUI can run
-inside POE. WebGUI can once again run as CGI. We are no longer tied to one way
-of deploying WebGUI, and that greater flexibility will allow for better
-performance for your specific need.</p>
-
-<pre><code>#!/usr/bin/env perl
-# webgui.cgi - Run WebGUI as a CGI application
-use lib 'lib';
-use Plack::Loader;
-use Plack::Handler::CGI;
-$ENV{WEBGUI_CONFIG} = "www.example.com.conf";
-my $app = Plack::Util::load_psgi("share/site.psgi");
-Plack::Handler::CGI-&gt;new-&gt;run($app);
-</code></pre>
-
-<p>Since WebGUI is just a PSGI application, it can also run alongside any other
-PSGI applications. WebGUI and Catalyst can work together on the same site.</p>
-
-<p>For example, here's WebGUI and Pod::Browser running together. Pod::Browser
-takes /doc and serves the WebGUI POD, every other request goes to WebGUI.</p>
-
-<pre><code># pod.psgi
-use lib 'lib';
-use Plack::Builder;
-use Plack::Util;
-
-BEGIN {
-    $ENV{POD_BROWSER_CONFIG} = "pod_browser.json";
-}
-use Pod::Browser;
-use Catalyst::Engine::PSGI;
-Pod::Browser-&gt;setup_engine('PSGI');
-
-$ENV{WEBGUI_CONFIG} = "core.conf";
-use WebGUI;
-
-builder {
-    mount "/doc" =&gt; sub { Pod::Browser-&gt;run(@_); };
-    mount "/" =&gt; Plack::Util::load_psgi("share/site.psgi");
-};
-
-# pod_browser.json
-{
-    "Controller::Root" : {
-        "self" : 1,
-        "inc" : 1,
-        "namespaces" : [ "WebGUI*" ]
-    }
-}
-</code></pre>
-
-<p>For developers, Plack opens up new ways of building WebGUI sites. Instead of
-WebGUI::URL handlers, now we use Plack middleware to handle such tasks as:</p>
-
-<ul>
-<li>Opening the WebGUI::Session</li>
-<li>Handling /extras and /uploads</li>
-<li>Showing the maintenance page, if necessary</li>
-<li>Handling the wgaccess files for uploads permissions</li>
-<li>Showing debugging information and performance indicators</li>
-</ul>
-
-<p>By using more flexible tools, we can write more reusable code. You can write a
-Plack middleware for WebGUI that will work in your other Plack applications,
-and WebGUI can take advantage of the middleware out there on CPAN. </p>
-
-<p>Plack middleware currently only replaces URL handlers, but someday we can
-replace WebGUI::Content handlers as well. WebGUI's pieces can be mixed and
-matched to create your own applications without using parts of WebGUI that you
-don't need.</p>
-
-<p>By switching to PSGI/Plack, we've made WebGUI easier to deploy and easier to
-develop.</p>
-
-<p>Next time, I'll talk about the improvements to the WebGUI Auth API.</p>
-
-            </article>
         </main>
         <ul class="pager">
-            <li class="previous disabled">
-                <span>&larr; Older</span>
+            <li class="previous ">
+                <a rel="next" href="/blog/page-6.html">&larr; Older</a>
             </li>
             <li class="next ">
                 <a rel="prev" href="/blog/page-4.html">Newer &rarr;</a>
@@ -604,10 +630,13 @@ develop.</p>
         <ul class="list-inline">
             <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
             <li><a href="/blog/tag/error/index.html">error</a></li>
+            <li><a href="/blog/tag/funny/index.html">funny</a></li>
             <li><a href="/blog/tag/git/index.html">git</a></li>
             <li><a href="/blog/tag/moose/index.html">moose</a></li>
             <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
+            <li><a href="/blog/tag/openbsd/index.html">openbsd</a></li>
             <li><a href="/blog/tag/perl/index.html">perl</a></li>
+            <li><a href="/blog/tag/personal/index.html">personal</a></li>
             <li><a href="/blog/tag/rants/index.html">rants</a></li>
             <li><a href="/blog/tag/scripts/index.html">scripts</a></li>
             <li><a href="/blog/tag/software/index.html">software</a></li>

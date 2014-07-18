@@ -6,8 +6,7 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <title>Doug Bell</title>
         <style type="text/css">
-            article > hgroup > h1,
-            main > hgroup > h1
+            main header h1
             {
                 border-bottom: 4px solid #045578;
             }
@@ -15,10 +14,41 @@
                 margin-top: 0;
                 font-size: 12pt;
             }
-            nav#tags h1 {
+            .sidebar h1 {
                 font-size: 14pt;
             }
+
+            /** Add a line when using the "Continue reading..." link */
+            section:target {
+                padding-top: 0.5em;
+                border-top: 4px solid #045578;
+            }
+
+            /** Don't allow <pre> to push too much */
+            pre {
+                max-width: 100%;
+                overflow-x: scroll;
+            }
+
+            /** <code> is used for input and output, so let it wrap */
+            code {
+                white-space: normal;
+            }
+
+            .tags {
+                float: right;
+            }
+
+            /**
+             * Don't allow main content images to push things around
+             */
+            main img {
+                max-width: 100%;
+            }
+
         </style>
+            <link rel="alternate" href="/blog/tag/personal.atom" type="application/atom+xml" />
+            <link rel="alternate" href="/blog/tag/personal.rss" type="application/rss+xml" />
     </head>
     <body>
         <header>
@@ -52,116 +82,13 @@
         <main>
             <article>
                 <header>
-                    <h1><a href="/blog/draft/protecting-your-privacy.html">Protecting Your Privacy</a></h1>
+                    <h1><a href="/blog/2014/04/26/freedom-from-speechs-consequences.html">Freedom From Speech's Consequences</a></h1>
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/personal/index.html" rel="tag">personal</a>
+                    </p>
                     <aside>
-                        <p><time datetime="1970-01-01">
-                            Posted on 1970-01-01
-                        </time>
-                        by preaction</p>
-                    </aside>
-                </header>
-                <p>There was a lot of brouhaha a few weeks ago about practical privacy on the
-Internet. One app in particular targeted a single gender to tie together a
-couple social networks to create what can only be called a stalker’s best
-friend.</p>
-
-<p>The predictable lines were drawn. “People should value their privacy more.”
-“The app and the social networks have an obligation to protect our privacy.”
-“They can’t protect you from yourselves.” “Their privacy settings are
-deliberately difficult to use.” The two sides have formed their arguments to
-their opinion.</p>
-
-<p>I’m not joining either side. That’s a losing battle. I do believe that most
-people need to take their privacy more seriously, and not just because of the
-Internet, though it does mean more now than ever.</p>
-
-<p>A long time ago, before Facebook, before smartphones, in the early days of
-Internet ubiquity, I had a friend. This friend introduced me to an acquaintance
-of his. I trusted this friend. I told this friend a lot of personal information
-about my relationships and finances, since we lived together our finances
-affected each other.</p>
-
-<p>Unbeknownst to me, my friend repeated these private things to the acquaintance.
-The acquaintance then used this information to build trust. The acquaintance
-then used that trust to steal thousands of dollars from me. Which led to a
-terrible spiral down into the worst part of my life.</p>
-
-<p>Who is to blame? My friend, for violating my privacy? The acquaintance, for
-building trust in order to abuse it? Myself, for trusting either of them?</p>
-
-<p>If it’s not my fault, must I change my behavior to prevent this in the future?</p>
-
-<p>Well, obviously.</p>
-
-<p>But, now that I’ve been burned, should I not trust anyone?</p>
-
-<p>Should I not use Facebook because apps like “Girls Around Me” are possible? Or
-should I decide for myself how much of my privacy is worth keeping?</p>
-
-<p>Do I believe that we need to teach people more about this “Privacy in the
-Social Internet” thing? Absolutely. Do I think people are idiots for not
-knowing about these things? Maybe. The psychology of it all can’t fit in the
-scope of this tiny blog post.</p>
-
-<p>Is the blame 100% on any one party? No. We all need to guard our own privacy,
-and we all need to consider what our products do to our users’ privacy. </p>
-
-<p>This social problem needs to be fixed by all of society.</p>
-
-            </article>
-            <article>
-                <header>
-                    <h1><a href="/blog/draft/it-begins-in-fear.html">It Begins in Fear</a></h1>
-                    <aside>
-                        <p><time datetime="1970-01-01">
-                            Posted on 1970-01-01
-                        </time>
-                        by preaction</p>
-                    </aside>
-                </header>
-                <p>A long time ago, I used to blog about my feelings.</p>
-
-<p>Obviously, since I’m a dude, I’m not supposed to have feelings. At least, I am
-not supposed to have the feelings I confessed to having. At least, I am not
-supposed to have those feelings if I am in sound mind.</p>
-
-<p>I still have those posts from Livejournal or from my personal sites. I don’t
-look at them anymore, but they’re there if I ever want to retread the mental
-pathways of memory.</p>
-
-<p>A long time ago, I used to talk about my feelings.</p>
-
-<p>The blog was the beginning, or the middle, or the end, but it was part of the
-self-examination. The blog was just one way to explore and exhume and explain
-and examine my feelings about my life thus far.</p>
-
-<p>A long time ago, I used to care about my feelings.</p>
-
-<p>They were bad feelings. They were narcissistic, self-centered, obtuse, and even
-hurtful. I used them, or they used me, to inflict pain on other people. I do
-not mention this to ask for forgiveness; I think I need the guilt. I mention
-this informationally, casually, with that detached air I have carefully
-cultivated.</p>
-
-<p>I became afraid of feeling, over time. My anger had gotten the best of me a few
-times, and my fists were raised, extended, retracted, lowered. My words, a more
-elegant and effective weapon, were used more often.</p>
-
-<p>Over time, the people went away, some driven and some drifted, but no new
-people came to replace them. I’ve become withdrawn, sheltered. I don’t talk a
-lot, and when I do I always say the wrong things.</p>
-
-<p>I think it’s time to feel again.</p>
-
-<p>I think it’s time to get over my fear of feelings.</p>
-
-            </article>
-            <article>
-                <header>
-                    <h1><a href="/blog/draft/freedom-from-speechs-consequences.html">Freedom From Speech's Consequences</a></h1>
-                    <aside>
-                        <p><time datetime="1970-01-01">
-                            Posted on 1970-01-01
+                        <p><time datetime="2014-04-26">
+                            Posted on 2014-04-26
                         </time>
                         by preaction</p>
                     </aside>
@@ -178,23 +105,34 @@ do and say with impunity anything that is not illegal. That all people should
 not criticize or judge anyone who is not doing something illegal, as though the
 law is the only true measurement of good and evil.</p>
 
-<p>Of course, this rule does not seem to apply to the person making the
-allegations, whom the mob may criticize and judge as much as they want.</p>
+                    <p><a href="/blog/2014/04/26/freedom-from-speechs-consequences.html#section-2">Continue reading Freedom From Speech's Consequences...</a></p>
+            </article>
+            <article>
+                <header>
+                    <h1><a href="/blog/2013/01/06/it-begins-in-fear.html">It Begins in Fear</a></h1>
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/personal/index.html" rel="tag">personal</a>
+                    </p>
+                    <aside>
+                        <p><time datetime="2013-01-06">
+                            Posted on 2013-01-06
+                        </time>
+                        by preaction</p>
+                    </aside>
+                </header>
+                <p>A long time ago, I used to blog about my feelings.</p>
 
-<p>I agree with those who feel that this is free speech working as it is intended.
-No criminal charges or lawsuits have been filed (yet). Indeed, no rights for
-any of the involved parties have been legally threatened. They are all
-perfectly able to go about their daily lives, thriving, even in the same
-industry they rose to prominence in.</p>
+<p>Obviously, since I’m a dude, I’m not supposed to have feelings. At least, I am
+not supposed to have the feelings I confessed to having. At least, I am not
+supposed to have those feelings if I am in sound mind.</p>
 
-<p>Everyone can go around spewing all the speech they want. This is exactly as it
-should be. Mozilla and Github were not required to do anything, just as we are
-not required to purchase their products for any reason we choose.</p>
+<p>I still have those posts from Livejournal or from my personal sites. I don’t
+look at them anymore, but they’re there if I ever want to retread the mental
+pathways of memory.</p>
 
-<p>It's interesting that people outside the tech industry are now involved in the
-tech industry's gender relations struggle. It's disheartening that they seem to
-support the status quo.</p>
+<p>A long time ago, I used to talk about my feelings.</p>
 
+                    <p><a href="/blog/2013/01/06/it-begins-in-fear.html#section-2">Continue reading It Begins in Fear...</a></p>
             </article>
         </main>
         <ul class="pager">
@@ -207,18 +145,37 @@ support the status quo.</p>
         </ul>
     </div>
 
-    <div class="col-md-3">
-        <nav id="tags">
-            <h1>Tags</h1>
-            <ul class="list-inline">
-                <li><a href="/blog/tag/devops/index.html">devops</a></li>
-                <li><a href="/blog/tag/git/index.html">git</a></li>
-                <li><a href="/blog/tag/openbsd/index.html">openbsd</a></li>
-                <li><a href="/blog/tag/perl/index.html">perl</a></li>
-                <li><a href="/blog/tag/personal/index.html">personal</a></li>
-                <li><a href="/blog/tag/xs/index.html">xs</a></li>
-            </ul>
-        </nav>
+    <div class="sidebar col-md-3">
+        <h1>Tags</h1>
+        <ul class="list-inline">
+            <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
+            <li><a href="/blog/tag/error/index.html">error</a></li>
+            <li><a href="/blog/tag/funny/index.html">funny</a></li>
+            <li><a href="/blog/tag/git/index.html">git</a></li>
+            <li><a href="/blog/tag/moose/index.html">moose</a></li>
+            <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
+            <li><a href="/blog/tag/openbsd/index.html">openbsd</a></li>
+            <li><a href="/blog/tag/perl/index.html">perl</a></li>
+            <li><a href="/blog/tag/personal/index.html">personal</a></li>
+            <li><a href="/blog/tag/rants/index.html">rants</a></li>
+            <li><a href="/blog/tag/scripts/index.html">scripts</a></li>
+            <li><a href="/blog/tag/software/index.html">software</a></li>
+            <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
+            <li><a href="/blog/tag/xs/index.html">xs</a></li>
+        </ul>
+        <h1>Feeds</h1>
+        <ul class="list-inline">
+            <li>
+                <a href="/blog/tag/personal.atom" rel="alternate" type="application/atom+xml">
+                    Atom
+                </a>
+            </li>
+            <li>
+                <a href="/blog/tag/personal.rss" rel="alternate" type="application/rss+xml">
+                    RSS
+                </a>
+            </li>
+        </ul>
     </div>
 
 </div>

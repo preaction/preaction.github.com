@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://preaction.github.io/blog/tag/personal/index.html</id>
+    <title>Doug Bell</title>
+    <updated>2014-07-17T22:40:23Z</updated>
+    <link rel="self" href="http://preaction.github.io/blog/tag/personal.atom"/>
+    <link rel="alternate" href="http://preaction.github.io/blog/tag/personal/index.html"/>
+    <generator version="0.020">Statocles</generator>
+    <entry>
+        <id>http://preaction.github.io/blog/2014/04/26/freedom-from-speechs-consequences.html</id>
+        <title>Freedom From Speech's Consequences</title>
+        <author><name>preaction</name></author>
+        <link rel="alternate" href="http://preaction.github.io/blog/2014/04/26/freedom-from-speechs-consequences.html" />
+        <content type="html"><![CDATA[
+            <p><a href="https://blog.mozilla.org/blog/2014/04/03/brendan-eich-steps-down-as-mozilla-ceo/">What happened to Brendan Eich at Mozilla (resigning over community uproar for
+his continued support of Prop
+8)</a>
+has now happened to one of Github's founders. <a href="http://tom.preston-werner.com/2014/04/21/farewell-github-hello-immersive-computing.html">Tom Preston-Werner has resigned
+due to community uproar over gender-based
+harassment</a>.</p>
+
+<p>Some are decrying this as an infringement on free speech. That people should be
+do and say with impunity anything that is not illegal. That all people should
+not criticize or judge anyone who is not doing something illegal, as though the
+law is the only true measurement of good and evil.</p>
+
+                <p><a href="http://preaction.github.io/blog/2014/04/26/freedom-from-speechs-consequences.html#section-2">Continue reading...</a></p>
+            <p>Tags:
+                <a href="/blog/tag/personal/index.html">personal</a>
+            </p>
+        ]]></content>
+        <updated>2014-04-26T00:00:00Z</updated>
+        <category term="ARRAY(0x7fa05414f220)" />
+    </entry>
+    <entry>
+        <id>http://preaction.github.io/blog/2013/01/06/it-begins-in-fear.html</id>
+        <title>It Begins in Fear</title>
+        <author><name>preaction</name></author>
+        <link rel="alternate" href="http://preaction.github.io/blog/2013/01/06/it-begins-in-fear.html" />
+        <content type="html"><![CDATA[
+            <p>A long time ago, I used to blog about my feelings.</p>
+
+<p>Obviously, since I’m a dude, I’m not supposed to have feelings. At least, I am
+not supposed to have the feelings I confessed to having. At least, I am not
+supposed to have those feelings if I am in sound mind.</p>
+
+<p>I still have those posts from Livejournal or from my personal sites. I don’t
+look at them anymore, but they’re there if I ever want to retread the mental
+pathways of memory.</p>
+
+<p>A long time ago, I used to talk about my feelings.</p>
+
+                <p><a href="http://preaction.github.io/blog/2013/01/06/it-begins-in-fear.html#section-2">Continue reading...</a></p>
+            <p>Tags:
+                <a href="/blog/tag/personal/index.html">personal</a>
+            </p>
+        ]]></content>
+        <updated>2013-01-06T00:00:00Z</updated>
+        <category term="ARRAY(0x7fa0541456e8)" />
+    </entry>
+</feed>
+

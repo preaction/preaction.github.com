@@ -6,8 +6,7 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <title>Doug Bell</title>
         <style type="text/css">
-            article > hgroup > h1,
-            main > hgroup > h1
+            main header h1
             {
                 border-bottom: 4px solid #045578;
             }
@@ -15,10 +14,41 @@
                 margin-top: 0;
                 font-size: 12pt;
             }
-            nav#tags h1 {
+            .sidebar h1 {
                 font-size: 14pt;
             }
+
+            /** Add a line when using the "Continue reading..." link */
+            section:target {
+                padding-top: 0.5em;
+                border-top: 4px solid #045578;
+            }
+
+            /** Don't allow <pre> to push too much */
+            pre {
+                max-width: 100%;
+                overflow-x: scroll;
+            }
+
+            /** <code> is used for input and output, so let it wrap */
+            code {
+                white-space: normal;
+            }
+
+            .tags {
+                float: right;
+            }
+
+            /**
+             * Don't allow main content images to push things around
+             */
+            main img {
+                max-width: 100%;
+            }
+
         </style>
+            <link rel="alternate" href="/blog/tag/openbsd.atom" type="application/atom+xml" />
+            <link rel="alternate" href="/blog/tag/openbsd.rss" type="application/rss+xml" />
     </head>
     <body>
         <header>
@@ -52,10 +82,14 @@
         <main>
             <article>
                 <header>
-                    <h1><a href="/blog/draft/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html">Raw Feed of OpenBSD's Work on Cleaning Up OpenSSL</a></h1>
+                    <h1><a href="/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html">Raw Feed of OpenBSD's Work on Cleaning Up OpenSSL</a></h1>
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/openbsd/index.html" rel="tag">openbsd</a>
+                        <a href="/blog/tag/funny/index.html" rel="tag">funny</a>
+                    </p>
                     <aside>
-                        <p><time datetime="1970-01-01">
-                            Posted on 1970-01-01
+                        <p><time datetime="2014-04-19">
+                            Posted on 2014-04-19
                         </time>
                         by preaction</p>
                     </aside>
@@ -67,87 +101,7 @@ a determined, dedicated team of hackers.</p>
 
 <p>Here are some gems:</p>
 
-<p>http://freshbsd.org/commit/openbsd/2ba43b4c3aaa341d4be890e4e31a3006e9bfdff5</p>
-
-<pre><code>now that knf carpet bombing is finished, switch to hand to hand combat.
-still not sure what to make of mysteries like this:
-        for (i = 7; i &gt;= 0; i--) {      /* increment */
-</code></pre>
-
-<p>http://freshbsd.org/commit/openbsd/fc55d7f9ab6fcadd0ca2f8231f2559eace1aff53</p>
-
-<pre><code>If modern society can get past
-selling daughters for cows, surely we can decide to write modern C code in
-an "application" that is probably 3 lines of shell/python/cgi away from
-talking to the internet in a lot of places..
-</code></pre>
-
-<p>http://freshbsd.org/commit/openbsd/ad137951cda2753525d3d1251cccd3d9d048fc17</p>
-
-<pre><code>egd support is too dangerous to leave where somebody might find it.
-</code></pre>
-
-<p>http://freshbsd.org/commit/openbsd/c862290df5533966091ded3906da184f1cac8675</p>
-
-<pre><code>Remove support for big-endian i386 and amd64.
-
-Before someone suggests the OpenSSL people are junkies, here is what they
-mention about this:
-        /* Most will argue that x86_64 is always little-endian. Well,
-         * yes, but then we have stratus.com who has modified gcc to
-         * "emulate" big-endian on x86. Is there evidence that they
-         * [or somebody else] won't do same for x86_64? Naturally no.
-         * And this line is waiting ready for that brave soul:-) */
-
-So, yes, they are on drugs. But they are not alone, the stratus.com people are,
-too.
-</code></pre>
-
-<p>http://freshbsd.org/commit/openbsd/330301cf149a46a780af2ee04b511fbffb09fb1d</p>
-
-<pre><code>todo: do not leave 15 year old todo lists in the tree.
-</code></pre>
-
-<p>http://freshbsd.org/commit/openbsd/db48657ab11dec76434265d8620451980e9ccd38</p>
-
-<pre><code>This code is the reason perl has a name as a write only language.
-</code></pre>
-
-<p>http://freshbsd.org/commit/openbsd/eadb750b87b4a90c1284f6361d6c3ea6d6e26f66</p>
-
-<pre><code>quoth the readme:
-NOTE: Don't expect any of these programs to work with current
-OpenSSL releases, or even with later SSLeay releases.
-</code></pre>
-
-<p>http://freshbsd.org/commit/openbsd/a596f856fb6f6da6f5458029bddbe32e2c056d7b</p>
-
-<pre><code>spray the apps directory with anti-VMS napalm.
-so that its lovecraftian horror is not forever lost, i reproduce below
-a comment from the deleted code.
-
-        /* 2011-03-22 SMS.
-         * If we have 32-bit pointers everywhere, then we're safe, and
-         * we bypass this mess, as on non-VMS systems.  (See ARGV,
-         * above.)
-         * Problem 1: Compaq/HP C before V7.3 always used 32-bit
-         * pointers for argv[].
-         * Fix 1: For a 32-bit argv[], when we're using 64-bit pointers
-         * everywhere else, we always allocate and use a 64-bit
-         * duplicate of argv[].
-         * Problem 2: Compaq/HP C V7.3 (Alpha, IA64) before ECO1 failed
-         * to NULL-terminate a 64-bit argv[].  (As this was written, the
-         * compiler ECO was available only on IA64.)
-         * Fix 2: Unless advised not to (VMS_TRUST_ARGV), we test a
-         * 64-bit argv[argc] for NULL, and, if necessary, use a
-         * (properly) NULL-terminated (64-bit) duplicate of argv[].
-         * The same code is used in either case to duplicate argv[].
-         * Some of these decisions could be handled in preprocessing,
-         * but the code tends to get even uglier, and the penalty for
-         * deciding at compile- or run-time is tiny.
-         */
-</code></pre>
-
+                    <p><a href="/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html#section-2">Continue reading Raw Feed of OpenBSD's Work on Cleaning Up OpenSSL...</a></p>
             </article>
         </main>
         <ul class="pager">
@@ -160,18 +114,37 @@ a comment from the deleted code.
         </ul>
     </div>
 
-    <div class="col-md-3">
-        <nav id="tags">
-            <h1>Tags</h1>
-            <ul class="list-inline">
-                <li><a href="/blog/tag/devops/index.html">devops</a></li>
-                <li><a href="/blog/tag/git/index.html">git</a></li>
-                <li><a href="/blog/tag/openbsd/index.html">openbsd</a></li>
-                <li><a href="/blog/tag/perl/index.html">perl</a></li>
-                <li><a href="/blog/tag/personal/index.html">personal</a></li>
-                <li><a href="/blog/tag/xs/index.html">xs</a></li>
-            </ul>
-        </nav>
+    <div class="sidebar col-md-3">
+        <h1>Tags</h1>
+        <ul class="list-inline">
+            <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
+            <li><a href="/blog/tag/error/index.html">error</a></li>
+            <li><a href="/blog/tag/funny/index.html">funny</a></li>
+            <li><a href="/blog/tag/git/index.html">git</a></li>
+            <li><a href="/blog/tag/moose/index.html">moose</a></li>
+            <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
+            <li><a href="/blog/tag/openbsd/index.html">openbsd</a></li>
+            <li><a href="/blog/tag/perl/index.html">perl</a></li>
+            <li><a href="/blog/tag/personal/index.html">personal</a></li>
+            <li><a href="/blog/tag/rants/index.html">rants</a></li>
+            <li><a href="/blog/tag/scripts/index.html">scripts</a></li>
+            <li><a href="/blog/tag/software/index.html">software</a></li>
+            <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
+            <li><a href="/blog/tag/xs/index.html">xs</a></li>
+        </ul>
+        <h1>Feeds</h1>
+        <ul class="list-inline">
+            <li>
+                <a href="/blog/tag/openbsd.atom" rel="alternate" type="application/atom+xml">
+                    Atom
+                </a>
+            </li>
+            <li>
+                <a href="/blog/tag/openbsd.rss" rel="alternate" type="application/rss+xml">
+                    RSS
+                </a>
+            </li>
+        </ul>
     </div>
 
 </div>

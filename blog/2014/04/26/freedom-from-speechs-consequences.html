@@ -78,90 +78,48 @@
     <div class="col-md-9">
         <main>
             <header>
-                <h1>Conflict Resolution: local::lib and git's Perl</h1>
+                <h1>Freedom From Speech's Consequences</h1>
                 <p class="tags">Tags:
-                    <a href="/blog/tag/perl/index.html" rel="tag">perl</a>
-                    <a href="/blog/tag/git/index.html" rel="tag">git</a>
+                    <a href="/blog/tag/personal/index.html" rel="tag">personal</a>
                 </p>
                 <aside>
-                    <p><time datetime="2014-06-14">
-                        Posted on 2014-06-14
+                    <p><time datetime="2014-04-26">
+                        Posted on 2014-04-26
                     </time>
                     by preaction</p>
                 </aside>
-                <div class="alert alert-info">
-                    <p>Originally posted as:</p>
-                    <ul>
-                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2014/06/conflict-resolution-locallib-and-gits-perl.html">
-                            <em>Conflict Resolution: local::lib and git's Perl</em> on blogs.perl.org.
-                        </a></li>
-                    </ul>
-                </div>
             </header>
             <section id="section-1">
-                <p>I ran into a frustrating problem the other day:</p>
+                <p><a href="https://blog.mozilla.org/blog/2014/04/03/brendan-eich-steps-down-as-mozilla-ceo/">What happened to Brendan Eich at Mozilla (resigning over community uproar for
+his continued support of Prop
+8)</a>
+has now happened to one of Github's founders. <a href="http://tom.preston-werner.com/2014/04/21/farewell-github-hello-immersive-computing.html">Tom Preston-Werner has resigned
+due to community uproar over gender-based
+harassment</a>.</p>
 
-<pre><code>$ git add -i
-/usr/bin/perl: symbol lookup error: ~/perl5/lib/perl5/x86_64-linux-thread-multi/auto/List/Util/Util.so:
-undefined symbol: Perl_xs_apiversion_bootcheck
-fatal: 'add--interactive' appears to be a git command, but we were not
-able to execute it. Maybe git-add--interactive is broken?
-</code></pre>
+<p>Some are decrying this as an infringement on free speech. That people should be
+do and say with impunity anything that is not illegal. That all people should
+not criticize or judge anyone who is not doing something illegal, as though the
+law is the only true measurement of good and evil.</p>
 
             </section>
             <section id="section-2">
-                <p>I've seen this error message from Perl a lot. It basically means that I'm
-trying to load an XS module compiled for a different version of Perl. Since
-<code>git</code> is directly trying to run <code>/usr/bin/perl</code> (5.10.1) as opposed to the
-<code>perlbrew</code> Perl I have installed (5.16.3), the error comes as no surprise:
-<code>PERL5LIB</code> is checked before Perl's built-in libraries. So if you have a
-<code>local::lib</code> (which adds its directories to <code>PERL5LIB</code>) and try to use those
-modules in a different Perl, things may not work as you expected.</p>
+                <p>Of course, this rule does not seem to apply to the person making the
+allegations, whom the mob may criticize and judge as much as they want.</p>
 
-<p>What is more surprising is that Git explicitly uses <code>/usr/bin/perl</code> in the
-first place. Some Google-fu brought up a <a href="http://article.gmane.org/gmane.comp.version-control.git/147462">thread on the Git mailing list about
-changing to <code>#!/usr/bin/env
-perl</code></a>, but it
-appears this was rejected. According to another post in that thread, <a href="http://article.gmane.org/gmane.comp.version-control.git/147475">it is
-possible to set PERL_PATH when running <code>make</code> on
-Git</a>, but that
-did not seem to work for me.</p>
+<p>I agree with those who feel that this is free speech working as it is intended.
+No criminal charges or lawsuits have been filed (yet). Indeed, no rights for
+any of the involved parties have been legally threatened. They are all
+perfectly able to go about their daily lives, thriving, even in the same
+industry they rose to prominence in.</p>
 
-<p>But the Git Perl scripts all seem to have one thing in common: They all add the
-paths in the <code>GITPERLLIB</code> environment variable to the front of <code>@INC</code> as
-the first thing they do. <code>GITPERLLIB</code> is treated as a <code>:</code>-delimited list of
-directories, like <code>PERL5LIB</code>. So if we fill in <code>GITPERLLIB</code> with the right
-directories, we can ensure that the right <code>List::Util</code> version is found
-first.</p>
+<p>Everyone can go around spewing all the speech they want. This is exactly as it
+should be. Mozilla and Github were not required to do anything, just as we are
+not required to purchase their products for any reason we choose.</p>
 
-<p>The right directories are part of Perl's <code>Config</code>. This configuration is
-available to us in Perl scripts through the <code>Config</code> module which provides a
-<code>%Config</code> hash.  There are three "layers" of Perl library paths, "core",
-"vendor", and "site", configured in the following Config keys:</p>
-
-<ul>
-<li>core    => 'archlib', 'privlib'</li>
-<li>vendor  => 'vendorarch', 'vendorlib'</li>
-<li>site    => 'sitearch', 'sitelib'</li>
-</ul>
-
-<p>The "core" libraries are just that, the core Perl 5 libraries. The "vendor"
-libraries are additional libraries that your vendor may have provided in their
-Perl distribution. The "site" libraries are the CPAN libraries you've
-downloaded and installed via the <code>cpan</code> client (unless you're using local::lib,
-which overrides the install directories).</p>
-
-<p>Armed with these Config keys, we can make a <code>GITPERLLIB</code> that overrides our local::lib
-directories. So now, in my <code>.zshrc</code>, I have:</p>
-
-<pre><code># Fix git perl scripts in case of local::lib
-# If we install modules for a different arch in local::lib, we'll get some problems
-if [[ -x /usr/bin/perl ]]; then
-    export GITPERLLIB=`/usr/bin/perl -MConfig -e'print join ":", grep { $_ } map { $Config{$_} } qw( sitearch sitelib vendorarch vendorlib archlib privlib )'`
-fi
-</code></pre>
-
-<p>Now I can do my proper <code>git add --interactive</code> again!</p>
+<p>It's interesting that people outside the tech industry are now involved in the
+tech industry's gender relations struggle. It's disheartening that they seem to
+support the status quo.</p>
 
             </section>
         </main>

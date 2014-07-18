@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/perl/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-07-08T22:25:49Z</updated>
+    <updated>2014-07-17T22:40:23Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/perl.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/perl/index.html"/>
     <generator version="0.020">Statocles</generator>
@@ -35,7 +35,7 @@ able to execute it. Maybe git-add--interactive is broken?
             </p>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe6ee8501f8)" />
+        <category term="ARRAY(0x7fa05414ef50)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</id>
@@ -108,7 +108,7 @@ works and has proper tests (written in Perl, of course).</p>
             </p>
         ]]></content>
         <updated>2012-03-20T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe6ee8348d8)" />
+        <category term="ARRAY(0x7fa05413eb60)" />
     </entry>
 </feed>
 

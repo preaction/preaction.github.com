@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/mysql/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-07-08T22:25:49Z</updated>
+    <updated>2014-07-17T22:40:24Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/mysql.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/mysql/index.html"/>
     <generator version="0.020">Statocles</generator>
@@ -171,7 +171,7 @@ the day!</p>
             </p>
         ]]></content>
         <updated>2011-03-09T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe6ee8341a0)" />
+        <category term="ARRAY(0x7fa054133d30)" />
     </entry>
 </feed>
 
