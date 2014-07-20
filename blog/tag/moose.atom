@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/moose/index.html</id>
-    <title>Doug Bell</title>
-    <updated>2014-07-19T23:00:33Z</updated>
+    <title>preaction</title>
+    <updated>2014-07-19T23:01:33Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/moose.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/moose/index.html"/>
     <generator version="0.020">Statocles</generator>
@@ -22,7 +22,7 @@ configured object is expecting another configured object.</p>
                         Continue reading <em>Using MooseX::Types to Inflate Config Values</em> on blogs.perl.org...
                     </a></li>
                     <li><a href="http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html#section-2">
-                        Continue reading on Doug Bell
+                        Continue reading on preaction
                     </a></li>
                 </ul>
             <p>Tags:
@@ -30,7 +30,7 @@ configured object is expecting another configured object.</p>
             </p>
         ]]></content>
         <updated>2012-10-22T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb78f8683f8)" />
+        <category term="ARRAY(0x7fe3694f1030)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html</id>
@@ -59,7 +59,7 @@ classes at runtime!</p>
                         Continue reading <em>Run-time Class Composition With Moose</em> on blogs.perl.org...
                     </a></li>
                     <li><a href="http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html#section-2">
-                        Continue reading on Doug Bell
+                        Continue reading on preaction
                     </a></li>
                 </ul>
             <p>Tags:
@@ -67,7 +67,7 @@ classes at runtime!</p>
             </p>
         ]]></content>
         <updated>2012-10-07T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb78b201388)" />
+        <category term="ARRAY(0x7fe3694f0b08)" />
     </entry>
 </feed>
 

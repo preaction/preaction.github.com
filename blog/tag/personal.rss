@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Doug Bell</title>
+        <title>preaction</title>
         <link>http://preaction.github.io/blog/tag/personal/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/personal.rss" rel="self" type="application/rss+xml" />
-        <description>Blog feed of Doug Bell</description>
+        <description>Blog feed of preaction</description>
         <generator>Statocles 0.020</generator>
         <item>
             <title>Freedom From Speech's Consequences</title>

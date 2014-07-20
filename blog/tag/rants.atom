@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/rants/index.html</id>
-    <title>Doug Bell</title>
-    <updated>2014-07-19T23:00:33Z</updated>
+    <title>preaction</title>
+    <updated>2014-07-19T23:01:32Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/rants.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/rants/index.html"/>
     <generator version="0.020">Statocles</generator>
@@ -30,7 +30,7 @@ new programming language. I didn't realize my mistake until it was too late.</p>
                         Continue reading <em>Between Learning and Doing</em> on blogs.perl.org...
                     </a></li>
                     <li><a href="http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html#section-2">
-                        Continue reading on Doug Bell
+                        Continue reading on preaction
                     </a></li>
                 </ul>
             <p>Tags:
@@ -38,7 +38,7 @@ new programming language. I didn't realize my mistake until it was too late.</p>
             </p>
         ]]></content>
         <updated>2014-07-19T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb78bf10d60)" />
+        <category term="ARRAY(0x7fe368dac6d8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</id>
@@ -61,7 +61,7 @@ make this task surmountable.</p>
                         Continue reading <em>Thoughts while changing the API of a massive framework...</em> on blogs.perl.org...
                     </a></li>
                     <li><a href="http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html#section-2">
-                        Continue reading on Doug Bell
+                        Continue reading on preaction
                     </a></li>
                 </ul>
             <p>Tags:
@@ -69,7 +69,7 @@ make this task surmountable.</p>
             </p>
         ]]></content>
         <updated>2013-04-11T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb78f86b230)" />
+        <category term="ARRAY(0x7fe368da1a30)" />
     </entry>
 </feed>
 

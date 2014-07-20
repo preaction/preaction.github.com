@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/chicago.pm/index.html</id>
-    <title>Doug Bell</title>
-    <updated>2014-07-19T23:00:33Z</updated>
+    <title>preaction</title>
+    <updated>2014-07-19T23:01:33Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/chicago.pm.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/chicago.pm/index.html"/>
     <generator version="0.020">Statocles</generator>
@@ -24,7 +24,7 @@ of the good tutorials and learning sites.</p>
                         Continue reading <em>Chicago.PM New Website! New Meetup URL! New Presentations Project!</em> on blogs.perl.org...
                     </a></li>
                     <li><a href="http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html#section-2">
-                        Continue reading on Doug Bell
+                        Continue reading on preaction
                     </a></li>
                 </ul>
             <p>Tags:
@@ -32,7 +32,7 @@ of the good tutorials and learning sites.</p>
             </p>
         ]]></content>
         <updated>2013-06-13T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb78f86b950)" />
+        <category term="ARRAY(0x7fe368da2240)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</id>
@@ -50,7 +50,7 @@ tool</a>.</p>
                         Continue reading <em>Chicago.PM - Beyond grep - Expanding the Programmer Toolset</em> on blogs.perl.org...
                     </a></li>
                     <li><a href="http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html#section-2">
-                        Continue reading on Doug Bell
+                        Continue reading on preaction
                     </a></li>
                 </ul>
             <p>Tags:
@@ -58,7 +58,7 @@ tool</a>.</p>
             </p>
         ]]></content>
         <updated>2013-05-01T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb78cf50fa0)" />
+        <category term="ARRAY(0x7fe368da1fa0)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html</id>
@@ -79,7 +79,7 @@ deck.js, and I'm not sure I like it.]</p>
                         Continue reading <em>Chicago.PM - Dependency Injection (also: Beam::Wire)</em> on blogs.perl.org...
                     </a></li>
                     <li><a href="http://preaction.github.io/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html#section-2">
-                        Continue reading on Doug Bell
+                        Continue reading on preaction
                     </a></li>
                 </ul>
             <p>Tags:
@@ -87,7 +87,7 @@ deck.js, and I'm not sure I like it.]</p>
             </p>
         ]]></content>
         <updated>2013-03-29T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb78cf2dd08)" />
+        <category term="ARRAY(0x7fe368da1790)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/03/14/chicago.pm-mojolicious.html</id>
@@ -123,7 +123,7 @@ AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
                         Continue reading <em>Chicago.PM - Mojolicious</em> on blogs.perl.org...
                     </a></li>
                     <li><a href="http://preaction.github.io/blog/2013/03/14/chicago.pm-mojolicious.html#section-2">
-                        Continue reading on Doug Bell
+                        Continue reading on preaction
                     </a></li>
                 </ul>
             <p>Tags:
@@ -131,7 +131,7 @@ AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
             </p>
         ]]></content>
         <updated>2013-03-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb78f86acc0)" />
+        <category term="ARRAY(0x7fe3694f1828)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html</id>
@@ -149,7 +149,7 @@ releases.</p>
                         Continue reading <em>Chicago.PM - Scripting Git With Perl</em> on blogs.perl.org...
                     </a></li>
                     <li><a href="http://preaction.github.io/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html#section-2">
-                        Continue reading on Doug Bell
+                        Continue reading on preaction
                     </a></li>
                 </ul>
             <p>Tags:
@@ -157,7 +157,7 @@ releases.</p>
             </p>
         ]]></content>
         <updated>2012-10-28T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb78f8686b0)" />
+        <category term="ARRAY(0x7fe3694f1300)" />
     </entry>
 </feed>
 

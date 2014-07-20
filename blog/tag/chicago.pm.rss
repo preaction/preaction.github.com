@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Doug Bell</title>
+        <title>preaction</title>
         <link>http://preaction.github.io/blog/tag/chicago.pm/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/chicago.pm.rss" rel="self" type="application/rss+xml" />
-        <description>Blog feed of Doug Bell</description>
+        <description>Blog feed of preaction</description>
         <generator>Statocles 0.020</generator>
         <item>
             <title>Chicago.PM New Website! New Meetup URL! New Presentations Project!</title>
@@ -23,7 +23,7 @@ of the good tutorials and learning sites.</p>
                             Continue reading <em>Chicago.PM New Website! New Meetup URL! New Presentations Project!</em> on blogs.perl.org...
                         </a></li>
                         <li><a href="http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html#section-2">
-                            Continue reading on Doug Bell
+                            Continue reading on preaction
                         </a></li>
                     </ul>
                 <p>Tags:
@@ -49,7 +49,7 @@ tool</a>.</p>
                             Continue reading <em>Chicago.PM - Beyond grep - Expanding the Programmer Toolset</em> on blogs.perl.org...
                         </a></li>
                         <li><a href="http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html#section-2">
-                            Continue reading on Doug Bell
+                            Continue reading on preaction
                         </a></li>
                     </ul>
                 <p>Tags:
@@ -78,7 +78,7 @@ deck.js, and I'm not sure I like it.]</p>
                             Continue reading <em>Chicago.PM - Dependency Injection (also: Beam::Wire)</em> on blogs.perl.org...
                         </a></li>
                         <li><a href="http://preaction.github.io/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html#section-2">
-                            Continue reading on Doug Bell
+                            Continue reading on preaction
                         </a></li>
                     </ul>
                 <p>Tags:
@@ -122,7 +122,7 @@ AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
                             Continue reading <em>Chicago.PM - Mojolicious</em> on blogs.perl.org...
                         </a></li>
                         <li><a href="http://preaction.github.io/blog/2013/03/14/chicago.pm-mojolicious.html#section-2">
-                            Continue reading on Doug Bell
+                            Continue reading on preaction
                         </a></li>
                     </ul>
                 <p>Tags:
@@ -148,7 +148,7 @@ releases.</p>
                             Continue reading <em>Chicago.PM - Scripting Git With Perl</em> on blogs.perl.org...
                         </a></li>
                         <li><a href="http://preaction.github.io/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html#section-2">
-                            Continue reading on Doug Bell
+                            Continue reading on preaction
                         </a></li>
                     </ul>
                 <p>Tags:

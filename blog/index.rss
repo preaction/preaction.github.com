@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Doug Bell</title>
+        <title>preaction</title>
         <link>http://preaction.github.io/index.html</link>
         <atom:link href="http://preaction.github.io/blog/index.rss" rel="self" type="application/rss+xml" />
-        <description>Blog feed of Doug Bell</description>
+        <description>Blog feed of preaction</description>
         <generator>Statocles 0.020</generator>
         <item>
             <title>Between Learning and Doing</title>
@@ -29,7 +29,7 @@ new programming language. I didn't realize my mistake until it was too late.</p>
                             Continue reading <em>Between Learning and Doing</em> on blogs.perl.org...
                         </a></li>
                         <li><a href="http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html#section-2">
-                            Continue reading on Doug Bell
+                            Continue reading on preaction
                         </a></li>
                     </ul>
                 <p>Tags:
@@ -81,7 +81,7 @@ has 50% more test lines than source lines:</p>
                             Continue reading <em>perlsloc - Count Perl Source Lines with Perl::Tidy</em> on blogs.perl.org...
                         </a></li>
                         <li><a href="http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html#section-2">
-                            Continue reading on Doug Bell
+                            Continue reading on preaction
                         </a></li>
                     </ul>
                 <p>Tags:
@@ -111,7 +111,7 @@ able to execute it. Maybe git-add--interactive is broken?
                             Continue reading <em>Conflict Resolution: local::lib and git's Perl</em> on blogs.perl.org...
                         </a></li>
                         <li><a href="http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html#section-2">
-                            Continue reading on Doug Bell
+                            Continue reading on preaction
                         </a></li>
                     </ul>
                 <p>Tags:
@@ -162,7 +162,7 @@ of the good tutorials and learning sites.</p>
                             Continue reading <em>Chicago.PM New Website! New Meetup URL! New Presentations Project!</em> on blogs.perl.org...
                         </a></li>
                         <li><a href="http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html#section-2">
-                            Continue reading on Doug Bell
+                            Continue reading on preaction
                         </a></li>
                     </ul>
                 <p>Tags:

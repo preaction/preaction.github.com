@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Doug Bell</title>
+        <title>preaction</title>
         <link>http://preaction.github.io/blog/tag/xs/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/xs.rss" rel="self" type="application/rss+xml" />
-        <description>Blog feed of Doug Bell</description>
+        <description>Blog feed of preaction</description>
         <generator>Statocles 0.020</generator>
         <item>
             <title>Adventures in Debugging C/XS 2: Debugging Boogaloo</title>
@@ -101,7 +101,7 @@ fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
                             Continue reading <em>Adventures in Debugging C/XS</em> on blogs.perl.org...
                         </a></li>
                         <li><a href="http://preaction.github.io/blog/2011/11/16/adventures-in-debugging-c-xs.html#section-2">
-                            Continue reading on Doug Bell
+                            Continue reading on preaction
                         </a></li>
                     </ul>
                 <p>Tags:

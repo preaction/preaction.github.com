@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/git/index.html</id>
-    <title>Doug Bell</title>
-    <updated>2014-07-19T23:00:33Z</updated>
+    <title>preaction</title>
+    <updated>2014-07-19T23:01:33Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/git.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/git/index.html"/>
     <generator version="0.020">Statocles</generator>
@@ -26,7 +26,7 @@ able to execute it. Maybe git-add--interactive is broken?
                         Continue reading <em>Conflict Resolution: local::lib and git's Perl</em> on blogs.perl.org...
                     </a></li>
                     <li><a href="http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html#section-2">
-                        Continue reading on Doug Bell
+                        Continue reading on preaction
                     </a></li>
                 </ul>
             <p>Tags:
@@ -35,7 +35,7 @@ able to execute it. Maybe git-add--interactive is broken?
             </p>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb78cf50dd8)" />
+        <category term="ARRAY(0x7fe368da23c0)" />
     </entry>
 </feed>
 

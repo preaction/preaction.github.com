@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Doug Bell</title>
+        <title>preaction</title>
         <link>http://preaction.github.io/blog/tag/rants/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/rants.rss" rel="self" type="application/rss+xml" />
-        <description>Blog feed of Doug Bell</description>
+        <description>Blog feed of preaction</description>
         <generator>Statocles 0.020</generator>
         <item>
             <title>Between Learning and Doing</title>
@@ -29,7 +29,7 @@ new programming language. I didn't realize my mistake until it was too late.</p>
                             Continue reading <em>Between Learning and Doing</em> on blogs.perl.org...
                         </a></li>
                         <li><a href="http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html#section-2">
-                            Continue reading on Doug Bell
+                            Continue reading on preaction
                         </a></li>
                     </ul>
                 <p>Tags:
@@ -60,7 +60,7 @@ make this task surmountable.</p>
                             Continue reading <em>Thoughts while changing the API of a massive framework...</em> on blogs.perl.org...
                         </a></li>
                         <li><a href="http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html#section-2">
-                            Continue reading on Doug Bell
+                            Continue reading on preaction
                         </a></li>
                     </ul>
                 <p>Tags:

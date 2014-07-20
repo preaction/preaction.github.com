@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Doug Bell</title>
+        <title>preaction</title>
         <link>http://preaction.github.io/blog/tag/mysql/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/mysql.rss" rel="self" type="application/rss+xml" />
-        <description>Blog feed of Doug Bell</description>
+        <description>Blog feed of preaction</description>
         <generator>Statocles 0.020</generator>
         <item>
             <title>CHI Saves The Day</title>
@@ -161,7 +161,7 @@ the day!</p>
                             Continue reading <em>CHI Saves The Day</em> on blogs.perl.org...
                         </a></li>
                         <li><a href="http://preaction.github.io/blog/2011/03/09/chi-saves-the-day.html#section-2">
-                            Continue reading on Doug Bell
+                            Continue reading on preaction
                         </a></li>
                     </ul>
                 <p>Tags:

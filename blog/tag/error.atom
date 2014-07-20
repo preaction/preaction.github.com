@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/error/index.html</id>
-    <title>Doug Bell</title>
-    <updated>2014-07-19T23:00:33Z</updated>
+    <title>preaction</title>
+    <updated>2014-07-19T23:01:32Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/error.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/error/index.html"/>
     <generator version="0.020">Statocles</generator>
@@ -34,7 +34,7 @@ and then using that as a package name?</p>
                         Continue reading <em>I Bless You in the Name of the Stringified Object</em> on blogs.perl.org...
                     </a></li>
                     <li><a href="http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html#section-2">
-                        Continue reading on Doug Bell
+                        Continue reading on preaction
                     </a></li>
                 </ul>
             <p>Tags:
@@ -42,7 +42,7 @@ and then using that as a package name?</p>
             </p>
         ]]></content>
         <updated>2013-04-15T00:00:00Z</updated>
-        <category term="ARRAY(0x7fb78f86b290)" />
+        <category term="ARRAY(0x7fe368da1ce8)" />
     </entry>
 </feed>
 
