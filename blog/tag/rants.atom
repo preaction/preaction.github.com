@@ -2,10 +2,44 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/rants/index.html</id>
     <title>Doug Bell</title>
-    <updated>2014-07-17T22:40:24Z</updated>
+    <updated>2014-07-19T23:00:33Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/rants.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/rants/index.html"/>
     <generator version="0.020">Statocles</generator>
+    <entry>
+        <id>http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html</id>
+        <title>Between Learning and Doing</title>
+        <author><name>preaction</name></author>
+        <link rel="alternate" href="http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html" />
+        <content type="html"><![CDATA[
+            <p><img src="/blog/images/ive-made-a-huge-mistake.gif" alt="I've made a huge mistake" /></p>
+
+<p>A long time ago, when I started building my first video game server for
+<a href="http://doublecluepon.com">Double Cluepon</a>, my video game company, I did a bad
+thing. I looked at the AMF library for Perl and Python and decided that
+Python's looked better. I had always meant to learn Python, and this felt like
+the perfect opportunity. It had cooperative multitasking (Twisted) and it had
+an ORM (SQLAlchemy), so along with the messaging format (PyAMF), I had
+everything I needed to build a server for a Flash MMO (later migrated to AIR).</p>
+
+<p>Let me reiterate my mistake: While under time constraints, I chose to learn a
+new programming language. I didn't realize my mistake until it was too late.</p>
+
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2014/07/between-learning-and-doing.html">
+                        Continue reading <em>Between Learning and Doing</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html#section-2">
+                        Continue reading on Doug Bell
+                    </a></li>
+                </ul>
+            <p>Tags:
+                <a href="/blog/tag/rants/index.html">rants</a>
+            </p>
+        ]]></content>
+        <updated>2014-07-19T00:00:00Z</updated>
+        <category term="ARRAY(0x7fb78bf10d60)" />
+    </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</id>
         <title>Thoughts while changing the API of a massive framework...</title>
@@ -35,7 +69,7 @@ make this task surmountable.</p>
             </p>
         ]]></content>
         <updated>2013-04-11T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa05414a648)" />
+        <category term="ARRAY(0x7fb78f86b230)" />
     </entry>
 </feed>
 

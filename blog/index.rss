@@ -7,6 +7,40 @@
         <description>Blog feed of Doug Bell</description>
         <generator>Statocles 0.020</generator>
         <item>
+            <title>Between Learning and Doing</title>
+            <link>http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html</link>
+            <guid>http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html</guid>
+            <description><![CDATA[
+                <p><img src="/blog/images/ive-made-a-huge-mistake.gif" alt="I've made a huge mistake" /></p>
+
+<p>A long time ago, when I started building my first video game server for
+<a href="http://doublecluepon.com">Double Cluepon</a>, my video game company, I did a bad
+thing. I looked at the AMF library for Perl and Python and decided that
+Python's looked better. I had always meant to learn Python, and this felt like
+the perfect opportunity. It had cooperative multitasking (Twisted) and it had
+an ORM (SQLAlchemy), so along with the messaging format (PyAMF), I had
+everything I needed to build a server for a Flash MMO (later migrated to AIR).</p>
+
+<p>Let me reiterate my mistake: While under time constraints, I chose to learn a
+new programming language. I didn't realize my mistake until it was too late.</p>
+
+                    <ul>
+                        <li><a href="http://blogs.perl.org/users/preaction/2014/07/between-learning-and-doing.html">
+                            Continue reading <em>Between Learning and Doing</em> on blogs.perl.org...
+                        </a></li>
+                        <li><a href="http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html#section-2">
+                            Continue reading on Doug Bell
+                        </a></li>
+                    </ul>
+                <p>Tags:
+                    <a href="/blog/tag/rants/index.html">rants</a>
+                </p>
+            ]]></description>
+            <pubDate>
+                Sat, 19 Jul 2014 00:00:00 -0600
+            </pubDate>
+        </item>
+        <item>
             <title>perlsloc - Count Perl Source Lines with Perl::Tidy</title>
             <link>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</link>
             <guid>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</guid>
@@ -137,32 +171,6 @@ of the good tutorials and learning sites.</p>
             ]]></description>
             <pubDate>
                 Thu, 13 Jun 2013 00:00:00 -0600
-            </pubDate>
-        </item>
-        <item>
-            <title>Chicago.PM - Beyond grep - Expanding the Programmer Toolset</title>
-            <link>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</link>
-            <guid>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</guid>
-            <description><![CDATA[
-                <p>Last week, <a href="http://petdance.com">Andy Lester</a> (author of <a href="http://petdance.com/book/">Land the Tech Job You
-Love</a>) came to talk about tools to help programmers
-work more efficiently and the 2.0 release of his <a href="http://beyondgrep.com">Ack search
-tool</a>.</p>
-
-                    <ul>
-                        <li><a href="http://blogs.perl.org/users/preaction/2013/05/chicagopm---beyond-grep---expanding-the-programmer-toolset.html">
-                            Continue reading <em>Chicago.PM - Beyond grep - Expanding the Programmer Toolset</em> on blogs.perl.org...
-                        </a></li>
-                        <li><a href="http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html#section-2">
-                            Continue reading on Doug Bell
-                        </a></li>
-                    </ul>
-                <p>Tags:
-                    <a href="/blog/tag/chicago.pm/index.html">chicago.pm</a>
-                </p>
-            ]]></description>
-            <pubDate>
-                Wed, 01 May 2013 00:00:00 -0600
             </pubDate>
         </item>
     </channel>

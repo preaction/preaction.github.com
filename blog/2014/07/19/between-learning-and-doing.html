@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <title>Doug Bell</title>
+        <style type="text/css">
+            main header h1
+            {
+                border-bottom: 4px solid #045578;
+            }
+            header aside {
+                margin-top: 0;
+                font-size: 12pt;
+            }
+            .sidebar h1 {
+                font-size: 14pt;
+            }
+
+            /** Add a line when using the "Continue reading..." link */
+            section:target {
+                padding-top: 0.5em;
+                border-top: 4px solid #045578;
+            }
+
+            /** Don't allow <pre> to push too much */
+            pre {
+                max-width: 100%;
+                overflow-x: scroll;
+            }
+
+            /** <code> is used for input and output, so let it wrap */
+            code {
+                white-space: normal;
+            }
+
+            .tags {
+                float: right;
+            }
+
+            /**
+             * Don't allow main content images to push things around
+             */
+            main img {
+                max-width: 100%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">Doug Bell</a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="top-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/index.html">Blog</a></li>
+                            <li><a href="/presentations.html">Presentations</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="main container">
+            <div class="row">
+
+    <div class="col-md-9">
+        <main>
+            <header>
+                <h1>Between Learning and Doing</h1>
+                <p class="tags">Tags:
+                    <a href="/blog/tag/rants/index.html" rel="tag">rants</a>
+                </p>
+                <aside>
+                    <p><time datetime="2014-07-19">
+                        Posted on 2014-07-19
+                    </time>
+                    by preaction</p>
+                </aside>
+                <div class="alert alert-info">
+                    <p>Originally posted as:</p>
+                    <ul>
+                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2014/07/between-learning-and-doing.html">
+                            <em>Between Learning and Doing</em> on blogs.perl.org.
+                        </a></li>
+                    </ul>
+                </div>
+            </header>
+            <section id="section-1">
+                <p><img src="/blog/images/ive-made-a-huge-mistake.gif" alt="I've made a huge mistake" /></p>
+
+<p>A long time ago, when I started building my first video game server for
+<a href="http://doublecluepon.com">Double Cluepon</a>, my video game company, I did a bad
+thing. I looked at the AMF library for Perl and Python and decided that
+Python's looked better. I had always meant to learn Python, and this felt like
+the perfect opportunity. It had cooperative multitasking (Twisted) and it had
+an ORM (SQLAlchemy), so along with the messaging format (PyAMF), I had
+everything I needed to build a server for a Flash MMO (later migrated to AIR).</p>
+
+<p>Let me reiterate my mistake: While under time constraints, I chose to learn a
+new programming language. I didn't realize my mistake until it was too late.</p>
+
+            </section>
+            <section id="section-2">
+                <p>Being a startup (still), we needed something <strong>As Quickly As Possible</strong>. So, I
+cobbled together a marginally-working system from all the examples I could
+find. Not being familiar with Python's strengths and weaknesses, I tripped over
+everything, getting more and more frustrated (but still absolutely convinced I
+had chosen the correct path). When we needed an integrated website, something I
+already knew how to build in Perl which did not need the aforementioned library
+which was the reason to use Python, I kept it in Python to "keep the number of
+languages in active use in the company to a minimum."</p>
+
+<p>In the end, I had something that technically worked, but was more akin to
+something an amateur programmer would produce. <strong>All my experience was worthless
+while I was trying to learn a new language, new libraries, and new ways of
+doing the things I already knew how to do.</strong></p>
+
+<p>With our new game, I almost did it again: I was going to write the server
+component in C++ so that it could be compiled in to the game client to
+provide for LAN gaming (which is another horrible excuse to learn new
+things while under time constraints). Lucky for me, some good old-fashioned
+laziness has again put me under time pressure, and the most expedient way
+forward is to do what I know: Perl.</p>
+
+<p>Learning new things is a good idea, but it's hard to learn new things while
+you're also trying to get things done. If you need to get things done quickly,
+be very careful before deciding to use something new.</p>
+
+            </section>
+        </main>
+    </div>
+
+    <div class="col-md-3">
+        <nav id="tags">
+            <h1>Tags</h1>
+            <ul class="list-inline">
+                <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/index.html">error</a></li>
+                <li><a href="/blog/tag/funny/index.html">funny</a></li>
+                <li><a href="/blog/tag/git/index.html">git</a></li>
+                <li><a href="/blog/tag/moose/index.html">moose</a></li>
+                <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
+                <li><a href="/blog/tag/openbsd/index.html">openbsd</a></li>
+                <li><a href="/blog/tag/perl/index.html">perl</a></li>
+                <li><a href="/blog/tag/personal/index.html">personal</a></li>
+                <li><a href="/blog/tag/rants/index.html">rants</a></li>
+                <li><a href="/blog/tag/scripts/index.html">scripts</a></li>
+                <li><a href="/blog/tag/software/index.html">software</a></li>
+                <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
+                <li><a href="/blog/tag/xs/index.html">xs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+
+        </div>
+    </body>
+</html>
