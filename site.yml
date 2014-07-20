@@ -9,7 +9,7 @@ blog_app:
 site:
     class: Statocles::Site::Git
     args:
-        title: Doug Bell
+        title: preaction
         base_url: http://preaction.github.io
         nav:
             main:
