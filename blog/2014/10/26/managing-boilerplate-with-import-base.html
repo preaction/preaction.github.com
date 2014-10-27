@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <title>preaction</title>
+        <style type="text/css">
+            main header h1
+            {
+                border-bottom: 4px solid #045578;
+            }
+            header aside {
+                margin-top: 0;
+                font-size: 12pt;
+            }
+            .sidebar h1 {
+                font-size: 14pt;
+            }
+
+            /** Add a line when using the "Continue reading..." link */
+            section:target {
+                padding-top: 0.5em;
+                border-top: 4px solid #045578;
+            }
+
+            /** Don't allow <pre> to push too much */
+            pre {
+                max-width: 100%;
+                overflow-x: scroll;
+            }
+
+            /** <code> is used for input and output, so let it wrap */
+            code {
+                white-space: normal;
+            }
+
+            .tags {
+                float: right;
+            }
+
+            /**
+             * Don't allow main content images to push things around
+             */
+            main img {
+                max-width: 100%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">preaction</a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="top-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/index.html">Blog</a></li>
+                            <li><a href="/presentations.html">Presentations</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="main container">
+            <div class="row">
+
+    <div class="col-md-9">
+        <main>
+            <header>
+                <h1>Manage Boilerplate with Import::Base</h1>
+                <p class="tags">Tags:
+                    <a href="/blog/tag/perl/index.html" rel="tag">perl</a>
+                </p>
+                <aside>
+                    <p><time datetime="2014-10-26">
+                        Posted on 2014-10-26
+                    </time>
+                    by preaction</p>
+                </aside>
+                <div class="alert alert-info">
+                    <p>Originally posted as:</p>
+                    <ul>
+                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2014/10/managing-boilerplate-with-importbase.html">
+                            <em>Manage Boilerplate with Import::Base</em> on blogs.perl.org.
+                        </a></li>
+                    </ul>
+                </div>
+            </header>
+            <section id="section-1">
+                <p>Boilerplate is everything I hate about programming:</p>
+
+<ul>
+<li>Doing the same thing more than once</li>
+<li>Leaving clutter in every file</li>
+<li>Making it harder to change things in the future</li>
+<li>Eventually blindly copying without understanding (cargo-cult programming)</li>
+</ul>
+
+<p>In an effort to reduce some of my boilerplate, I wrote
+<a href="https://metacpan.org/pod/Import::Base">Import::Base</a>, a module to collect and
+import useful bundles of modules, removing the need for long lists of <code>use ...</code>
+lines everywhere.</p>
+
+            </section>
+            <section id="section-2">
+                <p>As I've grown as a Perl programmer, I've added more and more to my standard
+preamble for all but the most trivial Perl scripts. <code>use strict</code> and <code>use
+warnings</code> are absolute requirements. I want to use modern Perl's features like
+<code>say</code>, <code>state</code>, and others, so I'll import a feature bundle with <code>use feature
+":5.10"</code>. If I'm working on things I don't plan to share the code on CPAN, I
+can go all the way to <code>use experimental qw( signatures postfix_deref )</code>.</p>
+
+<p>For class modules, I need to <code>use Moo</code>, <code>use Types::Standard</code>, and more. For
+roles, I need to <code>use Moo::Role</code> instead of Moo. If the project uses Moose, I
+need to use Moose's version of those things instead of Moo's version (or, in
+the case of Type::Tiny, make sure to use a Moo/Moose agnostic pattern).</p>
+
+<p>For tests, I have a lot more. <code>use Test::More</code>, <code>use Test::Deep</code>, and <code>use
+Test::Differences</code>, are my go-to comparison set. My best practices also include
+<code>use File::Temp</code>, which requires that I <code>use File::Spec::Functions</code>, and <code>use
+FindBin</code> so I can locate the t/share directory for ancillary test files.</p>
+
+<p>For command-line scripts, I have <code>use Pod::Usage::Return</code>, <code>use Getopt::Long
+qw( GetOptionsFromArray )</code>, in addition to my standard boilerplate of strict,
+warnings, and features.</p>
+
+<p>And every project I write has imports that are used in just about every module:
+YAML, JSON, Path::Tiny, and project-specific utility modules.</p>
+
+<p>My standard solution was as simple and blunt as it could be: Copy and paste.
+Besides being a stupidly-lazy solution, it left me with a problem: How could I
+modify all my modules to use a new feature bundle? Should I brush up on my
+<code>sed(1)</code> or write a Perl one-liner? What happens when I want to use a different
+module with an equivalent API, like changing to use YAML::XS instead of
+YAML::PP? How can I make a new module quickly available to all my classes, or
+all my roles, or all my tests, or all my scripts?</p>
+
+<p>All these questions boiled down to: If I copy/paste my boilerplate everywhere,
+what happens when my boilerplate changes? This is why I hate boilerplate.</p>
+
+<p>With <a href="https://metacpan.org/pod/Import::Into">Import::Into</a>, we have a way to
+remove a massive block of imports from our boilerplate. Using Import::Into, I
+wrote a simple class to manage my imports, and allow me to quickly create
+different bundles of imports to use in different situations:
+<a href="https://metacpan.org/pod/Import::Base">Import::Base</a>.</p>
+
+<p>With Import::Base, you build a list of imports in a module. When someone
+imports your module, they get all your imports. They can also subclass your
+module to add or remove what your module imports.</p>
+
+<p>A common base module should probably include strict, warnings, and a feature
+set.</p>
+
+<pre><code>package My::Base;
+use base 'Import::Base';
+
+our @IMPORT_MODULES = (
+    'strict',
+    'warnings',
+    feature =&gt; [qw( :5.14 )],
+);
+</code></pre>
+
+<p>Now we can consume our base module by doing:</p>
+
+<pre><code>package My::Module;
+use My::Base;
+</code></pre>
+
+<p>Which is equivalent to:</p>
+
+<pre><code>package My::Module;
+use strict;
+use warnings;
+use feature qw( :5.14 );
+</code></pre>
+
+<p>Now when we want to change our feature set, we only need to edit one file!</p>
+
+<p>In addition to a set of modules, we can also create optional bundles:</p>
+
+<pre><code>package My::Base;
+use base 'Import::Base';
+
+# Modules that will always be included
+our @IMPORT_MODULES
+    'strict',
+    'warnings',
+    feature =&gt; [qw( :5.14 )],
+    experimental =&gt; [qw( signatures )],
+);
+
+# Named bundles to include
+our %IMPORT_BUNDLES = (
+    Class =&gt; [ 'Moo', 'Types::Standard' =&gt; [qw( :all )] ],
+    Role =&gt; [ 'Moo::Role', 'Types::Standard' =&gt; [qw( :all )] ],
+    Test =&gt; [qw( Test::More Test::Deep )],
+);
+</code></pre>
+
+<p>Now we can choose one or more bundles to include:</p>
+
+<pre><code># lib/MyClass.pm
+use My::Base 'Class';
+
+# t/mytest.t
+use My::Base 'Test';
+
+# t/lib/MyTest.pm
+use My::Base 'Test', 'Class';
+</code></pre>
+
+<p>What makes Import::Base more useful than rolling your own with Import::Into is
+the granular control you can get on the consuming side. On a case-by-case
+basis, individual imports can be removed if they conflict with something in the
+module (a name collision, for example). Then, the offending module can be used
+directly.</p>
+
+<pre><code>package My::StrangeClass;
+use My::Base 'Class', -exclude =&gt; [ 'Types::Standard' ];
+use Types::Standard qw( Str );
+</code></pre>
+
+<p>Boilerplate is everything I hate about programming. With
+<a href="https://metacpan.org/pod/Import::Base">Import::Base</a>, I can remove boilerplate
+and replace it with a single line describing what the module needs.</p>
+
+            </section>
+        </main>
+    </div>
+
+    <div class="col-md-3">
+        <nav id="tags">
+            <h1>Tags</h1>
+            <ul class="list-inline">
+                <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/index.html">error</a></li>
+                <li><a href="/blog/tag/funny/index.html">funny</a></li>
+                <li><a href="/blog/tag/git/index.html">git</a></li>
+                <li><a href="/blog/tag/moose/index.html">moose</a></li>
+                <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
+                <li><a href="/blog/tag/openbsd/index.html">openbsd</a></li>
+                <li><a href="/blog/tag/perl/index.html">perl</a></li>
+                <li><a href="/blog/tag/personal/index.html">personal</a></li>
+                <li><a href="/blog/tag/rants/index.html">rants</a></li>
+                <li><a href="/blog/tag/scripts/index.html">scripts</a></li>
+                <li><a href="/blog/tag/software/index.html">software</a></li>
+                <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
+                <li><a href="/blog/tag/xs/index.html">xs</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+
+        </div>
+    </body>
+</html>

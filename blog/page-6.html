@@ -82,6 +82,196 @@
         <main>
             <article>
                 <header>
+                    <h1><a href="/blog/2011/02/04/whats-new-in-webgui-8.0-3-upgrade-system.html">What's New in WebGUI 8.0 #3: Upgrade System</a></h1>
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/webgui/index.html" rel="tag">webgui</a>
+                    </p>
+                    <aside>
+                        <p><time datetime="2011-02-04">
+                            Posted on 2011-02-04
+                        </time>
+                        by preaction</p>
+                    </aside>
+                    <div class="alert alert-info">
+                        <p>Originally posted as:</p>
+                        <ul>
+                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2011/02/whats-new-in-webgui-80-3-upgrade-system.html">
+                                <em>What's New in WebGUI 8.0 #3: Upgrade System</em> on blogs.perl.org.
+                            </a></li>
+                        </ul>
+                    </div>
+                </header>
+                <h2>Following The Path</h2>
+
+<p>If you installed WebGUI 0.9.0 back in August of 2001 (the first public 
+release), you've had a stable upgrade path through WebGUI 7.10.8 (January
+2011) and beyond. Plainblack.com has been through every upgrade for the last
+10 years, a shining bastion to our upgradability.</p>
+
+<p>A WebGUI 7.10 user would not even recognize a WebGUI 6.0 database, much less
+the database used by the 1.x series, but slowly, gradually, our upgrade system
+brought new features to every WebGUI site that wanted them.</p>
+
+<h2>The Ancient Way</h2>
+
+<p>Our old upgrade system was quite simple:</p>
+
+<pre><code>docs/upgrade_2.9.0-3.0.0.pl
+docs/upgrade_3.0.0-3.0.1.sql
+docs/upgrade_3.0.0-3.0.1.pl
+</code></pre>
+
+<p>Our upgrade.pl script would check for docs/upgrade_*, compare version numbers,
+and then execute the .sql and .pl scripts in order until there were no more
+upgrades left.</p>
+
+<p>Because each .pl script was executed individually, there was a considerable
+amount of boilerplate in each script (123 lines). Because there was only one script per
+version, some scripts could get quite long. We had conventions to manage these
+limitations, but it was still a bit of a mind-twist to write an upgrade
+routine.</p>
+
+<p>Later, when we moved to simultaneous beta and stable trees, it became even
+more difficult to manage these huge upgrade scripts. Collecting the new
+features from the beta tree to apply to the stable tree was a time-consuming
+manual task that some poor coder had to perform, back hunched over a dimly-lit
+screen in the wee hours of the night, testing and re-testing the upgrade to
+make sure stable lived up to its expectations.</p>
+
+<p>Though our upgrade system had performed admirably, it was time for a fresh
+look at the problem.</p>
+
+<h2>The Modern Vision</h2>
+
+<p>The individual files for upgrades was working quite well, but didn't go far 
+enough. Our new upgrade system has one file per upgrade step. Each sub from an
+old upgrade script would be one file in the new upgrade system. What's more,
+additional file types would be supported:</p>
+
+<pre><code>$ ls share/upgrades/7.10.4-8.0.0/
+addNewAdminConsole.pl
+admin_console.wgpkg
+facebook_auth.sql
+migrateToNewCache.pl
+moveMaintenance.pl
+moveRequiredProfileFields.pl
+</code></pre>
+
+<p>So now, instead of a single file for an upgrade, we have an entire directory.
+In this directory, the .pl files are scripts to be run, the .wgpkg files are
+WebGUI assets to add to the site, the .sql files are SQL commands to run, and
+any .txt files will be shown as a confirmation message to the user for gotchas
+like "All your users have been logged out as a result of this upgrade. Deal
+with it.".</p>
+
+<p>So now, if you want to add your own custom upgrade routine, you just add
+another file to the directory which means less worrying about conflicts. When
+we need to build another new stable version release, we can just move the
+unique upgrade files from beta to the new upgrade.</p>
+
+<p>The best part of the new upgrade system is how the .pl scripts are written.
+When you are in a .pl, you have a bunch of sugar to make the basic tasks much
+easier.</p>
+
+<pre><code># Old upgrade routine. Just another day in a session
+sub migrateToNewCache {
+    my $session = shift;
+    print "\tMigrating to new cache " unless $quiet;
+
+    use File::Path;
+    rmtree "../../lib/WebGUI/Cache";
+    unlink "../../lib/WebGUI/Workflow/Activity/CleanDatabaseCache.pm";
+    unlink "../../lib/WebGUI/Workflow/Activity/CleanFileCache.pm";
+
+    my $config = $session-&gt;config;
+    $config-&gt;set("cache", {
+        driver              =&gt; 'FastMmap',
+        expires_variance   =&gt; '0.10',
+        root_dir            =&gt; '/tmp/WebGUICache',
+    });
+
+    $config-&gt;set("hotSessionFlushToDb", 600);
+    $config-&gt;delete("disableCache");
+    $config-&gt;delete("cacheType");
+    $config-&gt;delete("fileCacheRoot");
+    $config-&gt;deleteFromArray("workflowActivities/None", "WebGUI::Workflow::Activity::CleanDatabaseCache");
+    $config-&gt;deleteFromArray("workflowActivities/None", "WebGUI::Workflow::Activity::CleanFileCache");
+
+    my $db = $session-&gt;db;
+    $db-&gt;write("drop table cache");
+    $db-&gt;write("delete from WorkflowActivity where className in ('WebGUI::Workflow::Activity::CleanDatabaseCache','WebGUI::Workflow::Activity::CleanFileCache')");
+    $db-&gt;write("delete from WorkflowActivityData where activityId in  ('pbwfactivity0000000002','pbwfactivity0000000022')");
+
+    print "DONE!\n" unless $quiet;
+}
+</code></pre>
+
+<p>If you're familiar with WebGUI session, this is pretty standard, but still
+much boilerplate and convention. The new scripts remove boilerplate and
+enforce what was once merely convention.</p>
+
+<pre><code># New upgrade routine. migrateToNewCache.pl
+use WebGUI::Upgrade::Script;
+use Module::Find;
+
+start_step "Migrating to new cache";
+
+rm_lib
+    findallmod('WebGUI::Cache'),
+    'WebGUI::Workflow::Activity::CleanDatabaseCache',
+    'WebGUI::Workflow::Activity::CleanFileCache',
+;
+
+config-&gt;set("cache", {
+    'driver'            =&gt; 'FastMmap',
+    'expires_variance'  =&gt; '0.10',
+    'root_dir'          =&gt; '/tmp/WebGUICache',
+});
+
+config-&gt;set('hotSessionFlushToDb', 600);
+config-&gt;delete('disableCache');
+config-&gt;delete('cacheType');
+config-&gt;delete('fileCacheRoot');
+config-&gt;deleteFromArray('workflowActivities/None', 'WebGUI::Workflow::Activity::CleanDatabaseCache');
+config-&gt;deleteFromArray('workflowActivities/None', 'WebGUI::Workflow::Activity::CleanFileCache');
+
+sql 'DROP TABLE IF EXISTS cache';
+sql 'DELETE FROM WorkflowActivity WHERE className in (?,?)',
+    'WebGUI::Workflow::Activity::CleanDatabaseCache',
+    'WebGUI::Workflow::Activity::CleanFileCache',
+;
+sql 'DELETE FROM WorkflowActivityData WHERE activityId IN (?,?)',
+    'pbwfactivity0000000002',
+    'pbwfactivity0000000022',
+;
+
+done;
+</code></pre>
+
+<p>The first thing we do in our new upgrade script is use
+WebGUI::Upgrade::Script. Now, instead of using the session for everything, we
+have subs imported for various tasks. This means that many times we can run an
+entire upgrade script without opening a WebGUI session, or creating a version
+tag unnecessarily.</p>
+
+<p>If we do need a session, or a version tag, they will be automatically assigned
+relevant information describing what we're doing. When we're done, they will
+be automatically cleaned up and committed. What once was done with
+boilerplate, and subject to random deletion or subversion, is now enforced
+policy.</p>
+
+<p>In all other respects, a WebGUI upgrade script is a Perl script. You can add
+modules, write subroutines, and do anything necessary to move WebGUI into the
+future.</p>
+
+<p>The Internet is always evolving. With the WebGUI 8 upgrade system, we've made 
+it easier to evolve with it.</p>
+
+<p>Stay tuned for next time where I'll show off our CHI-based caching system.</p>
+
+            </article>
+            <article>
+                <header>
                     <h1><a href="/blog/2011/01/22/whats-new-in-webgui-8.0-2-auth-improvements.html">What's New in WebGUI 8 #2: Auth Improvements</a></h1>
                     <p class="tags">Tags:
                         <a href="/blog/tag/webgui/index.html" rel="tag">webgui</a>

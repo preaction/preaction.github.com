@@ -2,10 +2,45 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/index.html</id>
     <title>preaction</title>
-    <updated>2014-07-20T21:41:47Z</updated>
+    <updated>2014-10-26T19:22:34Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/index.atom"/>
     <link rel="alternate" href="http://preaction.github.io/index.html"/>
     <generator version="0.020">Statocles</generator>
+    <entry>
+        <id>http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html</id>
+        <title>Manage Boilerplate with Import::Base</title>
+        <author><name>preaction</name></author>
+        <link rel="alternate" href="http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html" />
+        <content type="html"><![CDATA[
+            <p>Boilerplate is everything I hate about programming:</p>
+
+<ul>
+<li>Doing the same thing more than once</li>
+<li>Leaving clutter in every file</li>
+<li>Making it harder to change things in the future</li>
+<li>Eventually blindly copying without understanding (cargo-cult programming)</li>
+</ul>
+
+<p>In an effort to reduce some of my boilerplate, I wrote
+<a href="https://metacpan.org/pod/Import::Base">Import::Base</a>, a module to collect and
+import useful bundles of modules, removing the need for long lists of <code>use ...</code>
+lines everywhere.</p>
+
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2014/10/managing-boilerplate-with-importbase.html">
+                        Continue reading <em>Manage Boilerplate with Import::Base</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html#section-2">
+                        Continue reading on preaction
+                    </a></li>
+                </ul>
+            <p>Tags:
+                <a href="/blog/tag/perl/index.html">perl</a>
+            </p>
+        ]]></content>
+        <updated>2014-10-26T00:00:00Z</updated>
+        <category term="ARRAY(0x7fa8ab83a508)" />
+    </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html</id>
         <title>Between Learning and Doing</title>
@@ -38,7 +73,7 @@ new programming language. I didn't realize my mistake until it was too late.</p>
             </p>
         ]]></content>
         <updated>2014-07-19T00:00:00Z</updated>
-        <category term="ARRAY(0x7ffeef27d838)" />
+        <category term="ARRAY(0x7fa8ae8aa828)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</id>
@@ -90,7 +125,7 @@ has 50% more test lines than source lines:</p>
             </p>
         ]]></content>
         <updated>2014-06-29T00:00:00Z</updated>
-        <category term="ARRAY(0x7ffeef27d3d0)" />
+        <category term="ARRAY(0x7fa8ae8a77f8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
@@ -121,7 +156,7 @@ able to execute it. Maybe git-add--interactive is broken?
             </p>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7ffeef27cf68)" />
+        <category term="ARRAY(0x7fa8ae8a6dd8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html</id>
@@ -143,35 +178,7 @@ a determined, dedicated team of hackers.</p>
             </p>
         ]]></content>
         <updated>2014-04-19T00:00:00Z</updated>
-        <category term="ARRAY(0x7ffef100d088)" />
-    </entry>
-    <entry>
-        <id>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</id>
-        <title>Chicago.PM New Website! New Meetup URL! New Presentations Project!</title>
-        <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html" />
-        <content type="html"><![CDATA[
-            <p>Lots of news for the Chicago.PM group! We've got a <a href="http://chicago.pm.org">new Chicago.PM
-website</a>, powered by <a href="http://github.com">Github</a>, up at
-<a href="http://chicago.pm.org">http://chicago.pm.org</a>. The website is completely
-editable via Github using the <a href="http://octopress.org">Octopress</a> system. We hope
-to start sharing resources about Perl on our website, increasing the exposure
-of the good tutorials and learning sites.</p>
-
-                <ul>
-                    <li><a href="http://blogs.perl.org/users/preaction/2013/06/chicagopm-new-website-new-meetup-url-new-presentations-project.html">
-                        Continue reading <em>Chicago.PM New Website! New Meetup URL! New Presentations Project!</em> on blogs.perl.org...
-                    </a></li>
-                    <li><a href="http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html#section-2">
-                        Continue reading on preaction
-                    </a></li>
-                </ul>
-            <p>Tags:
-                <a href="/blog/tag/chicago.pm/index.html">chicago.pm</a>
-            </p>
-        ]]></content>
-        <updated>2013-06-13T00:00:00Z</updated>
-        <category term="ARRAY(0x7ffef0694a58)" />
+        <category term="ARRAY(0x7fa8aa8a7ab0)" />
     </entry>
 </feed>
 

@@ -7,6 +7,41 @@
         <description>Blog feed of preaction</description>
         <generator>Statocles 0.020</generator>
         <item>
+            <title>Manage Boilerplate with Import::Base</title>
+            <link>http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html</link>
+            <guid>http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html</guid>
+            <description><![CDATA[
+                <p>Boilerplate is everything I hate about programming:</p>
+
+<ul>
+<li>Doing the same thing more than once</li>
+<li>Leaving clutter in every file</li>
+<li>Making it harder to change things in the future</li>
+<li>Eventually blindly copying without understanding (cargo-cult programming)</li>
+</ul>
+
+<p>In an effort to reduce some of my boilerplate, I wrote
+<a href="https://metacpan.org/pod/Import::Base">Import::Base</a>, a module to collect and
+import useful bundles of modules, removing the need for long lists of <code>use ...</code>
+lines everywhere.</p>
+
+                    <ul>
+                        <li><a href="http://blogs.perl.org/users/preaction/2014/10/managing-boilerplate-with-importbase.html">
+                            Continue reading <em>Manage Boilerplate with Import::Base</em> on blogs.perl.org...
+                        </a></li>
+                        <li><a href="http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html#section-2">
+                            Continue reading on preaction
+                        </a></li>
+                    </ul>
+                <p>Tags:
+                    <a href="/blog/tag/perl/index.html">perl</a>
+                </p>
+            ]]></description>
+            <pubDate>
+                Sun, 26 Oct 2014 00:00:00 -0600
+            </pubDate>
+        </item>
+        <item>
             <title>Between Learning and Doing</title>
             <link>http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html</link>
             <guid>http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html</guid>
@@ -143,34 +178,6 @@ a determined, dedicated team of hackers.</p>
             ]]></description>
             <pubDate>
                 Sat, 19 Apr 2014 00:00:00 -0600
-            </pubDate>
-        </item>
-        <item>
-            <title>Chicago.PM New Website! New Meetup URL! New Presentations Project!</title>
-            <link>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</link>
-            <guid>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</guid>
-            <description><![CDATA[
-                <p>Lots of news for the Chicago.PM group! We've got a <a href="http://chicago.pm.org">new Chicago.PM
-website</a>, powered by <a href="http://github.com">Github</a>, up at
-<a href="http://chicago.pm.org">http://chicago.pm.org</a>. The website is completely
-editable via Github using the <a href="http://octopress.org">Octopress</a> system. We hope
-to start sharing resources about Perl on our website, increasing the exposure
-of the good tutorials and learning sites.</p>
-
-                    <ul>
-                        <li><a href="http://blogs.perl.org/users/preaction/2013/06/chicagopm-new-website-new-meetup-url-new-presentations-project.html">
-                            Continue reading <em>Chicago.PM New Website! New Meetup URL! New Presentations Project!</em> on blogs.perl.org...
-                        </a></li>
-                        <li><a href="http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html#section-2">
-                            Continue reading on preaction
-                        </a></li>
-                    </ul>
-                <p>Tags:
-                    <a href="/blog/tag/chicago.pm/index.html">chicago.pm</a>
-                </p>
-            ]]></description>
-            <pubDate>
-                Thu, 13 Jun 2013 00:00:00 -0600
             </pubDate>
         </item>
     </channel>

@@ -2,10 +2,45 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/perl/index.html</id>
     <title>preaction</title>
-    <updated>2014-07-20T21:41:47Z</updated>
+    <updated>2014-10-26T19:22:36Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/perl.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/perl/index.html"/>
     <generator version="0.020">Statocles</generator>
+    <entry>
+        <id>http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html</id>
+        <title>Manage Boilerplate with Import::Base</title>
+        <author><name>preaction</name></author>
+        <link rel="alternate" href="http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html" />
+        <content type="html"><![CDATA[
+            <p>Boilerplate is everything I hate about programming:</p>
+
+<ul>
+<li>Doing the same thing more than once</li>
+<li>Leaving clutter in every file</li>
+<li>Making it harder to change things in the future</li>
+<li>Eventually blindly copying without understanding (cargo-cult programming)</li>
+</ul>
+
+<p>In an effort to reduce some of my boilerplate, I wrote
+<a href="https://metacpan.org/pod/Import::Base">Import::Base</a>, a module to collect and
+import useful bundles of modules, removing the need for long lists of <code>use ...</code>
+lines everywhere.</p>
+
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2014/10/managing-boilerplate-with-importbase.html">
+                        Continue reading <em>Manage Boilerplate with Import::Base</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html#section-2">
+                        Continue reading on preaction
+                    </a></li>
+                </ul>
+            <p>Tags:
+                <a href="/blog/tag/perl/index.html">perl</a>
+            </p>
+        ]]></content>
+        <updated>2014-10-26T00:00:00Z</updated>
+        <category term="ARRAY(0x7fa8ab83a508)" />
+    </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
         <title>Conflict Resolution: local::lib and git's Perl</title>
@@ -35,7 +70,7 @@ able to execute it. Maybe git-add--interactive is broken?
             </p>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7ffeef27cf68)" />
+        <category term="ARRAY(0x7fa8ae8a6dd8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</id>
@@ -108,7 +143,7 @@ works and has proper tests (written in Perl, of course).</p>
             </p>
         ]]></content>
         <updated>2012-03-20T00:00:00Z</updated>
-        <category term="ARRAY(0x7ffef06c8df0)" />
+        <category term="ARRAY(0x7fa8ae891148)" />
     </entry>
 </feed>
 
