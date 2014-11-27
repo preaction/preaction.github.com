@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/index.html</id>
     <title>preaction</title>
-    <updated>2014-10-26T19:22:34Z</updated>
+    <updated>2014-11-27T00:58:15Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/index.atom"/>
     <link rel="alternate" href="http://preaction.github.io/index.html"/>
     <generator version="0.020">Statocles</generator>
@@ -39,7 +39,7 @@ lines everywhere.</p>
             </p>
         ]]></content>
         <updated>2014-10-26T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa8ab83a508)" />
+        <category term="ARRAY(0x7ff1a3c012e8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html</id>
@@ -73,7 +73,7 @@ new programming language. I didn't realize my mistake until it was too late.</p>
             </p>
         ]]></content>
         <updated>2014-07-19T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa8ae8aa828)" />
+        <category term="ARRAY(0x7ff1a3c01570)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</id>
@@ -125,7 +125,7 @@ has 50% more test lines than source lines:</p>
             </p>
         ]]></content>
         <updated>2014-06-29T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa8ae8a77f8)" />
+        <category term="ARRAY(0x7ff1a6796e18)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
@@ -156,7 +156,7 @@ able to execute it. Maybe git-add--interactive is broken?
             </p>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa8ae8a6dd8)" />
+        <category term="ARRAY(0x7ff1a6797418)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html</id>
@@ -178,7 +178,7 @@ a determined, dedicated team of hackers.</p>
             </p>
         ]]></content>
         <updated>2014-04-19T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa8aa8a7ab0)" />
+        <category term="ARRAY(0x7ff1a67276a0)" />
     </entry>
 </feed>
 

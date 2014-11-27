@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/moose/index.html</id>
     <title>preaction</title>
-    <updated>2014-10-26T19:22:35Z</updated>
+    <updated>2014-11-27T00:58:15Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/moose.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/moose/index.html"/>
     <generator version="0.020">Statocles</generator>
@@ -30,7 +30,7 @@ configured object is expecting another configured object.</p>
             </p>
         ]]></content>
         <updated>2012-10-22T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa8aa8a77c8)" />
+        <category term="ARRAY(0x7ff1a6783348)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html</id>
@@ -67,7 +67,7 @@ classes at runtime!</p>
             </p>
         ]]></content>
         <updated>2012-10-07T00:00:00Z</updated>
-        <category term="ARRAY(0x7fa8ae88c1e8)" />
+        <category term="ARRAY(0x7ff1a34cc560)" />
     </entry>
 </feed>
 
