@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/perl/index.html</id>
     <title>preaction</title>
-    <updated>2014-11-27T00:58:16Z</updated>
+    <updated>2014-12-23T07:19:55Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/perl.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/perl/index.html"/>
-    <generator version="0.020">Statocles</generator>
+    <generator version="0.030">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html</id>
         <title>Manage Boilerplate with Import::Base</title>
@@ -39,7 +39,7 @@ lines everywhere.</p>
             </p>
         ]]></content>
         <updated>2014-10-26T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff1a3c012e8)" />
+        <category term="ARRAY(0x7fe3994b6c88)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
@@ -70,7 +70,7 @@ able to execute it. Maybe git-add--interactive is broken?
             </p>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff1a6797418)" />
+        <category term="ARRAY(0x7fe399e6eef0)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</id>
@@ -143,7 +143,7 @@ works and has proper tests (written in Perl, of course).</p>
             </p>
         ]]></content>
         <updated>2012-03-20T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff1a6764850)" />
+        <category term="ARRAY(0x7fe39bccce48)" />
     </entry>
 </feed>
 

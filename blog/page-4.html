@@ -46,9 +46,16 @@
                 max-width: 100%;
             }
 
+            footer .tagline {
+                font-size: smaller;
+                line-height: 1.3;
+                text-align: right;
+            }
+
         </style>
             <link rel="alternate" href="/blog/index.atom" type="application/atom+xml" />
             <link rel="alternate" href="/blog/index.rss" type="application/rss+xml" />
+        
     </head>
     <body>
         <header>
@@ -74,6 +81,7 @@
                     </div>
                 </div>
             </nav>
+            
         </header>
         <div class="main container">
             
@@ -81,6 +89,33 @@
 
     <div class="col-md-9">
         <main>
+            <article>
+                <header>
+                    <h1><a href="/blog/2012/10/15/chicago.pm-report-project-night-alien-base.html">Chicago.PM Report - Project Night: Alien::Base</a></h1>
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/chicago.pm/index.html" rel="tag">chicago.pm</a>
+                    </p>
+                    <aside>
+                        <p><time datetime="2012-10-15">
+                            Posted on 2012-10-15
+                        </time>
+                        by preaction</p>
+                    </aside>
+                    <div class="alert alert-info">
+                        <p>Originally posted as:</p>
+                        <ul>
+                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2013/05/chicagopm---beyond-grep---expanding-the-programmer-toolset.html">
+                                <em>Chicago.PM Report - Project Night: Alien::Base</em> on blogs.perl.org.
+                            </a></li>
+                        </ul>
+                    </div>
+                </header>
+                <p>This month's project night focused on Joel Berger's Alien::Base module. The
+final bugs are either squashed or very close, and we got an introduction to how
+the whole thing works.</p>
+
+                    <p><a href="/blog/2012/10/15/chicago.pm-report-project-night-alien-base.html#section-2">Continue reading Chicago.PM Report - Project Night: Alien::Base...</a></p>
+            </article>
             <article>
                 <header>
                     <h1><a href="/blog/2012/10/07/run-time-class-composition-with-moose.html">Run-time Class Composition With Moose</a></h1>
@@ -210,79 +245,6 @@ David Mertens built on <a href="http://www.prima.eu.org/">Prima</a>.</p>
 
                     <p><a href="/blog/2012/09/15/chicago.pm-report-app-prima-repl.html#section-2">Continue reading Chicago.PM Report - App-Prima-REPL...</a></p>
             </article>
-            <article>
-                <header>
-                    <h1><a href="/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html">Adventures in Debugging C/XS 2: Debugging Boogaloo</a></h1>
-                    <p class="tags">Tags:
-                        <a href="/blog/tag/perl/index.html" rel="tag">perl</a>
-                        <a href="/blog/tag/xs/index.html" rel="tag">xs</a>
-                    </p>
-                    <aside>
-                        <p><time datetime="2012-03-20">
-                            Posted on 2012-03-20
-                        </time>
-                        by preaction</p>
-                    </aside>
-                </header>
-                <p>... or "Ask Not To Whom The Pointer Points, It Points To Thee."</p>
-
-<p>TL;DR: A pointer is not a reference. A pointer knows nothing about the data
-being pointed to. Returning multiple values requires actual work.</p>
-
-<p>Everything went wrong when I wanted a string with a <code>NUL</code> character inside it.
-C strings are not Perl scalars, they don't know how long they are. So to mark
-the end of a string, C uses the <code>NUL</code> character, <code>\0</code>. The <code>strcpy</code> function will
-copy to your destination until the first <code>\0</code> from your source. When you want to
-have a string with a <code>\0</code> inside of it that does not mark the end of the string,
-you need to know exactly how long the string is. This is not difficult to do,
-but you also have to return that length from the function that creates your
-string.</p>
-
-<p>C functions do not have more than one return value.</p>
-
-<pre><code>(char* buffer, int bufferSize) = get_string_with_nuls();
-// You thought it could be that easy?
-</code></pre>
-
-<p>So in order for your function to result in more than one value, you have to
-pass in references to be used to fill in with actual values.</p>
-
-<pre><code>char* buffer;
-int bufferSize = get_string_with_nuls( buffer );
-// C programmers will already know what I did wrong here
-</code></pre>
-
-<p>Thinking like a Perl programmer, I thought I could just pass in the pointer to
-the function and the function could fill it with data. Two problems:</p>
-
-<ol>
-<li>I passed in the pointer itself, not a reference to the pointer: <code>&amp;buffer</code></li>
-<li>I did not initialize the pointer to anything.</li>
-</ol>
-
-<p>A more correct way would be:</p>
-
-<pre><code>char* buffer = malloc( 128 * sizeof( char ) );
-int bufferSize = get_string_with_nuls( &amp;buffer );
-</code></pre>
-
-<p>But this suffers from another problem: I have to know beforehand how big my
-string is going to be and allocate that much memory beforehand.</p>
-
-<p>The way I ended up succeeding was:</p>
-
-<pre><code>int bufferSize;
-char* buffer = get_string_with_nuls( &amp;bufferSize );
-</code></pre>
-
-<p>This way, <code>get_string_with_nuls</code> can handle the <code>malloc</code> with exactly the correct
-size and give it to me. I don't have to guess at a size beforehand.</p>
-
-<p>Of course, a struct could do this better, or since I'm actually in C++, an
-object. I'll be planning a new API as soon as I confirm this one actually
-works and has proper tests (written in Perl, of course).</p>
-
-            </article>
         </main>
         <ul class="pager">
             <li class="previous ">
@@ -295,22 +257,9 @@ works and has proper tests (written in Perl, of course).</p>
     </div>
 
     <div class="sidebar col-md-3">
+        
         <h1>Tags</h1>
         <ul class="list-inline">
-            <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
-            <li><a href="/blog/tag/error/index.html">error</a></li>
-            <li><a href="/blog/tag/funny/index.html">funny</a></li>
-            <li><a href="/blog/tag/git/index.html">git</a></li>
-            <li><a href="/blog/tag/moose/index.html">moose</a></li>
-            <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
-            <li><a href="/blog/tag/openbsd/index.html">openbsd</a></li>
-            <li><a href="/blog/tag/perl/index.html">perl</a></li>
-            <li><a href="/blog/tag/personal/index.html">personal</a></li>
-            <li><a href="/blog/tag/rants/index.html">rants</a></li>
-            <li><a href="/blog/tag/scripts/index.html">scripts</a></li>
-            <li><a href="/blog/tag/software/index.html">software</a></li>
-            <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
-            <li><a href="/blog/tag/xs/index.html">xs</a></li>
         </ul>
         <h1>Feeds</h1>
         <ul class="list-inline">
@@ -330,5 +279,12 @@ works and has proper tests (written in Perl, of course).</p>
 </div>
 
         </div>
+        <footer>
+            
+            <div class="container tagline">
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://www.perl.org">Powered by Perl</a>
+            </div>
+        </footer>
     </body>
 </html>

@@ -46,9 +46,16 @@
                 max-width: 100%;
             }
 
+            footer .tagline {
+                font-size: smaller;
+                line-height: 1.3;
+                text-align: right;
+            }
+
         </style>
             <link rel="alternate" href="/blog/index.atom" type="application/atom+xml" />
             <link rel="alternate" href="/blog/index.rss" type="application/rss+xml" />
+        
     </head>
     <body>
         <header>
@@ -74,6 +81,7 @@
                     </div>
                 </div>
             </nav>
+            
         </header>
         <div class="main container">
             
@@ -81,6 +89,79 @@
 
     <div class="col-md-9">
         <main>
+            <article>
+                <header>
+                    <h1><a href="/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html">Adventures in Debugging C/XS 2: Debugging Boogaloo</a></h1>
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/perl/index.html" rel="tag">perl</a>
+                        <a href="/blog/tag/xs/index.html" rel="tag">xs</a>
+                    </p>
+                    <aside>
+                        <p><time datetime="2012-03-20">
+                            Posted on 2012-03-20
+                        </time>
+                        by preaction</p>
+                    </aside>
+                </header>
+                <p>... or "Ask Not To Whom The Pointer Points, It Points To Thee."</p>
+
+<p>TL;DR: A pointer is not a reference. A pointer knows nothing about the data
+being pointed to. Returning multiple values requires actual work.</p>
+
+<p>Everything went wrong when I wanted a string with a <code>NUL</code> character inside it.
+C strings are not Perl scalars, they don't know how long they are. So to mark
+the end of a string, C uses the <code>NUL</code> character, <code>\0</code>. The <code>strcpy</code> function will
+copy to your destination until the first <code>\0</code> from your source. When you want to
+have a string with a <code>\0</code> inside of it that does not mark the end of the string,
+you need to know exactly how long the string is. This is not difficult to do,
+but you also have to return that length from the function that creates your
+string.</p>
+
+<p>C functions do not have more than one return value.</p>
+
+<pre><code>(char* buffer, int bufferSize) = get_string_with_nuls();
+// You thought it could be that easy?
+</code></pre>
+
+<p>So in order for your function to result in more than one value, you have to
+pass in references to be used to fill in with actual values.</p>
+
+<pre><code>char* buffer;
+int bufferSize = get_string_with_nuls( buffer );
+// C programmers will already know what I did wrong here
+</code></pre>
+
+<p>Thinking like a Perl programmer, I thought I could just pass in the pointer to
+the function and the function could fill it with data. Two problems:</p>
+
+<ol>
+<li>I passed in the pointer itself, not a reference to the pointer: <code>&amp;buffer</code></li>
+<li>I did not initialize the pointer to anything.</li>
+</ol>
+
+<p>A more correct way would be:</p>
+
+<pre><code>char* buffer = malloc( 128 * sizeof( char ) );
+int bufferSize = get_string_with_nuls( &amp;buffer );
+</code></pre>
+
+<p>But this suffers from another problem: I have to know beforehand how big my
+string is going to be and allocate that much memory beforehand.</p>
+
+<p>The way I ended up succeeding was:</p>
+
+<pre><code>int bufferSize;
+char* buffer = get_string_with_nuls( &amp;bufferSize );
+</code></pre>
+
+<p>This way, <code>get_string_with_nuls</code> can handle the <code>malloc</code> with exactly the correct
+size and give it to me. I don't have to guess at a size beforehand.</p>
+
+<p>Of course, a struct could do this better, or since I'm actually in C++, an
+object. I'll be planning a new API as soon as I confirm this one actually
+works and has proper tests (written in Perl, of course).</p>
+
+            </article>
             <article>
                 <header>
                     <h1><a href="/blog/2011/11/16/adventures-in-debugging-c-xs.html">Adventures in Debugging C/XS</a></h1>
@@ -361,114 +442,6 @@ why you would read this blog, so instead I'm going to talk about how you can add
 
                     <p><a href="/blog/2011/03/05/whats-new-in-webgui-8.0-5-asset-helpers.html#section-2">Continue reading What's New in WebGUI 8.0 #5 - Asset Helpers...</a></p>
             </article>
-            <article>
-                <header>
-                    <h1><a href="/blog/2011/02/18/whats-new-in-webgui-8.0-4-chi-cache.html">What's New in WebGUI 8.0 #4 -- CHI Cache</a></h1>
-                    <p class="tags">Tags:
-                        <a href="/blog/tag/webgui/index.html" rel="tag">webgui</a>
-                    </p>
-                    <aside>
-                        <p><time datetime="2011-02-18">
-                            Posted on 2011-02-18
-                        </time>
-                        by preaction</p>
-                    </aside>
-                    <div class="alert alert-info">
-                        <p>Originally posted as:</p>
-                        <ul>
-                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2011/02/whats-new-in-webgui-80-4----chi-cache.html">
-                                <em>What's New in WebGUI 8.0 #4 -- CHI Cache</em> on blogs.perl.org.
-                            </a></li>
-                        </ul>
-                    </div>
-                </header>
-                <p>Caching is a tricky business. Having just one kind of cache won't work, because
-the production environment will greatly determine the most efficient caching
-system. A distributed production environment would be best-served with a
-distributed cache. A smaller, single-server environment could use a simple
-shared memory cache.</p>
-
-<p>Enter Jonathan Swartz's <a href="https://metacpan.org/pod/CHI">CHI</a> module, the greatest Perl module to provide a
-unified caching interface. CHI is the DBI of caching: It presents an API, and
-delegates to CHI::Driver modules to perform the heavy lifting. It
-provides a layered caching system, allowing you to have a faster, more
-volatile cache in front of a slower, more persistent cache. It also provides a
-variable expiration time, preventing a "miss stampede" where all processes try
-to recompute an expired cache item at the same time.</p>
-
-<p>By integrating CHI cache into WebGUI, we have the ability to provide any
-caching strategy that CHI can provide. We get Memcached, FastMmap, and DBI
-drivers (and more drivers can be written).</p>
-
-<p>I wrote a CHI cache driver for WebGUI 7.9 that we've been using on many of our
-shared hosting servers. The performance increase using FastMmap through CHI 
-over the old Storable+DBI cache module is dramatic: 2-5 times faster with
-CHI and FastMmap.</p>
-
-<h2>Using CHI in WebGUI</h2>
-
-<p>The fewer wrappers that WebGUI has around CPAN modules we use, the less code I
-have to write, and the more features will be available to our users without
-having to change WebGUI to use them.</p>
-
-<p>To that end, you can write a section of the configuration file that gets
-passed directly to CHI->new. Some massaging occurs to make sure a DBI cache
-driver gets the right $dbh, but otherwise you can fully configure CHI directly
-from the WebGUI config file:</p>
-
-<pre><code># The new default cache for WebGUI, FastMmap
-{
-     cache : {
-         driver : 'FastMmap',
-         root_dir : '/tmp/WebGUICache',
-         expires_variance : 0.5
-     }
- }
-
- # Set up a memcached cache with local memory in front
- {
-     cache : {
-         driver : 'Memcached::libmemcached',
-         servers : [ '10.0.0.100:11211', '10.0.0.110:11211' ],
-         l1_cache : {
-            driver : 'Memory'
-         }
-     }
- }
-</code></pre>
-
-<p>When you want to use the cache in your code, you can get a CHI object with
-$session->cache. CHI's interface is sufficiently simple, with some fun tricks:</p>
-
-<pre><code>my $cache = $session-&gt;cache; # as read
-my $value = $cache-&gt;get('cache_key');
-if ( !$value ) {
-    $value = compute_value();
-    $cache-&gt;set( 'cache_key', $value );
-}
-
-# Combine get and set with intelligence
-my $value = $cache-&gt;compute( 'cache_key', \&amp;compute_value );
-</code></pre>
-
-<h2>Future Plans</h2>
-
-<p>With a single unified cache that performs well and layers like CHI, we can
-take our current stow and scratch APIs and move them to the cache. In the case
-of stow, we remove a redundant API. In the case of scratch, we remove database
-hits.</p>
-
-<p>We've also been exploring cache-only sessions, instead of updating the session
-every time a page is requested, updating the cache only, flushing to the
-database (or not). The fewer DB calls we make per page, the better performance
-will be.</p>
-
-<p>Special thanks go out to Jonathan Swartz for such a wonderful solution.</p>
-
-<p>Stay tuned for next time when I explore our new Admin Interface. Lots of
-pretty and screenshots!</p>
-
-            </article>
         </main>
         <ul class="pager">
             <li class="previous ">
@@ -481,22 +454,9 @@ pretty and screenshots!</p>
     </div>
 
     <div class="sidebar col-md-3">
+        
         <h1>Tags</h1>
         <ul class="list-inline">
-            <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
-            <li><a href="/blog/tag/error/index.html">error</a></li>
-            <li><a href="/blog/tag/funny/index.html">funny</a></li>
-            <li><a href="/blog/tag/git/index.html">git</a></li>
-            <li><a href="/blog/tag/moose/index.html">moose</a></li>
-            <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
-            <li><a href="/blog/tag/openbsd/index.html">openbsd</a></li>
-            <li><a href="/blog/tag/perl/index.html">perl</a></li>
-            <li><a href="/blog/tag/personal/index.html">personal</a></li>
-            <li><a href="/blog/tag/rants/index.html">rants</a></li>
-            <li><a href="/blog/tag/scripts/index.html">scripts</a></li>
-            <li><a href="/blog/tag/software/index.html">software</a></li>
-            <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
-            <li><a href="/blog/tag/xs/index.html">xs</a></li>
         </ul>
         <h1>Feeds</h1>
         <ul class="list-inline">
@@ -516,5 +476,12 @@ pretty and screenshots!</p>
 </div>
 
         </div>
+        <footer>
+            
+            <div class="container tagline">
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://www.perl.org">Powered by Perl</a>
+            </div>
+        </footer>
     </body>
 </html>

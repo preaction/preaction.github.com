@@ -5,7 +5,39 @@
         <link>http://preaction.github.io/index.html</link>
         <atom:link href="http://preaction.github.io/blog/index.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.020</generator>
+        <generator>Statocles 0.030</generator>
+        <item>
+            <title>Leaving Crumb Trails -- Talking to Myself</title>
+            <link>http://preaction.github.io/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html</link>
+            <guid>http://preaction.github.io/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html</guid>
+            <description><![CDATA[
+                <p>The past me is another person. Sometimes antagonist, sometimes friend, past me
+(postaction?) had ideas, hopes, and dreams and developed some of them into
+software that I and others use. Unfortunately, that asshole left bugs all
+through the code for me to fix.</p>
+
+<p>I can't blame him. Nobody's perfect, not even idealized/demonized copies of my
+past self. But I do have to fix them, and deal with the messes he left.</p>
+
+<p>Lucky for me, while he was writing buggy software, he left extensive notes for
+me to use...</p>
+
+                    <ul>
+                        <li><a href="http://blogs.perl.org/users/preaction/2014/12/leaving-crumb-trails----talking-to-myself.html">
+                            Continue reading <em>Leaving Crumb Trails -- Talking to Myself</em> on blogs.perl.org...
+                        </a></li>
+                        <li><a href="http://preaction.github.io/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html#section-2">
+                            Continue reading on preaction
+                        </a></li>
+                    </ul>
+                <p>Tags:
+                    <a href="/blog/tag/software/index.html">software</a>
+                </p>
+            ]]></description>
+            <pubDate>
+                Tue, 23 Dec 2014 00:00:00 -0600
+            </pubDate>
+        </item>
         <item>
             <title>Manage Boilerplate with Import::Base</title>
             <link>http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html</link>
@@ -156,28 +188,6 @@ able to execute it. Maybe git-add--interactive is broken?
             ]]></description>
             <pubDate>
                 Sat, 14 Jun 2014 00:00:00 -0600
-            </pubDate>
-        </item>
-        <item>
-            <title>Raw Feed of OpenBSD's Work on Cleaning Up OpenSSL</title>
-            <link>http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html</link>
-            <guid>http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html</guid>
-            <description><![CDATA[
-                <p><a href="http://freshbsd.org/search?project=openbsd&amp;q=file.name:libssl">Raw Feed of OpenBSD's Work on Cleaning Up OpenSSL</a></p>
-
-<p>This is an amazing timeline of how much and how quickly work can get done with
-a determined, dedicated team of hackers.</p>
-
-<p>Here are some gems:</p>
-
-                    <p><a href="http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html#section-2">Continue reading...</a></p>
-                <p>Tags:
-                    <a href="/blog/tag/openbsd/index.html">openbsd</a>
-                    <a href="/blog/tag/funny/index.html">funny</a>
-                </p>
-            ]]></description>
-            <pubDate>
-                Sat, 19 Apr 2014 00:00:00 -0600
             </pubDate>
         </item>
     </channel>

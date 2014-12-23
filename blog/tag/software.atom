@@ -2,10 +2,42 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/software/index.html</id>
     <title>preaction</title>
-    <updated>2014-11-27T00:58:16Z</updated>
+    <updated>2014-12-23T07:19:55Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/software.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/software/index.html"/>
-    <generator version="0.020">Statocles</generator>
+    <generator version="0.030">Statocles</generator>
+    <entry>
+        <id>http://preaction.github.io/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html</id>
+        <title>Leaving Crumb Trails -- Talking to Myself</title>
+        <author><name>preaction</name></author>
+        <link rel="alternate" href="http://preaction.github.io/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html" />
+        <content type="html"><![CDATA[
+            <p>The past me is another person. Sometimes antagonist, sometimes friend, past me
+(postaction?) had ideas, hopes, and dreams and developed some of them into
+software that I and others use. Unfortunately, that asshole left bugs all
+through the code for me to fix.</p>
+
+<p>I can't blame him. Nobody's perfect, not even idealized/demonized copies of my
+past self. But I do have to fix them, and deal with the messes he left.</p>
+
+<p>Lucky for me, while he was writing buggy software, he left extensive notes for
+me to use...</p>
+
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2014/12/leaving-crumb-trails----talking-to-myself.html">
+                        Continue reading <em>Leaving Crumb Trails -- Talking to Myself</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html#section-2">
+                        Continue reading on preaction
+                    </a></li>
+                </ul>
+            <p>Tags:
+                <a href="/blog/tag/software/index.html">software</a>
+            </p>
+        ]]></content>
+        <updated>2014-12-23T00:00:00Z</updated>
+        <category term="ARRAY(0x7fe3994d3410)" />
+    </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/11/04/testing-is-a-feature-of-your-service.html</id>
         <title>Testing is a Feature of Your Service</title>
@@ -41,7 +73,7 @@ user has input an invalid ID for data?</p>
             </p>
         ]]></content>
         <updated>2012-11-04T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff1a6727670)" />
+        <category term="ARRAY(0x7fe3994c3b10)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/09/23/plan-software-to-live-forever.html</id>
@@ -71,7 +103,7 @@ for a long time.</p>
             </p>
         ]]></content>
         <updated>2012-09-23T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff1a6782e38)" />
+        <category term="ARRAY(0x7fe39d53f4d8)" />
     </entry>
 </feed>
 

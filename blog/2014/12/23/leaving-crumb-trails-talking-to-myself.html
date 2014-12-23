@@ -87,69 +87,104 @@
     <div class="col-md-9">
         <main>
             <header>
-                <h1>Testing is a Feature of Your Service</h1>
+                <h1>Leaving Crumb Trails -- Talking to Myself</h1>
                 <p class="tags">Tags:
                     <a href="/blog/tag/software/index.html" rel="tag">software</a>
                 </p>
                 <aside>
-                    <p><time datetime="2012-11-04">
-                        Posted on 2012-11-04
+                    <p><time datetime="2014-12-23">
+                        Posted on 2014-12-23
                     </time>
                     by preaction</p>
                 </aside>
                 <div class="alert alert-info">
                     <p>Originally posted as:</p>
                     <ul>
-                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/11/testing-is-a-feature-of-your-service.html">
-                            <em>Testing is a Feature of Your Service</em> on blogs.perl.org.
+                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2014/12/leaving-crumb-trails----talking-to-myself.html">
+                            <em>Leaving Crumb Trails -- Talking to Myself</em> on blogs.perl.org.
                         </a></li>
                     </ul>
                 </div>
             </header>
             <section id="section-1">
-                <p>My job at Bank of America consists largely of data collection and storage. To
-collect data in Perl, I have to write XS modules to interface with the
-vendor-supplied native libraries. Because I want to know my code works, my XS
-modules come with robust test suites, testing that everything works correctly.</p>
+                <p>The past me is another person. Sometimes antagonist, sometimes friend, past me
+(postaction?) had ideas, hopes, and dreams and developed some of them into
+software that I and others use. Unfortunately, that asshole left bugs all
+through the code for me to fix.</p>
 
-<p>Since the XS module was intended to be used by other, larger systems, I decided
-to help those larger systems test their dependency on my module: I included a
-<a href="http://search.cpan.org/perldoc?Test::MockObject">Test::MockObject</a> that mocked
-my module's interface. By using my test module, the tests can try some data and
-see if their code works.</p>
+<p>I can't blame him. Nobody's perfect, not even idealized/demonized copies of my
+past self. But I do have to fix them, and deal with the messes he left.</p>
 
-<p>But the hardest part to test is always the failures. How do they test if the
-news service goes down in the middle of a data pull? How about if it goes down
-between data pulls but still inside the same process? How do they test if the
-user has input an invalid ID for data?</p>
+<p>Lucky for me, while he was writing buggy software, he left extensive notes for
+me to use...</p>
 
             </section>
             <section id="section-2">
-                <p>To help them write good error-checking and recovery, I added specific
-Test::MockObjects that return failure conditions. Want to know what happens if
-an ID is invalid? Use the Test::Feed::InvalidId mock API. Want to know what
-happens if the feed goes down in the middle of a process? Use the
-Test::Feed::RandomDisconnect mock API.</p>
+                <p>At the highest level, when all memory of the project is lost, past self left
+detailed documentation describing the <em>what</em> and <em>why</em> of the code. Without
+getting bogged down in the code, I can usually track down some likely sources
+of my current problem.</p>
 
-<p>By providing these mock objects, users can write more robust code more simply.
-Then, in the eventuality that the service fails, they know exactly what their
-code won't do: Wake them up at 3 in the morning because of an unexpected,
-unhandled error. These mock objects don't even need an external connection to
-operate, so they can be as fast as possible.</p>
+<pre><code>=head2 find_files()
 
-<p>Unfortunately, this is a limited solution that covers only what I know about.
-If the service changes, or has an error I didn't cover, the code still fails.
-For this reason, for the web services I build, I build in explicit ways to get
-errors. When the service itself gives the exact error output it gives in
-exceptional circumstances, it can be tested and handled. Instead of a mock
-service, it's the real service (perhaps on a dev system), with real input,
-returning a real (but desired) error message.</p>
+Find the files in this Store. Returns an iterator that generates Path::Tiny objects
+suitable to be passed to read_file() or open_file()
 
-<p>By providing as much help as possible to the users of my code, I can make sure
-they can create robust applications that make their own users happy. By helping
-users respond to and deal with the error conditions of my code, I can cut down
-on the support requests and bug reports. Being proactive about testing helps
-everyone write better code.</p>
+=cut
+</code></pre>
+
+<p>Once the docs have refreshed the memories of past me, I can start looking at
+the code. By keeping the docs near the code, past me left hooks all over for me
+to latch on to. If I search for the name of the method, or just a key word of
+its behavior, I find the code I'm looking for.</p>
+
+<p>Eventually, I'll come to the buggy part. Instead of just changing the code and
+fixing the bug, I wonder about why that code was written. Past me was a smart
+guy. Not as smart as me, but I've learned not to second-guess him without due
+diligence. So, I'm relieved when I can check the commit log to find the reasons
+why this line of code exists in exactly this way. Past me has a habit of
+writing at least a paragraph about the change, why it was necessary, and ideas
+for future enhancements or complications.</p>
+
+<pre><code>commit e084118b88e3838e38d5afa027d770ab22ca9903
+Date:   Mon Dec 22 04:15:45 2014 -0600
+
+open/write filehandles using raw bytes
+
+When the Static app would read/write an image, we would get a bunch of
+warnings of characters not mapped to UTF-8. Now, if we're using a
+filehandle, we assume raw bytes.
+
+Also added some notes in the docs about how encodings are handled. We
+can't just silently try to Do The Right Thing. We need to tell the
+developers what we're doing so that they can figure things out when they
+go wrong.
+
+Fixes #171
+</code></pre>
+
+<p>Sometimes, a commit is linked to a ticket tracker, which is another valuable
+source of information. Though the commit message told me about the final
+version of that change, past me jotted down notes, ideas, tests, user reports,
+potential solutions and the reasons for rejecting them. These weren't
+appropriate to gum up the commit logs with, but the ticket tracker is close
+enough to the code to be useful when more information is needed. I appreciate
+not having to sift through pages of text while I'm tracking down the source of
+a bug (that said, I'd prefer too much text to not enough).</p>
+
+<p>The further away from the code, the more verbose past me is. He starts with the
+small clues, and if I figure it out, that's all I have to swallow. But if I
+can't figure it out, I can always find a bigger clue just a little further
+away.</p>
+
+<p>Learning to work with past me has been a long struggle. He and I are constantly
+refining our pair programming practices. By writing myself good documentation
+explaining what and why a subroutine exists, I help myself remember what the
+code is for. By leaving detailed explanations and rationales in the commit log,
+I can remember why a change was made. By keeping user reports, brainstorming,
+and notes in a ticket tracker linked back to the commit, I can read about
+everything I was thinking when I wrote that code. Doing all this helps future
+me be an even better programmer than past me and I could imagine.</p>
 
             </section>
         </main>

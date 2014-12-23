@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/webgui/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/webgui.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.020</generator>
+        <generator>Statocles 0.030</generator>
         <item>
             <title>WebGUI 8 Status Report</title>
             <link>http://preaction.github.io/blog/2011/05/20/webgui-8-status-report.html</link>

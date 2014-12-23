@@ -2,10 +2,42 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/index.html</id>
     <title>preaction</title>
-    <updated>2014-11-27T00:58:15Z</updated>
+    <updated>2014-12-23T07:19:54Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/index.atom"/>
     <link rel="alternate" href="http://preaction.github.io/index.html"/>
-    <generator version="0.020">Statocles</generator>
+    <generator version="0.030">Statocles</generator>
+    <entry>
+        <id>http://preaction.github.io/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html</id>
+        <title>Leaving Crumb Trails -- Talking to Myself</title>
+        <author><name>preaction</name></author>
+        <link rel="alternate" href="http://preaction.github.io/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html" />
+        <content type="html"><![CDATA[
+            <p>The past me is another person. Sometimes antagonist, sometimes friend, past me
+(postaction?) had ideas, hopes, and dreams and developed some of them into
+software that I and others use. Unfortunately, that asshole left bugs all
+through the code for me to fix.</p>
+
+<p>I can't blame him. Nobody's perfect, not even idealized/demonized copies of my
+past self. But I do have to fix them, and deal with the messes he left.</p>
+
+<p>Lucky for me, while he was writing buggy software, he left extensive notes for
+me to use...</p>
+
+                <ul>
+                    <li><a href="http://blogs.perl.org/users/preaction/2014/12/leaving-crumb-trails----talking-to-myself.html">
+                        Continue reading <em>Leaving Crumb Trails -- Talking to Myself</em> on blogs.perl.org...
+                    </a></li>
+                    <li><a href="http://preaction.github.io/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html#section-2">
+                        Continue reading on preaction
+                    </a></li>
+                </ul>
+            <p>Tags:
+                <a href="/blog/tag/software/index.html">software</a>
+            </p>
+        ]]></content>
+        <updated>2014-12-23T00:00:00Z</updated>
+        <category term="ARRAY(0x7fe3994d3410)" />
+    </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html</id>
         <title>Manage Boilerplate with Import::Base</title>
@@ -39,7 +71,7 @@ lines everywhere.</p>
             </p>
         ]]></content>
         <updated>2014-10-26T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff1a3c012e8)" />
+        <category term="ARRAY(0x7fe3994b6c88)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html</id>
@@ -73,7 +105,7 @@ new programming language. I didn't realize my mistake until it was too late.</p>
             </p>
         ]]></content>
         <updated>2014-07-19T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff1a3c01570)" />
+        <category term="ARRAY(0x7fe399e6f130)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</id>
@@ -125,7 +157,7 @@ has 50% more test lines than source lines:</p>
             </p>
         ]]></content>
         <updated>2014-06-29T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff1a6796e18)" />
+        <category term="ARRAY(0x7fe39d53fdd8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
@@ -156,29 +188,7 @@ able to execute it. Maybe git-add--interactive is broken?
             </p>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff1a6797418)" />
-    </entry>
-    <entry>
-        <id>http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html</id>
-        <title>Raw Feed of OpenBSD's Work on Cleaning Up OpenSSL</title>
-        <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html" />
-        <content type="html"><![CDATA[
-            <p><a href="http://freshbsd.org/search?project=openbsd&amp;q=file.name:libssl">Raw Feed of OpenBSD's Work on Cleaning Up OpenSSL</a></p>
-
-<p>This is an amazing timeline of how much and how quickly work can get done with
-a determined, dedicated team of hackers.</p>
-
-<p>Here are some gems:</p>
-
-                <p><a href="http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html#section-2">Continue reading...</a></p>
-            <p>Tags:
-                <a href="/blog/tag/openbsd/index.html">openbsd</a>
-                <a href="/blog/tag/funny/index.html">funny</a>
-            </p>
-        ]]></content>
-        <updated>2014-04-19T00:00:00Z</updated>
-        <category term="ARRAY(0x7ff1a67276a0)" />
+        <category term="ARRAY(0x7fe399e6eef0)" />
     </entry>
 </feed>
 
