@@ -3,7 +3,6 @@ blog_app:
     args:
         store: 'blog'
         url_root: /blog
-        theme: '::default'
         index_tags: [ '-personal' ]
 
 site:
@@ -11,6 +10,7 @@ site:
     args:
         title: preaction
         base_url: http://preaction.github.io
+        theme: '::default'
         nav:
             main:
                 - title: Blog
