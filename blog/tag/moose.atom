@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/moose/index.html</id>
     <title>preaction</title>
-    <updated>2014-12-23T07:19:58Z</updated>
+    <updated>2015-01-07T23:00:51Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/moose.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/moose/index.html"/>
-    <generator version="0.030">Statocles</generator>
+    <generator version="0.032">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html</id>
         <title>Using MooseX::Types to Inflate Config Values</title>
@@ -30,7 +30,7 @@ configured object is expecting another configured object.</p>
             </p>
         ]]></content>
         <updated>2012-10-22T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe3994c3288)" />
+        <category term="ARRAY(0x7faacf4edbb8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html</id>
@@ -67,7 +67,7 @@ classes at runtime!</p>
             </p>
         ]]></content>
         <updated>2012-10-07T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe39ad04a88)" />
+        <category term="ARRAY(0x7faacf4b48e8)" />
     </entry>
 </feed>
 

@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/openbsd/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/openbsd.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.030</generator>
+        <generator>Statocles 0.032</generator>
         <item>
             <title>Raw Feed of OpenBSD's Work on Cleaning Up OpenSSL</title>
             <link>http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html</link>

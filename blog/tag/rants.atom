@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/rants/index.html</id>
     <title>preaction</title>
-    <updated>2014-12-23T07:19:57Z</updated>
+    <updated>2015-01-07T23:00:52Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/rants.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/rants/index.html"/>
-    <generator version="0.030">Statocles</generator>
+    <generator version="0.032">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html</id>
         <title>Between Learning and Doing</title>
@@ -38,7 +38,7 @@ new programming language. I didn't realize my mistake until it was too late.</p>
             </p>
         ]]></content>
         <updated>2014-07-19T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe399e6f130)" />
+        <category term="ARRAY(0x7faacb225050)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</id>
@@ -69,7 +69,7 @@ make this task surmountable.</p>
             </p>
         ]]></content>
         <updated>2013-04-11T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe39ad057c0)" />
+        <category term="ARRAY(0x7faacf4ed900)" />
     </entry>
 </feed>
 

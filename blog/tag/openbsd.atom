@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/openbsd/index.html</id>
     <title>preaction</title>
-    <updated>2014-12-23T07:19:57Z</updated>
+    <updated>2015-01-07T23:00:52Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/openbsd.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/openbsd/index.html"/>
-    <generator version="0.030">Statocles</generator>
+    <generator version="0.032">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html</id>
         <title>Raw Feed of OpenBSD's Work on Cleaning Up OpenSSL</title>
@@ -26,7 +26,7 @@ a determined, dedicated team of hackers.</p>
             </p>
         ]]></content>
         <updated>2014-04-19T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe39ad056b8)" />
+        <category term="ARRAY(0x7faacf4ed888)" />
     </entry>
 </feed>
 

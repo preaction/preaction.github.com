@@ -2,10 +2,65 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/personal/index.html</id>
     <title>preaction</title>
-    <updated>2014-12-23T07:19:58Z</updated>
+    <updated>2015-01-07T23:00:52Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/personal.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/personal/index.html"/>
-    <generator version="0.030">Statocles</generator>
+    <generator version="0.032">Statocles</generator>
+    <entry>
+        <id>http://preaction.github.io/blog/2015/01/07/be-it-resolved-in-2015.html</id>
+        <title>Be It Resolved in 2015</title>
+        <author><name>preaction</name></author>
+        <link rel="alternate" href="http://preaction.github.io/blog/2015/01/07/be-it-resolved-in-2015.html" />
+        <content type="html"><![CDATA[
+            <p>This year, I resolve to:</p>
+
+<h2>1) Blog more</h2>
+
+<p>I've got dozens of blog posts waiting to be published. Time to publish them.
+I've got dozens of ideas for blog posts waiting to be written.  Time to write
+them. I've got monthly column ideas. Time to implement them.</p>
+
+<h2>2) Cook more, and blog about it</h2>
+
+<p>Two birds with one stone! I need to try new things in food, no matter how
+popular they are. I have trouble talking about things that interest me, because
+I take criticism too personally, and I have an intense need to be liked and
+praised.</p>
+
+<h2>3) Make a video game</h2>
+
+<p>Playing the new Soda Crush Saga game reminded me of why I want to create video
+games. There is no substitute for actually building things. Ideas must be
+tested. Implementing ideas leads to new ideas. Ideas are cheap.</p>
+
+<h2>4) Open up</h2>
+
+<p>(i.e. blog about personal things). I'm back to my old, completely-closed-off
+self. I stare at the ground when walking from place to place to avoid eye
+contact with anyone. I don't share my feelings with anyone, especially when I'm
+upset. I bury everything, because I have this idea that nobody wants to hear
+about the things I'm upset about. It turns out, those people aren't my friends.
+I was right about that.</p>
+
+<h2>5) Exercise</h2>
+
+<p>I haven't been to the gym I'm paying for in 6 weeks. Time to fix that. Time to
+make my dream of a lean 180 a reality.</p>
+
+<p>Writing blog posts satisfies my desire to do one thing on Github every day.
+Making a video game will also satisfy that condition.</p>
+
+<p>To make this all happen, I need to do a little every day.</p>
+
+                <p><a href="http://preaction.github.io/blog/2015/01/07/be-it-resolved-in-2015.html#section-2">Continue reading...</a></p>
+            <p>Tags:
+                <a href="/blog/tag/personal/index.html">personal</a>
+                <a href="/blog/tag/progress/index.html">progress</a>
+            </p>
+        ]]></content>
+        <updated>2015-01-07T00:00:00Z</updated>
+        <category term="ARRAY(0x7faacb961cc8)" />
+    </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/04/26/freedom-from-speechs-consequences.html</id>
         <title>Freedom From Speech's Consequences</title>
@@ -30,7 +85,7 @@ law is the only true measurement of good and evil.</p>
             </p>
         ]]></content>
         <updated>2014-04-26T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe399e6fb38)" />
+        <category term="ARRAY(0x7faacb2252d8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/01/06/it-begins-in-fear.html</id>
@@ -56,7 +111,7 @@ pathways of memory.</p>
             </p>
         ]]></content>
         <updated>2013-01-06T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe3994c3168)" />
+        <category term="ARRAY(0x7faacf4edb58)" />
     </entry>
 </feed>
 
