@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/mysql/index.html</id>
     <title>preaction</title>
-    <updated>2015-01-07T23:00:52Z</updated>
+    <updated>2015-01-08T00:25:15Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/mysql.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/mysql/index.html"/>
-    <generator version="0.032">Statocles</generator>
+    <generator version="0.033">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2011/03/09/chi-saves-the-day.html</id>
         <title>CHI Saves The Day</title>
@@ -171,7 +171,7 @@ the day!</p>
             </p>
         ]]></content>
         <updated>2011-03-09T00:00:00Z</updated>
-        <category term="ARRAY(0x7faacf420400)" />
+        <category term="ARRAY(0x7fe547787a28)" />
     </entry>
 </feed>
 
