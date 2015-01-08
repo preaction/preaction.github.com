@@ -2,15 +2,15 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/personal/index.html</id>
     <title>preaction</title>
-    <updated>2015-01-08T00:25:16Z</updated>
+    <updated>2015-01-08T00:26:56Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/personal.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/personal/index.html"/>
     <generator version="0.033">Statocles</generator>
     <entry>
-        <id>http://preaction.github.io/blog/2015/01/08/new-post.html</id>
+        <id>http://preaction.github.io/blog/2015/01/08/spicy-tomato-and-shrimp-pasta.html</id>
         <title>Spicy Tomato and Shrimp Pasta</title>
         <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2015/01/08/new-post.html" />
+        <link rel="alternate" href="http://preaction.github.io/blog/2015/01/08/spicy-tomato-and-shrimp-pasta.html" />
         <content type="html"><![CDATA[
             <p>I've been trying a bunch of <a href="http://www.budgetbytes.com">Budget Bytes</a> recipes
 recently, and liking them. This one is no exception: <a href="http://www.budgetbytes.com/2013/07/spicy-shrimp-tomato-pasta/">Spicy Tomato and Shrimp
@@ -18,14 +18,14 @@ Pasta</a></p>
 
 <p><img src="/blog/images/food/spicy-tomato-and-shrimp-pasta/IMG_0987.jpg" alt="" /></p>
 
-                <p><a href="http://preaction.github.io/blog/2015/01/08/new-post.html#section-2">Continue reading...</a></p>
+                <p><a href="http://preaction.github.io/blog/2015/01/08/spicy-tomato-and-shrimp-pasta.html#section-2">Continue reading...</a></p>
             <p>Tags:
                 <a href="/blog/tag/personal/index.html">personal</a>
                 <a href="/blog/tag/food/index.html">food</a>
             </p>
         ]]></content>
         <updated>2015-01-08T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe5477c7f38)" />
+        <category term="ARRAY(0x7ff494d82538)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2015/01/07/be-it-resolved-in-2015.html</id>
@@ -80,7 +80,7 @@ Making a video game will also satisfy that condition.</p>
             </p>
         ]]></content>
         <updated>2015-01-07T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe5477bf2e8)" />
+        <category term="ARRAY(0x7ff494d7f550)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/04/26/freedom-from-speechs-consequences.html</id>
@@ -106,7 +106,7 @@ law is the only true measurement of good and evil.</p>
             </p>
         ]]></content>
         <updated>2014-04-26T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe5477bf768)" />
+        <category term="ARRAY(0x7ff4912689c8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/01/06/it-begins-in-fear.html</id>
@@ -132,7 +132,7 @@ pathways of memory.</p>
             </p>
         ]]></content>
         <updated>2013-01-06T00:00:00Z</updated>
-        <category term="ARRAY(0x7fe5477a7c28)" />
+        <category term="ARRAY(0x7ff494d59440)" />
     </entry>
 </feed>
 
