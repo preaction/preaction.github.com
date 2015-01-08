@@ -1,7 +1,7 @@
 ---
 author: preaction
 last_modified: 2015-01-08 00:10:52
-tags: personal, food
+tags: 'personal, food'
 title: Spicy Tomato and Shrimp Pasta
 ---
 
