@@ -5,6 +5,12 @@ blog_app:
         url_root: /blog
         index_tags: [ '-personal' ]
 
+food_blog:
+    class: Statocles::App::Blog
+    args:
+        store: 'food'
+        url_root: /food
+
 site:
     class: Statocles::Site::Git
     args:
@@ -19,9 +25,13 @@ site:
                   href: /Statocles
                 - title: Presentations
                   href: /presentations.html
+                - title: Food
+                  href: /food
         build_store: 'build'
         deploy_store: '.'
         index: blog
         apps:
             blog:
                 $ref: blog_app
+            food:
+                $ref: food_blog
