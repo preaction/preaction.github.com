@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/progress/index.html</id>
     <title>preaction</title>
-    <updated>2015-01-09T22:33:43Z</updated>
+    <updated>2015-01-09T22:35:50Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/progress.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/progress/index.html"/>
     <generator version="0.033">Statocles</generator>
@@ -59,7 +59,7 @@ Making a video game will also satisfy that condition.</p>
             </p>
         ]]></content>
         <updated>2015-01-07T00:00:00Z</updated>
-        <category term="ARRAY(0x7fcecf1b55e8)" />
+        <category term="ARRAY(0x7fd5862b9898)" />
     </entry>
 </feed>
 

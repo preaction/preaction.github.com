@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/scripts/index.html</id>
     <title>preaction</title>
-    <updated>2015-01-09T22:33:45Z</updated>
+    <updated>2015-01-09T22:35:49Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/scripts.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/scripts/index.html"/>
     <generator version="0.033">Statocles</generator>
@@ -56,7 +56,7 @@ has 50% more test lines than source lines:</p>
             </p>
         ]]></content>
         <updated>2014-06-29T00:00:00Z</updated>
-        <category term="ARRAY(0x7fcecf1b4f40)" />
+        <category term="ARRAY(0x7fd5862bc508)" />
     </entry>
 </feed>
 
