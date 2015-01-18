@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/theme/css/normalize.css" />
+        <link rel="stylesheet" href="/theme/css/skeleton.css" />
+        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <title><%= $site->title %></title>
+        % if ( $self->links->{feed} ) {
+            % for my $link ( @{ $self->links->{feed} } ) {
+            <link rel="alternate" href="<%= $link->{href} %>" type="<%= $link->{type} %>" />
+            % }
+        % }
+        %= include 'site/head_after.html'
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="container">
+                    <a class="brand" href="/"><%= $site->title %></a>
+                    % if ( $site->nav->{main} ) {
+                    <ul>
+                        % for my $nav ( @{ $site->nav->{main} } ) {
+                        <li>
+                            <a href="<%= $nav->{href} %>"><%= $nav->{title} %></a>
+                        </li>
+                        % }
+                    </ul>
+                    % }
+                </div>
+            </nav>
+            %= include 'site/header_after.html'
+        </header>
+        <div class="main container">
+            <%= $content %>
+        </div>
+        <footer>
+            %= include 'site/footer.html'
+            <div class="container tagline">
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://www.perl.org">Powered by Perl</a>
+            </div>
+        </footer>
+    </body>
+</html>

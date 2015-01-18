@@ -1,86 +1,36 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap-theme.min.css" />
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="/theme/css/normalize.css" />
+        <link rel="stylesheet" href="/theme/css/skeleton.css" />
+        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
         <title>preaction</title>
-        <style type="text/css">
-            main header h1
-            {
-                border-bottom: 4px solid #045578;
-            }
-            header aside {
-                margin-top: 0;
-                font-size: 12pt;
-            }
-            .sidebar h1 {
-                font-size: 14pt;
-            }
-
-            /** Add a line when using the "Continue reading..." link */
-            section:target {
-                padding-top: 0.5em;
-                border-top: 4px solid #045578;
-            }
-
-            /** Don't allow <pre> to push too much */
-            pre {
-                max-width: 100%;
-                overflow-x: scroll;
-            }
-
-            /** <code> is used for input and output, so let it wrap */
-            code {
-                white-space: normal;
-            }
-
-            .tags {
-                float: right;
-            }
-
-            /**
-             * Don't allow main content images to push things around
-             */
-            main img {
-                max-width: 100%;
-            }
-
-            footer .tagline {
-                font-size: smaller;
-                line-height: 1.3;
-                text-align: right;
-            }
-
-        </style>
             <link rel="alternate" href="/blog/index.atom" type="application/atom+xml" />
             <link rel="alternate" href="/blog/index.rss" type="application/rss+xml" />
         
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <nav class="navbar">
                 <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="/">preaction</a>
-                    </div>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="top-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li><a href="/index.html">Blog</a></li>
-                            <li><a href="/Statocles">Statocles</a></li>
-                            <li><a href="/ETL-Yertl">Yertl</a></li>
-                            <li><a href="/presentations.html">Presentations</a></li>
-                            <li><a href="/food">Food</a></li>
-                        </ul>
-                    </div>
+                    <a class="brand" href="/">preaction</a>
+                    <ul>
+                        <li>
+                            <a href="/index.html">Blog</a>
+                        </li>
+                        <li>
+                            <a href="/Statocles">Statocles</a>
+                        </li>
+                        <li>
+                            <a href="/ETL-Yertl">Yertl</a>
+                        </li>
+                        <li>
+                            <a href="/presentations.html">Presentations</a>
+                        </li>
+                        <li>
+                            <a href="/food">Food</a>
+                        </li>
+                    </ul>
                 </div>
             </nav>
             
@@ -89,29 +39,31 @@
             
 <div class="row">
 
-    <div class="col-md-9">
+    <div class="nine columns">
         <main>
+
             <article>
                 <header>
                     <h1><a href="/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html">Chicago.PM - Dependency Injection (also: Beam::Wire)</a></h1>
+
                     <p class="tags">Tags:
                         <a href="/blog/tag/chicago.pm/index.html" rel="tag">chicago.pm</a>
                     </p>
+
                     <aside>
                         <p><time datetime="2013-03-29">
                             Posted on 2013-03-29
                         </time>
                         by preaction</p>
                     </aside>
-                    <div class="alert alert-info">
-                        <p>Originally posted as:</p>
-                        <ul>
-                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2013/03/chicagopm---dependency-injection-also-beamwire.html">
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2013/03/chicagopm---dependency-injection-also-beamwire.html">
                                 <em>Chicago.PM - Dependency Injection (also: Beam::Wire)</em> on blogs.perl.org.
-                            </a></li>
-                        </ul>
-                    </div>
+                            </a>
+                    </p>
                 </header>
+
                 <p>At <a href="http://www.meetup.com/Windy-City-Perl-mongers-Meetup/events/104681992/">this month's Chicago.PM
 meeting</a>,
 I gave <a href="http://preaction.github.com/Perl/Dependency-Injection.html">a presentation on Dependency Injection and my new module,
@@ -120,29 +72,32 @@ Beam::Wire</a>.</p>
 <p>[EDIT: The presentation doesn't appear to work on mobile devices. I'm trying
 deck.js, and I'm not sure I like it.]</p>
 
+
                     <p><a href="/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html#section-2">Continue reading Chicago.PM - Dependency Injection (also: Beam::Wire)...</a></p>
+
             </article>
             <article>
                 <header>
                     <h1><a href="/blog/2013/03/14/chicago.pm-mojolicious.html">Chicago.PM - Mojolicious</a></h1>
+
                     <p class="tags">Tags:
                         <a href="/blog/tag/chicago.pm/index.html" rel="tag">chicago.pm</a>
                     </p>
+
                     <aside>
                         <p><time datetime="2013-03-14">
                             Posted on 2013-03-14
                         </time>
                         by preaction</p>
                     </aside>
-                    <div class="alert alert-info">
-                        <p>Originally posted as:</p>
-                        <ul>
-                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2013/03/chicagopm---mojolicious.html">
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2013/03/chicagopm---mojolicious.html">
                                 <em>Chicago.PM - Mojolicious</em> on blogs.perl.org.
-                            </a></li>
-                        </ul>
-                    </div>
+                            </a>
+                    </p>
                 </header>
+
                 <p>February's meeting was about the <a href="http://mojolicio.us">Mojolicious Web
 Framework</a>. <a href="http://blogs.perl.org/users/joel_berger/">Joel
 Berger</a> has written a <a href="https://metacpan.org/module/Galileo">minimal Perl
@@ -166,28 +121,31 @@ giving a look to, and I hope to be able to do so with some web projects that
 have been sitting in my queue for a while (I wrote a nice ticket tracker with
 AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
 
+
+
             </article>
             <article>
                 <header>
                     <h1><a href="/blog/2012/11/04/testing-is-a-feature-of-your-service.html">Testing is a Feature of Your Service</a></h1>
+
                     <p class="tags">Tags:
                         <a href="/blog/tag/software/index.html" rel="tag">software</a>
                     </p>
+
                     <aside>
                         <p><time datetime="2012-11-04">
                             Posted on 2012-11-04
                         </time>
                         by preaction</p>
                     </aside>
-                    <div class="alert alert-info">
-                        <p>Originally posted as:</p>
-                        <ul>
-                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/11/testing-is-a-feature-of-your-service.html">
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2012/11/testing-is-a-feature-of-your-service.html">
                                 <em>Testing is a Feature of Your Service</em> on blogs.perl.org.
-                            </a></li>
-                        </ul>
-                    </div>
+                            </a>
+                    </p>
                 </header>
+
                 <p>My job at Bank of America consists largely of data collection and storage. To
 collect data in Perl, I have to write XS modules to interface with the
 vendor-supplied native libraries. Because I want to know my code works, my XS
@@ -204,76 +162,94 @@ news service goes down in the middle of a data pull? How about if it goes down
 between data pulls but still inside the same process? How do they test if the
 user has input an invalid ID for data?</p>
 
+
                     <p><a href="/blog/2012/11/04/testing-is-a-feature-of-your-service.html#section-2">Continue reading Testing is a Feature of Your Service...</a></p>
+
             </article>
             <article>
                 <header>
                     <h1><a href="/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html">Chicago.PM - Scripting Git With Perl</a></h1>
+
                     <p class="tags">Tags:
                         <a href="/blog/tag/chicago.pm/index.html" rel="tag">chicago.pm</a>
                     </p>
+
                     <aside>
                         <p><time datetime="2012-10-28">
                             Posted on 2012-10-28
                         </time>
                         by preaction</p>
                     </aside>
-                    <div class="alert alert-info">
-                        <p>Originally posted as:</p>
-                        <ul>
-                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/10/chicagopm-report---scripting-git-with-perl.html">
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2012/10/chicagopm-report---scripting-git-with-perl.html">
                                 <em>Chicago.PM - Scripting Git With Perl</em> on blogs.perl.org.
-                            </a></li>
-                        </ul>
-                    </div>
+                            </a>
+                    </p>
                 </header>
+
                 <p>This month's presentation was on the
 <a href="http://search.cpan.org/dist/Git-Repository/">Git::Repository</a> Perl module,
 given by me. In both my jobs, I use the Git::Repository module to automate
 releases.</p>
 
+
                     <p><a href="/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html#section-2">Continue reading Chicago.PM - Scripting Git With Perl...</a></p>
+
             </article>
             <article>
                 <header>
                     <h1><a href="/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html">Using MooseX::Types to Inflate Config Values</a></h1>
+
                     <p class="tags">Tags:
                         <a href="/blog/tag/moose/index.html" rel="tag">moose</a>
                     </p>
+
                     <aside>
                         <p><time datetime="2012-10-22">
                             Posted on 2012-10-22
                         </time>
                         by preaction</p>
                     </aside>
-                    <div class="alert alert-info">
-                        <p>Originally posted as:</p>
-                        <ul>
-                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/10/using-moosextypes-to-inflate-config-values.html">
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2012/10/using-moosextypes-to-inflate-config-values.html">
                                 <em>Using MooseX::Types to Inflate Config Values</em> on blogs.perl.org.
-                            </a></li>
-                        </ul>
-                    </div>
+                            </a>
+                    </p>
                 </header>
+
                 <p>For a large application, configuration files become a necessity. They help
 flexible code be used in multiple instances across multiple modules. But they
 are, for the most part, only data structures, which can be a problem if the
 configured object is expecting another configured object.</p>
 
+
                     <p><a href="/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html#section-2">Continue reading Using MooseX::Types to Inflate Config Values...</a></p>
+
             </article>
         </main>
+
         <ul class="pager">
-            <li class="previous ">
-                <a rel="next" href="/blog/page-4.html">&larr; Older</a>
+            <li class="prev">
+                <a class="button button-primary"
+                    rel="next" href="/blog/page-4.html"
+                >
+                    &larr; Older
+                </a>
             </li>
-            <li class="next ">
-                <a rel="prev" href="/blog/page-2.html">Newer &rarr;</a>
+            <li class="next">
+                <a class="button button-primary"
+                    rel="prev" href="/blog/page-2.html"
+                >
+                    Newer &rarr;
+                </a>
             </li>
         </ul>
+
     </div>
 
-    <div class="sidebar col-md-3">
+    <div class="three columns sidebar">
         
         <h1>Tags</h1>
         <ul class="list-inline">

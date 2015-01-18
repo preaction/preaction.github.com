@@ -1,86 +1,36 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap-theme.min.css" />
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="/theme/css/normalize.css" />
+        <link rel="stylesheet" href="/theme/css/skeleton.css" />
+        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
         <title>preaction</title>
-        <style type="text/css">
-            main header h1
-            {
-                border-bottom: 4px solid #045578;
-            }
-            header aside {
-                margin-top: 0;
-                font-size: 12pt;
-            }
-            .sidebar h1 {
-                font-size: 14pt;
-            }
-
-            /** Add a line when using the "Continue reading..." link */
-            section:target {
-                padding-top: 0.5em;
-                border-top: 4px solid #045578;
-            }
-
-            /** Don't allow <pre> to push too much */
-            pre {
-                max-width: 100%;
-                overflow-x: scroll;
-            }
-
-            /** <code> is used for input and output, so let it wrap */
-            code {
-                white-space: normal;
-            }
-
-            .tags {
-                float: right;
-            }
-
-            /**
-             * Don't allow main content images to push things around
-             */
-            main img {
-                max-width: 100%;
-            }
-
-            footer .tagline {
-                font-size: smaller;
-                line-height: 1.3;
-                text-align: right;
-            }
-
-        </style>
             <link rel="alternate" href="/blog/tag/chicago.pm.atom" type="application/atom+xml" />
             <link rel="alternate" href="/blog/tag/chicago.pm.rss" type="application/rss+xml" />
         
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <nav class="navbar">
                 <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="/">preaction</a>
-                    </div>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="top-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li><a href="/index.html">Blog</a></li>
-                            <li><a href="/Statocles">Statocles</a></li>
-                            <li><a href="/ETL-Yertl">Yertl</a></li>
-                            <li><a href="/presentations.html">Presentations</a></li>
-                            <li><a href="/food">Food</a></li>
-                        </ul>
-                    </div>
+                    <a class="brand" href="/">preaction</a>
+                    <ul>
+                        <li>
+                            <a href="/index.html">Blog</a>
+                        </li>
+                        <li>
+                            <a href="/Statocles">Statocles</a>
+                        </li>
+                        <li>
+                            <a href="/ETL-Yertl">Yertl</a>
+                        </li>
+                        <li>
+                            <a href="/presentations.html">Presentations</a>
+                        </li>
+                        <li>
+                            <a href="/food">Food</a>
+                        </li>
+                    </ul>
                 </div>
             </nav>
             
@@ -89,56 +39,61 @@
             
 <div class="row">
 
-    <div class="col-md-9">
+    <div class="nine columns">
         <main>
+
             <article>
                 <header>
                     <h1><a href="/blog/2012/10/15/chicago.pm-report-project-night-alien-base.html">Chicago.PM Report - Project Night: Alien::Base</a></h1>
+
                     <p class="tags">Tags:
                         <a href="/blog/tag/chicago.pm/index.html" rel="tag">chicago.pm</a>
                     </p>
+
                     <aside>
                         <p><time datetime="2012-10-15">
                             Posted on 2012-10-15
                         </time>
                         by preaction</p>
                     </aside>
-                    <div class="alert alert-info">
-                        <p>Originally posted as:</p>
-                        <ul>
-                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2013/05/chicagopm---beyond-grep---expanding-the-programmer-toolset.html">
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2013/05/chicagopm---beyond-grep---expanding-the-programmer-toolset.html">
                                 <em>Chicago.PM Report - Project Night: Alien::Base</em> on blogs.perl.org.
-                            </a></li>
-                        </ul>
-                    </div>
+                            </a>
+                    </p>
                 </header>
+
                 <p>This month's project night focused on Joel Berger's Alien::Base module. The
 final bugs are either squashed or very close, and we got an introduction to how
 the whole thing works.</p>
 
+
                     <p><a href="/blog/2012/10/15/chicago.pm-report-project-night-alien-base.html#section-2">Continue reading Chicago.PM Report - Project Night: Alien::Base...</a></p>
+
             </article>
             <article>
                 <header>
                     <h1><a href="/blog/2012/09/27/chicago.pm-report-app-services-by-sean-blanton.html">Chicago.PM Report - App::Services by Sean Blanton</a></h1>
+
                     <p class="tags">Tags:
                         <a href="/blog/tag/chicago.pm/index.html" rel="tag">chicago.pm</a>
                     </p>
+
                     <aside>
                         <p><time datetime="2012-09-27">
                             Posted on 2012-09-27
                         </time>
                         by preaction</p>
                     </aside>
-                    <div class="alert alert-info">
-                        <p>Originally posted as:</p>
-                        <ul>
-                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/09/chicagopm-report---appservices-by-sean-blanton.html">
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2012/09/chicagopm-report---appservices-by-sean-blanton.html">
                                 <em>Chicago.PM Report - App::Services by Sean Blanton</em> on blogs.perl.org.
-                            </a></li>
-                        </ul>
-                    </div>
+                            </a>
+                    </p>
                 </header>
+
                 <p>This month's technical presentation at <a href="http://chicago.pm.org">Chicago Perl
 Mongers</a> was about <a href="http://seanblanton.com">Sean
 Blanton</a>'s project called
@@ -146,48 +101,63 @@ Blanton</a>'s project called
 project that uses <a href="http://search.cpan.org/perldoc?Bread::Board">Bread::Board</a>
 to access resources like databases, logging, ssh, and others.</p>
 
+
                     <p><a href="/blog/2012/09/27/chicago.pm-report-app-services-by-sean-blanton.html#section-2">Continue reading Chicago.PM Report - App::Services by Sean Blanton...</a></p>
+
             </article>
             <article>
                 <header>
                     <h1><a href="/blog/2012/09/15/chicago.pm-report-app-prima-repl.html">Chicago.PM Report - App-Prima-REPL</a></h1>
+
                     <p class="tags">Tags:
                         <a href="/blog/tag/chicago.pm/index.html" rel="tag">chicago.pm</a>
                     </p>
+
                     <aside>
                         <p><time datetime="2012-09-15">
                             Posted on 2012-09-15
                         </time>
                         by preaction</p>
                     </aside>
-                    <div class="alert alert-info">
-                        <p>Originally posted as:</p>
-                        <ul>
-                            <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/09/chicagopm-report---app-prima-repl.html">
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2012/09/chicagopm-report---app-prima-repl.html">
                                 <em>Chicago.PM Report - App-Prima-REPL</em> on blogs.perl.org.
-                            </a></li>
-                        </ul>
-                    </div>
+                            </a>
+                    </p>
                 </header>
+
                 <p>We had our first project night at <a href="http://chicago.pm.org">Chicago.PM</a> this
 week, where we discussed ideas and wrote code for a Perl REPL GUI program
 (<a href="http://github.com/run4flat/App-Prima-REPL">App-Prima-REPL on Github</a>) by
 David Mertens built on <a href="http://www.prima.eu.org/">Prima</a>.</p>
 
+
                     <p><a href="/blog/2012/09/15/chicago.pm-report-app-prima-repl.html#section-2">Continue reading Chicago.PM Report - App-Prima-REPL...</a></p>
+
             </article>
         </main>
+
         <ul class="pager">
-            <li class="previous disabled">
-                <span>&larr; Older</span>
+            <li class="prev">
+                <a class="button disabled"
+                    rel="next" href=""
+                >
+                    &larr; Older
+                </a>
             </li>
-            <li class="next ">
-                <a rel="prev" href="/blog/tag/chicago.pm/index.html">Newer &rarr;</a>
+            <li class="next">
+                <a class="button button-primary"
+                    rel="prev" href="/blog/tag/chicago.pm/index.html"
+                >
+                    Newer &rarr;
+                </a>
             </li>
         </ul>
+
     </div>
 
-    <div class="sidebar col-md-3">
+    <div class="three columns sidebar">
         
         <h1>Tags</h1>
         <ul class="list-inline">

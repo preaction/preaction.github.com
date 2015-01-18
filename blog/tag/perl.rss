@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/perl/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/perl.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.033</generator>
+        <generator>Statocles </generator>
         <item>
             <title>Manage Boilerplate with Import::Base</title>
             <link>http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html</link>

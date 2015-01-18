@@ -1,84 +1,34 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap-theme.min.css" />
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="/theme/css/normalize.css" />
+        <link rel="stylesheet" href="/theme/css/skeleton.css" />
+        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
         <title>preaction</title>
-        <style type="text/css">
-            main header h1
-            {
-                border-bottom: 4px solid #045578;
-            }
-            header aside {
-                margin-top: 0;
-                font-size: 12pt;
-            }
-            .sidebar h1 {
-                font-size: 14pt;
-            }
-
-            /** Add a line when using the "Continue reading..." link */
-            section:target {
-                padding-top: 0.5em;
-                border-top: 4px solid #045578;
-            }
-
-            /** Don't allow <pre> to push too much */
-            pre {
-                max-width: 100%;
-                overflow-x: scroll;
-            }
-
-            /** <code> is used for input and output, so let it wrap */
-            code {
-                white-space: normal;
-            }
-
-            .tags {
-                float: right;
-            }
-
-            /**
-             * Don't allow main content images to push things around
-             */
-            main img {
-                max-width: 100%;
-            }
-
-            footer .tagline {
-                font-size: smaller;
-                line-height: 1.3;
-                text-align: right;
-            }
-
-        </style>
         
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <nav class="navbar">
                 <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="/">preaction</a>
-                    </div>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="top-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li><a href="/index.html">Blog</a></li>
-                            <li><a href="/Statocles">Statocles</a></li>
-                            <li><a href="/ETL-Yertl">Yertl</a></li>
-                            <li><a href="/presentations.html">Presentations</a></li>
-                            <li><a href="/food">Food</a></li>
-                        </ul>
-                    </div>
+                    <a class="brand" href="/">preaction</a>
+                    <ul>
+                        <li>
+                            <a href="/index.html">Blog</a>
+                        </li>
+                        <li>
+                            <a href="/Statocles">Statocles</a>
+                        </li>
+                        <li>
+                            <a href="/ETL-Yertl">Yertl</a>
+                        </li>
+                        <li>
+                            <a href="/presentations.html">Presentations</a>
+                        </li>
+                        <li>
+                            <a href="/food">Food</a>
+                        </li>
+                    </ul>
                 </div>
             </nav>
             
@@ -86,7 +36,7 @@
         <div class="main container">
             <div class="row">
 
-    <div class="col-md-9">
+    <div class="nine columns">
         <main>
             <header>
                 <h1>Testing is a Feature of Your Service</h1>
@@ -99,14 +49,11 @@
                     </time>
                     by preaction</p>
                 </aside>
-                <div class="alert alert-info">
-                    <p>Originally posted as:</p>
-                    <ul>
-                        <li><a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/11/testing-is-a-feature-of-your-service.html">
+                <p>Originally posted as:
+                        <a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/11/testing-is-a-feature-of-your-service.html">
                             <em>Testing is a Feature of Your Service</em> on blogs.perl.org.
-                        </a></li>
-                    </ul>
-                </div>
+                        </a>
+                </p>
             </header>
             <section id="section-1">
                 <p>My job at Bank of America consists largely of data collection and storage. To
@@ -157,7 +104,7 @@ everyone write better code.</p>
         </main>
     </div>
 
-    <div class="col-md-3">
+    <div class="three columns sidebar">
         
         <nav id="tags">
             <h1>Tags</h1>
