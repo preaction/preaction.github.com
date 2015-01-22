@@ -3,6 +3,10 @@ last_modified: 2015-01-21 22:24:15
 tags: 'perl, sql, etl, yertl'
 title: Managing SQL Data with Yertl
 ---
+
+[Originally posted on blogs.perl.org -- Managing SQL Data with
+Yertl](http://blogs.perl.org/users/preaction/2015/01/managing-sql-data-with-yertl.html)
+
 Every week, I work with about a dozen SQL databases. Some are Sybase, some
 MySQL, some SQLite. Some have different versions in dev, staging, and
 production. All of them need data extracted, transformed, and loaded.
