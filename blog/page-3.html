@@ -5,8 +5,8 @@
         <link rel="stylesheet" href="/theme/css/skeleton.css" />
         <link rel="stylesheet" href="/theme/css/statocles-default.css" />
         <title>preaction</title>
-            <link rel="alternate" href="/blog/index.atom" type="application/atom+xml" />
-            <link rel="alternate" href="/blog/index.rss" type="application/rss+xml" />
+        <link rel="alternate" href="/blog/index.atom" type="application/atom+xml" />
+        <link rel="alternate" href="/blog/index.rss" type="application/rss+xml" />
         
     </head>
     <body>
@@ -44,6 +44,43 @@
 
             <article>
                 <header>
+                    <h1><a href="/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html">Thoughts while changing the API of a massive framework...</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/rants/index.html" rel="tag">rants</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2013-04-11">
+                            Posted on 2013-04-11
+                        </time>
+                            by preaction
+                        </p>
+                    </aside>
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2013/04/thoughts-while-changing-the-api-of-a-massive-framework.html">
+                                <em>Thoughts while changing the API of a massive framework...</em> on blogs.perl.org.
+                            </a>
+                    </p>
+                </header>
+
+                <p>At the Bank we have a home-grown ETL framework that we've been using for quite
+some time. We recently completed a total rewrite, but unfortunately we left out
+a few changes. Had I gotten those changes in 5 months ago, I would have only
+had to break the API of about 10 modules. Today, in order to make those
+changes, I have to break the API of 122 modules.</p>
+
+<p>What follows is an account of this ordeal, provided for entertainment value
+only. There will be a future post that explains some of the things I did to
+make this task surmountable.</p>
+
+
+                    <p><a href="/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html#section-2">Continue reading Thoughts while changing the API of a massive framework......</a></p>
+
+            </article>
+            <article>
+                <header>
                     <h1><a href="/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html">Chicago.PM - Dependency Injection (also: Beam::Wire)</a></h1>
 
                     <p class="tags">Tags:
@@ -54,7 +91,8 @@
                         <p><time datetime="2013-03-29">
                             Posted on 2013-03-29
                         </time>
-                        by preaction</p>
+                            by preaction
+                        </p>
                     </aside>
 
                     <p>Originally posted as:
@@ -88,7 +126,8 @@ deck.js, and I'm not sure I like it.]</p>
                         <p><time datetime="2013-03-14">
                             Posted on 2013-03-14
                         </time>
-                        by preaction</p>
+                            by preaction
+                        </p>
                     </aside>
 
                     <p>Originally posted as:
@@ -136,7 +175,8 @@ AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
                         <p><time datetime="2012-11-04">
                             Posted on 2012-11-04
                         </time>
-                        by preaction</p>
+                            by preaction
+                        </p>
                     </aside>
 
                     <p>Originally posted as:
@@ -178,7 +218,8 @@ user has input an invalid ID for data?</p>
                         <p><time datetime="2012-10-28">
                             Posted on 2012-10-28
                         </time>
-                        by preaction</p>
+                            by preaction
+                        </p>
                     </aside>
 
                     <p>Originally posted as:
@@ -195,37 +236,6 @@ releases.</p>
 
 
                     <p><a href="/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html#section-2">Continue reading Chicago.PM - Scripting Git With Perl...</a></p>
-
-            </article>
-            <article>
-                <header>
-                    <h1><a href="/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html">Using MooseX::Types to Inflate Config Values</a></h1>
-
-                    <p class="tags">Tags:
-                        <a href="/blog/tag/moose/index.html" rel="tag">moose</a>
-                    </p>
-
-                    <aside>
-                        <p><time datetime="2012-10-22">
-                            Posted on 2012-10-22
-                        </time>
-                        by preaction</p>
-                    </aside>
-
-                    <p>Originally posted as:
-                            <a href="http://blogs.perl.org/users/preaction/2012/10/using-moosextypes-to-inflate-config-values.html">
-                                <em>Using MooseX::Types to Inflate Config Values</em> on blogs.perl.org.
-                            </a>
-                    </p>
-                </header>
-
-                <p>For a large application, configuration files become a necessity. They help
-flexible code be used in multiple instances across multiple modules. But they
-are, for the most part, only data structures, which can be a problem if the
-configured object is expecting another configured object.</p>
-
-
-                    <p><a href="/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html#section-2">Continue reading Using MooseX::Types to Inflate Config Values...</a></p>
 
             </article>
         </main>
@@ -255,6 +265,7 @@ configured object is expecting another configured object.</p>
         <ul class="list-inline">
             <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
             <li><a href="/blog/tag/error/index.html">error</a></li>
+            <li><a href="/blog/tag/etl/index.html">etl</a></li>
             <li><a href="/blog/tag/funny/index.html">funny</a></li>
             <li><a href="/blog/tag/git/index.html">git</a></li>
             <li><a href="/blog/tag/moose/index.html">moose</a></li>
@@ -266,8 +277,10 @@ configured object is expecting another configured object.</p>
             <li><a href="/blog/tag/rants/index.html">rants</a></li>
             <li><a href="/blog/tag/scripts/index.html">scripts</a></li>
             <li><a href="/blog/tag/software/index.html">software</a></li>
+            <li><a href="/blog/tag/sql/index.html">sql</a></li>
             <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
             <li><a href="/blog/tag/xs/index.html">xs</a></li>
+            <li><a href="/blog/tag/yertl/index.html">yertl</a></li>
         </ul>
         <h1>Feeds</h1>
         <ul class="list-inline">

@@ -5,7 +5,172 @@
         <link>http://preaction.github.io/blog/tag/perl/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/perl.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles </generator>
+        <generator>Statocles 0.034</generator>
+        <item>
+            <title>Managing SQL Data with Yertl</title>
+            <link>http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html</link>
+            <guid>http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html</guid>
+            <description><![CDATA[
+                <p>Every week, I work with about a dozen SQL databases. Some are Sybase, some
+MySQL, some SQLite. Some have different versions in dev, staging, and
+production. All of them need data extracted, transformed, and loaded.</p>
+
+<p>DBI is the clear choice for dealing with SQL databases in Perl, but there are a
+dozen lines of Perl code in between me and the operation that I want. Sure,
+I've got modules and web applications and ad-hoc commands and scripts that
+perform certain individual tasks on my databases, but sometimes those things
+don't quite do what I need right now, and I just want something that will let
+me execute whatever SQL I can come up with.</p>
+
+<p><a href="http://metacpan.org/pod/ETL::Yertl">Yertl (ETL::Yertl)</a> is a shell-based ETL
+framework. It's under development (as is all software), but included already is
+a small utility called <a href="http://metacpan.org/pod/ysql">ysql</a> to make dealing
+with SQL databases easy.</p>
+
+<p>To use ysql, first we have to configure a database. This saves us from having
+to type the full DBI data source name (dbi:mysql:host=dev;database=mydb) every
+time. Instead, we can refer to our database by a nice name, like "dev", or
+"prod".</p>
+
+<pre><code>$ ysql config dev dbi:SQLite:database.db
+</code></pre>
+
+<p>Later, we can update our configuration if we need to:</p>
+
+<pre><code>$ ysql config dev --database=dev.db
+</code></pre>
+
+<p>We can examine our configuration as a YAML document:</p>
+
+<pre><code>$ ysql config dev
+---
+database: dev.db
+driver: SQLite
+</code></pre>
+
+<p>Let's add a production database as well:</p>
+
+<pre><code>$ ysql config prod --driver=SQLite --database=prod.db
+</code></pre>
+
+<p>And now we can check both of our configs:</p>
+
+<pre><code>$ ysql config
+---
+dev:
+  database: dev.db
+  driver: SQLite
+prod:
+  database: prod.db
+  driver: SQLite
+</code></pre>
+
+<p>Now that we've configured some databases, let's insert some data. First we need
+to make some tables:</p>
+
+<pre><code>$ ysql query prod 'CREATE TABLE users ( id INTEGER PRIMARY KEY \
+    AUTOINCREMENT, name VARCHAR, email VARCHAR )'
+$ ysql query dev 'CREATE TABLE users ( id INTEGER PRIMARY KEY \
+    AUTOINCREMENT, name VARCHAR, email VARCHAR )'
+</code></pre>
+
+<p>Next let's insert some data:</p>
+
+<pre><code>$ ysql query prod 'INSERT INTO users ( name, email ) \
+    VALUES ( "preaction", "preaction@example.com" )'
+$ ysql query prod 'INSERT INTO users ( name, email ) \
+    VALUES ( "postaction", "postaction@example.com" )'
+</code></pre>
+
+<p>Now, let's query for our data:</p>
+
+<pre><code>$ ysql query prod 'SELECT * FROM users'
+---
+email: preaction@example.com
+id: 1
+name: preaction
+---
+email: postaction.example.com
+id: 2
+name: postaction
+</code></pre>
+
+<p>Yertl uses YAML as its default output, but we can easily convert to JSON or CSV
+using the <a href="http://metacpan.org/pod/yto">yto utility</a></p>
+
+<pre><code>$ ysql query prod 'SELECT * FROM users' | yto csv
+email,id,name
+preaction@example.com,1,preaction
+postaction@example.com,2,postaction
+
+$ ysql query prod 'SELECT * FROM users' | yto json
+{
+   "email" : "preaction@example.com",
+   "id" : "1",
+   "name" : "preaction"
+}
+{
+   "email" : "postaction@example.com",
+   "id" : "2",
+   "name" : "postaction"
+}
+</code></pre>
+
+<p>Now, lets say we want to copy our production database to dev for testing. To do
+that, Yertl allows us to read YAML from STDIN and execute a query for each YAML
+document. Yertl uses a special interpolation syntax (starting with a "$") to
+pick parts of the document to fill in the query:</p>
+
+<pre><code>$ ysql query prod 'SELECT * FROM users' |
+    ysql query dev 'INSERT INTO users ( id, name, email ) \
+        VALUES ( $.id, $.name, $.email )'
+</code></pre>
+
+<p>So this will take our users table from prod and write it to dev. '$.id' picks
+the "id" field, '$.name' the "name" field, etc...</p>
+
+<p>But all this would be a bear to type over and over again (imagine if we had a
+bunch of joins to do). So, ysql allows you to save queries for later use using
+the <code>--save &lt;name&gt;</code> option:</p>
+
+<pre><code>$ ysql query prod --save users 'SELECT * FROM users'
+$ ysql query dev --save update_users 'UPDATE users SET \
+    name=$.name, email=$.email WHERE id=$.id'
+</code></pre>
+
+<p>Then we can recall our query by the name we gave to the <code>--save</code> option:</p>
+
+<pre><code>$ ysql query prod users | ysql query dev update_users
+</code></pre>
+
+<p>Finally, using yto and <a href="http://metacpan.org/pod/yfrom">yfrom</a>, we can write a
+dump of our users to JSON, and then read that database dump back into our
+database:</p>
+
+<pre><code>$ ysql query prod users | yto json &gt; users.json
+$ yfrom json &lt; users.json | ysql query dev update_users
+</code></pre>
+
+<p>So, though Yertl is in its infancy, it can already help with some common
+database tasks!</p>
+
+<p>There are lots of <a href="https://github.com/preaction/ETL-Yertl/labels/feature">plans for Yertl, described in the feature's tag on the issue
+tracker</a>, so if you've
+got common data tasks that you feel should be easier, <a href="https://chat.mibbit.com/?channel=%23yertl&amp;server=irc.perl.org">join me in #yertl on
+irc.perl.org</a>.</p>
+
+                    <p><a href="http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html#section-2">Continue reading...</a></p>
+                <p>Tags:
+                    <a href="/blog/tag/perl/index.html">perl</a>
+                    <a href="/blog/tag/sql/index.html">sql</a>
+                    <a href="/blog/tag/etl/index.html">etl</a>
+                    <a href="/blog/tag/yertl/index.html">yertl</a>
+                </p>
+            ]]></description>
+            <pubDate>
+                Wed, 21 Jan 2015 00:00:00 -0600
+            </pubDate>
+        </item>
         <item>
             <title>Manage Boilerplate with Import::Base</title>
             <link>http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html</link>

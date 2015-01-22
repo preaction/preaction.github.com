@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/xs/index.html</id>
     <title>preaction</title>
-    <updated>2015-01-17T21:29:06Z</updated>
+    <updated>2015-01-21T22:39:30Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/xs.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/xs/index.html"/>
-    <generator version="">Statocles</generator>
+    <generator version="0.034">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</id>
         <title>Adventures in Debugging C/XS 2: Debugging Boogaloo</title>
@@ -77,7 +77,8 @@ works and has proper tests (written in Perl, of course).</p>
             </p>
         ]]></content>
         <updated>2012-03-20T00:00:00Z</updated>
-        <category term="ARRAY(0x7fc8aa4c4678)" />
+        <category term="Statocles::Link=HASH(0x7fd1018a3d10)" />
+        <category term="Statocles::Link=HASH(0x7fd10189e3a8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/11/16/adventures-in-debugging-c-xs.html</id>
@@ -110,7 +111,7 @@ fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
             </p>
         ]]></content>
         <updated>2011-11-16T00:00:00Z</updated>
-        <category term="ARRAY(0x7fc8aa4c48a0)" />
+        <category term="Statocles::Link=HASH(0x7fd10189eb58)" />
     </entry>
 </feed>
 
