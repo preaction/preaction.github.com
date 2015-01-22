@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/xs/index.html</id>
     <title>preaction</title>
-    <updated>2015-01-21T22:48:10Z</updated>
+    <updated>2015-01-21T22:49:13Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/xs.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/xs/index.html"/>
     <generator version="0.034">Statocles</generator>
@@ -77,8 +77,8 @@ works and has proper tests (written in Perl, of course).</p>
             </p>
         ]]></content>
         <updated>2012-03-20T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7fcce9dec3c0)" />
-        <category term="Statocles::Link=HASH(0x7fcce9dec258)" />
+        <category term="Statocles::Link=HASH(0x7f9446a86ec0)" />
+        <category term="Statocles::Link=HASH(0x7f9446a88840)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/11/16/adventures-in-debugging-c-xs.html</id>
@@ -111,7 +111,7 @@ fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
             </p>
         ]]></content>
         <updated>2011-11-16T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7fcce9de7978)" />
+        <category term="Statocles::Link=HASH(0x7f9446a9c6e8)" />
     </entry>
 </feed>
 

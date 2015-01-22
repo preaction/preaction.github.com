@@ -11,7 +11,10 @@
             <link>http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html</link>
             <guid>http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html</guid>
             <description><![CDATA[
-                <p>Every week, I work with about a dozen SQL databases. Some are Sybase, some
+                <p><a href="http://blogs.perl.org/users/preaction/2015/01/managing-sql-data-with-yertl.html">Originally posted on blogs.perl.org -- Managing SQL Data with
+Yertl</a></p>
+
+<p>Every week, I work with about a dozen SQL databases. Some are Sybase, some
 MySQL, some SQLite. Some have different versions in dev, staging, and
 production. All of them need data extracted, transformed, and loaded.</p>
 

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/perl/index.html</id>
     <title>preaction</title>
-    <updated>2015-01-21T22:48:09Z</updated>
+    <updated>2015-01-21T22:49:13Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/perl.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/perl/index.html"/>
     <generator version="0.034">Statocles</generator>
@@ -11,7 +11,10 @@
         <title>Managing SQL Data with Yertl</title>
         <link rel="alternate" href="http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html" />
         <content type="html"><![CDATA[
-            <p>Every week, I work with about a dozen SQL databases. Some are Sybase, some
+            <p><a href="http://blogs.perl.org/users/preaction/2015/01/managing-sql-data-with-yertl.html">Originally posted on blogs.perl.org -- Managing SQL Data with
+Yertl</a></p>
+
+<p>Every week, I work with about a dozen SQL databases. Some are Sybase, some
 MySQL, some SQLite. Some have different versions in dev, staging, and
 production. All of them need data extracted, transformed, and loaded.</p>
 
@@ -36,10 +39,10 @@ with SQL databases easy.</p>
             </p>
         ]]></content>
         <updated>2015-01-21T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7fcce9df9060)" />
-        <category term="Statocles::Link=HASH(0x7fcce9df96c0)" />
-        <category term="Statocles::Link=HASH(0x7fcce9df9420)" />
-        <category term="Statocles::Link=HASH(0x7fcce9df9828)" />
+        <category term="Statocles::Link=HASH(0x7f9446ac9a30)" />
+        <category term="Statocles::Link=HASH(0x7f9446aca058)" />
+        <category term="Statocles::Link=HASH(0x7f9446aca388)" />
+        <category term="Statocles::Link=HASH(0x7f9446aca3b8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html</id>
@@ -74,7 +77,7 @@ lines everywhere.</p>
             </p>
         ]]></content>
         <updated>2014-10-26T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7fcce9df85a0)" />
+        <category term="Statocles::Link=HASH(0x7f9446ac90b8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
@@ -105,8 +108,8 @@ able to execute it. Maybe git-add--interactive is broken?
             </p>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7fcce9df6978)" />
-        <category term="Statocles::Link=HASH(0x7fcce9df6dc8)" />
+        <category term="Statocles::Link=HASH(0x7f9446ac73a0)" />
+        <category term="Statocles::Link=HASH(0x7f9446ac7808)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</id>
@@ -179,8 +182,8 @@ works and has proper tests (written in Perl, of course).</p>
             </p>
         ]]></content>
         <updated>2012-03-20T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7fcce9dec3c0)" />
-        <category term="Statocles::Link=HASH(0x7fcce9dec258)" />
+        <category term="Statocles::Link=HASH(0x7f9446a86ec0)" />
+        <category term="Statocles::Link=HASH(0x7f9446a88840)" />
     </entry>
 </feed>
 

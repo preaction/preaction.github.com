@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/index.html</id>
     <title>preaction</title>
-    <updated>2015-01-21T22:48:08Z</updated>
+    <updated>2015-01-21T22:49:11Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/index.atom"/>
     <link rel="alternate" href="http://preaction.github.io/index.html"/>
     <generator version="0.034">Statocles</generator>
@@ -11,7 +11,10 @@
         <title>Managing SQL Data with Yertl</title>
         <link rel="alternate" href="http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html" />
         <content type="html"><![CDATA[
-            <p>Every week, I work with about a dozen SQL databases. Some are Sybase, some
+            <p><a href="http://blogs.perl.org/users/preaction/2015/01/managing-sql-data-with-yertl.html">Originally posted on blogs.perl.org -- Managing SQL Data with
+Yertl</a></p>
+
+<p>Every week, I work with about a dozen SQL databases. Some are Sybase, some
 MySQL, some SQLite. Some have different versions in dev, staging, and
 production. All of them need data extracted, transformed, and loaded.</p>
 
@@ -36,10 +39,10 @@ with SQL databases easy.</p>
             </p>
         ]]></content>
         <updated>2015-01-21T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7fcce9df9060)" />
-        <category term="Statocles::Link=HASH(0x7fcce9df96c0)" />
-        <category term="Statocles::Link=HASH(0x7fcce9df9420)" />
-        <category term="Statocles::Link=HASH(0x7fcce9df9828)" />
+        <category term="Statocles::Link=HASH(0x7f9446ac9a30)" />
+        <category term="Statocles::Link=HASH(0x7f9446aca058)" />
+        <category term="Statocles::Link=HASH(0x7f9446aca388)" />
+        <category term="Statocles::Link=HASH(0x7f9446aca3b8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html</id>
@@ -71,7 +74,7 @@ me to use...</p>
             </p>
         ]]></content>
         <updated>2014-12-23T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7fcce9df8ab0)" />
+        <category term="Statocles::Link=HASH(0x7f9446ac9328)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html</id>
@@ -106,7 +109,7 @@ lines everywhere.</p>
             </p>
         ]]></content>
         <updated>2014-10-26T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7fcce9df85a0)" />
+        <category term="Statocles::Link=HASH(0x7f9446ac90b8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html</id>
@@ -140,7 +143,7 @@ new programming language. I didn't realize my mistake until it was too late.</p>
             </p>
         ]]></content>
         <updated>2014-07-19T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7fcce9df83f0)" />
+        <category term="Statocles::Link=HASH(0x7f9446ac7b50)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</id>
@@ -192,7 +195,7 @@ has 50% more test lines than source lines:</p>
             </p>
         ]]></content>
         <updated>2014-06-29T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7fcce9df6ca8)" />
+        <category term="Statocles::Link=HASH(0x7f9446ac78e0)" />
     </entry>
 </feed>
 
