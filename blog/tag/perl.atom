@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/perl/index.html</id>
     <title>preaction</title>
-    <updated>2015-01-21T22:41:20Z</updated>
+    <updated>2015-01-21T22:48:09Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/perl.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/perl/index.html"/>
     <generator version="0.034">Statocles</generator>
@@ -36,10 +36,10 @@ with SQL databases easy.</p>
             </p>
         ]]></content>
         <updated>2015-01-21T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7ff4308ca690)" />
-        <category term="Statocles::Link=HASH(0x7ff4308ca618)" />
-        <category term="Statocles::Link=HASH(0x7ff4308ca708)" />
-        <category term="Statocles::Link=HASH(0x7ff4308ca9f0)" />
+        <category term="Statocles::Link=HASH(0x7fcce9df9060)" />
+        <category term="Statocles::Link=HASH(0x7fcce9df96c0)" />
+        <category term="Statocles::Link=HASH(0x7fcce9df9420)" />
+        <category term="Statocles::Link=HASH(0x7fcce9df9828)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html</id>
@@ -74,7 +74,7 @@ lines everywhere.</p>
             </p>
         ]]></content>
         <updated>2014-10-26T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7ff4308c9810)" />
+        <category term="Statocles::Link=HASH(0x7fcce9df85a0)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
@@ -105,8 +105,8 @@ able to execute it. Maybe git-add--interactive is broken?
             </p>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7ff4308c7c60)" />
-        <category term="Statocles::Link=HASH(0x7ff4308c7f60)" />
+        <category term="Statocles::Link=HASH(0x7fcce9df6978)" />
+        <category term="Statocles::Link=HASH(0x7fcce9df6dc8)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</id>
@@ -179,8 +179,8 @@ works and has proper tests (written in Perl, of course).</p>
             </p>
         ]]></content>
         <updated>2012-03-20T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7ff43089fad8)" />
-        <category term="Statocles::Link=HASH(0x7ff42fee90c0)" />
+        <category term="Statocles::Link=HASH(0x7fcce9dec3c0)" />
+        <category term="Statocles::Link=HASH(0x7fcce9dec258)" />
     </entry>
 </feed>
 

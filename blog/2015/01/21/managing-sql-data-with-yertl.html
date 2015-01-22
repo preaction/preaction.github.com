@@ -73,7 +73,7 @@ with SQL databases easy.</p>
             </section>
             <section id="section-2">
                 <p>To use ysql, first we have to configure a database. This saves us from having
-to type the full DBI data source name (dbi:mysql:host=dev;database=mydb) every
+to type the full DBI data source name (<code>dbi:mysql:host=dev;database=mydb</code>) every
 time. Instead, we can refer to our database by a nice name, like "dev", or
 "prod".</p>
 
@@ -162,8 +162,8 @@ $ ysql query prod 'SELECT * FROM users' | yto json
 </code></pre>
 
 <p>Now, lets say we want to copy our production database to dev for testing. To do
-that, Yertl allows us to read YAML from STDIN and execute a query for each YAML
-document. Yertl uses a special interpolation syntax (starting with a "$") to
+that, Yertl allows us to read YAML from <code>STDIN</code> and execute a query for each YAML
+document. Yertl uses a special interpolation syntax (starting with a <code>$</code>) to
 pick parts of the document to fill in the query:</p>
 
 <pre><code>$ ysql query prod 'SELECT * FROM users' |
@@ -171,8 +171,8 @@ pick parts of the document to fill in the query:</p>
         VALUES ( $.id, $.name, $.email )'
 </code></pre>
 
-<p>So this will take our users table from prod and write it to dev. '$.id' picks
-the "id" field, '$.name' the "name" field, etc...</p>
+<p>So this will take our users table from prod and write it to dev. <code>$.id</code> picks
+the "id" field, <code>$.name</code> the "name" field, etc...</p>
 
 <p>But all this would be a bear to type over and over again (imagine if we had a
 bunch of joins to do). So, ysql allows you to save queries for later use using
@@ -188,7 +188,7 @@ $ ysql query dev --save update_users 'UPDATE users SET \
 <pre><code>$ ysql query prod users | ysql query dev update_users
 </code></pre>
 
-<p>Finally, using yto and <a href="http://metacpan.org/pod/yfrom">yfrom</a>, we can write a
+<p>Finally, using <code>yto</code> and <a href="http://metacpan.org/pod/yfrom">yfrom</a>, we can write a
 dump of our users to JSON, and then read that database dump back into our
 database:</p>
 

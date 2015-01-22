@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/software/index.html</id>
     <title>preaction</title>
-    <updated>2015-01-21T22:41:22Z</updated>
+    <updated>2015-01-21T22:48:09Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/software.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/software/index.html"/>
     <generator version="0.034">Statocles</generator>
@@ -36,7 +36,7 @@ me to use...</p>
             </p>
         ]]></content>
         <updated>2014-12-23T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7ff4308c9d20)" />
+        <category term="Statocles::Link=HASH(0x7fcce9df8ab0)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/11/04/testing-is-a-feature-of-your-service.html</id>
@@ -73,7 +73,7 @@ user has input an invalid ID for data?</p>
             </p>
         ]]></content>
         <updated>2012-11-04T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7ff4308c48b8)" />
+        <category term="Statocles::Link=HASH(0x7fcce9def480)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/09/23/plan-software-to-live-forever.html</id>
@@ -103,7 +103,7 @@ for a long time.</p>
             </p>
         ]]></content>
         <updated>2012-09-23T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7ff42fee94e0)" />
+        <category term="Statocles::Link=HASH(0x7fcce9ded0c0)" />
     </entry>
 </feed>
 

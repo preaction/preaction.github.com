@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/rants/index.html</id>
     <title>preaction</title>
-    <updated>2015-01-21T22:41:20Z</updated>
+    <updated>2015-01-21T22:48:10Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/rants.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/rants/index.html"/>
     <generator version="0.034">Statocles</generator>
@@ -38,7 +38,7 @@ new programming language. I didn't realize my mistake until it was too late.</p>
             </p>
         ]]></content>
         <updated>2014-07-19T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7ff4308c8410)" />
+        <category term="Statocles::Link=HASH(0x7fcce9df83f0)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</id>
@@ -69,7 +69,7 @@ make this task surmountable.</p>
             </p>
         ]]></content>
         <updated>2013-04-11T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7ff4308c5780)" />
+        <category term="Statocles::Link=HASH(0x7fcce9df5348)" />
     </entry>
 </feed>
 
