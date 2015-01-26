@@ -12,7 +12,7 @@ food_blog:
         url_root: /food
 
 site:
-    class: Statocles::Site::Git
+    class: Statocles::Site
     args:
         title: preaction
         base_url: http://preaction.github.io
@@ -30,7 +30,10 @@ site:
                 - title: Food
                   href: /food
         build_store: 'build'
-        deploy_store: '.'
+        deploy: 
+            $class: Statocles::Deploy::Git
+            $args:
+                path: '.'
         index: blog
         apps:
             blog:
