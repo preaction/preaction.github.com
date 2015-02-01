@@ -11,23 +11,11 @@ food_blog:
         store: 'food'
         url_root: /food
 
-food_images:
+static_app:
     class: Statocles::App::Static
     args:
-        store: 'food/images'
-        url_root: '/food/images'
-
-blog_images:
-    class: Statocles::App::Static
-    args:
-        store: 'blog/images'
-        url_root: '/blog/images'
-
-talks_app:
-    class: Statocles::App::Static
-    args:
-        store: 'talks'
-        url_root: '/talks'
+        store: '.'
+        url_root: '/'
 
 site:
     class: Statocles::Site
@@ -58,9 +46,5 @@ site:
                 $ref: blog_app
             food:
                 $ref: food_blog
-            talks:
-                $ref: talks_app
-            food_images:
-                $ref: food_images
-            blog_images:
-                $ref: blog_images
+            static:
+                $ref: static_app

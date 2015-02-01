@@ -7,7 +7,7 @@ links:
         title: blogs.perl.org
         href: http://blogs.perl.org/users/preaction/2014/07/between-learning-and-doing.html
 ---
-![I've made a huge mistake](/blog/images/ive-made-a-huge-mistake.gif)
+![I've made a huge mistake](/images/blog/ive-made-a-huge-mistake.gif)
 
 A long time ago, when I started building my first video game server for
 [Double Cluepon](http://doublecluepon.com), my video game company, I did a bad

@@ -54,7 +54,7 @@ offer users multiple ways to join our site. As a test, we added a Twitter-based
 auth plugin based on the Net::Twitter module, and a Facebook auth plugin based
 on Facebook::Graph.
 
-![](/blog/images/whats-new-in-webgui-8.0-2-auth-improvements/Screen%20shot%202011-01-21%20at%202.02.13%20PM.png)
+![](/images/blog/whats-new-in-webgui-8.0-2-auth-improvements/Screen%20shot%202011-01-21%20at%202.02.13%20PM.png)
 
 Fig 1,294: A WebGUI site with username/password and Facebook login
 

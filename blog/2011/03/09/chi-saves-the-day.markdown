@@ -37,7 +37,7 @@ I poll mysql for its process list.
 
 A pattern emerges: The load spikes and server goes unresponsive when this happens:
 
-![](/blog/images/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.43.37%20PM.png)
+![](/images/blog/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.43.37%20PM.png)
 
 This table shows 12 different processes are trying to update the same cache
 location (process ID 2-3, 5-8, 10, 12-13, 18, 23, and 26). Because of MyISAM's
@@ -141,7 +141,7 @@ The full create table statements are below:
 
 ## Results
 
-![](/blog/images/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.20.55%20PM.png)
+![](/images/blog/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.20.55%20PM.png)
 
 The server is stable again! Spikes do not turn into out-of-control loads and
 unresponsive server. We'll see how things go tomorrow during normal business
