@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/index.html</link>
         <atom:link href="http://preaction.github.io/blog/index.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.034</generator>
+        <generator>Statocles 0.035</generator>
         <item>
             <title>Managing SQL Data with Yertl</title>
             <link>http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html</link>
@@ -114,7 +114,7 @@ lines everywhere.</p>
             <link>http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html</link>
             <guid>http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html</guid>
             <description><![CDATA[
-                <p><img src="/blog/images/ive-made-a-huge-mistake.gif" alt="I've made a huge mistake" /></p>
+                <p><img src="/images/blog/ive-made-a-huge-mistake.gif" alt="I've made a huge mistake" /></p>
 
 <p>A long time ago, when I started building my first video game server for
 <a href="http://doublecluepon.com">Double Cluepon</a>, my video game company, I did a bad

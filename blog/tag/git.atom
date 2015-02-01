@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/git/index.html</id>
     <title>preaction</title>
-    <updated>2015-01-21T22:49:13Z</updated>
+    <updated>2015-01-31T19:57:41Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/git.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/git/index.html"/>
-    <generator version="0.034">Statocles</generator>
+    <generator version="0.035">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
         <title>Conflict Resolution: local::lib and git's Perl</title>
@@ -35,8 +35,8 @@ able to execute it. Maybe git-add--interactive is broken?
             </p>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f9446ac73a0)" />
-        <category term="Statocles::Link=HASH(0x7f9446ac7808)" />
+        <category term="Statocles::Link=HASH(0x7f9f83ded7c0)" />
+        <category term="Statocles::Link=HASH(0x7f9f83e1f2f0)" />
     </entry>
 </feed>
 

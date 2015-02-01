@@ -2,17 +2,17 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/rants/index.html</id>
     <title>preaction</title>
-    <updated>2015-01-21T22:49:13Z</updated>
+    <updated>2015-01-31T19:57:42Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/rants.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/rants/index.html"/>
-    <generator version="0.034">Statocles</generator>
+    <generator version="0.035">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html</id>
         <title>Between Learning and Doing</title>
         <author><name>preaction</name></author>
         <link rel="alternate" href="http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html" />
         <content type="html"><![CDATA[
-            <p><img src="/blog/images/ive-made-a-huge-mistake.gif" alt="I've made a huge mistake" /></p>
+            <p><img src="/images/blog/ive-made-a-huge-mistake.gif" alt="I've made a huge mistake" /></p>
 
 <p>A long time ago, when I started building my first video game server for
 <a href="http://doublecluepon.com">Double Cluepon</a>, my video game company, I did a bad
@@ -38,7 +38,7 @@ new programming language. I didn't realize my mistake until it was too late.</p>
             </p>
         ]]></content>
         <updated>2014-07-19T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f9446ac7b50)" />
+        <category term="Statocles::Link=HASH(0x7f9f83e1f998)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</id>
@@ -69,7 +69,7 @@ make this task surmountable.</p>
             </p>
         ]]></content>
         <updated>2013-04-11T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f9446ac4d18)" />
+        <category term="Statocles::Link=HASH(0x7f9f83dec0d0)" />
     </entry>
 </feed>
 

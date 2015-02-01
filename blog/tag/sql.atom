@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/sql/index.html</id>
     <title>preaction</title>
-    <updated>2015-01-21T22:49:13Z</updated>
+    <updated>2015-01-31T19:57:42Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/sql.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/sql/index.html"/>
-    <generator version="0.034">Statocles</generator>
+    <generator version="0.035">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html</id>
         <title>Managing SQL Data with Yertl</title>
@@ -39,10 +39,10 @@ with SQL databases easy.</p>
             </p>
         ]]></content>
         <updated>2015-01-21T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f9446ac9a30)" />
-        <category term="Statocles::Link=HASH(0x7f9446aca058)" />
-        <category term="Statocles::Link=HASH(0x7f9446aca388)" />
-        <category term="Statocles::Link=HASH(0x7f9446aca3b8)" />
+        <category term="Statocles::Link=HASH(0x7f9f83e219e0)" />
+        <category term="Statocles::Link=HASH(0x7f9f83e21998)" />
+        <category term="Statocles::Link=HASH(0x7f9f83e21c68)" />
+        <category term="Statocles::Link=HASH(0x7f9f83e21d70)" />
     </entry>
 </feed>
 

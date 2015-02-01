@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/webgui/index.html</link>
         <atom:link href="http://preaction.github.io/blog/tag/webgui.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.034</generator>
+        <generator>Statocles 0.035</generator>
         <item>
             <title>WebGUI 8 Status Report</title>
             <link>http://preaction.github.io/blog/2011/05/20/webgui-8-status-report.html</link>
@@ -86,7 +86,7 @@ I poll mysql for its process list.</p>
 
 <p>A pattern emerges: The load spikes and server goes unresponsive when this happens:</p>
 
-<p><img src="/blog/images/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.43.37%20PM.png" alt="" /></p>
+<p><img src="/images/blog/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.43.37%20PM.png" alt="" /></p>
 
 <p>This table shows 12 different processes are trying to update the same cache
 location (process ID 2-3, 5-8, 10, 12-13, 18, 23, and 26). Because of MyISAM's
@@ -194,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `chi__CHI_METACACHE` (
 
 <h2>Results</h2>
 
-<p><img src="/blog/images/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.20.55%20PM.png" alt="" /></p>
+<p><img src="/images/blog/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.20.55%20PM.png" alt="" /></p>
 
 <p>The server is stable again! Spikes do not turn into out-of-control loads and
 unresponsive server. We'll see how things go tomorrow during normal business

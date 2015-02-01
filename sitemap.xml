@@ -37,10 +37,46 @@
         <lastmod>2015-01-21</lastmod>
     </url>
     <url>
-        <loc>http://preaction.github.io/blog/tag/yertl/index.html</loc>
+        <loc>http://preaction.github.io/blog/tag/mysql/index.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.3</priority>
+        <lastmod>2011-03-09</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/blog/tag/funny/index.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.3</priority>
+        <lastmod>2014-04-19</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/blog/tag/personal/index.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.3</priority>
+        <lastmod>2015-01-07</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/blog/tag/git/index.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.3</priority>
+        <lastmod>2014-06-14</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/blog/tag/etl/index.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
         <lastmod>2015-01-21</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/blog/tag/error/index.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.3</priority>
+        <lastmod>2013-04-15</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/blog/tag/openbsd/index.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.3</priority>
+        <lastmod>2014-04-19</lastmod>
     </url>
     <url>
         <loc>http://preaction.github.io/blog/tag/webgui/index.html</loc>
@@ -61,12 +97,6 @@
         <lastmod>2012-10-22</lastmod>
     </url>
     <url>
-        <loc>http://preaction.github.io/blog/tag/openbsd/index.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>0.3</priority>
-        <lastmod>2014-04-19</lastmod>
-    </url>
-    <url>
         <loc>http://preaction.github.io/blog/tag/chicago.pm/index.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
@@ -79,40 +109,10 @@
         <lastmod>2013-06-13</lastmod>
     </url>
     <url>
-        <loc>http://preaction.github.io/blog/tag/scripts/index.html</loc>
+        <loc>http://preaction.github.io/blog/tag/perl/index.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
-        <lastmod>2014-06-29</lastmod>
-    </url>
-    <url>
-        <loc>http://preaction.github.io/blog/tag/error/index.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>0.3</priority>
-        <lastmod>2013-04-15</lastmod>
-    </url>
-    <url>
-        <loc>http://preaction.github.io/blog/tag/software/index.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>0.3</priority>
-        <lastmod>2014-12-23</lastmod>
-    </url>
-    <url>
-        <loc>http://preaction.github.io/blog/tag/personal/index.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>0.3</priority>
-        <lastmod>2015-01-07</lastmod>
-    </url>
-    <url>
-        <loc>http://preaction.github.io/blog/tag/rants/index.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>0.3</priority>
-        <lastmod>2014-07-19</lastmod>
-    </url>
-    <url>
-        <loc>http://preaction.github.io/blog/tag/mysql/index.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>0.3</priority>
-        <lastmod>2011-03-09</lastmod>
+        <lastmod>2015-01-21</lastmod>
     </url>
     <url>
         <loc>http://preaction.github.io/blog/tag/sql/index.html</loc>
@@ -121,10 +121,10 @@
         <lastmod>2015-01-21</lastmod>
     </url>
     <url>
-        <loc>http://preaction.github.io/blog/tag/xs/index.html</loc>
+        <loc>http://preaction.github.io/blog/tag/scripts/index.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
-        <lastmod>2012-03-20</lastmod>
+        <lastmod>2014-06-29</lastmod>
     </url>
     <url>
         <loc>http://preaction.github.io/blog/tag/progress/index.html</loc>
@@ -133,25 +133,25 @@
         <lastmod>2015-01-07</lastmod>
     </url>
     <url>
-        <loc>http://preaction.github.io/blog/tag/perl/index.html</loc>
+        <loc>http://preaction.github.io/blog/tag/software/index.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
-        <lastmod>2015-01-21</lastmod>
+        <lastmod>2014-12-23</lastmod>
     </url>
     <url>
-        <loc>http://preaction.github.io/blog/tag/git/index.html</loc>
+        <loc>http://preaction.github.io/blog/tag/xs/index.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
-        <lastmod>2014-06-14</lastmod>
+        <lastmod>2012-03-20</lastmod>
     </url>
     <url>
-        <loc>http://preaction.github.io/blog/tag/funny/index.html</loc>
+        <loc>http://preaction.github.io/blog/tag/rants/index.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
-        <lastmod>2014-04-19</lastmod>
+        <lastmod>2014-07-19</lastmod>
     </url>
     <url>
-        <loc>http://preaction.github.io/blog/tag/etl/index.html</loc>
+        <loc>http://preaction.github.io/blog/tag/yertl/index.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
         <lastmod>2015-01-21</lastmod>
@@ -355,6 +355,246 @@
         <lastmod>2015-01-21</lastmod>
     </url>
     <url>
+        <loc>http://preaction.github.io/google94749e77314cfe18.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/index.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/index.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Flex/SwfConduit.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Perl/ActiveMQ-ETL.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Perl/Compare-Building-Modules.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Perl/Dependency-Injection.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Perl/Git-ReleaseRepo.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Perl/Intro-XS-CXX.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Perl/Mojo-Angular.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Perl/PSGI-Testing.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Perl/Scripting-Git.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/s5/index-osf.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/s5/index-xoxo.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/shjs/index.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/WebGUI/8-apps.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/theme/site/footer.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/theme/site/head_after.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/theme/site/header_after.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/theme/site/sidebar_before.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/theme/site/style.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Perl/Mojo-Angular/app-01.pl.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Perl/Mojo-Angular/app-02.pl.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Perl/Mojo-Angular/app-03.pl.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Perl/Mojo-Angular/app-04.pl.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Perl/Mojo-Angular/app-05.pl.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Perl/Mojo-Angular/app-06.pl.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Perl/Mojo-Angular/app-07.pl.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Perl/Mojo-Angular/app-08.pl.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Perl/Mojo-Angular/app-09.pl.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/Perl/Mojo-Angular/app-10.pl.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/remark/src/remark.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/s5/ui/s5-notes.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/shjs/doc/browsers.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/shjs/doc/documentation.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/shjs/doc/download.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/shjs/doc/gplv3.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/shjs/doc/license.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/shjs/doc/links.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/talks/shjs/doc/news.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+        <lastmod>2015-01-31</lastmod>
+    </url>
+    <url>
         <loc>http://preaction.github.io/food/index.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
@@ -367,13 +607,7 @@
         <lastmod>2015-01-11</lastmod>
     </url>
     <url>
-        <loc>http://preaction.github.io/food/tag/seafood/index.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>0.3</priority>
-        <lastmod>2015-01-08</lastmod>
-    </url>
-    <url>
-        <loc>http://preaction.github.io/food/tag/spicy/index.html</loc>
+        <loc>http://preaction.github.io/food/tag/egg/index.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
         <lastmod>2015-01-10</lastmod>
@@ -385,7 +619,13 @@
         <lastmod>2015-01-11</lastmod>
     </url>
     <url>
-        <loc>http://preaction.github.io/food/tag/egg/index.html</loc>
+        <loc>http://preaction.github.io/food/tag/seafood/index.html</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.3</priority>
+        <lastmod>2015-01-08</lastmod>
+    </url>
+    <url>
+        <loc>http://preaction.github.io/food/tag/spicy/index.html</loc>
         <changefreq>daily</changefreq>
         <priority>0.3</priority>
         <lastmod>2015-01-10</lastmod>

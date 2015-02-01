@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/webgui/index.html</id>
     <title>preaction</title>
-    <updated>2015-01-21T22:49:12Z</updated>
+    <updated>2015-01-31T19:57:41Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/webgui.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/webgui/index.html"/>
-    <generator version="0.034">Statocles</generator>
+    <generator version="0.035">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2011/05/20/webgui-8-status-report.html</id>
         <title>WebGUI 8 Status Report</title>
@@ -49,7 +49,7 @@ presentations, and they're served by a nice, fast, free host.</p>
             </p>
         ]]></content>
         <updated>2011-05-20T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f9446a9be30)" />
+        <category term="Statocles::Link=HASH(0x7f9f83e02e30)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/03/09/chi-saves-the-day.html</id>
@@ -87,7 +87,7 @@ I poll mysql for its process list.</p>
 
 <p>A pattern emerges: The load spikes and server goes unresponsive when this happens:</p>
 
-<p><img src="/blog/images/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.43.37%20PM.png" alt="" /></p>
+<p><img src="/images/blog/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.43.37%20PM.png" alt="" /></p>
 
 <p>This table shows 12 different processes are trying to update the same cache
 location (process ID 2-3, 5-8, 10, 12-13, 18, 23, and 26). Because of MyISAM's
@@ -195,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `chi__CHI_METACACHE` (
 
 <h2>Results</h2>
 
-<p><img src="/blog/images/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.20.55%20PM.png" alt="" /></p>
+<p><img src="/images/blog/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.20.55%20PM.png" alt="" /></p>
 
 <p>The server is stable again! Spikes do not turn into out-of-control loads and
 unresponsive server. We'll see how things go tomorrow during normal business
@@ -216,8 +216,8 @@ the day!</p>
             </p>
         ]]></content>
         <updated>2011-03-09T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f9446a52938)" />
-        <category term="Statocles::Link=HASH(0x7f9446a9c580)" />
+        <category term="Statocles::Link=HASH(0x7f9f83df1a98)" />
+        <category term="Statocles::Link=HASH(0x7f9f83e02160)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/03/05/whats-new-in-webgui-8.0-5-asset-helpers.html</id>
@@ -246,7 +246,7 @@ why you would read this blog, so instead I'm going to talk about how you can add
             </p>
         ]]></content>
         <updated>2011-03-05T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f9446a4e9c8)" />
+        <category term="Statocles::Link=HASH(0x7f9f83d29190)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/02/18/whats-new-in-webgui-8.0-4-chi-cache.html</id>
@@ -353,7 +353,7 @@ pretty and screenshots!</p>
             </p>
         ]]></content>
         <updated>2011-02-18T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f9446a54ec8)" />
+        <category term="Statocles::Link=HASH(0x7f9f85003238)" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2011/02/04/whats-new-in-webgui-8.0-3-upgrade-system.html</id>
@@ -542,7 +542,7 @@ it easier to evolve with it.</p>
             </p>
         ]]></content>
         <updated>2011-02-04T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f9446a5b6d8)" />
+        <category term="Statocles::Link=HASH(0x7f9f83d29310)" />
     </entry>
 </feed>
 
