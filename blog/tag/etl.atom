@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/etl/index.html</id>
     <title>preaction</title>
-    <updated>2015-01-31T19:57:41Z</updated>
+    <updated>2015-02-08T00:07:23Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/etl.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/etl/index.html"/>
     <generator version="0.035">Statocles</generator>
@@ -39,10 +39,10 @@ with SQL databases easy.</p>
             </p>
         ]]></content>
         <updated>2015-01-21T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f9f83e219e0)" />
-        <category term="Statocles::Link=HASH(0x7f9f83e21998)" />
-        <category term="Statocles::Link=HASH(0x7f9f83e21c68)" />
-        <category term="Statocles::Link=HASH(0x7f9f83e21d70)" />
+        <category term="Statocles::Link=HASH(0x7f97eefc6358)" />
+        <category term="Statocles::Link=HASH(0x7f97eefc68f8)" />
+        <category term="Statocles::Link=HASH(0x7f97eefc6a60)" />
+        <category term="Statocles::Link=HASH(0x7f97eefc6d30)" />
     </entry>
 </feed>
 
