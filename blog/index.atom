@@ -1,11 +1,40 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/index.html</id>
+    <id>http://preaction.github.io</id>
     <title>preaction</title>
-    <updated>2015-02-08T00:07:22Z</updated>
+    <updated>2015-02-13T21:07:47Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/index.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/index.html"/>
-    <generator version="0.035">Statocles</generator>
+    <link rel="alternate" href="http://preaction.github.io"/>
+    <generator version="0.036">Statocles</generator>
+    <entry>
+        <id>http://preaction.github.io/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html</id>
+        <title>Mojolicious Triumphs Over Legacy Code</title>
+        <link rel="alternate" href="http://preaction.github.io/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html" />
+        <content type="html"><![CDATA[
+            <p>I got a text at 8:00am:</p>
+
+<blockquote>
+  <p>"Hey, can you jump on a conference call?"</p>
+</blockquote>
+
+<p>Groggy and disoriented, I blearily type the conference line and enter my
+passcode, followed by the pound or hash sign. At the tone, I would be the 6th
+person to enter the conference. Tone.</p>
+
+<blockquote>
+  <p>"The app is down, and trading has stopped."</p>
+</blockquote>
+
+                <p><a href="http://preaction.github.io/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html#section-2">Continue reading...</a></p>
+            <p>Tags:
+                <a href="/blog/tag/mojolicious">mojolicious</a>
+                <a href="/blog/tag/perl">perl</a>
+            </p>
+        ]]></content>
+        <updated>2015-02-13T20:55:21Z</updated>
+        <category term="mojolicious" />
+        <category term="perl" />
+    </entry>
     <entry>
         <id>http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html</id>
         <title>Managing SQL Data with Yertl</title>
@@ -32,17 +61,17 @@ with SQL databases easy.</p>
 
                 <p><a href="http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html#section-2">Continue reading...</a></p>
             <p>Tags:
-                <a href="/blog/tag/perl/index.html">perl</a>
-                <a href="/blog/tag/sql/index.html">sql</a>
-                <a href="/blog/tag/etl/index.html">etl</a>
-                <a href="/blog/tag/yertl/index.html">yertl</a>
+                <a href="/blog/tag/perl">perl</a>
+                <a href="/blog/tag/sql">sql</a>
+                <a href="/blog/tag/etl">etl</a>
+                <a href="/blog/tag/yertl">yertl</a>
             </p>
         ]]></content>
-        <updated>2015-01-21T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefc6358)" />
-        <category term="Statocles::Link=HASH(0x7f97eefc68f8)" />
-        <category term="Statocles::Link=HASH(0x7f97eefc6a60)" />
-        <category term="Statocles::Link=HASH(0x7f97eefc6d30)" />
+        <updated>2015-01-21T22:24:15Z</updated>
+        <category term="perl" />
+        <category term="sql" />
+        <category term="etl" />
+        <category term="yertl" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html</id>
@@ -70,11 +99,11 @@ me to use...</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/software/index.html">software</a>
+                <a href="/blog/tag/software">software</a>
             </p>
         ]]></content>
-        <updated>2014-12-23T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefc4be0)" />
+        <updated>2014-12-23T06:57:07Z</updated>
+        <category term="software" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html</id>
@@ -105,11 +134,11 @@ lines everywhere.</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/perl/index.html">perl</a>
+                <a href="/blog/tag/perl">perl</a>
             </p>
         ]]></content>
-        <updated>2014-10-26T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefc4790)" />
+        <updated>2014-10-26T18:45:20Z</updated>
+        <category term="perl" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html</id>
@@ -139,63 +168,11 @@ new programming language. I didn't realize my mistake until it was too late.</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/rants/index.html">rants</a>
+                <a href="/blog/tag/rants">rants</a>
             </p>
         ]]></content>
         <updated>2014-07-19T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefc43b8)" />
-    </entry>
-    <entry>
-        <id>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</id>
-        <title>perlsloc - Count Perl Source Lines with Perl::Tidy</title>
-        <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html" />
-        <content type="html"><![CDATA[
-            <p>While spending some time putting together my own <a href="https://github.com/preaction/dot-files/blob/master/perltidyrc">perltidyrc
-file</a>, I became
-intimately familiar with the <a href="https://metacpan.org/pod/distribution/Perl-Tidy/bin/perltidy">Perl::Tidy
-documentation</a>.</p>
-
-<p>One day, I decided to find out exactly how much code I was maintaining. Since
-perltidy can strip comments and POD, and also normalize the source code to make
-a fair measurement, it's a perfect tool for counting Source Lines of Code
-(SLOC).</p>
-
-<p>Here's a small shell script using <code>ack</code>, <code>perltidy</code>, <code>xargs</code>, and <code>wc</code> to count
-the source lines of code in any number of directories.</p>
-
-<pre><code>ack -f --perl $@ | xargs -L 1 perltidy --noprofile --delete-pod --mbl=0 --standard-output | wc -l
-</code></pre>
-
-<p><code>ack -f</code> lists the files that would be searched, and <code>--perl</code> searches Perl
-files, so we get ack's heuristics for finding Perl files. <code>xargs -L 1</code> invokes
-the following command for every 1 line of input. The <code>perltidy</code> command strips
-the pod and tightens up the whitespace and writes the result to stdout, which
-<code>wc -l</code> will then count, line by line.</p>
-
-<p>So, as an example, the current <a href="http://metacpan.org/release/Statocles">Statocles</a> release
-has 50% more test lines than source lines:</p>
-
-<pre><code>» perlsloc lib bin
-    1034
-» perlsloc t
-    1633
-</code></pre>
-
-                <ul>
-                    <li><a href="http://blogs.perl.org/users/preaction/2014/06/perlsloc---count-perl-source-lines-with-perltidy.html">
-                        Continue reading <em>perlsloc - Count Perl Source Lines with Perl::Tidy</em> on blogs.perl.org...
-                    </a></li>
-                    <li><a href="http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html#section-2">
-                        Continue reading on preaction
-                    </a></li>
-                </ul>
-            <p>Tags:
-                <a href="/blog/tag/scripts/index.html">scripts</a>
-            </p>
-        ]]></content>
-        <updated>2014-06-29T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefc3f98)" />
+        <category term="rants" />
     </entry>
 </feed>
 

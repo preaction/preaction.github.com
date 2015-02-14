@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/theme/css/normalize.css" />
+        <link rel="stylesheet" href="/theme/css/skeleton.css" />
+        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <title>preaction</title>
+        <link rel="alternate" href="/blog/index.atom" type="application/atom+xml" />
+        <link rel="alternate" href="/blog/index.rss" type="application/rss+xml" />
+        
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="container">
+                    <a class="brand" href="/">preaction</a>
+                    <ul>
+                        <li>
+                            <a href="/index.html">Blog</a>
+                        </li>
+                        <li>
+                            <a href="/Statocles">Statocles</a>
+                        </li>
+                        <li>
+                            <a href="/ETL-Yertl">Yertl</a>
+                        </li>
+                        <li>
+                            <a href="/presentations.html">Presentations</a>
+                        </li>
+                        <li>
+                            <a href="/food">Food</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+        </header>
+        <div class="main container">
+            
+<div class="row">
+
+    <div class="nine columns">
+        <main>
+
+            <article>
+                <header>
+                    <h1><a href="/blog/2011/01/08/whats-new-in-webgui-8.0-1-psgi-plack.html">What's new in WebGUI 8.0 #1 - PSGI/Plack</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/webgui" rel="tag">webgui</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2014-06-21">
+                            Posted on 2014-06-21
+                        </time>
+                            by preaction
+                        </p>
+                    </aside>
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2011/01/whats-new-in-webgui-80-1---psgiplack.html">
+                                <em>What's new in WebGUI 8.0 #1 - PSGI/Plack</em> on blogs.perl.org.
+                            </a>
+                    </p>
+                </header>
+
+                <h2>Overview</h2>
+
+<p>On September 9, 2009, WebGUI 8 was announced. Since it was the first major API
+change since WebGUI 7, we started planning WebGUI 8 with high expectations.
+Over the course of the last 16 months:</p>
+
+<ul>
+<li>We've adopted PSGI/Plack as our platform, enabling us to work in any HTTP
+environment.</li>
+<li>We've made massive changes to the Asset system to make them easier to build.</li>
+<li>We've reworked Auth to make it easier to add Twitter and Facebook
+authentication for your users.</li>
+<li>We've rebuilt the upgrade system to be easier for developers and system
+administrators.</li>
+<li>There is a new caching system enabling memcached and local memory caches.</li>
+<li>The entire content management interface was rebuilt from scratch with the
+latest buzzword-worthy technologies.</li>
+<li>Assets are now based on Moose, the new object-oriented system for Perl.</li>
+<li>We've created WebGUI::FormBuilder, a way to make introspect-able forms.</li>
+<li>We're migrating to InnoDB to take advantage of transactions and foreign key
+constraints.</li>
+<li>We're making a brand-new WRE based on Nginx, and Server::Starter for more
+efficient resource usage and no-downtime restarts.</li>
+</ul>
+
+<p>And these are just the major features. We've cleaned up and straightened out a
+lot of the crooked parts of programming in WebGUI, and we have plans to do even
+more. We've greatly improved the flexibility of WebGUI without compromising any
+more backward compatibility.</p>
+
+<h2>Ambition is the first step</h2>
+
+<p>Unfortunately, our ambitious goals have taken longer than we thought. We had
+promised a WebGUI 8.0 Beta in January, and I have to say that isn't possible.
+The way things look right now, WebGUI 8.0 will be ready this summer.</p>
+
+<p>So, as atonement and apology, I offer this series of bi-weekly blog posts about
+all the new stuff in WebGUI 8.</p>
+
+<h2>PSGI / Plack</h2>
+
+<p>The most exciting change in WebGUI 8 is the move to PSGI using Plack. WebGUI is
+no longer just an Apache/mod_perl application, though it can certainly still
+run under Apache/mod_perl. Now, WebGUI can also run under Starman, a
+high-performance web server specifically for PSGI applications. WebGUI can run
+inside POE. WebGUI can once again run as CGI. We are no longer tied to one way
+of deploying WebGUI, and that greater flexibility will allow for better
+performance for your specific need.</p>
+
+<pre><code>#!/usr/bin/env perl
+# webgui.cgi - Run WebGUI as a CGI application
+use lib 'lib';
+use Plack::Loader;
+use Plack::Handler::CGI;
+$ENV{WEBGUI_CONFIG} = "www.example.com.conf";
+my $app = Plack::Util::load_psgi("share/site.psgi");
+Plack::Handler::CGI-&gt;new-&gt;run($app);
+</code></pre>
+
+<p>Since WebGUI is just a PSGI application, it can also run alongside any other
+PSGI applications. WebGUI and Catalyst can work together on the same site.</p>
+
+<p>For example, here's WebGUI and Pod::Browser running together. Pod::Browser
+takes /doc and serves the WebGUI POD, every other request goes to WebGUI.</p>
+
+<pre><code># pod.psgi
+use lib 'lib';
+use Plack::Builder;
+use Plack::Util;
+
+BEGIN {
+    $ENV{POD_BROWSER_CONFIG} = "pod_browser.json";
+}
+use Pod::Browser;
+use Catalyst::Engine::PSGI;
+Pod::Browser-&gt;setup_engine('PSGI');
+
+$ENV{WEBGUI_CONFIG} = "core.conf";
+use WebGUI;
+
+builder {
+    mount "/doc" =&gt; sub { Pod::Browser-&gt;run(@_); };
+    mount "/" =&gt; Plack::Util::load_psgi("share/site.psgi");
+};
+
+# pod_browser.json
+{
+    "Controller::Root" : {
+        "self" : 1,
+        "inc" : 1,
+        "namespaces" : [ "WebGUI*" ]
+    }
+}
+</code></pre>
+
+<p>For developers, Plack opens up new ways of building WebGUI sites. Instead of
+WebGUI::URL handlers, now we use Plack middleware to handle such tasks as:</p>
+
+<ul>
+<li>Opening the WebGUI::Session</li>
+<li>Handling /extras and /uploads</li>
+<li>Showing the maintenance page, if necessary</li>
+<li>Handling the wgaccess files for uploads permissions</li>
+<li>Showing debugging information and performance indicators</li>
+</ul>
+
+<p>By using more flexible tools, we can write more reusable code. You can write a
+Plack middleware for WebGUI that will work in your other Plack applications,
+and WebGUI can take advantage of the middleware out there on CPAN. </p>
+
+<p>Plack middleware currently only replaces URL handlers, but someday we can
+replace WebGUI::Content handlers as well. WebGUI's pieces can be mixed and
+matched to create your own applications without using parts of WebGUI that you
+don't need.</p>
+
+<p>By switching to PSGI/Plack, we've made WebGUI easier to deploy and easier to
+develop.</p>
+
+<p>Next time, I'll talk about the improvements to the WebGUI Auth API.</p>
+
+
+
+            </article>
+        </main>
+
+        <ul class="pager">
+            <li class="prev">
+                <a class="button disabled"
+                    rel="next" href=""
+                >
+                    &larr; Older
+                </a>
+            </li>
+            <li class="next">
+                <a class="button button-primary"
+                    rel="prev" href="/blog/page/6"
+                >
+                    Newer &rarr;
+                </a>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="three columns sidebar">
+        
+        <h1>Tags</h1>
+        <ul class="list-inline">
+            <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
+            <li><a href="/blog/tag/error">error</a></li>
+            <li><a href="/blog/tag/etl">etl</a></li>
+            <li><a href="/blog/tag/funny">funny</a></li>
+            <li><a href="/blog/tag/git">git</a></li>
+            <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
+            <li><a href="/blog/tag/moose">moose</a></li>
+            <li><a href="/blog/tag/mysql">mysql</a></li>
+            <li><a href="/blog/tag/openbsd">openbsd</a></li>
+            <li><a href="/blog/tag/perl">perl</a></li>
+            <li><a href="/blog/tag/personal">personal</a></li>
+            <li><a href="/blog/tag/progress">progress</a></li>
+            <li><a href="/blog/tag/rants">rants</a></li>
+            <li><a href="/blog/tag/scripts">scripts</a></li>
+            <li><a href="/blog/tag/software">software</a></li>
+            <li><a href="/blog/tag/sql">sql</a></li>
+            <li><a href="/blog/tag/webgui">webgui</a></li>
+            <li><a href="/blog/tag/xs">xs</a></li>
+            <li><a href="/blog/tag/yertl">yertl</a></li>
+        </ul>
+        <h1>Feeds</h1>
+        <ul class="list-inline">
+            <li>
+                <a href="/blog/index.atom" rel="alternate" type="application/atom+xml">
+                    Atom
+                </a>
+            </li>
+            <li>
+                <a href="/blog/index.rss" rel="alternate" type="application/rss+xml">
+                    RSS
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+        </div>
+        <footer>
+            
+            <div class="container tagline">
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://www.perl.org">Powered by Perl</a>
+            </div>
+        </footer>
+    </body>
+</html>

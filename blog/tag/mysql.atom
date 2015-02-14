@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/blog/tag/mysql/index.html</id>
+    <id>http://preaction.github.io/blog/tag/mysql</id>
     <title>preaction</title>
-    <updated>2015-02-08T00:07:23Z</updated>
+    <updated>2015-02-13T21:07:47Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/mysql.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/blog/tag/mysql/index.html"/>
-    <generator version="0.035">Statocles</generator>
+    <link rel="alternate" href="http://preaction.github.io/blog/tag/mysql"/>
+    <generator version="0.036">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2011/03/09/chi-saves-the-day.html</id>
         <title>CHI Saves The Day</title>
@@ -166,13 +166,13 @@ the day!</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/webgui/index.html">webgui</a>
-                <a href="/blog/tag/mysql/index.html">mysql</a>
+                <a href="/blog/tag/webgui">webgui</a>
+                <a href="/blog/tag/mysql">mysql</a>
             </p>
         ]]></content>
-        <updated>2011-03-09T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefb4a78)" />
-        <category term="Statocles::Link=HASH(0x7f97eefbd3f8)" />
+        <updated>2014-06-21T01:25:00Z</updated>
+        <category term="webgui" />
+        <category term="mysql" />
     </entry>
 </feed>
 

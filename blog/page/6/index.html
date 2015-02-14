@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/theme/css/normalize.css" />
+        <link rel="stylesheet" href="/theme/css/skeleton.css" />
+        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <title>preaction</title>
+        <link rel="alternate" href="/blog/index.atom" type="application/atom+xml" />
+        <link rel="alternate" href="/blog/index.rss" type="application/rss+xml" />
+        
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="container">
+                    <a class="brand" href="/">preaction</a>
+                    <ul>
+                        <li>
+                            <a href="/index.html">Blog</a>
+                        </li>
+                        <li>
+                            <a href="/Statocles">Statocles</a>
+                        </li>
+                        <li>
+                            <a href="/ETL-Yertl">Yertl</a>
+                        </li>
+                        <li>
+                            <a href="/presentations.html">Presentations</a>
+                        </li>
+                        <li>
+                            <a href="/food">Food</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+        </header>
+        <div class="main container">
+            
+<div class="row">
+
+    <div class="nine columns">
+        <main>
+
+            <article>
+                <header>
+                    <h1><a href="/blog/2011/03/09/chi-saves-the-day.html">CHI Saves The Day</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/webgui" rel="tag">webgui</a>
+                        <a href="/blog/tag/mysql" rel="tag">mysql</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2014-06-21">
+                            Posted on 2014-06-21
+                        </time>
+                            by preaction
+                        </p>
+                    </aside>
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2011/03/chi-saves-the-day.html">
+                                <em>CHI Saves The Day</em> on blogs.perl.org.
+                            </a>
+                    </p>
+                </header>
+
+                <h2>The Server Is Down</h2>
+
+<ol>
+<li>No it isn't, I didn't get paged.</li>
+<li>Wait a minute, why didn't I get paged?</li>
+<li>FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU--</li>
+<li>CHALLENGE ACCEPTED</li>
+</ol>
+
+<h2>Diagnosis</h2>
+
+<p>The client reported that the site sometimes took more than a minute to load.
+Doesn't respond very slowly to me, and the pager is only primed to ping me if
+there is a sustained downtime (hiccups are not something I want to wake up for
+every night at 3:00am).</p>
+
+<p>Strangely, load hovered around 7 most of the time, only spiking to 13 every
+few minutes. With a 16-core processor, this was well within operating
+parameters, if just a little worrisome. Nothing in the log files.</p>
+
+<p>Oops, now I get a slow page load. Takes 30 seconds to load a page. Refresh
+again, and the page loads just fine. Clear browser cache, and the page still
+loads just fine.</p>
+
+<p>top kept MySQL at the top of the CPU list. Not surprising, as this server is
+the master database server for a two node cluster. So I keep an eye on top as
+I poll mysql for its process list.</p>
+
+<p>A pattern emerges: The load spikes and server goes unresponsive when this happens:</p>
+
+<p><img src="/images/blog/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.43.37%20PM.png" alt="" /></p>
+
+<p>This table shows 12 different processes are trying to update the same cache
+location (process ID 2-3, 5-8, 10, 12-13, 18, 23, and 26). Because of MyISAM's
+table-level lock, any request to get from the cache has to wait for 12 REPLACE
+INTO requests to complete. They've already taken 1 second, if each replace
+takes 2 seconds, that's 24 seconds of non-responsive website.</p>
+
+<p>These 12 processes all saw that the cache item had expired and are trying to
+update it. This is called a "cache stampede". Only one of them needs to update
+the cache, the rest are just wasting resources. Worse, they're doing all the
+work to update the cache, which is much more expensive than getting the value
+from the cache. If it's expensive enough, the site goes down hard.</p>
+
+<h2>Management</h2>
+
+<p>How can we stop the cache stampede? One way is to mildly randomize the actual
+expiration date when checking if the cache is expired:</p>
+
+<pre><code>sub is_expired {
+    my ( $self, $key ) = @_;
+    my $expires = $self-&gt;get_expires( $key );
+    # Randomize the expiration by up to 5% +/-
+    # by first removing 5% and then adding 0-10%
+    $expires = $expires - ( $expires * 0.05 ) + ( $expires * 0.10 * rand );
+    # Compare against now
+    return $expires &gt; time;
+}
+</code></pre>
+
+<p>In this very simple case, if you are within 5% of the expiration time, you
+have a chance to have an expired cache item. The chance grows as time passes,
+reaching 50% at the actual expiration time, and 100% at 5% past the expiration
+time.</p>
+
+<p>Rather than add this expiration variance to our custom database cache, I
+instead opted to move this site over to CHI, which has this protection
+built-in.</p>
+
+<pre><code>my $cache   = CHI-&gt;new(
+    driver              =&gt; 'DBI',
+    namespace           =&gt; 'localhost',
+    dbh                 =&gt; $dbh,
+    expires_variance    =&gt; '0.10',
+);
+</code></pre>
+
+<p>This stops the cache stampede, but we're still hitting the database a lot.
+Remember we have two web nodes hitting one database node. The fewer database
+hits we make, the better performance we can get without having to ask for more
+hardware from the client (which takes time, and forms, and more forms, and
+meetings, and forms, and more meetings, and probably some forms).</p>
+
+<p>Because this is a distributed system, we need a distributed, synchronized
+cache. We cannot use memcached, as WebGUI 7.x does not support it (but WebGUI
+8 does). So for now we must use the database as our synchronized cache, but
+what if we put a faster, local cache in front of the slower, synchronized
+cache?</p>
+
+<p>CHI has an awesome way to do this: Add an l1_cache</p>
+
+<pre><code>my $cache   = CHI-&gt;new(
+    driver              =&gt; 'DBI',
+    namespace           =&gt; 'localhost',
+    dbh                 =&gt; $dbh,
+    expires_variance    =&gt; '0.10',
+    l1_cache            =&gt; {
+        driver      =&gt; 'FastMmap',
+        root_dir    =&gt; '/tmp/cache',
+    },
+);
+</code></pre>
+
+<p>Now we're using FastMmap to share an in-memory cache between our web
+processes, and if the L1 cache is expired or missing, we look for content from
+the DBI cache. If that cache is missing or expired, we have a cache miss and
+have to recompute the value.</p>
+
+<h2>Hurdles</h2>
+
+<p>I had to install the DB tables myself, which was not difficult, just
+undocumented (bug report filed). MySQL only allows a 1000-byte key, and the
+CHI::Driver::DBI tries to create a 600-character key. This is fine in the
+Latin-1 charset, but MySQL complains if you're using UTF-8 by default.</p>
+
+<p>The driver also tries to create a TEXT field to hold the cache value, but
+MySQL expects a text field to hold characters in a known character set. After
+noticing that my cache values were empty, I changed to a LONGBLOB.</p>
+
+<p>The full create table statements are below:</p>
+
+<pre><code>-- primary cache table: chi_&lt;namespace&gt; --
+CREATE TABLE IF NOT EXISTS `chi_localhost` (
+    `key` VARCHAR(255),
+    `value` LONGBLOB,
+    PRIMARY KEY ( `key` )
+);
+
+-- CHI metacache table --
+CREATE TABLE IF NOT EXISTS `chi__CHI_METACACHE` (
+    `key` VARCHAR(255),
+    `value` LONGBLOB,
+    PRIMARY KEY ( `key` )
+);
+</code></pre>
+
+<h2>Results</h2>
+
+<p><img src="/images/blog/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.20.55%20PM.png" alt="" /></p>
+
+<p>The server is stable again! Spikes do not turn into out-of-control loads and
+unresponsive server. We'll see how things go tomorrow during normal business
+hours (the peak time for this site), but right now it looks like CHI has saved
+the day!</p>
+
+
+
+            </article>
+            <article>
+                <header>
+                    <h1><a href="/blog/2011/03/05/whats-new-in-webgui-8.0-5-asset-helpers.html">What's New in WebGUI 8.0 #5 - Asset Helpers</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/webgui" rel="tag">webgui</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2014-06-21">
+                            Posted on 2014-06-21
+                        </time>
+                            by preaction
+                        </p>
+                    </aside>
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2011/03/whats-new-in-webgui-80-5---asset-helpers.html">
+                                <em>What's New in WebGUI 8.0 #5 - Asset Helpers</em> on blogs.perl.org.
+                            </a>
+                    </p>
+                </header>
+
+                <p>By far the biggest change we've made in WebGUI 8 is the new Admin Console.
+Though parts of it may look familiar, it has been completely rewritten from
+the ground up to be a flexible, extensible, responsive JavaScript application
+making calls to JSON services in Perl.</p>
+
+<p>I could talk about how to use the admin interface, but I don't think that's
+why you would read this blog, so instead I'm going to talk about how you can add functionality to it.</p>
+
+
+                    <p><a href="/blog/2011/03/05/whats-new-in-webgui-8.0-5-asset-helpers.html#section-2">Continue reading What's New in WebGUI 8.0 #5 - Asset Helpers...</a></p>
+
+            </article>
+            <article>
+                <header>
+                    <h1><a href="/blog/2011/02/18/whats-new-in-webgui-8.0-4-chi-cache.html">What's New in WebGUI 8.0 #4 -- CHI Cache</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/webgui" rel="tag">webgui</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2014-06-21">
+                            Posted on 2014-06-21
+                        </time>
+                            by preaction
+                        </p>
+                    </aside>
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2011/02/whats-new-in-webgui-80-4----chi-cache.html">
+                                <em>What's New in WebGUI 8.0 #4 -- CHI Cache</em> on blogs.perl.org.
+                            </a>
+                    </p>
+                </header>
+
+                <p>Caching is a tricky business. Having just one kind of cache won't work, because
+the production environment will greatly determine the most efficient caching
+system. A distributed production environment would be best-served with a
+distributed cache. A smaller, single-server environment could use a simple
+shared memory cache.</p>
+
+<p>Enter Jonathan Swartz's <a href="https://metacpan.org/pod/CHI">CHI</a> module, the greatest Perl module to provide a
+unified caching interface. CHI is the DBI of caching: It presents an API, and
+delegates to CHI::Driver modules to perform the heavy lifting. It
+provides a layered caching system, allowing you to have a faster, more
+volatile cache in front of a slower, more persistent cache. It also provides a
+variable expiration time, preventing a "miss stampede" where all processes try
+to recompute an expired cache item at the same time.</p>
+
+<p>By integrating CHI cache into WebGUI, we have the ability to provide any
+caching strategy that CHI can provide. We get Memcached, FastMmap, and DBI
+drivers (and more drivers can be written).</p>
+
+<p>I wrote a CHI cache driver for WebGUI 7.9 that we've been using on many of our
+shared hosting servers. The performance increase using FastMmap through CHI 
+over the old Storable+DBI cache module is dramatic: 2-5 times faster with
+CHI and FastMmap.</p>
+
+<h2>Using CHI in WebGUI</h2>
+
+<p>The fewer wrappers that WebGUI has around CPAN modules we use, the less code I
+have to write, and the more features will be available to our users without
+having to change WebGUI to use them.</p>
+
+<p>To that end, you can write a section of the configuration file that gets
+passed directly to CHI->new. Some massaging occurs to make sure a DBI cache
+driver gets the right $dbh, but otherwise you can fully configure CHI directly
+from the WebGUI config file:</p>
+
+<pre><code># The new default cache for WebGUI, FastMmap
+{
+     cache : {
+         driver : 'FastMmap',
+         root_dir : '/tmp/WebGUICache',
+         expires_variance : 0.5
+     }
+ }
+
+ # Set up a memcached cache with local memory in front
+ {
+     cache : {
+         driver : 'Memcached::libmemcached',
+         servers : [ '10.0.0.100:11211', '10.0.0.110:11211' ],
+         l1_cache : {
+            driver : 'Memory'
+         }
+     }
+ }
+</code></pre>
+
+<p>When you want to use the cache in your code, you can get a CHI object with
+$session->cache. CHI's interface is sufficiently simple, with some fun tricks:</p>
+
+<pre><code>my $cache = $session-&gt;cache; # as read
+my $value = $cache-&gt;get('cache_key');
+if ( !$value ) {
+    $value = compute_value();
+    $cache-&gt;set( 'cache_key', $value );
+}
+
+# Combine get and set with intelligence
+my $value = $cache-&gt;compute( 'cache_key', \&amp;compute_value );
+</code></pre>
+
+<h2>Future Plans</h2>
+
+<p>With a single unified cache that performs well and layers like CHI, we can
+take our current stow and scratch APIs and move them to the cache. In the case
+of stow, we remove a redundant API. In the case of scratch, we remove database
+hits.</p>
+
+<p>We've also been exploring cache-only sessions, instead of updating the session
+every time a page is requested, updating the cache only, flushing to the
+database (or not). The fewer DB calls we make per page, the better performance
+will be.</p>
+
+<p>Special thanks go out to Jonathan Swartz for such a wonderful solution.</p>
+
+<p>Stay tuned for next time when I explore our new Admin Interface. Lots of
+pretty and screenshots!</p>
+
+
+
+            </article>
+            <article>
+                <header>
+                    <h1><a href="/blog/2011/02/04/whats-new-in-webgui-8.0-3-upgrade-system.html">What's New in WebGUI 8.0 #3: Upgrade System</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/webgui" rel="tag">webgui</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2014-06-21">
+                            Posted on 2014-06-21
+                        </time>
+                            by preaction
+                        </p>
+                    </aside>
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2011/02/whats-new-in-webgui-80-3-upgrade-system.html">
+                                <em>What's New in WebGUI 8.0 #3: Upgrade System</em> on blogs.perl.org.
+                            </a>
+                    </p>
+                </header>
+
+                <h2>Following The Path</h2>
+
+<p>If you installed WebGUI 0.9.0 back in August of 2001 (the first public 
+release), you've had a stable upgrade path through WebGUI 7.10.8 (January
+2011) and beyond. Plainblack.com has been through every upgrade for the last
+10 years, a shining bastion to our upgradability.</p>
+
+<p>A WebGUI 7.10 user would not even recognize a WebGUI 6.0 database, much less
+the database used by the 1.x series, but slowly, gradually, our upgrade system
+brought new features to every WebGUI site that wanted them.</p>
+
+<h2>The Ancient Way</h2>
+
+<p>Our old upgrade system was quite simple:</p>
+
+<pre><code>docs/upgrade_2.9.0-3.0.0.pl
+docs/upgrade_3.0.0-3.0.1.sql
+docs/upgrade_3.0.0-3.0.1.pl
+</code></pre>
+
+<p>Our upgrade.pl script would check for docs/upgrade_*, compare version numbers,
+and then execute the .sql and .pl scripts in order until there were no more
+upgrades left.</p>
+
+<p>Because each .pl script was executed individually, there was a considerable
+amount of boilerplate in each script (123 lines). Because there was only one script per
+version, some scripts could get quite long. We had conventions to manage these
+limitations, but it was still a bit of a mind-twist to write an upgrade
+routine.</p>
+
+<p>Later, when we moved to simultaneous beta and stable trees, it became even
+more difficult to manage these huge upgrade scripts. Collecting the new
+features from the beta tree to apply to the stable tree was a time-consuming
+manual task that some poor coder had to perform, back hunched over a dimly-lit
+screen in the wee hours of the night, testing and re-testing the upgrade to
+make sure stable lived up to its expectations.</p>
+
+<p>Though our upgrade system had performed admirably, it was time for a fresh
+look at the problem.</p>
+
+<h2>The Modern Vision</h2>
+
+<p>The individual files for upgrades was working quite well, but didn't go far 
+enough. Our new upgrade system has one file per upgrade step. Each sub from an
+old upgrade script would be one file in the new upgrade system. What's more,
+additional file types would be supported:</p>
+
+<pre><code>$ ls share/upgrades/7.10.4-8.0.0/
+addNewAdminConsole.pl
+admin_console.wgpkg
+facebook_auth.sql
+migrateToNewCache.pl
+moveMaintenance.pl
+moveRequiredProfileFields.pl
+</code></pre>
+
+<p>So now, instead of a single file for an upgrade, we have an entire directory.
+In this directory, the .pl files are scripts to be run, the .wgpkg files are
+WebGUI assets to add to the site, the .sql files are SQL commands to run, and
+any .txt files will be shown as a confirmation message to the user for gotchas
+like "All your users have been logged out as a result of this upgrade. Deal
+with it.".</p>
+
+<p>So now, if you want to add your own custom upgrade routine, you just add
+another file to the directory which means less worrying about conflicts. When
+we need to build another new stable version release, we can just move the
+unique upgrade files from beta to the new upgrade.</p>
+
+<p>The best part of the new upgrade system is how the .pl scripts are written.
+When you are in a .pl, you have a bunch of sugar to make the basic tasks much
+easier.</p>
+
+<pre><code># Old upgrade routine. Just another day in a session
+sub migrateToNewCache {
+    my $session = shift;
+    print "\tMigrating to new cache " unless $quiet;
+
+    use File::Path;
+    rmtree "../../lib/WebGUI/Cache";
+    unlink "../../lib/WebGUI/Workflow/Activity/CleanDatabaseCache.pm";
+    unlink "../../lib/WebGUI/Workflow/Activity/CleanFileCache.pm";
+
+    my $config = $session-&gt;config;
+    $config-&gt;set("cache", {
+        driver              =&gt; 'FastMmap',
+        expires_variance   =&gt; '0.10',
+        root_dir            =&gt; '/tmp/WebGUICache',
+    });
+
+    $config-&gt;set("hotSessionFlushToDb", 600);
+    $config-&gt;delete("disableCache");
+    $config-&gt;delete("cacheType");
+    $config-&gt;delete("fileCacheRoot");
+    $config-&gt;deleteFromArray("workflowActivities/None", "WebGUI::Workflow::Activity::CleanDatabaseCache");
+    $config-&gt;deleteFromArray("workflowActivities/None", "WebGUI::Workflow::Activity::CleanFileCache");
+
+    my $db = $session-&gt;db;
+    $db-&gt;write("drop table cache");
+    $db-&gt;write("delete from WorkflowActivity where className in ('WebGUI::Workflow::Activity::CleanDatabaseCache','WebGUI::Workflow::Activity::CleanFileCache')");
+    $db-&gt;write("delete from WorkflowActivityData where activityId in  ('pbwfactivity0000000002','pbwfactivity0000000022')");
+
+    print "DONE!\n" unless $quiet;
+}
+</code></pre>
+
+<p>If you're familiar with WebGUI session, this is pretty standard, but still
+much boilerplate and convention. The new scripts remove boilerplate and
+enforce what was once merely convention.</p>
+
+<pre><code># New upgrade routine. migrateToNewCache.pl
+use WebGUI::Upgrade::Script;
+use Module::Find;
+
+start_step "Migrating to new cache";
+
+rm_lib
+    findallmod('WebGUI::Cache'),
+    'WebGUI::Workflow::Activity::CleanDatabaseCache',
+    'WebGUI::Workflow::Activity::CleanFileCache',
+;
+
+config-&gt;set("cache", {
+    'driver'            =&gt; 'FastMmap',
+    'expires_variance'  =&gt; '0.10',
+    'root_dir'          =&gt; '/tmp/WebGUICache',
+});
+
+config-&gt;set('hotSessionFlushToDb', 600);
+config-&gt;delete('disableCache');
+config-&gt;delete('cacheType');
+config-&gt;delete('fileCacheRoot');
+config-&gt;deleteFromArray('workflowActivities/None', 'WebGUI::Workflow::Activity::CleanDatabaseCache');
+config-&gt;deleteFromArray('workflowActivities/None', 'WebGUI::Workflow::Activity::CleanFileCache');
+
+sql 'DROP TABLE IF EXISTS cache';
+sql 'DELETE FROM WorkflowActivity WHERE className in (?,?)',
+    'WebGUI::Workflow::Activity::CleanDatabaseCache',
+    'WebGUI::Workflow::Activity::CleanFileCache',
+;
+sql 'DELETE FROM WorkflowActivityData WHERE activityId IN (?,?)',
+    'pbwfactivity0000000002',
+    'pbwfactivity0000000022',
+;
+
+done;
+</code></pre>
+
+<p>The first thing we do in our new upgrade script is use
+WebGUI::Upgrade::Script. Now, instead of using the session for everything, we
+have subs imported for various tasks. This means that many times we can run an
+entire upgrade script without opening a WebGUI session, or creating a version
+tag unnecessarily.</p>
+
+<p>If we do need a session, or a version tag, they will be automatically assigned
+relevant information describing what we're doing. When we're done, they will
+be automatically cleaned up and committed. What once was done with
+boilerplate, and subject to random deletion or subversion, is now enforced
+policy.</p>
+
+<p>In all other respects, a WebGUI upgrade script is a Perl script. You can add
+modules, write subroutines, and do anything necessary to move WebGUI into the
+future.</p>
+
+<p>The Internet is always evolving. With the WebGUI 8 upgrade system, we've made 
+it easier to evolve with it.</p>
+
+<p>Stay tuned for next time where I'll show off our CHI-based caching system.</p>
+
+
+
+            </article>
+            <article>
+                <header>
+                    <h1><a href="/blog/2011/01/22/whats-new-in-webgui-8.0-2-auth-improvements.html">What's New in WebGUI 8 #2: Auth Improvements</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/webgui" rel="tag">webgui</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2014-06-21">
+                            Posted on 2014-06-21
+                        </time>
+                            by preaction
+                        </p>
+                    </aside>
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2011/01/whats-new-in-webgui-8-2-auth-improvements.html">
+                                <em>What's New in WebGUI 8 #2: Auth Improvements</em> on blogs.perl.org.
+                            </a>
+                    </p>
+                </header>
+
+                <h2>Auth changes</h2>
+
+<p>WebGUI::Auth was developed as part of 6.0.0, back in 2003. To put that into
+perspective:</p>
+
+<ul>
+<li>Auth predates Facebook, which was founded in 2004.</li>
+<li>Since Auth, there have been two Summer Olympiads.</li>
+<li>Auth was written when I was still in college.</li>
+</ul>
+
+<p>Since then, it has not fundamentally changed, though everything about the
+Internet surely has.</p>
+
+
+                    <p><a href="/blog/2011/01/22/whats-new-in-webgui-8.0-2-auth-improvements.html#section-2">Continue reading What's New in WebGUI 8 #2: Auth Improvements...</a></p>
+
+            </article>
+        </main>
+
+        <ul class="pager">
+            <li class="prev">
+                <a class="button button-primary"
+                    rel="next" href="/blog/page/7"
+                >
+                    &larr; Older
+                </a>
+            </li>
+            <li class="next">
+                <a class="button button-primary"
+                    rel="prev" href="/blog/page/5"
+                >
+                    Newer &rarr;
+                </a>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="three columns sidebar">
+        
+        <h1>Tags</h1>
+        <ul class="list-inline">
+            <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
+            <li><a href="/blog/tag/error">error</a></li>
+            <li><a href="/blog/tag/etl">etl</a></li>
+            <li><a href="/blog/tag/funny">funny</a></li>
+            <li><a href="/blog/tag/git">git</a></li>
+            <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
+            <li><a href="/blog/tag/moose">moose</a></li>
+            <li><a href="/blog/tag/mysql">mysql</a></li>
+            <li><a href="/blog/tag/openbsd">openbsd</a></li>
+            <li><a href="/blog/tag/perl">perl</a></li>
+            <li><a href="/blog/tag/personal">personal</a></li>
+            <li><a href="/blog/tag/progress">progress</a></li>
+            <li><a href="/blog/tag/rants">rants</a></li>
+            <li><a href="/blog/tag/scripts">scripts</a></li>
+            <li><a href="/blog/tag/software">software</a></li>
+            <li><a href="/blog/tag/sql">sql</a></li>
+            <li><a href="/blog/tag/webgui">webgui</a></li>
+            <li><a href="/blog/tag/xs">xs</a></li>
+            <li><a href="/blog/tag/yertl">yertl</a></li>
+        </ul>
+        <h1>Feeds</h1>
+        <ul class="list-inline">
+            <li>
+                <a href="/blog/index.atom" rel="alternate" type="application/atom+xml">
+                    Atom
+                </a>
+            </li>
+            <li>
+                <a href="/blog/index.rss" rel="alternate" type="application/rss+xml">
+                    RSS
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+        </div>
+        <footer>
+            
+            <div class="container tagline">
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://www.perl.org">Powered by Perl</a>
+            </div>
+        </footer>
+    </body>
+</html>

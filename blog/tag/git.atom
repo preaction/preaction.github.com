@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/blog/tag/git/index.html</id>
+    <id>http://preaction.github.io/blog/tag/git</id>
     <title>preaction</title>
-    <updated>2015-02-08T00:07:23Z</updated>
+    <updated>2015-02-13T21:07:49Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/git.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/blog/tag/git/index.html"/>
-    <generator version="0.035">Statocles</generator>
+    <link rel="alternate" href="http://preaction.github.io/blog/tag/git"/>
+    <generator version="0.036">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
         <title>Conflict Resolution: local::lib and git's Perl</title>
@@ -30,13 +30,13 @@ able to execute it. Maybe git-add--interactive is broken?
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/perl/index.html">perl</a>
-                <a href="/blog/tag/git/index.html">git</a>
+                <a href="/blog/tag/perl">perl</a>
+                <a href="/blog/tag/git">git</a>
             </p>
         ]]></content>
-        <updated>2014-06-14T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefc2be0)" />
-        <category term="Statocles::Link=HASH(0x7f97eefc40d0)" />
+        <updated>2014-06-14T21:25:31Z</updated>
+        <category term="perl" />
+        <category term="git" />
     </entry>
 </feed>
 

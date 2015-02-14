@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/blog/tag/rants/index.html</id>
+    <id>http://preaction.github.io/blog/tag/rants</id>
     <title>preaction</title>
-    <updated>2015-02-08T00:07:22Z</updated>
+    <updated>2015-02-13T21:07:48Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/rants.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/blog/tag/rants/index.html"/>
-    <generator version="0.035">Statocles</generator>
+    <link rel="alternate" href="http://preaction.github.io/blog/tag/rants"/>
+    <generator version="0.036">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html</id>
         <title>Between Learning and Doing</title>
@@ -34,11 +34,11 @@ new programming language. I didn't realize my mistake until it was too late.</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/rants/index.html">rants</a>
+                <a href="/blog/tag/rants">rants</a>
             </p>
         ]]></content>
         <updated>2014-07-19T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefc43b8)" />
+        <category term="rants" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</id>
@@ -65,11 +65,11 @@ make this task surmountable.</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/rants/index.html">rants</a>
+                <a href="/blog/tag/rants">rants</a>
             </p>
         ]]></content>
-        <updated>2013-04-11T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefbba40)" />
+        <updated>2014-06-21T00:36:00Z</updated>
+        <category term="rants" />
     </entry>
 </feed>
 

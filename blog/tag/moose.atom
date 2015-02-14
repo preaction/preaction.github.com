@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/blog/tag/moose/index.html</id>
+    <id>http://preaction.github.io/blog/tag/moose</id>
     <title>preaction</title>
-    <updated>2015-02-08T00:07:23Z</updated>
+    <updated>2015-02-13T21:07:48Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/moose.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/blog/tag/moose/index.html"/>
-    <generator version="0.035">Statocles</generator>
+    <link rel="alternate" href="http://preaction.github.io/blog/tag/moose"/>
+    <generator version="0.036">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html</id>
         <title>Using MooseX::Types to Inflate Config Values</title>
@@ -26,11 +26,11 @@ configured object is expecting another configured object.</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/moose/index.html">moose</a>
+                <a href="/blog/tag/moose">moose</a>
             </p>
         ]]></content>
-        <updated>2012-10-22T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefbf828)" />
+        <updated>2014-06-21T01:07:00Z</updated>
+        <category term="moose" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html</id>
@@ -63,11 +63,11 @@ classes at runtime!</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/moose/index.html">moose</a>
+                <a href="/blog/tag/moose">moose</a>
             </p>
         ]]></content>
-        <updated>2012-10-07T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefbdcb0)" />
+        <updated>2014-06-21T01:10:00Z</updated>
+        <category term="moose" />
     </entry>
 </feed>
 

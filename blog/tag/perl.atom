@@ -1,11 +1,40 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/blog/tag/perl/index.html</id>
+    <id>http://preaction.github.io/blog/tag/perl</id>
     <title>preaction</title>
-    <updated>2015-02-08T00:07:24Z</updated>
+    <updated>2015-02-13T21:07:48Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/perl.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/blog/tag/perl/index.html"/>
-    <generator version="0.035">Statocles</generator>
+    <link rel="alternate" href="http://preaction.github.io/blog/tag/perl"/>
+    <generator version="0.036">Statocles</generator>
+    <entry>
+        <id>http://preaction.github.io/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html</id>
+        <title>Mojolicious Triumphs Over Legacy Code</title>
+        <link rel="alternate" href="http://preaction.github.io/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html" />
+        <content type="html"><![CDATA[
+            <p>I got a text at 8:00am:</p>
+
+<blockquote>
+  <p>"Hey, can you jump on a conference call?"</p>
+</blockquote>
+
+<p>Groggy and disoriented, I blearily type the conference line and enter my
+passcode, followed by the pound or hash sign. At the tone, I would be the 6th
+person to enter the conference. Tone.</p>
+
+<blockquote>
+  <p>"The app is down, and trading has stopped."</p>
+</blockquote>
+
+                <p><a href="http://preaction.github.io/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html#section-2">Continue reading...</a></p>
+            <p>Tags:
+                <a href="/blog/tag/mojolicious">mojolicious</a>
+                <a href="/blog/tag/perl">perl</a>
+            </p>
+        ]]></content>
+        <updated>2015-02-13T20:55:21Z</updated>
+        <category term="mojolicious" />
+        <category term="perl" />
+    </entry>
     <entry>
         <id>http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html</id>
         <title>Managing SQL Data with Yertl</title>
@@ -32,17 +61,17 @@ with SQL databases easy.</p>
 
                 <p><a href="http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html#section-2">Continue reading...</a></p>
             <p>Tags:
-                <a href="/blog/tag/perl/index.html">perl</a>
-                <a href="/blog/tag/sql/index.html">sql</a>
-                <a href="/blog/tag/etl/index.html">etl</a>
-                <a href="/blog/tag/yertl/index.html">yertl</a>
+                <a href="/blog/tag/perl">perl</a>
+                <a href="/blog/tag/sql">sql</a>
+                <a href="/blog/tag/etl">etl</a>
+                <a href="/blog/tag/yertl">yertl</a>
             </p>
         ]]></content>
-        <updated>2015-01-21T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefc6358)" />
-        <category term="Statocles::Link=HASH(0x7f97eefc68f8)" />
-        <category term="Statocles::Link=HASH(0x7f97eefc6a60)" />
-        <category term="Statocles::Link=HASH(0x7f97eefc6d30)" />
+        <updated>2015-01-21T22:24:15Z</updated>
+        <category term="perl" />
+        <category term="sql" />
+        <category term="etl" />
+        <category term="yertl" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html</id>
@@ -73,11 +102,11 @@ lines everywhere.</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/perl/index.html">perl</a>
+                <a href="/blog/tag/perl">perl</a>
             </p>
         ]]></content>
-        <updated>2014-10-26T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefc4790)" />
+        <updated>2014-10-26T18:45:20Z</updated>
+        <category term="perl" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
@@ -103,13 +132,13 @@ able to execute it. Maybe git-add--interactive is broken?
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/perl/index.html">perl</a>
-                <a href="/blog/tag/git/index.html">git</a>
+                <a href="/blog/tag/perl">perl</a>
+                <a href="/blog/tag/git">git</a>
             </p>
         ]]></content>
-        <updated>2014-06-14T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefc2be0)" />
-        <category term="Statocles::Link=HASH(0x7f97eefc40d0)" />
+        <updated>2014-06-14T21:25:31Z</updated>
+        <category term="perl" />
+        <category term="git" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</id>
@@ -177,13 +206,13 @@ works and has proper tests (written in Perl, of course).</p>
 
                 <p><a href="http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html#section-2">Continue reading...</a></p>
             <p>Tags:
-                <a href="/blog/tag/perl/index.html">perl</a>
-                <a href="/blog/tag/xs/index.html">xs</a>
+                <a href="/blog/tag/perl">perl</a>
+                <a href="/blog/tag/xs">xs</a>
             </p>
         ]]></content>
         <updated>2012-03-20T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefb43e8)" />
-        <category term="Statocles::Link=HASH(0x7f97eef9aa68)" />
+        <category term="perl" />
+        <category term="xs" />
     </entry>
 </feed>
 

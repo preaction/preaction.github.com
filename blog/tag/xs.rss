@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>preaction</title>
-        <link>http://preaction.github.io/blog/tag/xs/index.html</link>
+        <link>http://preaction.github.io/blog/tag/xs</link>
         <atom:link href="http://preaction.github.io/blog/tag/xs.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.035</generator>
+        <generator>Statocles 0.036</generator>
         <item>
             <title>Adventures in Debugging C/XS 2: Debugging Boogaloo</title>
             <link>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</link>
@@ -71,12 +71,12 @@ works and has proper tests (written in Perl, of course).</p>
 
                     <p><a href="http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html#section-2">Continue reading...</a></p>
                 <p>Tags:
-                    <a href="/blog/tag/perl/index.html">perl</a>
-                    <a href="/blog/tag/xs/index.html">xs</a>
+                    <a href="/blog/tag/perl">perl</a>
+                    <a href="/blog/tag/xs">xs</a>
                 </p>
             ]]></description>
             <pubDate>
-                Tue, 20 Mar 2012 00:00:00 -0600
+                Tue, 20 Mar 2012 00:00:00 +0000
             </pubDate>
         </item>
         <item>
@@ -105,11 +105,11 @@ fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/xs/index.html">xs</a>
+                    <a href="/blog/tag/xs">xs</a>
                 </p>
             ]]></description>
             <pubDate>
-                Wed, 16 Nov 2011 00:00:00 -0600
+                Sat, 21 Jun 2014 01:25:00 +0000
             </pubDate>
         </item>
     </channel>

@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/blog/tag/chicago.pm/index.html</id>
+    <id>http://preaction.github.io/blog/tag/chicago.pm</id>
     <title>preaction</title>
-    <updated>2015-02-08T00:07:23Z</updated>
+    <updated>2015-02-13T21:07:47Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/chicago.pm.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/blog/tag/chicago.pm/index.html"/>
-    <generator version="0.035">Statocles</generator>
+    <link rel="alternate" href="http://preaction.github.io/blog/tag/chicago.pm"/>
+    <generator version="0.036">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</id>
         <title>Chicago.PM New Website! New Meetup URL! New Presentations Project!</title>
@@ -28,11 +28,11 @@ of the good tutorials and learning sites.</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/chicago.pm/index.html">chicago.pm</a>
+                <a href="/blog/tag/chicago.pm">chicago.pm</a>
             </p>
         ]]></content>
-        <updated>2013-06-13T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefc2160)" />
+        <updated>2014-06-21T00:21:00Z</updated>
+        <category term="chicago.pm" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html</id>
@@ -54,11 +54,11 @@ tool</a>.</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/chicago.pm/index.html">chicago.pm</a>
+                <a href="/blog/tag/chicago.pm">chicago.pm</a>
             </p>
         ]]></content>
-        <updated>2013-05-01T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefbc190)" />
+        <updated>2014-06-21T00:25:00Z</updated>
+        <category term="chicago.pm" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html</id>
@@ -83,11 +83,11 @@ deck.js, and I'm not sure I like it.]</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/chicago.pm/index.html">chicago.pm</a>
+                <a href="/blog/tag/chicago.pm">chicago.pm</a>
             </p>
         ]]></content>
-        <updated>2013-03-29T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefbb698)" />
+        <updated>2014-06-21T00:43:00Z</updated>
+        <category term="chicago.pm" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2013/03/14/chicago.pm-mojolicious.html</id>
@@ -127,11 +127,11 @@ AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/chicago.pm/index.html">chicago.pm</a>
+                <a href="/blog/tag/chicago.pm">chicago.pm</a>
             </p>
         ]]></content>
-        <updated>2013-03-14T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefbb2f0)" />
+        <updated>2014-06-21T00:47:00Z</updated>
+        <category term="chicago.pm" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html</id>
@@ -153,11 +153,11 @@ releases.</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/chicago.pm/index.html">chicago.pm</a>
+                <a href="/blog/tag/chicago.pm">chicago.pm</a>
             </p>
         ]]></content>
-        <updated>2012-10-28T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefbfbd0)" />
+        <updated>2014-06-21T01:04:00Z</updated>
+        <category term="chicago.pm" />
     </entry>
 </feed>
 

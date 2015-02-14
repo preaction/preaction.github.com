@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>preaction</title>
-        <link>http://preaction.github.io/blog/tag/software/index.html</link>
+        <link>http://preaction.github.io/blog/tag/software</link>
         <atom:link href="http://preaction.github.io/blog/tag/software.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.035</generator>
+        <generator>Statocles 0.036</generator>
         <item>
             <title>Leaving Crumb Trails -- Talking to Myself</title>
             <link>http://preaction.github.io/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html</link>
@@ -31,11 +31,11 @@ me to use...</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/software/index.html">software</a>
+                    <a href="/blog/tag/software">software</a>
                 </p>
             ]]></description>
             <pubDate>
-                Tue, 23 Dec 2014 00:00:00 -0600
+                Tue, 23 Dec 2014 06:57:07 +0000
             </pubDate>
         </item>
         <item>
@@ -68,11 +68,11 @@ user has input an invalid ID for data?</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/software/index.html">software</a>
+                    <a href="/blog/tag/software">software</a>
                 </p>
             ]]></description>
             <pubDate>
-                Sun, 04 Nov 2012 00:00:00 -0600
+                Sat, 21 Jun 2014 01:02:00 +0000
             </pubDate>
         </item>
         <item>
@@ -98,11 +98,11 @@ for a long time.</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/software/index.html">software</a>
+                    <a href="/blog/tag/software">software</a>
                 </p>
             ]]></description>
             <pubDate>
-                Sun, 23 Sep 2012 00:00:00 -0600
+                Sat, 21 Jun 2014 01:15:00 +0000
             </pubDate>
         </item>
     </channel>

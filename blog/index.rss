@@ -2,10 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>preaction</title>
-        <link>http://preaction.github.io/index.html</link>
+        <link>http://preaction.github.io</link>
         <atom:link href="http://preaction.github.io/blog/index.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.035</generator>
+        <generator>Statocles 0.036</generator>
+        <item>
+            <title>Mojolicious Triumphs Over Legacy Code</title>
+            <link>http://preaction.github.io/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html</link>
+            <guid>http://preaction.github.io/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html</guid>
+            <description><![CDATA[
+                <p>I got a text at 8:00am:</p>
+
+<blockquote>
+  <p>"Hey, can you jump on a conference call?"</p>
+</blockquote>
+
+<p>Groggy and disoriented, I blearily type the conference line and enter my
+passcode, followed by the pound or hash sign. At the tone, I would be the 6th
+person to enter the conference. Tone.</p>
+
+<blockquote>
+  <p>"The app is down, and trading has stopped."</p>
+</blockquote>
+
+                    <p><a href="http://preaction.github.io/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html#section-2">Continue reading...</a></p>
+                <p>Tags:
+                    <a href="/blog/tag/mojolicious">mojolicious</a>
+                    <a href="/blog/tag/perl">perl</a>
+                </p>
+            ]]></description>
+            <pubDate>
+                Fri, 13 Feb 2015 20:55:21 +0000
+            </pubDate>
+        </item>
         <item>
             <title>Managing SQL Data with Yertl</title>
             <link>http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html</link>
@@ -32,14 +61,14 @@ with SQL databases easy.</p>
 
                     <p><a href="http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html#section-2">Continue reading...</a></p>
                 <p>Tags:
-                    <a href="/blog/tag/perl/index.html">perl</a>
-                    <a href="/blog/tag/sql/index.html">sql</a>
-                    <a href="/blog/tag/etl/index.html">etl</a>
-                    <a href="/blog/tag/yertl/index.html">yertl</a>
+                    <a href="/blog/tag/perl">perl</a>
+                    <a href="/blog/tag/sql">sql</a>
+                    <a href="/blog/tag/etl">etl</a>
+                    <a href="/blog/tag/yertl">yertl</a>
                 </p>
             ]]></description>
             <pubDate>
-                Wed, 21 Jan 2015 00:00:00 -0600
+                Wed, 21 Jan 2015 22:24:15 +0000
             </pubDate>
         </item>
         <item>
@@ -67,11 +96,11 @@ me to use...</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/software/index.html">software</a>
+                    <a href="/blog/tag/software">software</a>
                 </p>
             ]]></description>
             <pubDate>
-                Tue, 23 Dec 2014 00:00:00 -0600
+                Tue, 23 Dec 2014 06:57:07 +0000
             </pubDate>
         </item>
         <item>
@@ -102,11 +131,11 @@ lines everywhere.</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/perl/index.html">perl</a>
+                    <a href="/blog/tag/perl">perl</a>
                 </p>
             ]]></description>
             <pubDate>
-                Sun, 26 Oct 2014 00:00:00 -0600
+                Sun, 26 Oct 2014 18:45:20 +0000
             </pubDate>
         </item>
         <item>
@@ -136,63 +165,11 @@ new programming language. I didn't realize my mistake until it was too late.</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/rants/index.html">rants</a>
+                    <a href="/blog/tag/rants">rants</a>
                 </p>
             ]]></description>
             <pubDate>
-                Sat, 19 Jul 2014 00:00:00 -0600
-            </pubDate>
-        </item>
-        <item>
-            <title>perlsloc - Count Perl Source Lines with Perl::Tidy</title>
-            <link>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</link>
-            <guid>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</guid>
-            <description><![CDATA[
-                <p>While spending some time putting together my own <a href="https://github.com/preaction/dot-files/blob/master/perltidyrc">perltidyrc
-file</a>, I became
-intimately familiar with the <a href="https://metacpan.org/pod/distribution/Perl-Tidy/bin/perltidy">Perl::Tidy
-documentation</a>.</p>
-
-<p>One day, I decided to find out exactly how much code I was maintaining. Since
-perltidy can strip comments and POD, and also normalize the source code to make
-a fair measurement, it's a perfect tool for counting Source Lines of Code
-(SLOC).</p>
-
-<p>Here's a small shell script using <code>ack</code>, <code>perltidy</code>, <code>xargs</code>, and <code>wc</code> to count
-the source lines of code in any number of directories.</p>
-
-<pre><code>ack -f --perl $@ | xargs -L 1 perltidy --noprofile --delete-pod --mbl=0 --standard-output | wc -l
-</code></pre>
-
-<p><code>ack -f</code> lists the files that would be searched, and <code>--perl</code> searches Perl
-files, so we get ack's heuristics for finding Perl files. <code>xargs -L 1</code> invokes
-the following command for every 1 line of input. The <code>perltidy</code> command strips
-the pod and tightens up the whitespace and writes the result to stdout, which
-<code>wc -l</code> will then count, line by line.</p>
-
-<p>So, as an example, the current <a href="http://metacpan.org/release/Statocles">Statocles</a> release
-has 50% more test lines than source lines:</p>
-
-<pre><code>» perlsloc lib bin
-    1034
-» perlsloc t
-    1633
-</code></pre>
-
-                    <ul>
-                        <li><a href="http://blogs.perl.org/users/preaction/2014/06/perlsloc---count-perl-source-lines-with-perltidy.html">
-                            Continue reading <em>perlsloc - Count Perl Source Lines with Perl::Tidy</em> on blogs.perl.org...
-                        </a></li>
-                        <li><a href="http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html#section-2">
-                            Continue reading on preaction
-                        </a></li>
-                    </ul>
-                <p>Tags:
-                    <a href="/blog/tag/scripts/index.html">scripts</a>
-                </p>
-            ]]></description>
-            <pubDate>
-                Sun, 29 Jun 2014 00:00:00 -0600
+                Sat, 19 Jul 2014 00:00:00 +0000
             </pubDate>
         </item>
     </channel>

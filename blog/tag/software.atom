@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/blog/tag/software/index.html</id>
+    <id>http://preaction.github.io/blog/tag/software</id>
     <title>preaction</title>
-    <updated>2015-02-08T00:07:23Z</updated>
+    <updated>2015-02-13T21:07:48Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/software.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/blog/tag/software/index.html"/>
-    <generator version="0.035">Statocles</generator>
+    <link rel="alternate" href="http://preaction.github.io/blog/tag/software"/>
+    <generator version="0.036">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html</id>
         <title>Leaving Crumb Trails -- Talking to Myself</title>
@@ -32,11 +32,11 @@ me to use...</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/software/index.html">software</a>
+                <a href="/blog/tag/software">software</a>
             </p>
         ]]></content>
-        <updated>2014-12-23T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefc4be0)" />
+        <updated>2014-12-23T06:57:07Z</updated>
+        <category term="software" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/11/04/testing-is-a-feature-of-your-service.html</id>
@@ -69,11 +69,11 @@ user has input an invalid ID for data?</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/software/index.html">software</a>
+                <a href="/blog/tag/software">software</a>
             </p>
         ]]></content>
-        <updated>2012-11-04T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefbff78)" />
+        <updated>2014-06-21T01:02:00Z</updated>
+        <category term="software" />
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2012/09/23/plan-software-to-live-forever.html</id>
@@ -99,11 +99,11 @@ for a long time.</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/software/index.html">software</a>
+                <a href="/blog/tag/software">software</a>
             </p>
         ]]></content>
-        <updated>2012-09-23T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eef9ae28)" />
+        <updated>2014-06-21T01:15:00Z</updated>
+        <category term="software" />
     </entry>
 </feed>
 

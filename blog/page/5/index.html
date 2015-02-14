@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/theme/css/normalize.css" />
+        <link rel="stylesheet" href="/theme/css/skeleton.css" />
+        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <title>preaction</title>
+        <link rel="alternate" href="/blog/index.atom" type="application/atom+xml" />
+        <link rel="alternate" href="/blog/index.rss" type="application/rss+xml" />
+        
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="container">
+                    <a class="brand" href="/">preaction</a>
+                    <ul>
+                        <li>
+                            <a href="/index.html">Blog</a>
+                        </li>
+                        <li>
+                            <a href="/Statocles">Statocles</a>
+                        </li>
+                        <li>
+                            <a href="/ETL-Yertl">Yertl</a>
+                        </li>
+                        <li>
+                            <a href="/presentations.html">Presentations</a>
+                        </li>
+                        <li>
+                            <a href="/food">Food</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+        </header>
+        <div class="main container">
+            
+<div class="row">
+
+    <div class="nine columns">
+        <main>
+
+            <article>
+                <header>
+                    <h1><a href="/blog/2012/09/23/plan-software-to-live-forever.html">Chicago.PM - Beyond grep - Expanding the Programmer Toolset</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/software" rel="tag">software</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2014-06-21">
+                            Posted on 2014-06-21
+                        </time>
+                            by preaction
+                        </p>
+                    </aside>
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2012/09/plan-software-to-live-forever.html">
+                                <em>Chicago.PM - Beyond grep - Expanding the Programmer Toolset</em> on blogs.perl.org.
+                            </a>
+                    </p>
+                </header>
+
+                <p>How often have I told myself, "I'll kludge this now and rewrite it later"? And
+how many times did I actually go back and rewrite that kludgy bit? "Too often"
+and "not enough". Many job postings include the phrase "update legacy
+applications," as a euphemism for "rewrite poorly-designed spaghetti." The Y2K
+problem was a huge exercise in code out-living the developer's plan, with a
+healthy dose of cargo-culting thrown in. Lately, I've been learning to plan for
+a likely possibility: My code will survive to haunt my bug lists and my resume
+for a long time.</p>
+
+
+                    <p><a href="/blog/2012/09/23/plan-software-to-live-forever.html#section-2">Continue reading Chicago.PM - Beyond grep - Expanding the Programmer Toolset...</a></p>
+
+            </article>
+            <article>
+                <header>
+                    <h1><a href="/blog/2012/09/15/chicago.pm-report-app-prima-repl.html">Chicago.PM Report - App-Prima-REPL</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/chicago.pm" rel="tag">chicago.pm</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2014-06-21">
+                            Posted on 2014-06-21
+                        </time>
+                            by preaction
+                        </p>
+                    </aside>
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2012/09/chicagopm-report---app-prima-repl.html">
+                                <em>Chicago.PM Report - App-Prima-REPL</em> on blogs.perl.org.
+                            </a>
+                    </p>
+                </header>
+
+                <p>We had our first project night at <a href="http://chicago.pm.org">Chicago.PM</a> this
+week, where we discussed ideas and wrote code for a Perl REPL GUI program
+(<a href="http://github.com/run4flat/App-Prima-REPL">App-Prima-REPL on Github</a>) by
+David Mertens built on <a href="http://www.prima.eu.org/">Prima</a>.</p>
+
+
+                    <p><a href="/blog/2012/09/15/chicago.pm-report-app-prima-repl.html#section-2">Continue reading Chicago.PM Report - App-Prima-REPL...</a></p>
+
+            </article>
+            <article>
+                <header>
+                    <h1><a href="/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html">Adventures in Debugging C/XS 2: Debugging Boogaloo</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/perl" rel="tag">perl</a>
+                        <a href="/blog/tag/xs" rel="tag">xs</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2012-03-20">
+                            Posted on 2012-03-20
+                        </time>
+                            by preaction
+                        </p>
+                    </aside>
+
+                </header>
+
+                <p>... or "Ask Not To Whom The Pointer Points, It Points To Thee."</p>
+
+<p>TL;DR: A pointer is not a reference. A pointer knows nothing about the data
+being pointed to. Returning multiple values requires actual work.</p>
+
+<p>Everything went wrong when I wanted a string with a <code>NUL</code> character inside it.
+C strings are not Perl scalars, they don't know how long they are. So to mark
+the end of a string, C uses the <code>NUL</code> character, <code>\0</code>. The <code>strcpy</code> function will
+copy to your destination until the first <code>\0</code> from your source. When you want to
+have a string with a <code>\0</code> inside of it that does not mark the end of the string,
+you need to know exactly how long the string is. This is not difficult to do,
+but you also have to return that length from the function that creates your
+string.</p>
+
+<p>C functions do not have more than one return value.</p>
+
+<pre><code>(char* buffer, int bufferSize) = get_string_with_nuls();
+// You thought it could be that easy?
+</code></pre>
+
+<p>So in order for your function to result in more than one value, you have to
+pass in references to be used to fill in with actual values.</p>
+
+<pre><code>char* buffer;
+int bufferSize = get_string_with_nuls( buffer );
+// C programmers will already know what I did wrong here
+</code></pre>
+
+<p>Thinking like a Perl programmer, I thought I could just pass in the pointer to
+the function and the function could fill it with data. Two problems:</p>
+
+<ol>
+<li>I passed in the pointer itself, not a reference to the pointer: <code>&amp;buffer</code></li>
+<li>I did not initialize the pointer to anything.</li>
+</ol>
+
+<p>A more correct way would be:</p>
+
+<pre><code>char* buffer = malloc( 128 * sizeof( char ) );
+int bufferSize = get_string_with_nuls( &amp;buffer );
+</code></pre>
+
+<p>But this suffers from another problem: I have to know beforehand how big my
+string is going to be and allocate that much memory beforehand.</p>
+
+<p>The way I ended up succeeding was:</p>
+
+<pre><code>int bufferSize;
+char* buffer = get_string_with_nuls( &amp;bufferSize );
+</code></pre>
+
+<p>This way, <code>get_string_with_nuls</code> can handle the <code>malloc</code> with exactly the correct
+size and give it to me. I don't have to guess at a size beforehand.</p>
+
+<p>Of course, a struct could do this better, or since I'm actually in C++, an
+object. I'll be planning a new API as soon as I confirm this one actually
+works and has proper tests (written in Perl, of course).</p>
+
+
+
+            </article>
+            <article>
+                <header>
+                    <h1><a href="/blog/2011/11/16/adventures-in-debugging-c-xs.html">Adventures in Debugging C/XS</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/xs" rel="tag">xs</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2014-06-21">
+                            Posted on 2014-06-21
+                        </time>
+                            by preaction
+                        </p>
+                    </aside>
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2011/11/adventures-in-debugging-cxs.html">
+                                <em>Adventures in Debugging C/XS</em> on blogs.perl.org.
+                            </a>
+                    </p>
+                </header>
+
+                <p>... or Why A Good Perl Developer Is Not Automatically A Good C Developer, the
+Story of C Programming via Google.</p>
+
+<p>My tests failed, but only sometimes. I was building an XS module to interface
+with a C wrapper around a C++ library (wrapper unnecessary? probably). <code>make
+test</code> was failing with exit code 11. Some quick searching revealed that I had
+an intermittent segfault. Calling a function <code>as_xml</code> would fail with a SEGV in
+<code>strlen()</code>. This only happened in perl after <code>as_xml</code> when perl was making a SV
+out of the return value. This also only mainly happened during <code>make test</code>.
+Doing <code>prove</code> myself would succeed 19 times out of 20, where make test would
+fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
+
+
+                    <p><a href="/blog/2011/11/16/adventures-in-debugging-c-xs.html#section-2">Continue reading Adventures in Debugging C/XS...</a></p>
+
+            </article>
+            <article>
+                <header>
+                    <h1><a href="/blog/2011/05/20/webgui-8-status-report.html">WebGUI 8 Status Report</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/webgui" rel="tag">webgui</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2014-06-21">
+                            Posted on 2014-06-21
+                        </time>
+                            by preaction
+                        </p>
+                    </aside>
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2011/05/webgui-8-status-report.html">
+                                <em>WebGUI 8 Status Report</em> on blogs.perl.org.
+                            </a>
+                    </p>
+                </header>
+
+                <p>A major milestone in WebGUI 8 development was reached this week: A dry-run of
+the WebGUI 8 upgrade was successfully run against the plainblack.com database.
+This means the only thing remaining from releasing an alpha 8.0.0 is updating
+all the custom code on <a href="http://plainblack.com">http://plainblack.com</a> and
+<a href="http://webgui.org">http://webgui.org</a>. As always, plainblack.com and
+webgui.org will be the first sites running the latest bleeding-edge version of
+WebGUI (unless one of you wants to beat me to the punch).</p>
+
+<p>This month, I also gave a presentation to <a href="http://madmongers.org">Madison.PM</a>
+about <a href="http://preaction.github.com/WebGUI/8-apps.html">building applications in WebGUI
+8</a>, a quick introduction to
+Assets and an overview of the most important changes to how they work. The
+slides are available at
+<a href="http://preaction.github.com/">http://preaction.github.com/</a> and the code
+samples are linked at the end.</p>
+
+<p>On an unrelated topic, I really enjoyed using
+<a href="http://meyerweb.com/eric/tools/s5/">S5</a> to build my slides,
+<a href="http://shjs.sourceforge.net/">SHJS</a> to highlight the code inside, and <a href="http://pages.github.com/">Github
+Pages</a> to host the whole thing. I plan on doing the
+same for all my presentations: They look good, readable without a special
+program, editable without a special program, anyone can fork and update my
+presentations, and they're served by a nice, fast, free host.</p>
+
+
+
+            </article>
+        </main>
+
+        <ul class="pager">
+            <li class="prev">
+                <a class="button button-primary"
+                    rel="next" href="/blog/page/6"
+                >
+                    &larr; Older
+                </a>
+            </li>
+            <li class="next">
+                <a class="button button-primary"
+                    rel="prev" href="/blog/page/4"
+                >
+                    Newer &rarr;
+                </a>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="three columns sidebar">
+        
+        <h1>Tags</h1>
+        <ul class="list-inline">
+            <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
+            <li><a href="/blog/tag/error">error</a></li>
+            <li><a href="/blog/tag/etl">etl</a></li>
+            <li><a href="/blog/tag/funny">funny</a></li>
+            <li><a href="/blog/tag/git">git</a></li>
+            <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
+            <li><a href="/blog/tag/moose">moose</a></li>
+            <li><a href="/blog/tag/mysql">mysql</a></li>
+            <li><a href="/blog/tag/openbsd">openbsd</a></li>
+            <li><a href="/blog/tag/perl">perl</a></li>
+            <li><a href="/blog/tag/personal">personal</a></li>
+            <li><a href="/blog/tag/progress">progress</a></li>
+            <li><a href="/blog/tag/rants">rants</a></li>
+            <li><a href="/blog/tag/scripts">scripts</a></li>
+            <li><a href="/blog/tag/software">software</a></li>
+            <li><a href="/blog/tag/sql">sql</a></li>
+            <li><a href="/blog/tag/webgui">webgui</a></li>
+            <li><a href="/blog/tag/xs">xs</a></li>
+            <li><a href="/blog/tag/yertl">yertl</a></li>
+        </ul>
+        <h1>Feeds</h1>
+        <ul class="list-inline">
+            <li>
+                <a href="/blog/index.atom" rel="alternate" type="application/atom+xml">
+                    Atom
+                </a>
+            </li>
+            <li>
+                <a href="/blog/index.rss" rel="alternate" type="application/rss+xml">
+                    RSS
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+        </div>
+        <footer>
+            
+            <div class="container tagline">
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://www.perl.org">Powered by Perl</a>
+            </div>
+        </footer>
+    </body>
+</html>

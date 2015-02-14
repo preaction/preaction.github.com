@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/blog/tag/scripts/index.html</id>
+    <id>http://preaction.github.io/blog/tag/scripts</id>
     <title>preaction</title>
-    <updated>2015-02-08T00:07:23Z</updated>
+    <updated>2015-02-13T21:07:48Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/scripts.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/blog/tag/scripts/index.html"/>
-    <generator version="0.035">Statocles</generator>
+    <link rel="alternate" href="http://preaction.github.io/blog/tag/scripts"/>
+    <generator version="0.036">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</id>
         <title>perlsloc - Count Perl Source Lines with Perl::Tidy</title>
@@ -52,11 +52,11 @@ has 50% more test lines than source lines:</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/scripts/index.html">scripts</a>
+                <a href="/blog/tag/scripts">scripts</a>
             </p>
         ]]></content>
-        <updated>2014-06-29T00:00:00Z</updated>
-        <category term="Statocles::Link=HASH(0x7f97eefc3f98)" />
+        <updated>2014-06-29T21:52:19Z</updated>
+        <category term="scripts" />
     </entry>
 </feed>
 

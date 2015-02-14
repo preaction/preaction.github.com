@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>preaction</title>
-        <link>http://preaction.github.io/blog/tag/personal/index.html</link>
+        <link>http://preaction.github.io/blog/tag/personal</link>
         <atom:link href="http://preaction.github.io/blog/tag/personal.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.035</generator>
+        <generator>Statocles 0.036</generator>
         <item>
             <title>Be It Resolved in 2015</title>
             <link>http://preaction.github.io/blog/2015/01/07/be-it-resolved-in-2015.html</link>
@@ -53,12 +53,12 @@ Making a video game will also satisfy that condition.</p>
 
                     <p><a href="http://preaction.github.io/blog/2015/01/07/be-it-resolved-in-2015.html#section-2">Continue reading...</a></p>
                 <p>Tags:
-                    <a href="/blog/tag/personal/index.html">personal</a>
-                    <a href="/blog/tag/progress/index.html">progress</a>
+                    <a href="/blog/tag/personal">personal</a>
+                    <a href="/blog/tag/progress">progress</a>
                 </p>
             ]]></description>
             <pubDate>
-                Wed, 07 Jan 2015 00:00:00 -0600
+                Wed, 07 Jan 2015 22:49:18 +0000
             </pubDate>
         </item>
         <item>
@@ -80,11 +80,11 @@ law is the only true measurement of good and evil.</p>
 
                     <p><a href="http://preaction.github.io/blog/2014/04/26/freedom-from-speechs-consequences.html#section-2">Continue reading...</a></p>
                 <p>Tags:
-                    <a href="/blog/tag/personal/index.html">personal</a>
+                    <a href="/blog/tag/personal">personal</a>
                 </p>
             ]]></description>
             <pubDate>
-                Sat, 26 Apr 2014 00:00:00 -0600
+                Sat, 26 Apr 2014 00:00:00 +0000
             </pubDate>
         </item>
         <item>
@@ -106,11 +106,11 @@ pathways of memory.</p>
 
                     <p><a href="http://preaction.github.io/blog/2013/01/06/it-begins-in-fear.html#section-2">Continue reading...</a></p>
                 <p>Tags:
-                    <a href="/blog/tag/personal/index.html">personal</a>
+                    <a href="/blog/tag/personal">personal</a>
                 </p>
             ]]></description>
             <pubDate>
-                Sun, 06 Jan 2013 00:00:00 -0600
+                Sun, 06 Jan 2013 00:00:00 +0000
             </pubDate>
         </item>
     </channel>

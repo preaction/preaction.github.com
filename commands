@@ -1,0 +1,6 @@
+commands=(
+    'build:Build the site in the staging area'
+    'deploy:Deploy the site to production'
+    'apps:List the applications in the site'
+    'blog:Statocles::App::Blog at /blog'
+)

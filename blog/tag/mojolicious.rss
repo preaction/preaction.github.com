@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>preaction</title>
+        <link>http://preaction.github.io/blog/tag/mojolicious</link>
+        <atom:link href="http://preaction.github.io/blog/tag/mojolicious.rss" rel="self" type="application/rss+xml" />
+        <description>Blog feed of preaction</description>
+        <generator>Statocles 0.036</generator>
+        <item>
+            <title>Mojolicious Triumphs Over Legacy Code</title>
+            <link>http://preaction.github.io/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html</link>
+            <guid>http://preaction.github.io/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html</guid>
+            <description><![CDATA[
+                <p>I got a text at 8:00am:</p>
+
+<blockquote>
+  <p>"Hey, can you jump on a conference call?"</p>
+</blockquote>
+
+<p>Groggy and disoriented, I blearily type the conference line and enter my
+passcode, followed by the pound or hash sign. At the tone, I would be the 6th
+person to enter the conference. Tone.</p>
+
+<blockquote>
+  <p>"The app is down, and trading has stopped."</p>
+</blockquote>
+
+                    <p><a href="http://preaction.github.io/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html#section-2">Continue reading...</a></p>
+                <p>Tags:
+                    <a href="/blog/tag/mojolicious">mojolicious</a>
+                    <a href="/blog/tag/perl">perl</a>
+                </p>
+            ]]></description>
+            <pubDate>
+                Fri, 13 Feb 2015 20:55:21 +0000
+            </pubDate>
+        </item>
+    </channel>
+</rss>
+

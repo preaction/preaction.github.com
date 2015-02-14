@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>preaction</title>
-        <link>http://preaction.github.io/blog/tag/webgui/index.html</link>
+        <link>http://preaction.github.io/blog/tag/webgui</link>
         <atom:link href="http://preaction.github.io/blog/tag/webgui.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.035</generator>
+        <generator>Statocles 0.036</generator>
         <item>
             <title>WebGUI 8 Status Report</title>
             <link>http://preaction.github.io/blog/2011/05/20/webgui-8-status-report.html</link>
@@ -44,11 +44,11 @@ presentations, and they're served by a nice, fast, free host.</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/webgui/index.html">webgui</a>
+                    <a href="/blog/tag/webgui">webgui</a>
                 </p>
             ]]></description>
             <pubDate>
-                Fri, 20 May 2011 00:00:00 -0600
+                Sat, 21 Jun 2014 01:24:00 +0000
             </pubDate>
         </item>
         <item>
@@ -210,12 +210,12 @@ the day!</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/webgui/index.html">webgui</a>
-                    <a href="/blog/tag/mysql/index.html">mysql</a>
+                    <a href="/blog/tag/webgui">webgui</a>
+                    <a href="/blog/tag/mysql">mysql</a>
                 </p>
             ]]></description>
             <pubDate>
-                Wed, 09 Mar 2011 00:00:00 -0600
+                Sat, 21 Jun 2014 01:25:00 +0000
             </pubDate>
         </item>
         <item>
@@ -240,11 +240,11 @@ why you would read this blog, so instead I'm going to talk about how you can add
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/webgui/index.html">webgui</a>
+                    <a href="/blog/tag/webgui">webgui</a>
                 </p>
             ]]></description>
             <pubDate>
-                Sat, 05 Mar 2011 00:00:00 -0600
+                Sat, 21 Jun 2014 01:28:00 +0000
             </pubDate>
         </item>
         <item>
@@ -347,11 +347,11 @@ pretty and screenshots!</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/webgui/index.html">webgui</a>
+                    <a href="/blog/tag/webgui">webgui</a>
                 </p>
             ]]></description>
             <pubDate>
-                Fri, 18 Feb 2011 00:00:00 -0600
+                Sat, 21 Jun 2014 01:30:00 +0000
             </pubDate>
         </item>
         <item>
@@ -536,11 +536,11 @@ it easier to evolve with it.</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/webgui/index.html">webgui</a>
+                    <a href="/blog/tag/webgui">webgui</a>
                 </p>
             ]]></description>
             <pubDate>
-                Fri, 04 Feb 2011 00:00:00 -0600
+                Sat, 21 Jun 2014 01:34:00 +0000
             </pubDate>
         </item>
     </channel>

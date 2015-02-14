@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>preaction</title>
-        <link>http://preaction.github.io/blog/tag/error/index.html</link>
+        <link>http://preaction.github.io/blog/tag/error</link>
         <atom:link href="http://preaction.github.io/blog/tag/error.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.035</generator>
+        <generator>Statocles 0.036</generator>
         <item>
             <title>I Bless You in the Name of the Stringified Object</title>
             <link>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</link>
@@ -37,11 +37,11 @@ and then using that as a package name?</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/error/index.html">error</a>
+                    <a href="/blog/tag/error">error</a>
                 </p>
             ]]></description>
             <pubDate>
-                Mon, 15 Apr 2013 00:00:00 -0600
+                Sat, 21 Jun 2014 00:34:00 +0000
             </pubDate>
         </item>
     </channel>
