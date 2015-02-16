@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>preaction</title>
+        <link>http://preaction.github.io/blog/tag/cheese</link>
+        <atom:link href="http://preaction.github.io/blog/tag/cheese.rss" rel="self" type="application/rss+xml" />
+        <description>Blog feed of preaction</description>
+        <generator>Statocles 0.036</generator>
+        <item>
+            <title>Chili Mac</title>
+            <link>http://preaction.github.io/blog/2015/02/15/chili-mac.html</link>
+            <guid>http://preaction.github.io/blog/2015/02/15/chili-mac.html</guid>
+            <description><![CDATA[
+                <p>It's not all epic concoctions here. Sometimes, I'm in the mood for something
+bad for me. But, even the bad food has good things to know.</p>
+
+<p>Mac and Cheese was a special occasion growing up. I don't know if they put
+crack in it, but there is something about the classic blue box that tastes
+nostalgically better than all other Mac and Cheese.</p>
+
+<p>But, eating just a box (or two) of Mac and Cheese just isn't enough adulting
+for my taste. So, tonight, I spiced it up a bit with some spicy beef.</p>
+
+<p>A good spice blend can be applied to a lot of things. So it is with this one,
+which works well in Chili Mac, tacos, burritos, and goes well with chicken or
+beef.</p>
+
+<p><img src="/images/food/chili-mac/11-glamour-shot-2.jpg" alt="" /></p>
+
+                    <p><a href="http://preaction.github.io/blog/2015/02/15/chili-mac.html#section-2">Continue reading...</a></p>
+                <p>Tags:
+                    <a href="/blog/tag/pasta">pasta</a>
+                    <a href="/blog/tag/cheese">cheese</a>
+                    <a href="/blog/tag/spicy">spicy</a>
+                    <a href="/blog/tag/beef">beef</a>
+                </p>
+            ]]></description>
+            <pubDate>
+                Sun, 15 Feb 2015 18:25:57 +0000
+            </pubDate>
+        </item>
+    </channel>
+</rss>
+

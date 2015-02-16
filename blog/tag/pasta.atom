@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://preaction.github.io/blog/tag/pasta</id>
+    <title>preaction</title>
+    <updated>2015-02-15T18:27:10Z</updated>
+    <link rel="self" href="http://preaction.github.io/blog/tag/pasta.atom"/>
+    <link rel="alternate" href="http://preaction.github.io/blog/tag/pasta"/>
+    <generator version="0.036">Statocles</generator>
+    <entry>
+        <id>http://preaction.github.io/blog/2015/02/15/chili-mac.html</id>
+        <title>Chili Mac</title>
+        <link rel="alternate" href="http://preaction.github.io/blog/2015/02/15/chili-mac.html" />
+        <content type="html"><![CDATA[
+            <p>It's not all epic concoctions here. Sometimes, I'm in the mood for something
+bad for me. But, even the bad food has good things to know.</p>
+
+<p>Mac and Cheese was a special occasion growing up. I don't know if they put
+crack in it, but there is something about the classic blue box that tastes
+nostalgically better than all other Mac and Cheese.</p>
+
+<p>But, eating just a box (or two) of Mac and Cheese just isn't enough adulting
+for my taste. So, tonight, I spiced it up a bit with some spicy beef.</p>
+
+<p>A good spice blend can be applied to a lot of things. So it is with this one,
+which works well in Chili Mac, tacos, burritos, and goes well with chicken or
+beef.</p>
+
+<p><img src="/images/food/chili-mac/11-glamour-shot-2.jpg" alt="" /></p>
+
+                <p><a href="http://preaction.github.io/blog/2015/02/15/chili-mac.html#section-2">Continue reading...</a></p>
+            <p>Tags:
+                <a href="/blog/tag/pasta">pasta</a>
+                <a href="/blog/tag/cheese">cheese</a>
+                <a href="/blog/tag/spicy">spicy</a>
+                <a href="/blog/tag/beef">beef</a>
+            </p>
+        ]]></content>
+        <updated>2015-02-15T18:25:57Z</updated>
+        <category term="pasta" />
+        <category term="cheese" />
+        <category term="spicy" />
+        <category term="beef" />
+    </entry>
+</feed>
+
