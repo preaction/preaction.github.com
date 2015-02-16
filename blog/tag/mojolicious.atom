@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/mojolicious</id>
     <title>preaction</title>
-    <updated>2015-02-15T18:37:07Z</updated>
+    <updated>2015-02-15T18:39:32Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/mojolicious.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/mojolicious"/>
     <generator version="0.036">Statocles</generator>

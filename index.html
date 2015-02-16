@@ -44,13 +44,49 @@
 
             <article>
                 <header>
+                    <h1><a href="/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html">Mojolicious Triumphs Over Legacy Code</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/mojolicious" rel="tag">mojolicious</a>
+                        <a href="/blog/tag/perl" rel="tag">perl</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2015-02-13">
+                            Posted on 2015-02-13
+                        </time>
+                        </p>
+                    </aside>
+
+                </header>
+
+                <p>I got a text at 8:00am:</p>
+
+<blockquote>
+  <p>"Hey, can you jump on a conference call?"</p>
+</blockquote>
+
+<p>Groggy and disoriented, I blearily type the conference line and enter my
+passcode, followed by the pound or hash sign. At the tone, I would be the 6th
+person to enter the conference. Tone.</p>
+
+<blockquote>
+  <p>"The app is down, and trading has stopped."</p>
+</blockquote>
+
+
+                    <p><a href="/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html#section-2">Continue reading Mojolicious Triumphs Over Legacy Code...</a></p>
+
+            </article>
+            <article>
+                <header>
                     <h1><a href="/blog/2015/01/21/managing-sql-data-with-yertl.html">Managing SQL Data with Yertl</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/perl/index.html" rel="tag">perl</a>
-                        <a href="/blog/tag/sql/index.html" rel="tag">sql</a>
-                        <a href="/blog/tag/etl/index.html" rel="tag">etl</a>
-                        <a href="/blog/tag/yertl/index.html" rel="tag">yertl</a>
+                        <a href="/blog/tag/perl" rel="tag">perl</a>
+                        <a href="/blog/tag/sql" rel="tag">sql</a>
+                        <a href="/blog/tag/etl" rel="tag">etl</a>
+                        <a href="/blog/tag/yertl" rel="tag">yertl</a>
                     </p>
 
                     <aside>
@@ -90,7 +126,7 @@ with SQL databases easy.</p>
                     <h1><a href="/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html">Leaving Crumb Trails -- Talking to Myself</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/software/index.html" rel="tag">software</a>
+                        <a href="/blog/tag/software" rel="tag">software</a>
                     </p>
 
                     <aside>
@@ -128,7 +164,7 @@ me to use...</p>
                     <h1><a href="/blog/2014/10/26/managing-boilerplate-with-import-base.html">Manage Boilerplate with Import::Base</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/perl/index.html" rel="tag">perl</a>
+                        <a href="/blog/tag/perl" rel="tag">perl</a>
                     </p>
 
                     <aside>
@@ -169,7 +205,7 @@ lines everywhere.</p>
                     <h1><a href="/blog/2014/07/19/between-learning-and-doing.html">Between Learning and Doing</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/rants/index.html" rel="tag">rants</a>
+                        <a href="/blog/tag/rants" rel="tag">rants</a>
                     </p>
 
                     <aside>
@@ -204,69 +240,12 @@ new programming language. I didn't realize my mistake until it was too late.</p>
                     <p><a href="/blog/2014/07/19/between-learning-and-doing.html#section-2">Continue reading Between Learning and Doing...</a></p>
 
             </article>
-            <article>
-                <header>
-                    <h1><a href="/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html">perlsloc - Count Perl Source Lines with Perl::Tidy</a></h1>
-
-                    <p class="tags">Tags:
-                        <a href="/blog/tag/scripts/index.html" rel="tag">scripts</a>
-                    </p>
-
-                    <aside>
-                        <p><time datetime="2014-06-29">
-                            Posted on 2014-06-29
-                        </time>
-                            by preaction
-                        </p>
-                    </aside>
-
-                    <p>Originally posted as:
-                            <a href="http://blogs.perl.org/users/preaction/2014/06/perlsloc---count-perl-source-lines-with-perltidy.html">
-                                <em>perlsloc - Count Perl Source Lines with Perl::Tidy</em> on blogs.perl.org.
-                            </a>
-                    </p>
-                </header>
-
-                <p>While spending some time putting together my own <a href="https://github.com/preaction/dot-files/blob/master/perltidyrc">perltidyrc
-file</a>, I became
-intimately familiar with the <a href="https://metacpan.org/pod/distribution/Perl-Tidy/bin/perltidy">Perl::Tidy
-documentation</a>.</p>
-
-<p>One day, I decided to find out exactly how much code I was maintaining. Since
-perltidy can strip comments and POD, and also normalize the source code to make
-a fair measurement, it's a perfect tool for counting Source Lines of Code
-(SLOC).</p>
-
-<p>Here's a small shell script using <code>ack</code>, <code>perltidy</code>, <code>xargs</code>, and <code>wc</code> to count
-the source lines of code in any number of directories.</p>
-
-<pre><code>ack -f --perl $@ | xargs -L 1 perltidy --noprofile --delete-pod --mbl=0 --standard-output | wc -l
-</code></pre>
-
-<p><code>ack -f</code> lists the files that would be searched, and <code>--perl</code> searches Perl
-files, so we get ack's heuristics for finding Perl files. <code>xargs -L 1</code> invokes
-the following command for every 1 line of input. The <code>perltidy</code> command strips
-the pod and tightens up the whitespace and writes the result to stdout, which
-<code>wc -l</code> will then count, line by line.</p>
-
-<p>So, as an example, the current <a href="http://metacpan.org/release/Statocles">Statocles</a> release
-has 50% more test lines than source lines:</p>
-
-<pre><code>» perlsloc lib bin
-    1034
-» perlsloc t
-    1633
-</code></pre>
-
-
-
-            </article>
         </main>
 
         <ul class="pager">
             <li class="prev">
                 <a class="button button-primary"
-                    rel="next" href="/blog/page-2.html"
+                    rel="next" href="/blog/page/2"
                 >
                     &larr; Older
                 </a>
@@ -286,24 +265,25 @@ has 50% more test lines than source lines:</p>
         
         <h1>Tags</h1>
         <ul class="list-inline">
-            <li><a href="/blog/tag/chicago.pm/index.html">chicago.pm</a></li>
-            <li><a href="/blog/tag/error/index.html">error</a></li>
-            <li><a href="/blog/tag/etl/index.html">etl</a></li>
-            <li><a href="/blog/tag/funny/index.html">funny</a></li>
-            <li><a href="/blog/tag/git/index.html">git</a></li>
-            <li><a href="/blog/tag/moose/index.html">moose</a></li>
-            <li><a href="/blog/tag/mysql/index.html">mysql</a></li>
-            <li><a href="/blog/tag/openbsd/index.html">openbsd</a></li>
-            <li><a href="/blog/tag/perl/index.html">perl</a></li>
-            <li><a href="/blog/tag/personal/index.html">personal</a></li>
-            <li><a href="/blog/tag/progress/index.html">progress</a></li>
-            <li><a href="/blog/tag/rants/index.html">rants</a></li>
-            <li><a href="/blog/tag/scripts/index.html">scripts</a></li>
-            <li><a href="/blog/tag/software/index.html">software</a></li>
-            <li><a href="/blog/tag/sql/index.html">sql</a></li>
-            <li><a href="/blog/tag/webgui/index.html">webgui</a></li>
-            <li><a href="/blog/tag/xs/index.html">xs</a></li>
-            <li><a href="/blog/tag/yertl/index.html">yertl</a></li>
+            <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
+            <li><a href="/blog/tag/error">error</a></li>
+            <li><a href="/blog/tag/etl">etl</a></li>
+            <li><a href="/blog/tag/funny">funny</a></li>
+            <li><a href="/blog/tag/git">git</a></li>
+            <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
+            <li><a href="/blog/tag/moose">moose</a></li>
+            <li><a href="/blog/tag/mysql">mysql</a></li>
+            <li><a href="/blog/tag/openbsd">openbsd</a></li>
+            <li><a href="/blog/tag/perl">perl</a></li>
+            <li><a href="/blog/tag/personal">personal</a></li>
+            <li><a href="/blog/tag/progress">progress</a></li>
+            <li><a href="/blog/tag/rants">rants</a></li>
+            <li><a href="/blog/tag/scripts">scripts</a></li>
+            <li><a href="/blog/tag/software">software</a></li>
+            <li><a href="/blog/tag/sql">sql</a></li>
+            <li><a href="/blog/tag/webgui">webgui</a></li>
+            <li><a href="/blog/tag/xs">xs</a></li>
+            <li><a href="/blog/tag/yertl">yertl</a></li>
         </ul>
         <h1>Feeds</h1>
         <ul class="list-inline">
