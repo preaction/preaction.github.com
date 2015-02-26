@@ -5,12 +5,6 @@ blog_app:
         url_root: /blog
         index_tags: [ '-personal' ]
 
-food_blog:
-    class: Statocles::App::Blog
-    args:
-        store: 'food'
-        url_root: /food
-
 static_app:
     class: Statocles::App::Static
     args:
@@ -34,7 +28,7 @@ site:
                 - title: Presentations
                   href: /presentations.html
                 - title: Food
-                  href: /food
+                  href: http://indiepalate.com
         build_store: 'build'
         deploy: 
             $class: Statocles::Deploy::Git
@@ -44,7 +38,5 @@ site:
         apps:
             blog:
                 $ref: blog_app
-            food:
-                $ref: food_blog
             static:
                 $ref: static_app
