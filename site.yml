@@ -29,7 +29,6 @@ site:
                   href: /presentations.html
                 - title: Food
                   href: http://indiepalate.com
-        build_store: 'build'
         deploy: 
             $class: Statocles::Deploy::Git
             $args:
