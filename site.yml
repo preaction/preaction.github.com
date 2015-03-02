@@ -13,6 +13,10 @@ static_app:
 
 site:
     class: Statocles::Site
+    on:
+        - build:
+            $class: Statocles::Plugin::LinkCheck
+            $method: check_pages
     args:
         title: preaction
         base_url: http://preaction.github.io
