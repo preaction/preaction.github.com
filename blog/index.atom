@@ -2,10 +2,45 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io</id>
     <title>preaction</title>
-    <updated>2015-02-25T22:47:37Z</updated>
+    <updated>2015-03-02T00:20:43Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/index.atom"/>
     <link rel="alternate" href="http://preaction.github.io"/>
-    <generator version="0.039">Statocles</generator>
+    <generator version="0.040">Statocles</generator>
+    <entry>
+        <id>http://preaction.github.io/blog/2015/03/02/announcing-statocles</id>
+        <title>Announcing Statocles</title>
+        <link rel="alternate" href="http://preaction.github.io/blog/2015/03/02/announcing-statocles" />
+        <content type="html"><![CDATA[
+            <p><a href="http://staticsitegenerators.net">Static site generators</a> are popular these
+days. For small sites, the ability to quickly author content using simple tools
+is key. The ability to use lower-cost (even free) hosting, often without any
+dynamic capabilities, is good for trying to maintain a budget. For larger
+sites, the ability to serve content quickly and cheaply is beneficial, and
+since most pages are read far more often than they are written, generating a
+full web page to store on the filesystem can improve performance (and lower
+costs).</p>
+
+<p>For me, I like the convenience of using <a href="http://pages.github.com">Github Pages</a>
+to host project-oriented websites. The project itself is already on Github, so
+why not keep the website closely tied to it so it doesn't get out-of-date? For
+an organization like <a href="http://chicago.pm.org">the Chicago Perl Mongers</a>, Github
+can even host custom domains, allowing easy collaboration on websites.</p>
+
+<p>It's through the Chicago.PM website that I was introduced to Octopress, a
+blogging engine built on Jekyll. It's through using Octopress that I decided to
+write my own static site generator,
+<a href="http://preaction.github.io/Statocles">Statocles</a>.</p>
+
+                <p><a href="http://preaction.github.io/blog/2015/03/02/announcing-statocles#section-2">Continue reading...</a></p>
+            <p>Tags:
+                <a href="/blog/tag/perl">perl</a>
+                <a href="/blog/tag/statocles">statocles</a>
+            </p>
+        ]]></content>
+        <updated>2015-03-02T00:05:21Z</updated>
+        <category term="perl" />
+        <category term="statocles" />
+    </entry>
     <entry>
         <id>http://preaction.github.io/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html</id>
         <title>Mojolicious Triumphs Over Legacy Code</title>
@@ -139,40 +174,6 @@ lines everywhere.</p>
         ]]></content>
         <updated>2014-10-26T18:45:20Z</updated>
         <category term="perl" />
-    </entry>
-    <entry>
-        <id>http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html</id>
-        <title>Between Learning and Doing</title>
-        <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html" />
-        <content type="html"><![CDATA[
-            <p><img src="/images/blog/ive-made-a-huge-mistake.gif" alt="I've made a huge mistake" /></p>
-
-<p>A long time ago, when I started building my first video game server for
-<a href="http://doublecluepon.com">Double Cluepon</a>, my video game company, I did a bad
-thing. I looked at the AMF library for Perl and Python and decided that
-Python's looked better. I had always meant to learn Python, and this felt like
-the perfect opportunity. It had cooperative multitasking (Twisted) and it had
-an ORM (SQLAlchemy), so along with the messaging format (PyAMF), I had
-everything I needed to build a server for a Flash MMO (later migrated to AIR).</p>
-
-<p>Let me reiterate my mistake: While under time constraints, I chose to learn a
-new programming language. I didn't realize my mistake until it was too late.</p>
-
-                <ul>
-                    <li><a href="http://blogs.perl.org/users/preaction/2014/07/between-learning-and-doing.html">
-                        Continue reading <em>Between Learning and Doing</em> on blogs.perl.org...
-                    </a></li>
-                    <li><a href="http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html#section-2">
-                        Continue reading on preaction
-                    </a></li>
-                </ul>
-            <p>Tags:
-                <a href="/blog/tag/rants">rants</a>
-            </p>
-        ]]></content>
-        <updated>2014-07-19T00:00:00Z</updated>
-        <category term="rants" />
     </entry>
 </feed>
 

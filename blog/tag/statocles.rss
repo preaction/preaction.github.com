@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>preaction</title>
+        <link>http://preaction.github.io/blog/tag/statocles</link>
+        <atom:link href="http://preaction.github.io/blog/tag/statocles.rss" rel="self" type="application/rss+xml" />
+        <description>Blog feed of preaction</description>
+        <generator>Statocles 0.040</generator>
+        <item>
+            <title>Announcing Statocles</title>
+            <link>http://preaction.github.io/blog/2015/03/02/announcing-statocles</link>
+            <guid>http://preaction.github.io/blog/2015/03/02/announcing-statocles</guid>
+            <description><![CDATA[
+                <p><a href="http://staticsitegenerators.net">Static site generators</a> are popular these
+days. For small sites, the ability to quickly author content using simple tools
+is key. The ability to use lower-cost (even free) hosting, often without any
+dynamic capabilities, is good for trying to maintain a budget. For larger
+sites, the ability to serve content quickly and cheaply is beneficial, and
+since most pages are read far more often than they are written, generating a
+full web page to store on the filesystem can improve performance (and lower
+costs).</p>
+
+<p>For me, I like the convenience of using <a href="http://pages.github.com">Github Pages</a>
+to host project-oriented websites. The project itself is already on Github, so
+why not keep the website closely tied to it so it doesn't get out-of-date? For
+an organization like <a href="http://chicago.pm.org">the Chicago Perl Mongers</a>, Github
+can even host custom domains, allowing easy collaboration on websites.</p>
+
+<p>It's through the Chicago.PM website that I was introduced to Octopress, a
+blogging engine built on Jekyll. It's through using Octopress that I decided to
+write my own static site generator,
+<a href="http://preaction.github.io/Statocles">Statocles</a>.</p>
+
+                    <p><a href="http://preaction.github.io/blog/2015/03/02/announcing-statocles#section-2">Continue reading...</a></p>
+                <p>Tags:
+                    <a href="/blog/tag/perl">perl</a>
+                    <a href="/blog/tag/statocles">statocles</a>
+                </p>
+            ]]></description>
+            <pubDate>
+                Mon, 02 Mar 2015 00:05:21 +0000
+            </pubDate>
+        </item>
+    </channel>
+</rss>
+

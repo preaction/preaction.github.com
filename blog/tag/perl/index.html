@@ -44,6 +44,48 @@
 
             <article>
                 <header>
+                    <h1><a href="/blog/2015/03/02/announcing-statocles">Announcing Statocles</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/perl" rel="tag">perl</a>
+                        <a href="/blog/tag/statocles" rel="tag">statocles</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2015-03-02">
+                            Posted on 2015-03-02
+                        </time>
+                        </p>
+                    </aside>
+
+                </header>
+
+                <p><a href="http://staticsitegenerators.net">Static site generators</a> are popular these
+days. For small sites, the ability to quickly author content using simple tools
+is key. The ability to use lower-cost (even free) hosting, often without any
+dynamic capabilities, is good for trying to maintain a budget. For larger
+sites, the ability to serve content quickly and cheaply is beneficial, and
+since most pages are read far more often than they are written, generating a
+full web page to store on the filesystem can improve performance (and lower
+costs).</p>
+
+<p>For me, I like the convenience of using <a href="http://pages.github.com">Github Pages</a>
+to host project-oriented websites. The project itself is already on Github, so
+why not keep the website closely tied to it so it doesn't get out-of-date? For
+an organization like <a href="http://chicago.pm.org">the Chicago Perl Mongers</a>, Github
+can even host custom domains, allowing easy collaboration on websites.</p>
+
+<p>It's through the Chicago.PM website that I was introduced to Octopress, a
+blogging engine built on Jekyll. It's through using Octopress that I decided to
+write my own static site generator,
+<a href="http://preaction.github.io/Statocles">Statocles</a>.</p>
+
+
+                    <p><a href="/blog/2015/03/02/announcing-statocles#section-2">Continue reading Announcing Statocles...</a></p>
+
+            </article>
+            <article>
+                <header>
                     <h1><a href="/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html">Mojolicious Triumphs Over Legacy Code</a></h1>
 
                     <p class="tags">Tags:
@@ -199,92 +241,12 @@ able to execute it. Maybe git-add--interactive is broken?
                     <p><a href="/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html#section-2">Continue reading Conflict Resolution: local::lib and git's Perl...</a></p>
 
             </article>
-            <article>
-                <header>
-                    <h1><a href="/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html">Adventures in Debugging C/XS 2: Debugging Boogaloo</a></h1>
-
-                    <p class="tags">Tags:
-                        <a href="/blog/tag/perl" rel="tag">perl</a>
-                        <a href="/blog/tag/xs" rel="tag">xs</a>
-                    </p>
-
-                    <aside>
-                        <p><time datetime="2012-03-20">
-                            Posted on 2012-03-20
-                        </time>
-                            by preaction
-                        </p>
-                    </aside>
-
-                </header>
-
-                <p>... or "Ask Not To Whom The Pointer Points, It Points To Thee."</p>
-
-<p>TL;DR: A pointer is not a reference. A pointer knows nothing about the data
-being pointed to. Returning multiple values requires actual work.</p>
-
-<p>Everything went wrong when I wanted a string with a <code>NUL</code> character inside it.
-C strings are not Perl scalars, they don't know how long they are. So to mark
-the end of a string, C uses the <code>NUL</code> character, <code>\0</code>. The <code>strcpy</code> function will
-copy to your destination until the first <code>\0</code> from your source. When you want to
-have a string with a <code>\0</code> inside of it that does not mark the end of the string,
-you need to know exactly how long the string is. This is not difficult to do,
-but you also have to return that length from the function that creates your
-string.</p>
-
-<p>C functions do not have more than one return value.</p>
-
-<pre><code>(char* buffer, int bufferSize) = get_string_with_nuls();
-// You thought it could be that easy?
-</code></pre>
-
-<p>So in order for your function to result in more than one value, you have to
-pass in references to be used to fill in with actual values.</p>
-
-<pre><code>char* buffer;
-int bufferSize = get_string_with_nuls( buffer );
-// C programmers will already know what I did wrong here
-</code></pre>
-
-<p>Thinking like a Perl programmer, I thought I could just pass in the pointer to
-the function and the function could fill it with data. Two problems:</p>
-
-<ol>
-<li>I passed in the pointer itself, not a reference to the pointer: <code>&amp;buffer</code></li>
-<li>I did not initialize the pointer to anything.</li>
-</ol>
-
-<p>A more correct way would be:</p>
-
-<pre><code>char* buffer = malloc( 128 * sizeof( char ) );
-int bufferSize = get_string_with_nuls( &amp;buffer );
-</code></pre>
-
-<p>But this suffers from another problem: I have to know beforehand how big my
-string is going to be and allocate that much memory beforehand.</p>
-
-<p>The way I ended up succeeding was:</p>
-
-<pre><code>int bufferSize;
-char* buffer = get_string_with_nuls( &amp;bufferSize );
-</code></pre>
-
-<p>This way, <code>get_string_with_nuls</code> can handle the <code>malloc</code> with exactly the correct
-size and give it to me. I don't have to guess at a size beforehand.</p>
-
-<p>Of course, a struct could do this better, or since I'm actually in C++, an
-object. I'll be planning a new API as soon as I confirm this one actually
-works and has proper tests (written in Perl, of course).</p>
-
-
-
-            </article>
         </main>
 
         <ul class="pager">
             <li class="prev">
-                <a class="button disabled"
-                    rel="next" href=""
+                <a class="button button-primary"
+                    rel="next" href="/blog/tag/perl/page/2"
                 >
                     &larr; Older
                 </a>
@@ -320,6 +282,7 @@ works and has proper tests (written in Perl, of course).</p>
             <li><a href="/blog/tag/scripts">scripts</a></li>
             <li><a href="/blog/tag/software">software</a></li>
             <li><a href="/blog/tag/sql">sql</a></li>
+            <li><a href="/blog/tag/statocles">statocles</a></li>
             <li><a href="/blog/tag/webgui">webgui</a></li>
             <li><a href="/blog/tag/xs">xs</a></li>
             <li><a href="/blog/tag/yertl">yertl</a></li>

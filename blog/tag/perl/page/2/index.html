@@ -5,8 +5,8 @@
         <link rel="stylesheet" href="/theme/css/skeleton.css" />
         <link rel="stylesheet" href="/theme/css/statocles-default.css" />
         <title>preaction</title>
-        <link rel="alternate" href="/blog/tag/xs.atom" type="application/atom+xml" />
-        <link rel="alternate" href="/blog/tag/xs.rss" type="application/rss+xml" />
+        <link rel="alternate" href="/blog/tag/perl.atom" type="application/atom+xml" />
+        <link rel="alternate" href="/blog/tag/perl.rss" type="application/rss+xml" />
         
     </head>
     <body>
@@ -122,45 +122,6 @@ works and has proper tests (written in Perl, of course).</p>
 
 
             </article>
-            <article>
-                <header>
-                    <h1><a href="/blog/2011/11/16/adventures-in-debugging-c-xs.html">Adventures in Debugging C/XS</a></h1>
-
-                    <p class="tags">Tags:
-                        <a href="/blog/tag/xs" rel="tag">xs</a>
-                    </p>
-
-                    <aside>
-                        <p><time datetime="2014-06-21">
-                            Posted on 2014-06-21
-                        </time>
-                            by preaction
-                        </p>
-                    </aside>
-
-                    <p>Originally posted as:
-                            <a href="http://blogs.perl.org/users/preaction/2011/11/adventures-in-debugging-cxs.html">
-                                <em>Adventures in Debugging C/XS</em> on blogs.perl.org.
-                            </a>
-                    </p>
-                </header>
-
-                <p>... or Why A Good Perl Developer Is Not Automatically A Good C Developer, the
-Story of C Programming via Google.</p>
-
-<p>My tests failed, but only sometimes. I was building an XS module to interface
-with a C wrapper around a C++ library (wrapper unnecessary? probably). <code>make
-test</code> was failing with exit code 11. Some quick searching revealed that I had
-an intermittent segfault. Calling a function <code>as_xml</code> would fail with a SEGV in
-<code>strlen()</code>. This only happened in perl after <code>as_xml</code> when perl was making a SV
-out of the return value. This also only mainly happened during <code>make test</code>.
-Doing <code>prove</code> myself would succeed 19 times out of 20, where make test would
-fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
-
-
-                    <p><a href="/blog/2011/11/16/adventures-in-debugging-c-xs.html#section-2">Continue reading Adventures in Debugging C/XS...</a></p>
-
-            </article>
         </main>
 
         <ul class="pager">
@@ -172,8 +133,8 @@ fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
                 </a>
             </li>
             <li class="next">
-                <a class="button disabled"
-                    rel="prev" href=""
+                <a class="button button-primary"
+                    rel="prev" href="/blog/tag/perl"
                 >
                     Newer &rarr;
                 </a>
@@ -210,12 +171,12 @@ fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
         <h1>Feeds</h1>
         <ul class="list-inline">
             <li>
-                <a href="/blog/tag/xs.atom" rel="alternate" type="application/atom+xml">
+                <a href="/blog/tag/perl.atom" rel="alternate" type="application/atom+xml">
                     Atom
                 </a>
             </li>
             <li>
-                <a href="/blog/tag/xs.rss" rel="alternate" type="application/rss+xml">
+                <a href="/blog/tag/perl.rss" rel="alternate" type="application/rss+xml">
                     RSS
                 </a>
             </li>
