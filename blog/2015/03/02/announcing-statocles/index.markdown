@@ -80,7 +80,7 @@ Here are some websites currently using Statocles:
 * <http://chicago.pm.org> Chicago Perl Mongers, which uses some very small
   additions to the default theme
 * <http://preaction.github.io/Statocles> The Statocles website (of course),
-  which shows the Perldoc app <http://preaction.github.io/Statoces/pod>
+  which shows the Perldoc app <http://preaction.github.io/Statocles/pod>
 
 Join me in [#statocles on
 irc.perl.org](https://chat.mibbit.com/?channel=%23statocles&server=irc.perl.org)
