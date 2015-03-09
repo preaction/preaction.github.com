@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/sql</id>
     <title>preaction</title>
-    <updated>2015-03-02T20:58:14Z</updated>
+    <updated>2015-03-08T23:54:05Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/sql.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/sql"/>
-    <generator version="0.040">Statocles</generator>
+    <generator version="0.041">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html</id>
         <title>Managing SQL Data with Yertl</title>
@@ -38,7 +38,7 @@ with SQL databases easy.</p>
                 <a href="/blog/tag/yertl">yertl</a>
             </p>
         ]]></content>
-        <updated>2015-01-21T22:24:15Z</updated>
+        <updated>2015-01-21T00:00:00Z</updated>
         <category term="perl" />
         <category term="sql" />
         <category term="etl" />

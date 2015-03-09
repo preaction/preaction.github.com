@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/scripts</link>
         <atom:link href="http://preaction.github.io/blog/tag/scripts.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.040</generator>
+        <generator>Statocles 0.041</generator>
         <item>
             <title>perlsloc - Count Perl Source Lines with Perl::Tidy</title>
             <link>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</link>
@@ -55,7 +55,7 @@ has 50% more test lines than source lines:</p>
                 </p>
             ]]></description>
             <pubDate>
-                Sun, 29 Jun 2014 21:52:19 +0000
+                Sun, 29 Jun 2014 00:00:00 +0000
             </pubDate>
         </item>
     </channel>

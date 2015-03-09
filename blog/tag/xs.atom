@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/xs</id>
     <title>preaction</title>
-    <updated>2015-03-02T20:58:15Z</updated>
+    <updated>2015-03-08T23:54:06Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/xs.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/xs"/>
-    <generator version="0.040">Statocles</generator>
+    <generator version="0.041">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</id>
         <title>Adventures in Debugging C/XS 2: Debugging Boogaloo</title>
@@ -110,7 +110,7 @@ fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
                 <a href="/blog/tag/xs">xs</a>
             </p>
         ]]></content>
-        <updated>2014-06-21T01:25:00Z</updated>
+        <updated>2011-11-16T00:00:00Z</updated>
         <category term="xs" />
     </entry>
 </feed>

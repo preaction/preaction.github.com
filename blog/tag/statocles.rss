@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/statocles</link>
         <atom:link href="http://preaction.github.io/blog/tag/statocles.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.040</generator>
+        <generator>Statocles 0.041</generator>
         <item>
             <title>Announcing Statocles</title>
             <link>http://preaction.github.io/blog/2015/03/02/announcing-statocles</link>
@@ -38,7 +38,7 @@ write my own static site generator,
                 </p>
             ]]></description>
             <pubDate>
-                Mon, 02 Mar 2015 00:05:21 +0000
+                Mon, 02 Mar 2015 00:00:00 +0000
             </pubDate>
         </item>
     </channel>

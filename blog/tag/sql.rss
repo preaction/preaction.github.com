@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/sql</link>
         <atom:link href="http://preaction.github.io/blog/tag/sql.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.040</generator>
+        <generator>Statocles 0.041</generator>
         <item>
             <title>Managing SQL Data with Yertl</title>
             <link>http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html</link>
@@ -39,7 +39,7 @@ with SQL databases easy.</p>
                 </p>
             ]]></description>
             <pubDate>
-                Wed, 21 Jan 2015 22:24:15 +0000
+                Wed, 21 Jan 2015 00:00:00 +0000
             </pubDate>
         </item>
     </channel>

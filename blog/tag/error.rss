@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/error</link>
         <atom:link href="http://preaction.github.io/blog/tag/error.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.040</generator>
+        <generator>Statocles 0.041</generator>
         <item>
             <title>I Bless You in the Name of the Stringified Object</title>
             <link>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</link>
@@ -41,7 +41,7 @@ and then using that as a package name?</p>
                 </p>
             ]]></description>
             <pubDate>
-                Sat, 21 Jun 2014 00:34:00 +0000
+                Mon, 15 Apr 2013 00:00:00 +0000
             </pubDate>
         </item>
     </channel>

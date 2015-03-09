@@ -2,10 +2,52 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io</id>
     <title>preaction</title>
-    <updated>2015-03-02T20:58:13Z</updated>
+    <updated>2015-03-08T23:54:05Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/index.atom"/>
     <link rel="alternate" href="http://preaction.github.io"/>
-    <generator version="0.040">Statocles</generator>
+    <generator version="0.041">Statocles</generator>
+    <entry>
+        <id>http://preaction.github.io/blog/2015/03/08/consuming-chaos</id>
+        <title>Consuming Chaos</title>
+        <link rel="alternate" href="http://preaction.github.io/blog/2015/03/08/consuming-chaos" />
+        <content type="html"><![CDATA[
+            <p><img src="/images/blog/chaos.jpg" style="width: 40%" class="u-pull-left"/></p>
+
+<p>For what seems hours, you scan the board. The colors are sharp against the
+simple background. Some movement catches your eye, but it doesn't feel right,
+so you ignore it. Time stretches on.</p>
+
+<p>There! The perfect move. Leaving the perfect next move. A quick flick. A match.
+The pieces fall into place. Another match. Another. Another. A special piece.
+Another special piece. It fires, triggering more. Chaos consumes.</p>
+
+<p>The board is in ruins. Your carefully planned next move is lost in the
+destruction. You're back to scanning the board to try to find where you belong
+in this new world.</p>
+
+<p>Is this a game, or is it your development strategy?</p>
+
+<p>Software development is chaos. Either you work to managing chaos, consuming it,
+or it works on consuming you. There are too many possibilities, too much input,
+to brute-force your way to completion (how much software do you know of that
+can be considered complete?).</p>
+
+<p>In the face of these possibilities, a rigid development plan will fail. Vague
+goals are better. Goals written in terms of a problem are best. Problems don't
+change, once you find their roots.</p>
+
+<p>I didn't know this post was going to be about Agile, but there it is.</p>
+
+<p>Exact is for computers. We are not computers. We are human. We are chaos.</p>
+
+                <p><a href="http://preaction.github.io/blog/2015/03/08/consuming-chaos#section-2">Continue reading...</a></p>
+            <p>Tags:
+                <a href="/blog/tag/software">software</a>
+            </p>
+        ]]></content>
+        <updated>2015-03-08T00:00:00Z</updated>
+        <category term="software" />
+    </entry>
     <entry>
         <id>http://preaction.github.io/blog/2015/03/02/announcing-statocles</id>
         <title>Announcing Statocles</title>
@@ -37,7 +79,7 @@ write my own static site generator,
                 <a href="/blog/tag/statocles">statocles</a>
             </p>
         ]]></content>
-        <updated>2015-03-02T00:05:21Z</updated>
+        <updated>2015-03-02T00:00:00Z</updated>
         <category term="perl" />
         <category term="statocles" />
     </entry>
@@ -66,7 +108,7 @@ person to enter the conference. Tone.</p>
                 <a href="/blog/tag/perl">perl</a>
             </p>
         ]]></content>
-        <updated>2015-02-13T20:55:21Z</updated>
+        <updated>2015-02-13T00:00:00Z</updated>
         <category term="mojolicious" />
         <category term="perl" />
     </entry>
@@ -102,7 +144,7 @@ with SQL databases easy.</p>
                 <a href="/blog/tag/yertl">yertl</a>
             </p>
         ]]></content>
-        <updated>2015-01-21T22:24:15Z</updated>
+        <updated>2015-01-21T00:00:00Z</updated>
         <category term="perl" />
         <category term="sql" />
         <category term="etl" />
@@ -137,43 +179,8 @@ me to use...</p>
                 <a href="/blog/tag/software">software</a>
             </p>
         ]]></content>
-        <updated>2014-12-23T06:57:07Z</updated>
+        <updated>2014-12-23T00:00:00Z</updated>
         <category term="software" />
-    </entry>
-    <entry>
-        <id>http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html</id>
-        <title>Manage Boilerplate with Import::Base</title>
-        <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html" />
-        <content type="html"><![CDATA[
-            <p>Boilerplate is everything I hate about programming:</p>
-
-<ul>
-<li>Doing the same thing more than once</li>
-<li>Leaving clutter in every file</li>
-<li>Making it harder to change things in the future</li>
-<li>Eventually blindly copying without understanding (cargo-cult programming)</li>
-</ul>
-
-<p>In an effort to reduce some of my boilerplate, I wrote
-<a href="https://metacpan.org/pod/Import::Base">Import::Base</a>, a module to collect and
-import useful bundles of modules, removing the need for long lists of <code>use ...</code>
-lines everywhere.</p>
-
-                <ul>
-                    <li><a href="http://blogs.perl.org/users/preaction/2014/10/managing-boilerplate-with-importbase.html">
-                        Continue reading <em>Manage Boilerplate with Import::Base</em> on blogs.perl.org...
-                    </a></li>
-                    <li><a href="http://preaction.github.io/blog/2014/10/26/managing-boilerplate-with-import-base.html#section-2">
-                        Continue reading on preaction
-                    </a></li>
-                </ul>
-            <p>Tags:
-                <a href="/blog/tag/perl">perl</a>
-            </p>
-        ]]></content>
-        <updated>2014-10-26T18:45:20Z</updated>
-        <category term="perl" />
     </entry>
 </feed>
 

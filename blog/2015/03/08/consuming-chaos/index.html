@@ -39,61 +39,46 @@
     <div class="nine columns">
         <main>
             <header>
-                <h1>Chicago.PM Report - App::Services by Sean Blanton</h1>
+                <h1>Consuming Chaos</h1>
                 <p class="tags">Tags:
-                    <a href="/blog/tag/chicago.pm" rel="tag">chicago.pm</a>
+                    <a href="/blog/tag/software" rel="tag">software</a>
                 </p>
                 <aside>
-                    <p><time datetime="2012-09-27">
-                        Posted on 2012-09-27
+                    <p><time datetime="2015-03-08">
+                        Posted on 2015-03-08
                     </time>
-                        by preaction
                     </p>
                 </aside>
-                <p>Originally posted as:
-                        <a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/09/chicagopm-report---appservices-by-sean-blanton.html">
-                            <em>Chicago.PM Report - App::Services by Sean Blanton</em> on blogs.perl.org.
-                        </a>
-                </p>
             </header>
             <section id="section-1">
-                <p>This month's technical presentation at <a href="http://chicago.pm.org">Chicago Perl
-Mongers</a> was about <a href="http://seanblanton.com">Sean
-Blanton</a>'s project called
-<a href="https://github.com/sblanton/App-Services">App::Services</a>. It's an interesting
-project that uses <a href="http://search.cpan.org/perldoc?Bread::Board">Bread::Board</a>
-to access resources like databases, logging, ssh, and others.</p>
+                <p><img src="/images/blog/chaos.jpg" style="width: 40%" class="u-pull-left"/></p>
 
-            </section>
-            <section id="section-2">
-                <p>Along the way, we discussed logging practices (most of us are using
-<a href="http://search.cpan.org/perldoc?Log%3A%3ALog4perl">Log::Log4perl</a>), and the
-best way to get a Perl module ready for CPAN (I suggested using
-<a href="http://search.cpan.org/perldoc?Module%3A%3ABuild">Module::Build</a> directly, but
-<a href="http://search.cpan.org/perldoc?Dist::Zilla">Dist::Zilla</a> outvoted me).</p>
+<p>For what seems hours, you scan the board. The colors are sharp against the
+simple background. Some movement catches your eye, but it doesn't feel right,
+so you ignore it. Time stretches on.</p>
 
-<p>Sean mentioned in passing the <a href="http://saltstack.org">Salt stack</a> for executing
-commands across multiple machines, which looks like a very interesting
-alternative to more detailed tools like Puppet or Chef. Salt seems to be just a
-simple way to execute commands on multiple machines. Those commands could be
-administrative (restart httpd), or they could be the application.</p>
+<p>There! The perfect move. Leaving the perfect next move. A quick flick. A match.
+The pieces fall into place. Another match. Another. Another. A special piece.
+Another special piece. It fires, triggering more. Chaos consumes.</p>
 
-<p>One other very interesting thing from App::Services was providing a role for
-the larger system to use. So one creates App::Service::Log::Log4perl and
-App::Service::Log::Role, and in other services you consume the
-App::Service::Log::Role and then can use the Log4perl service. What's
-interesting about this is that the role is provided alongside the logging
-service, it isn't something that you have to create yourself. Doing it this way
-improves interoperability and simplifies adoption by giving you the tedious
-bits already. It's the difference between "Here's a service, figure out how to
-use it best" and "Here's a service, and here's a good way to use it" (I've been
-doing something similar by providing Test::MockObject implementations of my
-modules for testing purposes in the same distribution as the module itself. An
-"official" mock object).</p>
+<p>The board is in ruins. Your carefully planned next move is lost in the
+destruction. You're back to scanning the board to try to find where you belong
+in this new world.</p>
 
-<p>In two weeks we have another project night, which I'm hoping is as productive
-as the last. If you're in the Chicago area, check us out on the <a href="http://www.meetup.com/Windy-City-Perl-mongers-Meetup/">Chicago Perl
-Mongers meetup page</a>.</p>
+<p>Is this a game, or is it your development strategy?</p>
+
+<p>Software development is chaos. Either you work to managing chaos, consuming it,
+or it works on consuming you. There are too many possibilities, too much input,
+to brute-force your way to completion (how much software do you know of that
+can be considered complete?).</p>
+
+<p>In the face of these possibilities, a rigid development plan will fail. Vague
+goals are better. Goals written in terms of a problem are best. Problems don't
+change, once you find their roots.</p>
+
+<p>I didn't know this post was going to be about Agile, but there it is.</p>
+
+<p>Exact is for computers. We are not computers. We are human. We are chaos.</p>
 
             </section>
         </main>

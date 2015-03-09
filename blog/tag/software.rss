@@ -5,7 +5,50 @@
         <link>http://preaction.github.io/blog/tag/software</link>
         <atom:link href="http://preaction.github.io/blog/tag/software.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.040</generator>
+        <generator>Statocles 0.041</generator>
+        <item>
+            <title>Consuming Chaos</title>
+            <link>http://preaction.github.io/blog/2015/03/08/consuming-chaos</link>
+            <guid>http://preaction.github.io/blog/2015/03/08/consuming-chaos</guid>
+            <description><![CDATA[
+                <p><img src="/images/blog/chaos.jpg" style="width: 40%" class="u-pull-left"/></p>
+
+<p>For what seems hours, you scan the board. The colors are sharp against the
+simple background. Some movement catches your eye, but it doesn't feel right,
+so you ignore it. Time stretches on.</p>
+
+<p>There! The perfect move. Leaving the perfect next move. A quick flick. A match.
+The pieces fall into place. Another match. Another. Another. A special piece.
+Another special piece. It fires, triggering more. Chaos consumes.</p>
+
+<p>The board is in ruins. Your carefully planned next move is lost in the
+destruction. You're back to scanning the board to try to find where you belong
+in this new world.</p>
+
+<p>Is this a game, or is it your development strategy?</p>
+
+<p>Software development is chaos. Either you work to managing chaos, consuming it,
+or it works on consuming you. There are too many possibilities, too much input,
+to brute-force your way to completion (how much software do you know of that
+can be considered complete?).</p>
+
+<p>In the face of these possibilities, a rigid development plan will fail. Vague
+goals are better. Goals written in terms of a problem are best. Problems don't
+change, once you find their roots.</p>
+
+<p>I didn't know this post was going to be about Agile, but there it is.</p>
+
+<p>Exact is for computers. We are not computers. We are human. We are chaos.</p>
+
+                    <p><a href="http://preaction.github.io/blog/2015/03/08/consuming-chaos#section-2">Continue reading...</a></p>
+                <p>Tags:
+                    <a href="/blog/tag/software">software</a>
+                </p>
+            ]]></description>
+            <pubDate>
+                Sun, 08 Mar 2015 00:00:00 +0000
+            </pubDate>
+        </item>
         <item>
             <title>Leaving Crumb Trails -- Talking to Myself</title>
             <link>http://preaction.github.io/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html</link>
@@ -35,7 +78,7 @@ me to use...</p>
                 </p>
             ]]></description>
             <pubDate>
-                Tue, 23 Dec 2014 06:57:07 +0000
+                Tue, 23 Dec 2014 00:00:00 +0000
             </pubDate>
         </item>
         <item>
@@ -72,7 +115,7 @@ user has input an invalid ID for data?</p>
                 </p>
             ]]></description>
             <pubDate>
-                Sat, 21 Jun 2014 01:02:00 +0000
+                Sun, 04 Nov 2012 00:00:00 +0000
             </pubDate>
         </item>
         <item>
@@ -102,7 +145,7 @@ for a long time.</p>
                 </p>
             ]]></description>
             <pubDate>
-                Sat, 21 Jun 2014 01:15:00 +0000
+                Sun, 23 Sep 2012 00:00:00 +0000
             </pubDate>
         </item>
     </channel>

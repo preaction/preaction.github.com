@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/progress</id>
     <title>preaction</title>
-    <updated>2015-03-02T20:58:14Z</updated>
+    <updated>2015-03-08T23:54:06Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/progress.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/progress"/>
-    <generator version="0.040">Statocles</generator>
+    <generator version="0.041">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2015/01/07/be-it-resolved-in-2015.html</id>
         <title>Be It Resolved in 2015</title>
@@ -58,7 +58,7 @@ Making a video game will also satisfy that condition.</p>
                 <a href="/blog/tag/progress">progress</a>
             </p>
         ]]></content>
-        <updated>2015-01-07T22:49:18Z</updated>
+        <updated>2015-01-07T00:00:00Z</updated>
         <category term="personal" />
         <category term="progress" />
     </entry>

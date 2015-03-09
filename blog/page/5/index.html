@@ -44,6 +44,49 @@
 
             <article>
                 <header>
+                    <h1><a href="/blog/2012/10/07/run-time-class-composition-with-moose.html">Run-time Class Composition With Moose</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/moose" rel="tag">moose</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2012-10-07">
+                            Posted on 2012-10-07
+                        </time>
+                            by preaction
+                        </p>
+                    </aside>
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2012/10/run-time-class-composition-with-moose.html">
+                                <em>Run-time Class Composition With Moose</em> on blogs.perl.org.
+                            </a>
+                    </p>
+                </header>
+
+                <p>Moose is great! At its very basic, it simplifies the boilerplate required to
+create Perl objects immensely, providing attributes with type constraints,
+method modifiers for semantic enhancement, and role-based class composition for
+better code re-use.</p>
+
+<p>Moose is built on top of Class::MOP. MOP stands for Meta-Object Protocol. A
+meta-object is an object that describes an object. So, each attribute and
+method in your class has a corresponding entry in the meta-object describing
+it. The meta-object is where you can find out what type constraints are on an
+attribute, or what methods a class has available.</p>
+
+<p>Since the meta-object is a Plain Old Perl Object, we can call methods on it at
+runtime. Using those meta-object methods to add an attribute would modify our
+object, adding that attribute to the object. Using Class::MOP, we can compose
+classes at runtime!</p>
+
+
+                    <p><a href="/blog/2012/10/07/run-time-class-composition-with-moose.html#section-2">Continue reading Run-time Class Composition With Moose...</a></p>
+
+            </article>
+            <article>
+                <header>
                     <h1><a href="/blog/2012/09/27/chicago.pm-report-app-services-by-sean-blanton.html">Chicago.PM Report - App::Services by Sean Blanton</a></h1>
 
                     <p class="tags">Tags:
@@ -51,8 +94,8 @@
                     </p>
 
                     <aside>
-                        <p><time datetime="2014-06-21">
-                            Posted on 2014-06-21
+                        <p><time datetime="2012-09-27">
+                            Posted on 2012-09-27
                         </time>
                             by preaction
                         </p>
@@ -85,8 +128,8 @@ to access resources like databases, logging, ssh, and others.</p>
                     </p>
 
                     <aside>
-                        <p><time datetime="2014-06-21">
-                            Posted on 2014-06-21
+                        <p><time datetime="2012-09-23">
+                            Posted on 2012-09-23
                         </time>
                             by preaction
                         </p>
@@ -121,8 +164,8 @@ for a long time.</p>
                     </p>
 
                     <aside>
-                        <p><time datetime="2014-06-21">
-                            Posted on 2014-06-21
+                        <p><time datetime="2012-09-15">
+                            Posted on 2012-09-15
                         </time>
                             by preaction
                         </p>
@@ -222,45 +265,6 @@ object. I'll be planning a new API as soon as I confirm this one actually
 works and has proper tests (written in Perl, of course).</p>
 
 
-
-            </article>
-            <article>
-                <header>
-                    <h1><a href="/blog/2011/11/16/adventures-in-debugging-c-xs.html">Adventures in Debugging C/XS</a></h1>
-
-                    <p class="tags">Tags:
-                        <a href="/blog/tag/xs" rel="tag">xs</a>
-                    </p>
-
-                    <aside>
-                        <p><time datetime="2014-06-21">
-                            Posted on 2014-06-21
-                        </time>
-                            by preaction
-                        </p>
-                    </aside>
-
-                    <p>Originally posted as:
-                            <a href="http://blogs.perl.org/users/preaction/2011/11/adventures-in-debugging-cxs.html">
-                                <em>Adventures in Debugging C/XS</em> on blogs.perl.org.
-                            </a>
-                    </p>
-                </header>
-
-                <p>... or Why A Good Perl Developer Is Not Automatically A Good C Developer, the
-Story of C Programming via Google.</p>
-
-<p>My tests failed, but only sometimes. I was building an XS module to interface
-with a C wrapper around a C++ library (wrapper unnecessary? probably). <code>make
-test</code> was failing with exit code 11. Some quick searching revealed that I had
-an intermittent segfault. Calling a function <code>as_xml</code> would fail with a SEGV in
-<code>strlen()</code>. This only happened in perl after <code>as_xml</code> when perl was making a SV
-out of the return value. This also only mainly happened during <code>make test</code>.
-Doing <code>prove</code> myself would succeed 19 times out of 20, where make test would
-fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
-
-
-                    <p><a href="/blog/2011/11/16/adventures-in-debugging-c-xs.html#section-2">Continue reading Adventures in Debugging C/XS...</a></p>
 
             </article>
         </main>
