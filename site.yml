@@ -16,6 +16,10 @@ site:
     on:
         - build:
             $class: Statocles::Plugin::LinkCheck
+            $args:
+                ignore:
+                    - '/Statocles'
+                    - '/ETL-Yertl'
             $sub: check_pages
     args:
         title: preaction
