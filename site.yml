@@ -47,3 +47,5 @@ site:
                 $ref: blog_app
             static:
                 $ref: static_app
+        data:
+            google_analytics_id: 'UA-61295159-2'
