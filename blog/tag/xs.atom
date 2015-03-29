@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/xs</id>
     <title>preaction</title>
-    <updated>2015-03-08T23:54:06Z</updated>
+    <updated>2015-03-29T00:45:36Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/xs.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/xs"/>
-    <generator version="0.041">Statocles</generator>
+    <generator version="0.042">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</id>
         <title>Adventures in Debugging C/XS 2: Debugging Boogaloo</title>

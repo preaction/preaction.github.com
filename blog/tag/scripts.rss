@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/scripts</link>
         <atom:link href="http://preaction.github.io/blog/tag/scripts.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.041</generator>
+        <generator>Statocles 0.042</generator>
         <item>
             <title>perlsloc - Count Perl Source Lines with Perl::Tidy</title>
             <link>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</link>
