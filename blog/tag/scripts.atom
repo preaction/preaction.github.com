@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/scripts</id>
     <title>preaction</title>
-    <updated>2015-03-29T00:45:34Z</updated>
+    <updated>2015-04-02T21:19:38Z</updated>
     <link rel="self" href="http://preaction.github.io/blog/tag/scripts.atom"/>
     <link rel="alternate" href="http://preaction.github.io/blog/tag/scripts"/>
-    <generator version="0.042">Statocles</generator>
+    <generator version="0.044">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</id>
         <title>perlsloc - Count Perl Source Lines with Perl::Tidy</title>
