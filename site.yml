@@ -24,7 +24,12 @@ site:
     args:
         title: preaction
         base_url: http://preaction.github.io
-        theme: '::default'
+        theme:
+            $class: 'Statocles::Theme'
+            $args:
+                store: '::default'
+                include_stores:
+                    - 'theme'
         nav:
             main:
                 - title: Blog
