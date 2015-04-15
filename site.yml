@@ -38,8 +38,8 @@ site:
                   href: /Statocles
                 - title: Yertl
                   href: /ETL-Yertl
-                - title: Presentations
-                  href: /presentations.html
+                - title: Talks
+                  href: /talks
                 - title: Food
                   href: http://indiepalate.com
         deploy: 
