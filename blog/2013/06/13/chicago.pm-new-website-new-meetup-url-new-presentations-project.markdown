@@ -35,7 +35,7 @@ The first presentation we're releasing is about [building command-line
 applications in Perl](https://github.com/ChicagoPM/Command-Line-Apps). I've
 given this presentation twice now, to excellent reviews. There is still some
 content that can be added to make it a more robust presentation (especially in
-the [http://metacpan.org/release/App-Cmd](App::Cmd) section), but it's a good
+the [App::Cmd](http://metacpan.org/release/App-Cmd) section), but it's a good
 talk on going from "Just read my first Perl book and my first Linux book" to
 "Wielding Perl to build command-line applications."
 
