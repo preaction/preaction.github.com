@@ -4,6 +4,10 @@ title: Resume
 
 # Doug Bell
 
+* Located in Chicago, IL
+* (312) 241-8518
+* [E-mail: madcityzen@gmail.com](mailto:madcityzen@gmail.com)
+
 ## Summary
 
 * Software developer in Perl and JavaScript
