@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>preaction</title>
-        <link>http://preaction.github.io/blog/tag/yertl</link>
+        <link>http://preaction.github.io/blog/tag/yertl/</link>
         <atom:link href="http://preaction.github.io/blog/tag/yertl.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.044</generator>
+        <generator>Statocles 0.053</generator>
         <item>
             <title>Managing SQL Data with Yertl</title>
             <link>http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html</link>
@@ -20,22 +20,22 @@ production. All of them need data extracted, transformed, and loaded.</p>
 
 <p>DBI is the clear choice for dealing with SQL databases in Perl, but there are a
 dozen lines of Perl code in between me and the operation that I want. Sure,
-I've got modules and web applications and ad-hoc commands and scripts that
+I&#39;ve got modules and web applications and ad-hoc commands and scripts that
 perform certain individual tasks on my databases, but sometimes those things
-don't quite do what I need right now, and I just want something that will let
+don&#39;t quite do what I need right now, and I just want something that will let
 me execute whatever SQL I can come up with.</p>
 
 <p><a href="http://metacpan.org/pod/ETL::Yertl">Yertl (ETL::Yertl)</a> is a shell-based ETL
-framework. It's under development (as is all software), but included already is
+framework. It&#39;s under development (as is all software), but included already is
 a small utility called <a href="http://metacpan.org/pod/ysql">ysql</a> to make dealing
 with SQL databases easy.</p>
 
                     <p><a href="http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html#section-2">Continue reading...</a></p>
                 <p>Tags:
-                    <a href="/blog/tag/perl">perl</a>
-                    <a href="/blog/tag/sql">sql</a>
-                    <a href="/blog/tag/etl">etl</a>
-                    <a href="/blog/tag/yertl">yertl</a>
+                    <a href="/blog/tag/perl/">perl</a>
+                    <a href="/blog/tag/sql/">sql</a>
+                    <a href="/blog/tag/etl/">etl</a>
+                    <a href="/blog/tag/yertl/">yertl</a>
                 </p>
             ]]></description>
             <pubDate>

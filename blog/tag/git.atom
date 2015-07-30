@@ -1,23 +1,23 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/blog/tag/git</id>
+    <id>http://preaction.github.io/blog/tag/git/</id>
     <title>preaction</title>
-    <updated>2015-04-15T00:09:55Z</updated>
-    <link rel="self" href="http://preaction.github.io/blog/tag/git.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/blog/tag/git"/>
-    <generator version="0.044">Statocles</generator>
+    <updated>2015-07-30T00:28:56Z</updated>
+    <link href="http://preaction.github.io/blog/tag/git.atom" rel="self" />
+    <link href="http://preaction.github.io/blog/tag/git/" rel="alternate" />
+    <generator version="0.053">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
-        <title>Conflict Resolution: local::lib and git's Perl</title>
+        <title>Conflict Resolution: local::lib and git&#39;s Perl</title>
         <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html" />
+        <link href="http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html" rel="alternate" />
         <content type="html"><![CDATA[
             <p>I ran into a frustrating problem the other day:</p>
 
 <pre><code>$ git add -i
 /usr/bin/perl: symbol lookup error: ~/perl5/lib/perl5/x86_64-linux-thread-multi/auto/List/Util/Util.so:
 undefined symbol: Perl_xs_apiversion_bootcheck
-fatal: 'add--interactive' appears to be a git command, but we were not
+fatal: &#39;add--interactive&#39; appears to be a git command, but we were not
 able to execute it. Maybe git-add--interactive is broken?
 </code></pre>
 
@@ -30,8 +30,8 @@ able to execute it. Maybe git-add--interactive is broken?
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/perl">perl</a>
-                <a href="/blog/tag/git">git</a>
+                <a href="/blog/tag/perl/">perl</a>
+                <a href="/blog/tag/git/">git</a>
             </p>
         ]]></content>
         <updated>2014-06-14T00:00:00Z</updated>

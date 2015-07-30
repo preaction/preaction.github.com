@@ -2,14 +2,87 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>preaction</title>
-        <link>http://preaction.github.io/blog/tag/perl</link>
+        <link>http://preaction.github.io/blog/tag/perl/</link>
         <atom:link href="http://preaction.github.io/blog/tag/perl.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.044</generator>
+        <generator>Statocles 0.053</generator>
+        <item>
+            <title>Validating Financial Data with PDL</title>
+            <link>http://preaction.github.io/blog/2015/05/13/new-post/</link>
+            <guid>http://preaction.github.io/blog/2015/05/13/new-post/</guid>
+            <description><![CDATA[
+                <p>My job involves financial market data. A lot of financial market data. I take
+the market data from various sources and store it in a database for later
+analysis.</p>
+
+<p>Being a programmer/analyst and not a mathematician with a Ph.D. in finance, my
+use for time series analytics falls into the &quot;ensure correct data is being
+collected&quot; category. But even then, some basic statistical analysis helps me
+preserve quality historical data for later use.</p>
+
+<p>PDL is perfect for doing these kinds of calculations very quickly. Combined
+with PDL::Finance::TA, all the hard work is already done, and all I need to do
+is wire it all up.</p>
+
+<p>Let&#39;s take a large set of random numbers. If our random number generator were
+perfect, we would expect that the set would be evenly distributed because each
+possible value is exactly as possible as any other value. If we calculate the
+standard deviation (stddev, a measurement of how disperse the data set is), we
+would expect that 99.7% of the points would be within 3 standard deviations of
+the mean (average).</p>
+
+<p>So, if we write a test that checks to see if a new (completely random) point is
+within 3 stddev, there is a 0.3% chance that new (completely random) point will
+fail our test. If we bump that to 4 stddev, we should expect 99.99% of the
+points to pass the test, and 0.01% of the points to fail (1 of every 15787). If
+I collect 500,000 (completely random) points in a day, then 50 of them will
+fail our test.</p>
+
+<p>So I create a time series of random points. Then I create a new time series of
+the 30-day standard deviation of the original series. Then I compare the two
+and see which points are outliers.</p>
+
+<pre><code>use PDL;
+use PDL::Finance::TA;
+
+my $ts = random( 5000 ) * 50;
+my $stddev = ta_stddev( $ts, 30, 1 );
+</code></pre>
+
+<p>Market data is not completely random, it&#39;s stochastic, which I interpret to
+mean as &quot;given value A1, the next value A2 will be somewhere between A1 +/- B&quot;.
+It&#39;s predicting (guessing) &quot;B&quot; that earns quants the big bucks. But, over the
+entire set of data, I know each previous value of B, which is the difference
+between A1 and A2, or the rate of change between 2 points. What I really want
+to know is if the rate of change from A1 to A2 appears abnormal, say, if it&#39;s
+more than 4 stddev from the mean.</p>
+
+<p>So I take my time series, create a new time series that is the rate of change
+for each point in the previous series, create another new time series that is
+the 30-day stddev of the previous time series, and then compare the rate of
+change with the stddev to see which ones are outliers.</p>
+
+<p>Finally, I should also make sure that my source is still updating, as it is
+very rare that most series would be the same twice in a row, or for an entire
+week. So let&#39;s check for flatness by using stddev.</p>
+
+<p>PDL and TAlib make this all incredibly simple, so I can get on with my real
+work (fragging lamers in Quake)</p>
+
+                    <p><a href="http://preaction.github.io/blog/2015/05/13/new-post/#section-2">Continue reading...</a></p>
+                <p>Tags:
+                    <a href="/blog/tag/perl/">perl</a>
+                    <a href="/blog/tag/pdl/">pdl</a>
+                </p>
+            ]]></description>
+            <pubDate>
+                Wed, 13 May 2015 00:00:00 +0000
+            </pubDate>
+        </item>
         <item>
             <title>Announcing Statocles</title>
-            <link>http://preaction.github.io/blog/2015/03/02/announcing-statocles</link>
-            <guid>http://preaction.github.io/blog/2015/03/02/announcing-statocles</guid>
+            <link>http://preaction.github.io/blog/2015/03/02/announcing-statocles/</link>
+            <guid>http://preaction.github.io/blog/2015/03/02/announcing-statocles/</guid>
             <description><![CDATA[
                 <p><a href="http://staticsitegenerators.net">Static site generators</a> are popular these
 days. For small sites, the ability to quickly author content using simple tools
@@ -22,19 +95,19 @@ costs).</p>
 
 <p>For me, I like the convenience of using <a href="http://pages.github.com">Github Pages</a>
 to host project-oriented websites. The project itself is already on Github, so
-why not keep the website closely tied to it so it doesn't get out-of-date? For
+why not keep the website closely tied to it so it doesn&#39;t get out-of-date? For
 an organization like <a href="http://chicago.pm.org">the Chicago Perl Mongers</a>, Github
 can even host custom domains, allowing easy collaboration on websites.</p>
 
-<p>It's through the Chicago.PM website that I was introduced to Octopress, a
-blogging engine built on Jekyll. It's through using Octopress that I decided to
+<p>It&#39;s through the Chicago.PM website that I was introduced to Octopress, a
+blogging engine built on Jekyll. It&#39;s through using Octopress that I decided to
 write my own static site generator,
 <a href="http://preaction.github.io/Statocles">Statocles</a>.</p>
 
-                    <p><a href="http://preaction.github.io/blog/2015/03/02/announcing-statocles#section-2">Continue reading...</a></p>
+                    <p><a href="http://preaction.github.io/blog/2015/03/02/announcing-statocles/#section-2">Continue reading...</a></p>
                 <p>Tags:
-                    <a href="/blog/tag/perl">perl</a>
-                    <a href="/blog/tag/statocles">statocles</a>
+                    <a href="/blog/tag/perl/">perl</a>
+                    <a href="/blog/tag/statocles/">statocles</a>
                 </p>
             ]]></description>
             <pubDate>
@@ -49,7 +122,7 @@ write my own static site generator,
                 <p>I got a text at 8:00am:</p>
 
 <blockquote>
-  <p>"Hey, can you jump on a conference call?"</p>
+  <p>&quot;Hey, can you jump on a conference call?&quot;</p>
 </blockquote>
 
 <p>Groggy and disoriented, I blearily type the conference line and enter my
@@ -57,13 +130,13 @@ passcode, followed by the pound or hash sign. At the tone, I would be the 6th
 person to enter the conference. Tone.</p>
 
 <blockquote>
-  <p>"The app is down, and trading has stopped."</p>
+  <p>&quot;The app is down, and trading has stopped.&quot;</p>
 </blockquote>
 
                     <p><a href="http://preaction.github.io/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html#section-2">Continue reading...</a></p>
                 <p>Tags:
-                    <a href="/blog/tag/mojolicious">mojolicious</a>
-                    <a href="/blog/tag/perl">perl</a>
+                    <a href="/blog/tag/mojolicious/">mojolicious</a>
+                    <a href="/blog/tag/perl/">perl</a>
                 </p>
             ]]></description>
             <pubDate>
@@ -84,22 +157,22 @@ production. All of them need data extracted, transformed, and loaded.</p>
 
 <p>DBI is the clear choice for dealing with SQL databases in Perl, but there are a
 dozen lines of Perl code in between me and the operation that I want. Sure,
-I've got modules and web applications and ad-hoc commands and scripts that
+I&#39;ve got modules and web applications and ad-hoc commands and scripts that
 perform certain individual tasks on my databases, but sometimes those things
-don't quite do what I need right now, and I just want something that will let
+don&#39;t quite do what I need right now, and I just want something that will let
 me execute whatever SQL I can come up with.</p>
 
 <p><a href="http://metacpan.org/pod/ETL::Yertl">Yertl (ETL::Yertl)</a> is a shell-based ETL
-framework. It's under development (as is all software), but included already is
+framework. It&#39;s under development (as is all software), but included already is
 a small utility called <a href="http://metacpan.org/pod/ysql">ysql</a> to make dealing
 with SQL databases easy.</p>
 
                     <p><a href="http://preaction.github.io/blog/2015/01/21/managing-sql-data-with-yertl.html#section-2">Continue reading...</a></p>
                 <p>Tags:
-                    <a href="/blog/tag/perl">perl</a>
-                    <a href="/blog/tag/sql">sql</a>
-                    <a href="/blog/tag/etl">etl</a>
-                    <a href="/blog/tag/yertl">yertl</a>
+                    <a href="/blog/tag/perl/">perl</a>
+                    <a href="/blog/tag/sql/">sql</a>
+                    <a href="/blog/tag/etl/">etl</a>
+                    <a href="/blog/tag/yertl/">yertl</a>
                 </p>
             ]]></description>
             <pubDate>
@@ -134,42 +207,11 @@ lines everywhere.</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/perl">perl</a>
+                    <a href="/blog/tag/perl/">perl</a>
                 </p>
             ]]></description>
             <pubDate>
                 Sun, 26 Oct 2014 00:00:00 +0000
-            </pubDate>
-        </item>
-        <item>
-            <title>Conflict Resolution: local::lib and git's Perl</title>
-            <link>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</link>
-            <guid>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</guid>
-            <description><![CDATA[
-                <p>I ran into a frustrating problem the other day:</p>
-
-<pre><code>$ git add -i
-/usr/bin/perl: symbol lookup error: ~/perl5/lib/perl5/x86_64-linux-thread-multi/auto/List/Util/Util.so:
-undefined symbol: Perl_xs_apiversion_bootcheck
-fatal: 'add--interactive' appears to be a git command, but we were not
-able to execute it. Maybe git-add--interactive is broken?
-</code></pre>
-
-                    <ul>
-                        <li><a href="http://blogs.perl.org/users/preaction/2014/06/conflict-resolution-locallib-and-gits-perl.html">
-                            Continue reading <em>Conflict Resolution: local::lib and git's Perl</em> on blogs.perl.org...
-                        </a></li>
-                        <li><a href="http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html#section-2">
-                            Continue reading on preaction
-                        </a></li>
-                    </ul>
-                <p>Tags:
-                    <a href="/blog/tag/perl">perl</a>
-                    <a href="/blog/tag/git">git</a>
-                </p>
-            ]]></description>
-            <pubDate>
-                Sat, 14 Jun 2014 00:00:00 +0000
             </pubDate>
         </item>
     </channel>

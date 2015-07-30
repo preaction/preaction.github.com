@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
         
     </head>
@@ -29,6 +30,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -39,10 +41,11 @@
     <div class="nine columns">
         <main>
             <header>
-                <h1>What's New in WebGUI 8.0 #5 - Asset Helpers</h1>
+                <h1>What&#39;s New in WebGUI 8.0 #5 - Asset Helpers</h1>
                 <p class="tags">Tags:
-                    <a href="/blog/tag/webgui" rel="tag">webgui</a>
+                    <a href="/blog/tag/webgui/" rel="tag">webgui</a>
                 </p>
+
                 <aside>
                     <p><time datetime="2011-03-05">
                         Posted on 2011-03-05
@@ -50,20 +53,22 @@
                         by preaction
                     </p>
                 </aside>
+
                 <p>Originally posted as:
-                        <a class="alert-link" href="http://blogs.perl.org/users/preaction/2011/03/whats-new-in-webgui-80-5---asset-helpers.html">
-                            <em>What's New in WebGUI 8.0 #5 - Asset Helpers</em> on blogs.perl.org.
+                        <a href="http://blogs.perl.org/users/preaction/2011/03/whats-new-in-webgui-80-5---asset-helpers.html">
+                            <em>What&#39;s New in WebGUI 8.0 #5 - Asset Helpers</em> on blogs.perl.org.
                         </a>
                 </p>
+
             </header>
             <section id="section-1">
-                <p>By far the biggest change we've made in WebGUI 8 is the new Admin Console.
+                <p>By far the biggest change we&#39;ve made in WebGUI 8 is the new Admin Console.
 Though parts of it may look familiar, it has been completely rewritten from
 the ground up to be a flexible, extensible, responsive JavaScript application
 making calls to JSON services in Perl.</p>
 
-<p>I could talk about how to use the admin interface, but I don't think that's
-why you would read this blog, so instead I'm going to talk about how you can add functionality to it.</p>
+<p>I could talk about how to use the admin interface, but I don&#39;t think that&#39;s
+why you would read this blog, so instead I&#39;m going to talk about how you can add functionality to it.</p>
 
             </section>
             <section id="section-2">
@@ -79,42 +84,42 @@ to the Admin Console what to do next.</p>
 
 <p>We can simply show the user a message:</p>
 
-<pre><code>message     =&gt; 'The work is done, here's what happened.'
-error       =&gt; 'Something went wrong.'
+<pre><code>message     =&gt; &#39;The work is done, here&#39;s what happened.&#39;
+error       =&gt; &#39;Something went wrong.&#39;
 </code></pre>
 
 <p>Or we can open up new dialogs or tabs to allow the user to give us more data:</p>
 
-<pre><code>openDialog  =&gt; '/helper/get_input'
-openTab     =&gt; '/helper/get_input'
+<pre><code>openDialog  =&gt; &#39;/helper/get_input&#39;
+openTab     =&gt; &#39;/helper/get_input&#39;
 </code></pre>
 
 <p>We can let the user know their command is running in a forked process:</p>
 
-<pre><code>forkId      =&gt; '...' # GUID for WebGUI::Fork object
+<pre><code>forkId      =&gt; &#39;...&#39; # GUID for WebGUI::Fork object
 </code></pre>
 
 <p>We can even load and run any external JS file:</p>
 
-<pre><code>scriptFile  =&gt; '/extras/newscript.js',  # Load a new script file
-scriptFunc  =&gt; 'myFunction',            # Call a function in that script
-scriptArgs  =&gt; [ "arg1", "arg2", ],     # Pass some arguments to that func
+<pre><code>scriptFile  =&gt; &#39;/extras/newscript.js&#39;,  # Load a new script file
+scriptFunc  =&gt; &#39;myFunction&#39;,            # Call a function in that script
+scriptArgs  =&gt; [ &quot;arg1&quot;, &quot;arg2&quot;, ],     # Pass some arguments to that func
 </code></pre>
 
 <p>To write an Asset Helper, we inherit from WebGUI::AssetHelper and override the
 process() method to send back one of the message types from above.</p>
 
 <pre><code>package MyHelper;
-use base 'WebGUI::AssetHelper';
+use base &#39;WebGUI::AssetHelper&#39;;
 
 sub process {
     my ( $self ) = @_;
 
-    return { error =&gt; 'Cry Havoc!' } if !$self-&gt;asset-&gt;canEdit;
+    return { error =&gt; &#39;Cry Havoc!&#39; } if !$self-&gt;asset-&gt;canEdit;
 
     # Do some work
 
-    return { message =&gt; 'Work is done!' };
+    return { message =&gt; &#39;Work is done!&#39; };
 }
 </code></pre>
 
@@ -123,30 +128,30 @@ dialog. Like most everything in WebGUI, Asset Helpers can also have www_
 methods.</p>
 
 <pre><code>package MyFormHelper;
-use base 'WebGUI::AssetHelper';
+use base &#39;WebGUI::AssetHelper&#39;;
 
 sub process {
     my ( $self ) = @_;
-    my $url = $self-&gt;getUrl( "showForm" );
+    my $url = $self-&gt;getUrl( &quot;showForm&quot; );
     return { openDialog =&gt; $url };
 }
 
 sub www_showForm {
     my ( $self ) = @_;
-    my $form    = $self-&gt;getForm( 'processForm' ); # WebGUI::FormBuilder
-    $form-&gt;addField( "text", name =&gt; 'why' );
+    my $form    = $self-&gt;getForm( &#39;processForm&#39; ); # WebGUI::FormBuilder
+    $form-&gt;addField( &quot;text&quot;, name =&gt; &#39;why&#39; );
     return $form-&gt;toHtml;
 }
 
 sub www_processForm {
     my ( $self ) = @_;
-    my $input = $self-&gt;session-&gt;form-&gt;get( 'why' ); # input from the form
+    my $input = $self-&gt;session-&gt;form-&gt;get( &#39;why&#39; ); # input from the form
     return { message =&gt; $input }; # Why not?
 }
 </code></pre>
 
 <p>But our asset helpers are not only useful inside of the Admin Console. Because
-they're all built on a simple JSON API, you can call them from anywhere. For
+they&#39;re all built on a simple JSON API, you can call them from anywhere. For
 example, the Asset Helper to resize and rotate images could be used by anyone
 with edit privileges to the Image.</p>
 
@@ -159,7 +164,7 @@ code reuse and less code in WebGUI.</p>
 <h2>Adding Helpers</h2>
 
 <p>What would a plugin point be without a way to override what already exists? In
-our case, if you want another helper to handle the "cut" operation, you can
+our case, if you want another helper to handle the &quot;cut&quot; operation, you can
 make it happen.</p>
 
 <p>If you have your own asset, you can override the getHelpers method, which
@@ -170,24 +175,24 @@ returns a hashref of helper descriptions:</p>
 around getHelpers =&gt; sub {
     my ( $orig, $self ) = @_;
     my $helpers = $self-&gt;$orig;
-    $helpers-&gt;{ "cut" } = {
-        className   =&gt; 'MyCutHelper',
-        label       =&gt; 'SuperCuts',
+    $helpers-&gt;{ &quot;cut&quot; } = {
+        className   =&gt; &#39;MyCutHelper&#39;,
+        label       =&gt; &#39;SuperCuts&#39;,
     };
     return $helpers;
 };
 </code></pre>
 
-<p>Or if you don't want to edit the asset's code, you could add your helpers to
+<p>Or if you don&#39;t want to edit the asset&#39;s code, you could add your helpers to
 the configuration file:</p>
 
 <pre><code>{
-    "assets" : {
-        "WebGUI::Asset::Snippet" : {
-            "helpers" : {
-                "cut" : {
-                    "className" : "MyCutHelper",
-                    "label"     : "SuperCuts"
+    &quot;assets&quot; : {
+        &quot;WebGUI::Asset::Snippet&quot; : {
+            &quot;helpers&quot; : {
+                &quot;cut&quot; : {
+                    &quot;className&quot; : &quot;MyCutHelper&quot;,
+                    &quot;label&quot;     : &quot;SuperCuts&quot;
                 }
             }
         }
@@ -197,11 +202,11 @@ the configuration file:</p>
 
 <p>Side Note: Deep data-structure is deep.</p>
 
-<p>A Helper doesn't have to be its own class, it could be any URL at all:</p>
+<p>A Helper doesn&#39;t have to be its own class, it could be any URL at all:</p>
 
-<pre><code>$helpers-&gt;{ "edit" } = {
-    url     =&gt; './edit',
-    label   =&gt; 'Edit',
+<pre><code>$helpers-&gt;{ &quot;edit&quot; } = {
+    url     =&gt; &#39;./edit&#39;,
+    label   =&gt; &#39;Edit&#39;,
 };
 </code></pre>
 
@@ -217,26 +222,27 @@ back next time when I introduce WebGUI::FormBuilder.</p>
         <nav id="tags">
             <h1>Tags</h1>
             <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-                <li><a href="/blog/tag/error">error</a></li>
-                <li><a href="/blog/tag/etl">etl</a></li>
-                <li><a href="/blog/tag/funny">funny</a></li>
-                <li><a href="/blog/tag/git">git</a></li>
-                <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-                <li><a href="/blog/tag/moose">moose</a></li>
-                <li><a href="/blog/tag/mysql">mysql</a></li>
-                <li><a href="/blog/tag/openbsd">openbsd</a></li>
-                <li><a href="/blog/tag/perl">perl</a></li>
-                <li><a href="/blog/tag/personal">personal</a></li>
-                <li><a href="/blog/tag/progress">progress</a></li>
-                <li><a href="/blog/tag/rants">rants</a></li>
-                <li><a href="/blog/tag/scripts">scripts</a></li>
-                <li><a href="/blog/tag/software">software</a></li>
-                <li><a href="/blog/tag/sql">sql</a></li>
-                <li><a href="/blog/tag/statocles">statocles</a></li>
-                <li><a href="/blog/tag/webgui">webgui</a></li>
-                <li><a href="/blog/tag/xs">xs</a></li>
-                <li><a href="/blog/tag/yertl">yertl</a></li>
+                <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/">error</a></li>
+                <li><a href="/blog/tag/etl/">etl</a></li>
+                <li><a href="/blog/tag/funny/">funny</a></li>
+                <li><a href="/blog/tag/git/">git</a></li>
+                <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+                <li><a href="/blog/tag/moose/">moose</a></li>
+                <li><a href="/blog/tag/mysql/">mysql</a></li>
+                <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+                <li><a href="/blog/tag/pdl/">pdl</a></li>
+                <li><a href="/blog/tag/perl/">perl</a></li>
+                <li><a href="/blog/tag/personal/">personal</a></li>
+                <li><a href="/blog/tag/progress/">progress</a></li>
+                <li><a href="/blog/tag/rants/">rants</a></li>
+                <li><a href="/blog/tag/scripts/">scripts</a></li>
+                <li><a href="/blog/tag/software/">software</a></li>
+                <li><a href="/blog/tag/sql/">sql</a></li>
+                <li><a href="/blog/tag/statocles/">statocles</a></li>
+                <li><a href="/blog/tag/webgui/">webgui</a></li>
+                <li><a href="/blog/tag/xs/">xs</a></li>
+                <li><a href="/blog/tag/yertl/">yertl</a></li>
             </ul>
         </nav>
     </div>
@@ -247,7 +253,7 @@ back next time when I introduce WebGUI::FormBuilder.</p>
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>

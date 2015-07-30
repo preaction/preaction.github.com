@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
         
     </head>
@@ -29,6 +30,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -41,8 +43,9 @@
             <header>
                 <h1>Manage Boilerplate with Import::Base</h1>
                 <p class="tags">Tags:
-                    <a href="/blog/tag/perl" rel="tag">perl</a>
+                    <a href="/blog/tag/perl/" rel="tag">perl</a>
                 </p>
+
                 <aside>
                     <p><time datetime="2014-10-26">
                         Posted on 2014-10-26
@@ -50,11 +53,13 @@
                         by preaction
                     </p>
                 </aside>
+
                 <p>Originally posted as:
-                        <a class="alert-link" href="http://blogs.perl.org/users/preaction/2014/10/managing-boilerplate-with-importbase.html">
+                        <a href="http://blogs.perl.org/users/preaction/2014/10/managing-boilerplate-with-importbase.html">
                             <em>Manage Boilerplate with Import::Base</em> on blogs.perl.org.
                         </a>
                 </p>
+
             </header>
             <section id="section-1">
                 <p>Boilerplate is everything I hate about programming:</p>
@@ -73,16 +78,16 @@ lines everywhere.</p>
 
             </section>
             <section id="section-2">
-                <p>As I've grown as a Perl programmer, I've added more and more to my standard
+                <p>As I&#39;ve grown as a Perl programmer, I&#39;ve added more and more to my standard
 preamble for all but the most trivial Perl scripts. <code>use strict</code> and <code>use
-warnings</code> are absolute requirements. I want to use modern Perl's features like
-<code>say</code>, <code>state</code>, and others, so I'll import a feature bundle with <code>use feature
-":5.10"</code>. If I'm working on things I don't plan to share the code on CPAN, I
+warnings</code> are absolute requirements. I want to use modern Perl&#39;s features like
+<code>say</code>, <code>state</code>, and others, so I&#39;ll import a feature bundle with <code>use feature
+&quot;:5.10&quot;</code>. If I&#39;m working on things I don&#39;t plan to share the code on CPAN, I
 can go all the way to <code>use experimental qw( signatures postfix_deref )</code>.</p>
 
 <p>For class modules, I need to <code>use Moo</code>, <code>use Types::Standard</code>, and more. For
 roles, I need to <code>use Moo::Role</code> instead of Moo. If the project uses Moose, I
-need to use Moose's version of those things instead of Moo's version (or, in
+need to use Moose&#39;s version of those things instead of Moo&#39;s version (or, in
 the case of Type::Tiny, make sure to use a Moo/Moose agnostic pattern).</p>
 
 <p>For tests, I have a lot more. <code>use Test::More</code>, <code>use Test::Deep</code>, and <code>use
@@ -122,11 +127,11 @@ module to add or remove what your module imports.</p>
 set.</p>
 
 <pre><code>package My::Base;
-use base 'Import::Base';
+use base &#39;Import::Base&#39;;
 
 our @IMPORT_MODULES = (
-    'strict',
-    'warnings',
+    &#39;strict&#39;,
+    &#39;warnings&#39;,
     feature =&gt; [qw( :5.14 )],
 );
 </code></pre>
@@ -150,20 +155,20 @@ use feature qw( :5.14 );
 <p>In addition to a set of modules, we can also create optional bundles:</p>
 
 <pre><code>package My::Base;
-use base 'Import::Base';
+use base &#39;Import::Base&#39;;
 
 # Modules that will always be included
 our @IMPORT_MODULES
-    'strict',
-    'warnings',
+    &#39;strict&#39;,
+    &#39;warnings&#39;,
     feature =&gt; [qw( :5.14 )],
     experimental =&gt; [qw( signatures )],
 );
 
 # Named bundles to include
 our %IMPORT_BUNDLES = (
-    Class =&gt; [ 'Moo', 'Types::Standard' =&gt; [qw( :all )] ],
-    Role =&gt; [ 'Moo::Role', 'Types::Standard' =&gt; [qw( :all )] ],
+    Class =&gt; [ &#39;Moo&#39;, &#39;Types::Standard&#39; =&gt; [qw( :all )] ],
+    Role =&gt; [ &#39;Moo::Role&#39;, &#39;Types::Standard&#39; =&gt; [qw( :all )] ],
     Test =&gt; [qw( Test::More Test::Deep )],
 );
 </code></pre>
@@ -171,13 +176,13 @@ our %IMPORT_BUNDLES = (
 <p>Now we can choose one or more bundles to include:</p>
 
 <pre><code># lib/MyClass.pm
-use My::Base 'Class';
+use My::Base &#39;Class&#39;;
 
 # t/mytest.t
-use My::Base 'Test';
+use My::Base &#39;Test&#39;;
 
 # t/lib/MyTest.pm
-use My::Base 'Test', 'Class';
+use My::Base &#39;Test&#39;, &#39;Class&#39;;
 </code></pre>
 
 <p>What makes Import::Base more useful than rolling your own with Import::Into is
@@ -187,7 +192,7 @@ module (a name collision, for example). Then, the offending module can be used
 directly.</p>
 
 <pre><code>package My::StrangeClass;
-use My::Base 'Class', -exclude =&gt; [ 'Types::Standard' ];
+use My::Base &#39;Class&#39;, -exclude =&gt; [ &#39;Types::Standard&#39; ];
 use Types::Standard qw( Str );
 </code></pre>
 
@@ -204,26 +209,27 @@ and replace it with a single line describing what the module needs.</p>
         <nav id="tags">
             <h1>Tags</h1>
             <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-                <li><a href="/blog/tag/error">error</a></li>
-                <li><a href="/blog/tag/etl">etl</a></li>
-                <li><a href="/blog/tag/funny">funny</a></li>
-                <li><a href="/blog/tag/git">git</a></li>
-                <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-                <li><a href="/blog/tag/moose">moose</a></li>
-                <li><a href="/blog/tag/mysql">mysql</a></li>
-                <li><a href="/blog/tag/openbsd">openbsd</a></li>
-                <li><a href="/blog/tag/perl">perl</a></li>
-                <li><a href="/blog/tag/personal">personal</a></li>
-                <li><a href="/blog/tag/progress">progress</a></li>
-                <li><a href="/blog/tag/rants">rants</a></li>
-                <li><a href="/blog/tag/scripts">scripts</a></li>
-                <li><a href="/blog/tag/software">software</a></li>
-                <li><a href="/blog/tag/sql">sql</a></li>
-                <li><a href="/blog/tag/statocles">statocles</a></li>
-                <li><a href="/blog/tag/webgui">webgui</a></li>
-                <li><a href="/blog/tag/xs">xs</a></li>
-                <li><a href="/blog/tag/yertl">yertl</a></li>
+                <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/">error</a></li>
+                <li><a href="/blog/tag/etl/">etl</a></li>
+                <li><a href="/blog/tag/funny/">funny</a></li>
+                <li><a href="/blog/tag/git/">git</a></li>
+                <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+                <li><a href="/blog/tag/moose/">moose</a></li>
+                <li><a href="/blog/tag/mysql/">mysql</a></li>
+                <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+                <li><a href="/blog/tag/pdl/">pdl</a></li>
+                <li><a href="/blog/tag/perl/">perl</a></li>
+                <li><a href="/blog/tag/personal/">personal</a></li>
+                <li><a href="/blog/tag/progress/">progress</a></li>
+                <li><a href="/blog/tag/rants/">rants</a></li>
+                <li><a href="/blog/tag/scripts/">scripts</a></li>
+                <li><a href="/blog/tag/software/">software</a></li>
+                <li><a href="/blog/tag/sql/">sql</a></li>
+                <li><a href="/blog/tag/statocles/">statocles</a></li>
+                <li><a href="/blog/tag/webgui/">webgui</a></li>
+                <li><a href="/blog/tag/xs/">xs</a></li>
+                <li><a href="/blog/tag/yertl/">yertl</a></li>
             </ul>
         </nav>
     </div>
@@ -234,7 +240,7 @@ and replace it with a single line describing what the module needs.</p>
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>

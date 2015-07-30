@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>preaction</title>
-        <link>http://preaction.github.io/blog/tag/chicago.pm</link>
+        <link>http://preaction.github.io/blog/tag/chicago.pm/</link>
         <atom:link href="http://preaction.github.io/blog/tag/chicago.pm.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.044</generator>
+        <generator>Statocles 0.053</generator>
         <item>
             <title>Chicago.PM New Website! New Meetup URL! New Presentations Project!</title>
             <link>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</link>
             <guid>http://preaction.github.io/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html</guid>
             <description><![CDATA[
-                <p>Lots of news for the Chicago.PM group! We've got a <a href="http://chicago.pm.org">new Chicago.PM
+                <p>Lots of news for the Chicago.PM group! We&#39;ve got a <a href="http://chicago.pm.org">new Chicago.PM
 website</a>, powered by <a href="http://github.com">Github</a>, up at
 <a href="http://chicago.pm.org">http://chicago.pm.org</a>. The website is completely
 editable via Github using the <a href="http://octopress.org">Octopress</a> system. We hope
@@ -27,7 +27,7 @@ of the good tutorials and learning sites.</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/chicago.pm">chicago.pm</a>
+                    <a href="/blog/tag/chicago.pm/">chicago.pm</a>
                 </p>
             ]]></description>
             <pubDate>
@@ -53,7 +53,7 @@ tool</a>.</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/chicago.pm">chicago.pm</a>
+                    <a href="/blog/tag/chicago.pm/">chicago.pm</a>
                 </p>
             ]]></description>
             <pubDate>
@@ -65,13 +65,13 @@ tool</a>.</p>
             <link>http://preaction.github.io/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html</link>
             <guid>http://preaction.github.io/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html</guid>
             <description><![CDATA[
-                <p>At <a href="http://www.meetup.com/Windy-City-Perl-mongers-Meetup/events/104681992/">this month's Chicago.PM
+                <p>At <a href="http://www.meetup.com/Windy-City-Perl-mongers-Meetup/events/104681992/">this month&#39;s Chicago.PM
 meeting</a>,
 I gave <a href="http://preaction.github.com/Perl/Dependency-Injection.html">a presentation on Dependency Injection and my new module,
 Beam::Wire</a>.</p>
 
-<p>[EDIT: The presentation doesn't appear to work on mobile devices. I'm trying
-deck.js, and I'm not sure I like it.]</p>
+<p>[EDIT: The presentation doesn&#39;t appear to work on mobile devices. I&#39;m trying
+deck.js, and I&#39;m not sure I like it.]</p>
 
                     <ul>
                         <li><a href="http://blogs.perl.org/users/preaction/2013/03/chicagopm---dependency-injection-also-beamwire.html">
@@ -82,7 +82,7 @@ deck.js, and I'm not sure I like it.]</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/chicago.pm">chicago.pm</a>
+                    <a href="/blog/tag/chicago.pm/">chicago.pm</a>
                 </p>
             ]]></description>
             <pubDate>
@@ -94,7 +94,7 @@ deck.js, and I'm not sure I like it.]</p>
             <link>http://preaction.github.io/blog/2013/03/14/chicago.pm-mojolicious.html</link>
             <guid>http://preaction.github.io/blog/2013/03/14/chicago.pm-mojolicious.html</guid>
             <description><![CDATA[
-                <p>February's meeting was about the <a href="http://mojolicio.us">Mojolicious Web
+                <p>February&#39;s meeting was about the <a href="http://mojolicio.us">Mojolicious Web
 Framework</a>. <a href="http://blogs.perl.org/users/joel_berger/">Joel
 Berger</a> has written a <a href="https://metacpan.org/module/Galileo">minimal Perl
 CMS called Galileo</a>, and agreed to give a
@@ -115,7 +115,7 @@ various features of Mojolicious like:</p>
 <p>There are quite a few interesting parts of Mojolicious that make it worth
 giving a look to, and I hope to be able to do so with some web projects that
 have been sitting in my queue for a while (I wrote a nice ticket tracker with
-AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
+AngularJS, but the backend is Python, I&#39;d like to fix that glaring mistake).</p>
 
                     <ul>
                         <li><a href="http://blogs.perl.org/users/preaction/2013/03/chicagopm---mojolicious.html">
@@ -126,7 +126,7 @@ AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/chicago.pm">chicago.pm</a>
+                    <a href="/blog/tag/chicago.pm/">chicago.pm</a>
                 </p>
             ]]></description>
             <pubDate>
@@ -138,7 +138,7 @@ AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
             <link>http://preaction.github.io/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html</link>
             <guid>http://preaction.github.io/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html</guid>
             <description><![CDATA[
-                <p>This month's presentation was on the
+                <p>This month&#39;s presentation was on the
 <a href="http://search.cpan.org/dist/Git-Repository/">Git::Repository</a> Perl module,
 given by me. In both my jobs, I use the Git::Repository module to automate
 releases.</p>
@@ -152,7 +152,7 @@ releases.</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/chicago.pm">chicago.pm</a>
+                    <a href="/blog/tag/chicago.pm/">chicago.pm</a>
                 </p>
             ]]></description>
             <pubDate>

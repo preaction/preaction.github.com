@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
-        <link rel="alternate" href="/blog/index.atom" type="application/atom+xml" />
-        <link rel="alternate" href="/blog/index.rss" type="application/rss+xml" />
+        <link href="/blog/index.atom" rel="alternate" type="application/atom+xml">
+        <link href="/blog/index.rss" rel="alternate" type="application/rss+xml">
         
     </head>
     <body>
@@ -31,6 +32,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -42,12 +44,125 @@
     <div class="nine columns">
         <main>
 
+
             <article>
                 <header>
-                    <h1><a href="/blog/2011/02/04/whats-new-in-webgui-8.0-3-upgrade-system.html">What's New in WebGUI 8.0 #3: Upgrade System</a></h1>
+                    <h1><a href="/blog/2011/02/18/whats-new-in-webgui-8.0-4-chi-cache.html">What&#39;s New in WebGUI 8.0 #4 -- CHI Cache</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/webgui" rel="tag">webgui</a>
+                        <a href="/blog/tag/webgui/" rel="tag">webgui</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2011-02-18">
+                            Posted on 2011-02-18
+                        </time>
+                            by preaction
+                        </p>
+                    </aside>
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2011/02/whats-new-in-webgui-80-4----chi-cache.html">
+                                <em>What&#39;s New in WebGUI 8.0 #4 -- CHI Cache</em> on blogs.perl.org.
+                            </a>
+                    </p>
+                </header>
+
+                <p>Caching is a tricky business. Having just one kind of cache won&#39;t work, because
+the production environment will greatly determine the most efficient caching
+system. A distributed production environment would be best-served with a
+distributed cache. A smaller, single-server environment could use a simple
+shared memory cache.</p>
+
+<p>Enter Jonathan Swartz&#39;s <a href="https://metacpan.org/pod/CHI">CHI</a> module, the greatest Perl module to provide a
+unified caching interface. CHI is the DBI of caching: It presents an API, and
+delegates to CHI::Driver modules to perform the heavy lifting. It
+provides a layered caching system, allowing you to have a faster, more
+volatile cache in front of a slower, more persistent cache. It also provides a
+variable expiration time, preventing a &quot;miss stampede&quot; where all processes try
+to recompute an expired cache item at the same time.</p>
+
+<p>By integrating CHI cache into WebGUI, we have the ability to provide any
+caching strategy that CHI can provide. We get Memcached, FastMmap, and DBI
+drivers (and more drivers can be written).</p>
+
+<p>I wrote a CHI cache driver for WebGUI 7.9 that we&#39;ve been using on many of our
+shared hosting servers. The performance increase using FastMmap through CHI 
+over the old Storable+DBI cache module is dramatic: 2-5 times faster with
+CHI and FastMmap.</p>
+
+<h2>Using CHI in WebGUI</h2>
+
+<p>The fewer wrappers that WebGUI has around CPAN modules we use, the less code I
+have to write, and the more features will be available to our users without
+having to change WebGUI to use them.</p>
+
+<p>To that end, you can write a section of the configuration file that gets
+passed directly to CHI-&gt;new. Some massaging occurs to make sure a DBI cache
+driver gets the right $dbh, but otherwise you can fully configure CHI directly
+from the WebGUI config file:</p>
+
+<pre><code># The new default cache for WebGUI, FastMmap
+{
+     cache : {
+         driver : &#39;FastMmap&#39;,
+         root_dir : &#39;/tmp/WebGUICache&#39;,
+         expires_variance : 0.5
+     }
+ }
+
+ # Set up a memcached cache with local memory in front
+ {
+     cache : {
+         driver : &#39;Memcached::libmemcached&#39;,
+         servers : [ &#39;10.0.0.100:11211&#39;, &#39;10.0.0.110:11211&#39; ],
+         l1_cache : {
+            driver : &#39;Memory&#39;
+         }
+     }
+ }
+</code></pre>
+
+<p>When you want to use the cache in your code, you can get a CHI object with
+$session-&gt;cache. CHI&#39;s interface is sufficiently simple, with some fun tricks:</p>
+
+<pre><code>my $cache = $session-&gt;cache; # as read
+my $value = $cache-&gt;get(&#39;cache_key&#39;);
+if ( !$value ) {
+    $value = compute_value();
+    $cache-&gt;set( &#39;cache_key&#39;, $value );
+}
+
+# Combine get and set with intelligence
+my $value = $cache-&gt;compute( &#39;cache_key&#39;, \&amp;compute_value );
+</code></pre>
+
+<h2>Future Plans</h2>
+
+<p>With a single unified cache that performs well and layers like CHI, we can
+take our current stow and scratch APIs and move them to the cache. In the case
+of stow, we remove a redundant API. In the case of scratch, we remove database
+hits.</p>
+
+<p>We&#39;ve also been exploring cache-only sessions, instead of updating the session
+every time a page is requested, updating the cache only, flushing to the
+database (or not). The fewer DB calls we make per page, the better performance
+will be.</p>
+
+<p>Special thanks go out to Jonathan Swartz for such a wonderful solution.</p>
+
+<p>Stay tuned for next time when I explore our new Admin Interface. Lots of
+pretty and screenshots!</p>
+
+
+
+            </article>
+            <article>
+                <header>
+                    <h1><a href="/blog/2011/02/04/whats-new-in-webgui-8.0-3-upgrade-system.html">What&#39;s New in WebGUI 8.0 #3: Upgrade System</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/webgui/" rel="tag">webgui</a>
                     </p>
 
                     <aside>
@@ -60,7 +175,7 @@
 
                     <p>Originally posted as:
                             <a href="http://blogs.perl.org/users/preaction/2011/02/whats-new-in-webgui-80-3-upgrade-system.html">
-                                <em>What's New in WebGUI 8.0 #3: Upgrade System</em> on blogs.perl.org.
+                                <em>What&#39;s New in WebGUI 8.0 #3: Upgrade System</em> on blogs.perl.org.
                             </a>
                     </p>
                 </header>
@@ -68,7 +183,7 @@
                 <h2>Following The Path</h2>
 
 <p>If you installed WebGUI 0.9.0 back in August of 2001 (the first public 
-release), you've had a stable upgrade path through WebGUI 7.10.8 (January
+release), you&#39;ve had a stable upgrade path through WebGUI 7.10.8 (January
 2011) and beyond. Plainblack.com has been through every upgrade for the last
 10 years, a shining bastion to our upgradability.</p>
 
@@ -107,9 +222,9 @@ look at the problem.</p>
 
 <h2>The Modern Vision</h2>
 
-<p>The individual files for upgrades was working quite well, but didn't go far 
+<p>The individual files for upgrades was working quite well, but didn&#39;t go far 
 enough. Our new upgrade system has one file per upgrade step. Each sub from an
-old upgrade script would be one file in the new upgrade system. What's more,
+old upgrade script would be one file in the new upgrade system. What&#39;s more,
 additional file types would be supported:</p>
 
 <pre><code>$ ls share/upgrades/7.10.4-8.0.0/
@@ -125,8 +240,8 @@ moveRequiredProfileFields.pl
 In this directory, the .pl files are scripts to be run, the .wgpkg files are
 WebGUI assets to add to the site, the .sql files are SQL commands to run, and
 any .txt files will be shown as a confirmation message to the user for gotchas
-like "All your users have been logged out as a result of this upgrade. Deal
-with it.".</p>
+like &quot;All your users have been logged out as a result of this upgrade. Deal
+with it.&quot;.</p>
 
 <p>So now, if you want to add your own custom upgrade routine, you just add
 another file to the directory which means less worrying about conflicts. When
@@ -140,37 +255,37 @@ easier.</p>
 <pre><code># Old upgrade routine. Just another day in a session
 sub migrateToNewCache {
     my $session = shift;
-    print "\tMigrating to new cache " unless $quiet;
+    print &quot;\tMigrating to new cache &quot; unless $quiet;
 
     use File::Path;
-    rmtree "../../lib/WebGUI/Cache";
-    unlink "../../lib/WebGUI/Workflow/Activity/CleanDatabaseCache.pm";
-    unlink "../../lib/WebGUI/Workflow/Activity/CleanFileCache.pm";
+    rmtree &quot;../../lib/WebGUI/Cache&quot;;
+    unlink &quot;../../lib/WebGUI/Workflow/Activity/CleanDatabaseCache.pm&quot;;
+    unlink &quot;../../lib/WebGUI/Workflow/Activity/CleanFileCache.pm&quot;;
 
     my $config = $session-&gt;config;
-    $config-&gt;set("cache", {
-        driver              =&gt; 'FastMmap',
-        expires_variance   =&gt; '0.10',
-        root_dir            =&gt; '/tmp/WebGUICache',
+    $config-&gt;set(&quot;cache&quot;, {
+        driver              =&gt; &#39;FastMmap&#39;,
+        expires_variance   =&gt; &#39;0.10&#39;,
+        root_dir            =&gt; &#39;/tmp/WebGUICache&#39;,
     });
 
-    $config-&gt;set("hotSessionFlushToDb", 600);
-    $config-&gt;delete("disableCache");
-    $config-&gt;delete("cacheType");
-    $config-&gt;delete("fileCacheRoot");
-    $config-&gt;deleteFromArray("workflowActivities/None", "WebGUI::Workflow::Activity::CleanDatabaseCache");
-    $config-&gt;deleteFromArray("workflowActivities/None", "WebGUI::Workflow::Activity::CleanFileCache");
+    $config-&gt;set(&quot;hotSessionFlushToDb&quot;, 600);
+    $config-&gt;delete(&quot;disableCache&quot;);
+    $config-&gt;delete(&quot;cacheType&quot;);
+    $config-&gt;delete(&quot;fileCacheRoot&quot;);
+    $config-&gt;deleteFromArray(&quot;workflowActivities/None&quot;, &quot;WebGUI::Workflow::Activity::CleanDatabaseCache&quot;);
+    $config-&gt;deleteFromArray(&quot;workflowActivities/None&quot;, &quot;WebGUI::Workflow::Activity::CleanFileCache&quot;);
 
     my $db = $session-&gt;db;
-    $db-&gt;write("drop table cache");
-    $db-&gt;write("delete from WorkflowActivity where className in ('WebGUI::Workflow::Activity::CleanDatabaseCache','WebGUI::Workflow::Activity::CleanFileCache')");
-    $db-&gt;write("delete from WorkflowActivityData where activityId in  ('pbwfactivity0000000002','pbwfactivity0000000022')");
+    $db-&gt;write(&quot;drop table cache&quot;);
+    $db-&gt;write(&quot;delete from WorkflowActivity where className in (&#39;WebGUI::Workflow::Activity::CleanDatabaseCache&#39;,&#39;WebGUI::Workflow::Activity::CleanFileCache&#39;)&quot;);
+    $db-&gt;write(&quot;delete from WorkflowActivityData where activityId in  (&#39;pbwfactivity0000000002&#39;,&#39;pbwfactivity0000000022&#39;)&quot;);
 
-    print "DONE!\n" unless $quiet;
+    print &quot;DONE!\n&quot; unless $quiet;
 }
 </code></pre>
 
-<p>If you're familiar with WebGUI session, this is pretty standard, but still
+<p>If you&#39;re familiar with WebGUI session, this is pretty standard, but still
 much boilerplate and convention. The new scripts remove boilerplate and
 enforce what was once merely convention.</p>
 
@@ -178,35 +293,35 @@ enforce what was once merely convention.</p>
 use WebGUI::Upgrade::Script;
 use Module::Find;
 
-start_step "Migrating to new cache";
+start_step &quot;Migrating to new cache&quot;;
 
 rm_lib
-    findallmod('WebGUI::Cache'),
-    'WebGUI::Workflow::Activity::CleanDatabaseCache',
-    'WebGUI::Workflow::Activity::CleanFileCache',
+    findallmod(&#39;WebGUI::Cache&#39;),
+    &#39;WebGUI::Workflow::Activity::CleanDatabaseCache&#39;,
+    &#39;WebGUI::Workflow::Activity::CleanFileCache&#39;,
 ;
 
-config-&gt;set("cache", {
-    'driver'            =&gt; 'FastMmap',
-    'expires_variance'  =&gt; '0.10',
-    'root_dir'          =&gt; '/tmp/WebGUICache',
+config-&gt;set(&quot;cache&quot;, {
+    &#39;driver&#39;            =&gt; &#39;FastMmap&#39;,
+    &#39;expires_variance&#39;  =&gt; &#39;0.10&#39;,
+    &#39;root_dir&#39;          =&gt; &#39;/tmp/WebGUICache&#39;,
 });
 
-config-&gt;set('hotSessionFlushToDb', 600);
-config-&gt;delete('disableCache');
-config-&gt;delete('cacheType');
-config-&gt;delete('fileCacheRoot');
-config-&gt;deleteFromArray('workflowActivities/None', 'WebGUI::Workflow::Activity::CleanDatabaseCache');
-config-&gt;deleteFromArray('workflowActivities/None', 'WebGUI::Workflow::Activity::CleanFileCache');
+config-&gt;set(&#39;hotSessionFlushToDb&#39;, 600);
+config-&gt;delete(&#39;disableCache&#39;);
+config-&gt;delete(&#39;cacheType&#39;);
+config-&gt;delete(&#39;fileCacheRoot&#39;);
+config-&gt;deleteFromArray(&#39;workflowActivities/None&#39;, &#39;WebGUI::Workflow::Activity::CleanDatabaseCache&#39;);
+config-&gt;deleteFromArray(&#39;workflowActivities/None&#39;, &#39;WebGUI::Workflow::Activity::CleanFileCache&#39;);
 
-sql 'DROP TABLE IF EXISTS cache';
-sql 'DELETE FROM WorkflowActivity WHERE className in (?,?)',
-    'WebGUI::Workflow::Activity::CleanDatabaseCache',
-    'WebGUI::Workflow::Activity::CleanFileCache',
+sql &#39;DROP TABLE IF EXISTS cache&#39;;
+sql &#39;DELETE FROM WorkflowActivity WHERE className in (?,?)&#39;,
+    &#39;WebGUI::Workflow::Activity::CleanDatabaseCache&#39;,
+    &#39;WebGUI::Workflow::Activity::CleanFileCache&#39;,
 ;
-sql 'DELETE FROM WorkflowActivityData WHERE activityId IN (?,?)',
-    'pbwfactivity0000000002',
-    'pbwfactivity0000000022',
+sql &#39;DELETE FROM WorkflowActivityData WHERE activityId IN (?,?)&#39;,
+    &#39;pbwfactivity0000000002&#39;,
+    &#39;pbwfactivity0000000022&#39;,
 ;
 
 done;
@@ -219,7 +334,7 @@ entire upgrade script without opening a WebGUI session, or creating a version
 tag unnecessarily.</p>
 
 <p>If we do need a session, or a version tag, they will be automatically assigned
-relevant information describing what we're doing. When we're done, they will
+relevant information describing what we&#39;re doing. When we&#39;re done, they will
 be automatically cleaned up and committed. What once was done with
 boilerplate, and subject to random deletion or subversion, is now enforced
 policy.</p>
@@ -228,20 +343,20 @@ policy.</p>
 modules, write subroutines, and do anything necessary to move WebGUI into the
 future.</p>
 
-<p>The Internet is always evolving. With the WebGUI 8 upgrade system, we've made 
+<p>The Internet is always evolving. With the WebGUI 8 upgrade system, we&#39;ve made 
 it easier to evolve with it.</p>
 
-<p>Stay tuned for next time where I'll show off our CHI-based caching system.</p>
+<p>Stay tuned for next time where I&#39;ll show off our CHI-based caching system.</p>
 
 
 
             </article>
             <article>
                 <header>
-                    <h1><a href="/blog/2011/01/22/whats-new-in-webgui-8.0-2-auth-improvements.html">What's New in WebGUI 8 #2: Auth Improvements</a></h1>
+                    <h1><a href="/blog/2011/01/22/whats-new-in-webgui-8.0-2-auth-improvements.html">What&#39;s New in WebGUI 8 #2: Auth Improvements</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/webgui" rel="tag">webgui</a>
+                        <a href="/blog/tag/webgui/" rel="tag">webgui</a>
                     </p>
 
                     <aside>
@@ -254,7 +369,7 @@ it easier to evolve with it.</p>
 
                     <p>Originally posted as:
                             <a href="http://blogs.perl.org/users/preaction/2011/01/whats-new-in-webgui-8-2-auth-improvements.html">
-                                <em>What's New in WebGUI 8 #2: Auth Improvements</em> on blogs.perl.org.
+                                <em>What&#39;s New in WebGUI 8 #2: Auth Improvements</em> on blogs.perl.org.
                             </a>
                     </p>
                 </header>
@@ -274,15 +389,15 @@ perspective:</p>
 Internet surely has.</p>
 
 
-                    <p><a href="/blog/2011/01/22/whats-new-in-webgui-8.0-2-auth-improvements.html#section-2">Continue reading What's New in WebGUI 8 #2: Auth Improvements...</a></p>
+                    <p><a href="/blog/2011/01/22/whats-new-in-webgui-8.0-2-auth-improvements.html#section-2">Continue reading What&#39;s New in WebGUI 8 #2: Auth Improvements...</a></p>
 
             </article>
             <article>
                 <header>
-                    <h1><a href="/blog/2011/01/08/whats-new-in-webgui-8.0-1-psgi-plack.html">What's new in WebGUI 8.0 #1 - PSGI/Plack</a></h1>
+                    <h1><a href="/blog/2011/01/08/whats-new-in-webgui-8.0-1-psgi-plack.html">What&#39;s new in WebGUI 8.0 #1 - PSGI/Plack</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/webgui" rel="tag">webgui</a>
+                        <a href="/blog/tag/webgui/" rel="tag">webgui</a>
                     </p>
 
                     <aside>
@@ -295,7 +410,7 @@ Internet surely has.</p>
 
                     <p>Originally posted as:
                             <a href="http://blogs.perl.org/users/preaction/2011/01/whats-new-in-webgui-80-1---psgiplack.html">
-                                <em>What's new in WebGUI 8.0 #1 - PSGI/Plack</em> on blogs.perl.org.
+                                <em>What&#39;s new in WebGUI 8.0 #1 - PSGI/Plack</em> on blogs.perl.org.
                             </a>
                     </p>
                 </header>
@@ -307,33 +422,33 @@ change since WebGUI 7, we started planning WebGUI 8 with high expectations.
 Over the course of the last 16 months:</p>
 
 <ul>
-<li>We've adopted PSGI/Plack as our platform, enabling us to work in any HTTP
+<li>We&#39;ve adopted PSGI/Plack as our platform, enabling us to work in any HTTP
 environment.</li>
-<li>We've made massive changes to the Asset system to make them easier to build.</li>
-<li>We've reworked Auth to make it easier to add Twitter and Facebook
+<li>We&#39;ve made massive changes to the Asset system to make them easier to build.</li>
+<li>We&#39;ve reworked Auth to make it easier to add Twitter and Facebook
 authentication for your users.</li>
-<li>We've rebuilt the upgrade system to be easier for developers and system
+<li>We&#39;ve rebuilt the upgrade system to be easier for developers and system
 administrators.</li>
 <li>There is a new caching system enabling memcached and local memory caches.</li>
 <li>The entire content management interface was rebuilt from scratch with the
 latest buzzword-worthy technologies.</li>
 <li>Assets are now based on Moose, the new object-oriented system for Perl.</li>
-<li>We've created WebGUI::FormBuilder, a way to make introspect-able forms.</li>
-<li>We're migrating to InnoDB to take advantage of transactions and foreign key
+<li>We&#39;ve created WebGUI::FormBuilder, a way to make introspect-able forms.</li>
+<li>We&#39;re migrating to InnoDB to take advantage of transactions and foreign key
 constraints.</li>
-<li>We're making a brand-new WRE based on Nginx, and Server::Starter for more
+<li>We&#39;re making a brand-new WRE based on Nginx, and Server::Starter for more
 efficient resource usage and no-downtime restarts.</li>
 </ul>
 
-<p>And these are just the major features. We've cleaned up and straightened out a
+<p>And these are just the major features. We&#39;ve cleaned up and straightened out a
 lot of the crooked parts of programming in WebGUI, and we have plans to do even
-more. We've greatly improved the flexibility of WebGUI without compromising any
+more. We&#39;ve greatly improved the flexibility of WebGUI without compromising any
 more backward compatibility.</p>
 
 <h2>Ambition is the first step</h2>
 
 <p>Unfortunately, our ambitious goals have taken longer than we thought. We had
-promised a WebGUI 8.0 Beta in January, and I have to say that isn't possible.
+promised a WebGUI 8.0 Beta in January, and I have to say that isn&#39;t possible.
 The way things look right now, WebGUI 8.0 will be ready this summer.</p>
 
 <p>So, as atonement and apology, I offer this series of bi-weekly blog posts about
@@ -351,46 +466,46 @@ performance for your specific need.</p>
 
 <pre><code>#!/usr/bin/env perl
 # webgui.cgi - Run WebGUI as a CGI application
-use lib 'lib';
+use lib &#39;lib&#39;;
 use Plack::Loader;
 use Plack::Handler::CGI;
-$ENV{WEBGUI_CONFIG} = "www.example.com.conf";
-my $app = Plack::Util::load_psgi("share/site.psgi");
+$ENV{WEBGUI_CONFIG} = &quot;www.example.com.conf&quot;;
+my $app = Plack::Util::load_psgi(&quot;share/site.psgi&quot;);
 Plack::Handler::CGI-&gt;new-&gt;run($app);
 </code></pre>
 
 <p>Since WebGUI is just a PSGI application, it can also run alongside any other
 PSGI applications. WebGUI and Catalyst can work together on the same site.</p>
 
-<p>For example, here's WebGUI and Pod::Browser running together. Pod::Browser
+<p>For example, here&#39;s WebGUI and Pod::Browser running together. Pod::Browser
 takes /doc and serves the WebGUI POD, every other request goes to WebGUI.</p>
 
 <pre><code># pod.psgi
-use lib 'lib';
+use lib &#39;lib&#39;;
 use Plack::Builder;
 use Plack::Util;
 
 BEGIN {
-    $ENV{POD_BROWSER_CONFIG} = "pod_browser.json";
+    $ENV{POD_BROWSER_CONFIG} = &quot;pod_browser.json&quot;;
 }
 use Pod::Browser;
 use Catalyst::Engine::PSGI;
-Pod::Browser-&gt;setup_engine('PSGI');
+Pod::Browser-&gt;setup_engine(&#39;PSGI&#39;);
 
-$ENV{WEBGUI_CONFIG} = "core.conf";
+$ENV{WEBGUI_CONFIG} = &quot;core.conf&quot;;
 use WebGUI;
 
 builder {
-    mount "/doc" =&gt; sub { Pod::Browser-&gt;run(@_); };
-    mount "/" =&gt; Plack::Util::load_psgi("share/site.psgi");
+    mount &quot;/doc&quot; =&gt; sub { Pod::Browser-&gt;run(@_); };
+    mount &quot;/&quot; =&gt; Plack::Util::load_psgi(&quot;share/site.psgi&quot;);
 };
 
 # pod_browser.json
 {
-    "Controller::Root" : {
-        "self" : 1,
-        "inc" : 1,
-        "namespaces" : [ "WebGUI*" ]
+    &quot;Controller::Root&quot; : {
+        &quot;self&quot; : 1,
+        &quot;inc&quot; : 1,
+        &quot;namespaces&quot; : [ &quot;WebGUI*&quot; ]
     }
 }
 </code></pre>
@@ -411,14 +526,14 @@ Plack middleware for WebGUI that will work in your other Plack applications,
 and WebGUI can take advantage of the middleware out there on CPAN. </p>
 
 <p>Plack middleware currently only replaces URL handlers, but someday we can
-replace WebGUI::Content handlers as well. WebGUI's pieces can be mixed and
+replace WebGUI::Content handlers as well. WebGUI&#39;s pieces can be mixed and
 matched to create your own applications without using parts of WebGUI that you
-don't need.</p>
+don&#39;t need.</p>
 
-<p>By switching to PSGI/Plack, we've made WebGUI easier to deploy and easier to
+<p>By switching to PSGI/Plack, we&#39;ve made WebGUI easier to deploy and easier to
 develop.</p>
 
-<p>Next time, I'll talk about the improvements to the WebGUI Auth API.</p>
+<p>Next time, I&#39;ll talk about the improvements to the WebGUI Auth API.</p>
 
 
 
@@ -427,17 +542,13 @@ develop.</p>
 
         <ul class="pager">
             <li class="prev">
-                <a class="button disabled"
-                    rel="next" href=""
-                >
-                    &larr; Older
+                <a class="button disabled" href="" rel="next">
+                    ← Older
                 </a>
             </li>
             <li class="next">
-                <a class="button button-primary"
-                    rel="prev" href="page/6"
-                >
-                    Newer &rarr;
+                <a class="button button-primary" href="/blog/page/6" rel="prev">
+                    Newer →
                 </a>
             </li>
         </ul>
@@ -448,26 +559,27 @@ develop.</p>
         
         <h1>Tags</h1>
         <ul class="list-inline">
-            <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-            <li><a href="/blog/tag/error">error</a></li>
-            <li><a href="/blog/tag/etl">etl</a></li>
-            <li><a href="/blog/tag/funny">funny</a></li>
-            <li><a href="/blog/tag/git">git</a></li>
-            <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-            <li><a href="/blog/tag/moose">moose</a></li>
-            <li><a href="/blog/tag/mysql">mysql</a></li>
-            <li><a href="/blog/tag/openbsd">openbsd</a></li>
-            <li><a href="/blog/tag/perl">perl</a></li>
-            <li><a href="/blog/tag/personal">personal</a></li>
-            <li><a href="/blog/tag/progress">progress</a></li>
-            <li><a href="/blog/tag/rants">rants</a></li>
-            <li><a href="/blog/tag/scripts">scripts</a></li>
-            <li><a href="/blog/tag/software">software</a></li>
-            <li><a href="/blog/tag/sql">sql</a></li>
-            <li><a href="/blog/tag/statocles">statocles</a></li>
-            <li><a href="/blog/tag/webgui">webgui</a></li>
-            <li><a href="/blog/tag/xs">xs</a></li>
-            <li><a href="/blog/tag/yertl">yertl</a></li>
+            <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+            <li><a href="/blog/tag/error/">error</a></li>
+            <li><a href="/blog/tag/etl/">etl</a></li>
+            <li><a href="/blog/tag/funny/">funny</a></li>
+            <li><a href="/blog/tag/git/">git</a></li>
+            <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+            <li><a href="/blog/tag/moose/">moose</a></li>
+            <li><a href="/blog/tag/mysql/">mysql</a></li>
+            <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+            <li><a href="/blog/tag/pdl/">pdl</a></li>
+            <li><a href="/blog/tag/perl/">perl</a></li>
+            <li><a href="/blog/tag/personal/">personal</a></li>
+            <li><a href="/blog/tag/progress/">progress</a></li>
+            <li><a href="/blog/tag/rants/">rants</a></li>
+            <li><a href="/blog/tag/scripts/">scripts</a></li>
+            <li><a href="/blog/tag/software/">software</a></li>
+            <li><a href="/blog/tag/sql/">sql</a></li>
+            <li><a href="/blog/tag/statocles/">statocles</a></li>
+            <li><a href="/blog/tag/webgui/">webgui</a></li>
+            <li><a href="/blog/tag/xs/">xs</a></li>
+            <li><a href="/blog/tag/yertl/">yertl</a></li>
         </ul>
         <h1>Feeds</h1>
         <ul class="list-inline">
@@ -490,7 +602,7 @@ develop.</p>
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>

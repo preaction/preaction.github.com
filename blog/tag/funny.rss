@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>preaction</title>
-        <link>http://preaction.github.io/blog/tag/funny</link>
+        <link>http://preaction.github.io/blog/tag/funny/</link>
         <atom:link href="http://preaction.github.io/blog/tag/funny.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.044</generator>
+        <generator>Statocles 0.053</generator>
         <item>
-            <title>Raw Feed of OpenBSD's Work on Cleaning Up OpenSSL</title>
+            <title>Raw Feed of OpenBSD&#39;s Work on Cleaning Up OpenSSL</title>
             <link>http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html</link>
             <guid>http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html</guid>
             <description><![CDATA[
-                <p><a href="http://freshbsd.org/search?project=openbsd&amp;q=file.name:libssl">Raw Feed of OpenBSD's Work on Cleaning Up OpenSSL</a></p>
+                <p><a href="http://freshbsd.org/search?project=openbsd&amp;q=file.name:libssl">Raw Feed of OpenBSD&#39;s Work on Cleaning Up OpenSSL</a></p>
 
 <p>This is an amazing timeline of how much and how quickly work can get done with
 a determined, dedicated team of hackers.</p>
@@ -20,8 +20,8 @@ a determined, dedicated team of hackers.</p>
 
                     <p><a href="http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html#section-2">Continue reading...</a></p>
                 <p>Tags:
-                    <a href="/blog/tag/openbsd">openbsd</a>
-                    <a href="/blog/tag/funny">funny</a>
+                    <a href="/blog/tag/openbsd/">openbsd</a>
+                    <a href="/blog/tag/funny/">funny</a>
                 </p>
             ]]></description>
             <pubDate>

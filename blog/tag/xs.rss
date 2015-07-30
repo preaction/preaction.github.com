@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>preaction</title>
-        <link>http://preaction.github.io/blog/tag/xs</link>
+        <link>http://preaction.github.io/blog/tag/xs/</link>
         <atom:link href="http://preaction.github.io/blog/tag/xs.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.044</generator>
+        <generator>Statocles 0.053</generator>
         <item>
             <title>Adventures in Debugging C/XS 2: Debugging Boogaloo</title>
             <link>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</link>
             <guid>http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html</guid>
             <description><![CDATA[
-                <p>... or "Ask Not To Whom The Pointer Points, It Points To Thee."</p>
+                <p>... or &quot;Ask Not To Whom The Pointer Points, It Points To Thee.&quot;</p>
 
 <p>TL;DR: A pointer is not a reference. A pointer knows nothing about the data
 being pointed to. Returning multiple values requires actual work.</p>
 
 <p>Everything went wrong when I wanted a string with a <code>NUL</code> character inside it.
-C strings are not Perl scalars, they don't know how long they are. So to mark
+C strings are not Perl scalars, they don&#39;t know how long they are. So to mark
 the end of a string, C uses the <code>NUL</code> character, <code>\0</code>. The <code>strcpy</code> function will
 copy to your destination until the first <code>\0</code> from your source. When you want to
 have a string with a <code>\0</code> inside of it that does not mark the end of the string,
@@ -63,16 +63,16 @@ char* buffer = get_string_with_nuls( &amp;bufferSize );
 </code></pre>
 
 <p>This way, <code>get_string_with_nuls</code> can handle the <code>malloc</code> with exactly the correct
-size and give it to me. I don't have to guess at a size beforehand.</p>
+size and give it to me. I don&#39;t have to guess at a size beforehand.</p>
 
-<p>Of course, a struct could do this better, or since I'm actually in C++, an
-object. I'll be planning a new API as soon as I confirm this one actually
+<p>Of course, a struct could do this better, or since I&#39;m actually in C++, an
+object. I&#39;ll be planning a new API as soon as I confirm this one actually
 works and has proper tests (written in Perl, of course).</p>
 
                     <p><a href="http://preaction.github.io/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html#section-2">Continue reading...</a></p>
                 <p>Tags:
-                    <a href="/blog/tag/perl">perl</a>
-                    <a href="/blog/tag/xs">xs</a>
+                    <a href="/blog/tag/perl/">perl</a>
+                    <a href="/blog/tag/xs/">xs</a>
                 </p>
             ]]></description>
             <pubDate>
@@ -105,7 +105,7 @@ fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/xs">xs</a>
+                    <a href="/blog/tag/xs/">xs</a>
                 </p>
             ]]></description>
             <pubDate>

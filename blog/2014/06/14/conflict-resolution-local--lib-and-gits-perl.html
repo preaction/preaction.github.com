@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
         
     </head>
@@ -29,6 +30,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -39,11 +41,12 @@
     <div class="nine columns">
         <main>
             <header>
-                <h1>Conflict Resolution: local::lib and git's Perl</h1>
+                <h1>Conflict Resolution: local::lib and git&#39;s Perl</h1>
                 <p class="tags">Tags:
-                    <a href="/blog/tag/perl" rel="tag">perl</a>
-                    <a href="/blog/tag/git" rel="tag">git</a>
+                    <a href="/blog/tag/perl/" rel="tag">perl</a>
+                    <a href="/blog/tag/git/" rel="tag">git</a>
                 </p>
+
                 <aside>
                     <p><time datetime="2014-06-14">
                         Posted on 2014-06-14
@@ -51,11 +54,13 @@
                         by preaction
                     </p>
                 </aside>
+
                 <p>Originally posted as:
-                        <a class="alert-link" href="http://blogs.perl.org/users/preaction/2014/06/conflict-resolution-locallib-and-gits-perl.html">
-                            <em>Conflict Resolution: local::lib and git's Perl</em> on blogs.perl.org.
+                        <a href="http://blogs.perl.org/users/preaction/2014/06/conflict-resolution-locallib-and-gits-perl.html">
+                            <em>Conflict Resolution: local::lib and git&#39;s Perl</em> on blogs.perl.org.
                         </a>
                 </p>
+
             </header>
             <section id="section-1">
                 <p>I ran into a frustrating problem the other day:</p>
@@ -63,17 +68,17 @@
 <pre><code>$ git add -i
 /usr/bin/perl: symbol lookup error: ~/perl5/lib/perl5/x86_64-linux-thread-multi/auto/List/Util/Util.so:
 undefined symbol: Perl_xs_apiversion_bootcheck
-fatal: 'add--interactive' appears to be a git command, but we were not
+fatal: &#39;add--interactive&#39; appears to be a git command, but we were not
 able to execute it. Maybe git-add--interactive is broken?
 </code></pre>
 
             </section>
             <section id="section-2">
-                <p>I've seen this error message from Perl a lot. It basically means that I'm
+                <p>I&#39;ve seen this error message from Perl a lot. It basically means that I&#39;m
 trying to load an XS module compiled for a different version of Perl. Since
 <code>git</code> is directly trying to run <code>/usr/bin/perl</code> (5.10.1) as opposed to the
 <code>perlbrew</code> Perl I have installed (5.16.3), the error comes as no surprise:
-<code>PERL5LIB</code> is checked before Perl's built-in libraries. So if you have a
+<code>PERL5LIB</code> is checked before Perl&#39;s built-in libraries. So if you have a
 <code>local::lib</code> (which adds its directories to <code>PERL5LIB</code>) and try to use those
 modules in a different Perl, things may not work as you expected.</p>
 
@@ -93,30 +98,30 @@ directories, like <code>PERL5LIB</code>. So if we fill in <code>GITPERLLIB</code
 directories, we can ensure that the right <code>List::Util</code> version is found
 first.</p>
 
-<p>The right directories are part of Perl's <code>Config</code>. This configuration is
+<p>The right directories are part of Perl&#39;s <code>Config</code>. This configuration is
 available to us in Perl scripts through the <code>Config</code> module which provides a
-<code>%Config</code> hash.  There are three "layers" of Perl library paths, "core",
-"vendor", and "site", configured in the following Config keys:</p>
+<code>%Config</code> hash.  There are three &quot;layers&quot; of Perl library paths, &quot;core&quot;,
+&quot;vendor&quot;, and &quot;site&quot;, configured in the following Config keys:</p>
 
 <ul>
-<li>core    => 'archlib', 'privlib'</li>
-<li>vendor  => 'vendorarch', 'vendorlib'</li>
-<li>site    => 'sitearch', 'sitelib'</li>
+<li>core    =&gt; &#39;archlib&#39;, &#39;privlib&#39;</li>
+<li>vendor  =&gt; &#39;vendorarch&#39;, &#39;vendorlib&#39;</li>
+<li>site    =&gt; &#39;sitearch&#39;, &#39;sitelib&#39;</li>
 </ul>
 
-<p>The "core" libraries are just that, the core Perl 5 libraries. The "vendor"
+<p>The &quot;core&quot; libraries are just that, the core Perl 5 libraries. The &quot;vendor&quot;
 libraries are additional libraries that your vendor may have provided in their
-Perl distribution. The "site" libraries are the CPAN libraries you've
-downloaded and installed via the <code>cpan</code> client (unless you're using local::lib,
+Perl distribution. The &quot;site&quot; libraries are the CPAN libraries you&#39;ve
+downloaded and installed via the <code>cpan</code> client (unless you&#39;re using local::lib,
 which overrides the install directories).</p>
 
 <p>Armed with these Config keys, we can make a <code>GITPERLLIB</code> that overrides our local::lib
 directories. So now, in my <code>.zshrc</code>, I have:</p>
 
 <pre><code># Fix git perl scripts in case of local::lib
-# If we install modules for a different arch in local::lib, we'll get some problems
+# If we install modules for a different arch in local::lib, we&#39;ll get some problems
 if [[ -x /usr/bin/perl ]]; then
-    export GITPERLLIB=`/usr/bin/perl -MConfig -e'print join ":", grep { $_ } map { $Config{$_} } qw( sitearch sitelib vendorarch vendorlib archlib privlib )'`
+    export GITPERLLIB=`/usr/bin/perl -MConfig -e&#39;print join &quot;:&quot;, grep { $_ } map { $Config{$_} } qw( sitearch sitelib vendorarch vendorlib archlib privlib )&#39;`
 fi
 </code></pre>
 
@@ -131,26 +136,27 @@ fi
         <nav id="tags">
             <h1>Tags</h1>
             <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-                <li><a href="/blog/tag/error">error</a></li>
-                <li><a href="/blog/tag/etl">etl</a></li>
-                <li><a href="/blog/tag/funny">funny</a></li>
-                <li><a href="/blog/tag/git">git</a></li>
-                <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-                <li><a href="/blog/tag/moose">moose</a></li>
-                <li><a href="/blog/tag/mysql">mysql</a></li>
-                <li><a href="/blog/tag/openbsd">openbsd</a></li>
-                <li><a href="/blog/tag/perl">perl</a></li>
-                <li><a href="/blog/tag/personal">personal</a></li>
-                <li><a href="/blog/tag/progress">progress</a></li>
-                <li><a href="/blog/tag/rants">rants</a></li>
-                <li><a href="/blog/tag/scripts">scripts</a></li>
-                <li><a href="/blog/tag/software">software</a></li>
-                <li><a href="/blog/tag/sql">sql</a></li>
-                <li><a href="/blog/tag/statocles">statocles</a></li>
-                <li><a href="/blog/tag/webgui">webgui</a></li>
-                <li><a href="/blog/tag/xs">xs</a></li>
-                <li><a href="/blog/tag/yertl">yertl</a></li>
+                <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/">error</a></li>
+                <li><a href="/blog/tag/etl/">etl</a></li>
+                <li><a href="/blog/tag/funny/">funny</a></li>
+                <li><a href="/blog/tag/git/">git</a></li>
+                <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+                <li><a href="/blog/tag/moose/">moose</a></li>
+                <li><a href="/blog/tag/mysql/">mysql</a></li>
+                <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+                <li><a href="/blog/tag/pdl/">pdl</a></li>
+                <li><a href="/blog/tag/perl/">perl</a></li>
+                <li><a href="/blog/tag/personal/">personal</a></li>
+                <li><a href="/blog/tag/progress/">progress</a></li>
+                <li><a href="/blog/tag/rants/">rants</a></li>
+                <li><a href="/blog/tag/scripts/">scripts</a></li>
+                <li><a href="/blog/tag/software/">software</a></li>
+                <li><a href="/blog/tag/sql/">sql</a></li>
+                <li><a href="/blog/tag/statocles/">statocles</a></li>
+                <li><a href="/blog/tag/webgui/">webgui</a></li>
+                <li><a href="/blog/tag/xs/">xs</a></li>
+                <li><a href="/blog/tag/yertl/">yertl</a></li>
             </ul>
         </nav>
     </div>
@@ -161,7 +167,7 @@ fi
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>

@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>preaction</title>
-        <link>http://preaction.github.io/blog/tag/error</link>
+        <link>http://preaction.github.io/blog/tag/error/</link>
         <atom:link href="http://preaction.github.io/blog/tag/error.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.044</generator>
+        <generator>Statocles 0.053</generator>
         <item>
             <title>I Bless You in the Name of the Stringified Object</title>
             <link>http://preaction.github.io/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html</link>
@@ -15,16 +15,16 @@
 
 <pre><code>use DateTime;
 my $date = DateTime-&gt;new( year =&gt; 2013, month =&gt; 4, day =&gt; 15 );
-$date-&gt;set_time_zone("Australia/Sydney");
-print $date-&gt;today;'
+$date-&gt;set_time_zone(&quot;Australia/Sydney&quot;);
+print $date-&gt;today;&#39;
 </code></pre>
 
-<p>This code gives the error <code>Can't locate object method "_normalize_nanoseconds"
-via package "2013-04-15T00:00:00" at
+<p>This code gives the error <code>Can&#39;t locate object method &quot;_normalize_nanoseconds&quot;
+via package &quot;2013-04-15T00:00:00&quot; at
 /usr2/local/perlbrew/perls/perl-5.16.3/lib/site_perl/5.16.3/x86_64-linux-thread-multi/DateTime.pm
 line 252.</code></p>
 
-<p>The package "2013-04-15T00:00:00" is the curious part: It looks like a
+<p>The package &quot;2013-04-15T00:00:00&quot; is the curious part: It looks like a
 stringified DateTime, but who could possibly be stringifying a DateTime object
 and then using that as a package name?</p>
 
@@ -37,7 +37,7 @@ and then using that as a package name?</p>
                         </a></li>
                     </ul>
                 <p>Tags:
-                    <a href="/blog/tag/error">error</a>
+                    <a href="/blog/tag/error/">error</a>
                 </p>
             ]]></description>
             <pubDate>

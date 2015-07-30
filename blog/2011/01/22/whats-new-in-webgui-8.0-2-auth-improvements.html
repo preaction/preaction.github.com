@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
         
     </head>
@@ -29,6 +30,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -39,10 +41,11 @@
     <div class="nine columns">
         <main>
             <header>
-                <h1>What's New in WebGUI 8 #2: Auth Improvements</h1>
+                <h1>What&#39;s New in WebGUI 8 #2: Auth Improvements</h1>
                 <p class="tags">Tags:
-                    <a href="/blog/tag/webgui" rel="tag">webgui</a>
+                    <a href="/blog/tag/webgui/" rel="tag">webgui</a>
                 </p>
+
                 <aside>
                     <p><time datetime="2011-01-22">
                         Posted on 2011-01-22
@@ -50,11 +53,13 @@
                         by preaction
                     </p>
                 </aside>
+
                 <p>Originally posted as:
-                        <a class="alert-link" href="http://blogs.perl.org/users/preaction/2011/01/whats-new-in-webgui-8-2-auth-improvements.html">
-                            <em>What's New in WebGUI 8 #2: Auth Improvements</em> on blogs.perl.org.
+                        <a href="http://blogs.perl.org/users/preaction/2011/01/whats-new-in-webgui-8-2-auth-improvements.html">
+                            <em>What&#39;s New in WebGUI 8 #2: Auth Improvements</em> on blogs.perl.org.
                         </a>
                 </p>
+
             </header>
             <section id="section-1">
                 <h2>Auth changes</h2>
@@ -94,7 +99,7 @@ rate.</p>
 
 <p>Historically, a WebGUI user would have only one way to login. If they had a
 username/password, they could only use that. If they were an LDAP user, they
-could only use that. Worse, only one Auth plugin could be chosen as "default",
+could only use that. Worse, only one Auth plugin could be chosen as &quot;default&quot;,
 which means that new users could only create themselves with that single
 plugin.</p>
 
@@ -104,7 +109,7 @@ offer users multiple ways to join our site. As a test, we added a Twitter-based
 auth plugin based on the Net::Twitter module, and a Facebook auth plugin based
 on Facebook::Graph.</p>
 
-<p><img src="/images/blog/whats-new-in-webgui-8.0-2-auth-improvements/Screen%20shot%202011-01-21%20at%202.02.13%20PM.png" alt="" /></p>
+<p><img alt="" src="/images/blog/whats-new-in-webgui-8.0-2-auth-improvements/Screen%20shot%202011-01-21%20at%202.02.13%20PM.png"></p>
 
 <p>Fig 1,294: A WebGUI site with username/password and Facebook login</p>
 
@@ -141,7 +146,7 @@ sub createAccountSave {
 }
 </code></pre>
 
-<p>Now, we've massaged the Auth API to look like our other APIs. The constructor
+<p>Now, we&#39;ve massaged the Auth API to look like our other APIs. The constructor
 was fixed to not require re-blessing. Instead of setCallable(), we use www_
 methods to mark which methods can be called from the web. This sets those
 methods apart from non-web methods, and removes the need to explicitly say
@@ -152,7 +157,7 @@ database table.</p>
 <pre><code># new-style Auth plugin for Twitter
 package WebGUI::Auth::Twitter;
 
-# Don't need to override constructor anymore! 
+# Don&#39;t need to override constructor anymore! 
 # no re-bless. no setCallable. authMethod name is determined automatically
 
 sub www_createAccountSave {
@@ -167,7 +172,7 @@ sub www_createAccountSave {
 www_ methods from the Asset system, the Form system, the Workflow system, the
 Operation system, and the Shop system, you understand the update() and www_
 methods from the Auth system. When there are many valid ways of doing
-something, it doesn't matter which one you pick, as long as you are consistent
+something, it doesn&#39;t matter which one you pick, as long as you are consistent
 in that choice throughout the project.</p>
 
 <p>The only downside to the new Auth API is the one backwards incompatible change:
@@ -178,19 +183,19 @@ just work.</p>
 
 <h2>Future Plans</h2>
 
-<p>Through our massage of the Auth API, we've gotten new ideas on how Auth plugins
+<p>Through our massage of the Auth API, we&#39;ve gotten new ideas on how Auth plugins
 should work. In the future, users will be able to configure as many auth
 methods as they want. Those choices will all be available from a single account
 screen. With FormBuilder (discussed later), we can make it even easier to
 create full-featured Auth methods. An auth method can inherit a form, add a few
 fields, and present that new form to the user.</p>
 
-<p>To increase flexibility, we're going to refactor the Auth API to be more easily
+<p>To increase flexibility, we&#39;re going to refactor the Auth API to be more easily
 extensible. The default Auth methods can be used as stepping-stones to more
 specific auth methods, decreasing the development time for your site, and
 making a more stable platform for your organization.</p>
 
-<p>Stay tuned for next time where I'll go over our brand-new upgrade system.</p>
+<p>Stay tuned for next time where I&#39;ll go over our brand-new upgrade system.</p>
 
             </section>
         </main>
@@ -201,26 +206,27 @@ making a more stable platform for your organization.</p>
         <nav id="tags">
             <h1>Tags</h1>
             <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-                <li><a href="/blog/tag/error">error</a></li>
-                <li><a href="/blog/tag/etl">etl</a></li>
-                <li><a href="/blog/tag/funny">funny</a></li>
-                <li><a href="/blog/tag/git">git</a></li>
-                <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-                <li><a href="/blog/tag/moose">moose</a></li>
-                <li><a href="/blog/tag/mysql">mysql</a></li>
-                <li><a href="/blog/tag/openbsd">openbsd</a></li>
-                <li><a href="/blog/tag/perl">perl</a></li>
-                <li><a href="/blog/tag/personal">personal</a></li>
-                <li><a href="/blog/tag/progress">progress</a></li>
-                <li><a href="/blog/tag/rants">rants</a></li>
-                <li><a href="/blog/tag/scripts">scripts</a></li>
-                <li><a href="/blog/tag/software">software</a></li>
-                <li><a href="/blog/tag/sql">sql</a></li>
-                <li><a href="/blog/tag/statocles">statocles</a></li>
-                <li><a href="/blog/tag/webgui">webgui</a></li>
-                <li><a href="/blog/tag/xs">xs</a></li>
-                <li><a href="/blog/tag/yertl">yertl</a></li>
+                <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/">error</a></li>
+                <li><a href="/blog/tag/etl/">etl</a></li>
+                <li><a href="/blog/tag/funny/">funny</a></li>
+                <li><a href="/blog/tag/git/">git</a></li>
+                <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+                <li><a href="/blog/tag/moose/">moose</a></li>
+                <li><a href="/blog/tag/mysql/">mysql</a></li>
+                <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+                <li><a href="/blog/tag/pdl/">pdl</a></li>
+                <li><a href="/blog/tag/perl/">perl</a></li>
+                <li><a href="/blog/tag/personal/">personal</a></li>
+                <li><a href="/blog/tag/progress/">progress</a></li>
+                <li><a href="/blog/tag/rants/">rants</a></li>
+                <li><a href="/blog/tag/scripts/">scripts</a></li>
+                <li><a href="/blog/tag/software/">software</a></li>
+                <li><a href="/blog/tag/sql/">sql</a></li>
+                <li><a href="/blog/tag/statocles/">statocles</a></li>
+                <li><a href="/blog/tag/webgui/">webgui</a></li>
+                <li><a href="/blog/tag/xs/">xs</a></li>
+                <li><a href="/blog/tag/yertl/">yertl</a></li>
             </ul>
         </nav>
     </div>
@@ -231,7 +237,7 @@ making a more stable platform for your organization.</p>
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
         
     </head>
@@ -29,6 +30,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -41,8 +43,9 @@
             <header>
                 <h1>Chicago.PM - Dependency Injection (also: Beam::Wire)</h1>
                 <p class="tags">Tags:
-                    <a href="/blog/tag/chicago.pm" rel="tag">chicago.pm</a>
+                    <a href="/blog/tag/chicago.pm/" rel="tag">chicago.pm</a>
                 </p>
+
                 <aside>
                     <p><time datetime="2013-03-29">
                         Posted on 2013-03-29
@@ -50,44 +53,46 @@
                         by preaction
                     </p>
                 </aside>
+
                 <p>Originally posted as:
-                        <a class="alert-link" href="http://blogs.perl.org/users/preaction/2013/03/chicagopm---dependency-injection-also-beamwire.html">
+                        <a href="http://blogs.perl.org/users/preaction/2013/03/chicagopm---dependency-injection-also-beamwire.html">
                             <em>Chicago.PM - Dependency Injection (also: Beam::Wire)</em> on blogs.perl.org.
                         </a>
                 </p>
+
             </header>
             <section id="section-1">
-                <p>At <a href="http://www.meetup.com/Windy-City-Perl-mongers-Meetup/events/104681992/">this month's Chicago.PM
+                <p>At <a href="http://www.meetup.com/Windy-City-Perl-mongers-Meetup/events/104681992/">this month&#39;s Chicago.PM
 meeting</a>,
 I gave <a href="http://preaction.github.com/Perl/Dependency-Injection.html">a presentation on Dependency Injection and my new module,
 Beam::Wire</a>.</p>
 
-<p>[EDIT: The presentation doesn't appear to work on mobile devices. I'm trying
-deck.js, and I'm not sure I like it.]</p>
+<p>[EDIT: The presentation doesn&#39;t appear to work on mobile devices. I&#39;m trying
+deck.js, and I&#39;m not sure I like it.]</p>
 
             </section>
             <section id="section-2">
                 <p>When I started my current job, I was introduced to the custom Dependency
-Injection framework they built. At the time, I was dismissive: "It's
+Injection framework they built. At the time, I was dismissive: &quot;It&#39;s
 programming via config file, which is always limiting (and so, a Bad
-Idea)." "It's something that Java needs, but not Perl."</p>
+Idea).&quot; &quot;It&#39;s something that Java needs, but not Perl.&quot;</p>
 
 <p>Slowly, and with great reluctance, I learned where dependency injection fits
 into a large framework: It removes the work of creating objects. Any object.
 Anywhere.</p>
 
 <p>For an idea of how powerful this is, do a quick search through your libraries
-and scripts (except for tests) for /->new/. Hopefully, the results will only be
-defaults (otherwise you've got tight coupling, another problem DI can fix). But
+and scripts (except for tests) for /-&gt;new/. Hopefully, the results will only be
+defaults (otherwise you&#39;ve got tight coupling, another problem DI can fix). But
 every time you call an object constructor is another place where dependency
 injection can reduce the amount of code you write and maintain.</p>
 
-<p>So, since the bureaucracy means I can't simply open-source the DI framework we
+<p>So, since the bureaucracy means I can&#39;t simply open-source the DI framework we
 have at $dayjob, I decided to make my own.</p>
 
 <p><a href="http://metacpan.org/modules/Beam::Wire">Beam::Wire</a> is <a href="http://search.cpan.org/~preaction/Beam-Wire/">available on
 CPAN</a>. There are a lot of
-features planned for it, so stay tuned! If you're interested, <a href="http://play-perl.org/quest/5130110d20d03f841200005b">up-vote
+features planned for it, so stay tuned! If you&#39;re interested, <a href="http://play-perl.org/quest/5130110d20d03f841200005b">up-vote
 Beam::Wire on play-perl</a>.</p>
 
             </section>
@@ -99,26 +104,27 @@ Beam::Wire on play-perl</a>.</p>
         <nav id="tags">
             <h1>Tags</h1>
             <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-                <li><a href="/blog/tag/error">error</a></li>
-                <li><a href="/blog/tag/etl">etl</a></li>
-                <li><a href="/blog/tag/funny">funny</a></li>
-                <li><a href="/blog/tag/git">git</a></li>
-                <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-                <li><a href="/blog/tag/moose">moose</a></li>
-                <li><a href="/blog/tag/mysql">mysql</a></li>
-                <li><a href="/blog/tag/openbsd">openbsd</a></li>
-                <li><a href="/blog/tag/perl">perl</a></li>
-                <li><a href="/blog/tag/personal">personal</a></li>
-                <li><a href="/blog/tag/progress">progress</a></li>
-                <li><a href="/blog/tag/rants">rants</a></li>
-                <li><a href="/blog/tag/scripts">scripts</a></li>
-                <li><a href="/blog/tag/software">software</a></li>
-                <li><a href="/blog/tag/sql">sql</a></li>
-                <li><a href="/blog/tag/statocles">statocles</a></li>
-                <li><a href="/blog/tag/webgui">webgui</a></li>
-                <li><a href="/blog/tag/xs">xs</a></li>
-                <li><a href="/blog/tag/yertl">yertl</a></li>
+                <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/">error</a></li>
+                <li><a href="/blog/tag/etl/">etl</a></li>
+                <li><a href="/blog/tag/funny/">funny</a></li>
+                <li><a href="/blog/tag/git/">git</a></li>
+                <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+                <li><a href="/blog/tag/moose/">moose</a></li>
+                <li><a href="/blog/tag/mysql/">mysql</a></li>
+                <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+                <li><a href="/blog/tag/pdl/">pdl</a></li>
+                <li><a href="/blog/tag/perl/">perl</a></li>
+                <li><a href="/blog/tag/personal/">personal</a></li>
+                <li><a href="/blog/tag/progress/">progress</a></li>
+                <li><a href="/blog/tag/rants/">rants</a></li>
+                <li><a href="/blog/tag/scripts/">scripts</a></li>
+                <li><a href="/blog/tag/software/">software</a></li>
+                <li><a href="/blog/tag/sql/">sql</a></li>
+                <li><a href="/blog/tag/statocles/">statocles</a></li>
+                <li><a href="/blog/tag/webgui/">webgui</a></li>
+                <li><a href="/blog/tag/xs/">xs</a></li>
+                <li><a href="/blog/tag/yertl/">yertl</a></li>
             </ul>
         </nav>
     </div>
@@ -129,7 +135,7 @@ Beam::Wire on play-perl</a>.</p>
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>

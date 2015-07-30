@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/blog/tag/personal</id>
+    <id>http://preaction.github.io/blog/tag/personal/</id>
     <title>preaction</title>
-    <updated>2015-04-15T00:09:54Z</updated>
-    <link rel="self" href="http://preaction.github.io/blog/tag/personal.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/blog/tag/personal"/>
-    <generator version="0.044">Statocles</generator>
+    <updated>2015-07-30T00:28:56Z</updated>
+    <link href="http://preaction.github.io/blog/tag/personal.atom" rel="self" />
+    <link href="http://preaction.github.io/blog/tag/personal/" rel="alternate" />
+    <generator version="0.053">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2015/01/07/be-it-resolved-in-2015.html</id>
         <title>Be It Resolved in 2015</title>
         <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2015/01/07/be-it-resolved-in-2015.html" />
+        <link href="http://preaction.github.io/blog/2015/01/07/be-it-resolved-in-2015.html" rel="alternate" />
         <content type="html"><![CDATA[
             <p>This year, I resolve to:</p>
 
 <h2>1) Blog more</h2>
 
-<p>I've got dozens of blog posts waiting to be published. Time to publish them.
-I've got dozens of ideas for blog posts waiting to be written.  Time to write
-them. I've got monthly column ideas. Time to implement them.</p>
+<p>I&#39;ve got dozens of blog posts waiting to be published. Time to publish them.
+I&#39;ve got dozens of ideas for blog posts waiting to be written.  Time to write
+them. I&#39;ve got monthly column ideas. Time to implement them.</p>
 
 <h2>2) Cook more, and blog about it</h2>
 
@@ -35,16 +35,16 @@ tested. Implementing ideas leads to new ideas. Ideas are cheap.</p>
 
 <h2>4) Open up</h2>
 
-<p>(i.e. blog about personal things). I'm back to my old, completely-closed-off
+<p>(i.e. blog about personal things). I&#39;m back to my old, completely-closed-off
 self. I stare at the ground when walking from place to place to avoid eye
-contact with anyone. I don't share my feelings with anyone, especially when I'm
+contact with anyone. I don&#39;t share my feelings with anyone, especially when I&#39;m
 upset. I bury everything, because I have this idea that nobody wants to hear
-about the things I'm upset about. It turns out, those people aren't my friends.
+about the things I&#39;m upset about. It turns out, those people aren&#39;t my friends.
 I was right about that.</p>
 
 <h2>5) Exercise</h2>
 
-<p>I haven't been to the gym I'm paying for in 6 weeks. Time to fix that. Time to
+<p>I haven&#39;t been to the gym I&#39;m paying for in 6 weeks. Time to fix that. Time to
 make my dream of a lean 180 a reality.</p>
 
 <p>Writing blog posts satisfies my desire to do one thing on Github every day.
@@ -54,8 +54,8 @@ Making a video game will also satisfy that condition.</p>
 
                 <p><a href="http://preaction.github.io/blog/2015/01/07/be-it-resolved-in-2015.html#section-2">Continue reading...</a></p>
             <p>Tags:
-                <a href="/blog/tag/personal">personal</a>
-                <a href="/blog/tag/progress">progress</a>
+                <a href="/blog/tag/personal/">personal</a>
+                <a href="/blog/tag/progress/">progress</a>
             </p>
         ]]></content>
         <updated>2015-01-07T00:00:00Z</updated>
@@ -64,14 +64,14 @@ Making a video game will also satisfy that condition.</p>
     </entry>
     <entry>
         <id>http://preaction.github.io/blog/2014/04/26/freedom-from-speechs-consequences.html</id>
-        <title>Freedom From Speech's Consequences</title>
+        <title>Freedom From Speech&#39;s Consequences</title>
         <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2014/04/26/freedom-from-speechs-consequences.html" />
+        <link href="http://preaction.github.io/blog/2014/04/26/freedom-from-speechs-consequences.html" rel="alternate" />
         <content type="html"><![CDATA[
             <p><a href="https://blog.mozilla.org/blog/2014/04/03/brendan-eich-steps-down-as-mozilla-ceo/">What happened to Brendan Eich at Mozilla (resigning over community uproar for
 his continued support of Prop
 8)</a>
-has now happened to one of Github's founders. <a href="http://tom.preston-werner.com/2014/04/21/farewell-github-hello-immersive-computing.html">Tom Preston-Werner has resigned
+has now happened to one of Github&#39;s founders. <a href="http://tom.preston-werner.com/2014/04/21/farewell-github-hello-immersive-computing.html">Tom Preston-Werner has resigned
 due to community uproar over gender-based
 harassment</a>.</p>
 
@@ -82,7 +82,7 @@ law is the only true measurement of good and evil.</p>
 
                 <p><a href="http://preaction.github.io/blog/2014/04/26/freedom-from-speechs-consequences.html#section-2">Continue reading...</a></p>
             <p>Tags:
-                <a href="/blog/tag/personal">personal</a>
+                <a href="/blog/tag/personal/">personal</a>
             </p>
         ]]></content>
         <updated>2014-04-26T00:00:00Z</updated>
@@ -92,7 +92,7 @@ law is the only true measurement of good and evil.</p>
         <id>http://preaction.github.io/blog/2013/01/06/it-begins-in-fear.html</id>
         <title>It Begins in Fear</title>
         <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2013/01/06/it-begins-in-fear.html" />
+        <link href="http://preaction.github.io/blog/2013/01/06/it-begins-in-fear.html" rel="alternate" />
         <content type="html"><![CDATA[
             <p>A long time ago, I used to blog about my feelings.</p>
 
@@ -108,7 +108,7 @@ pathways of memory.</p>
 
                 <p><a href="http://preaction.github.io/blog/2013/01/06/it-begins-in-fear.html#section-2">Continue reading...</a></p>
             <p>Tags:
-                <a href="/blog/tag/personal">personal</a>
+                <a href="/blog/tag/personal/">personal</a>
             </p>
         ]]></content>
         <updated>2013-01-06T00:00:00Z</updated>

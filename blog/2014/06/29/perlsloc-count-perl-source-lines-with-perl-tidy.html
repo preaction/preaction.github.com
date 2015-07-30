@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
         
     </head>
@@ -29,6 +30,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -41,8 +43,9 @@
             <header>
                 <h1>perlsloc - Count Perl Source Lines with Perl::Tidy</h1>
                 <p class="tags">Tags:
-                    <a href="/blog/tag/scripts" rel="tag">scripts</a>
+                    <a href="/blog/tag/scripts/" rel="tag">scripts</a>
                 </p>
+
                 <aside>
                     <p><time datetime="2014-06-29">
                         Posted on 2014-06-29
@@ -50,11 +53,13 @@
                         by preaction
                     </p>
                 </aside>
+
                 <p>Originally posted as:
-                        <a class="alert-link" href="http://blogs.perl.org/users/preaction/2014/06/perlsloc---count-perl-source-lines-with-perltidy.html">
+                        <a href="http://blogs.perl.org/users/preaction/2014/06/perlsloc---count-perl-source-lines-with-perltidy.html">
                             <em>perlsloc - Count Perl Source Lines with Perl::Tidy</em> on blogs.perl.org.
                         </a>
                 </p>
+
             </header>
             <section id="section-1">
                 <p>While spending some time putting together my own <a href="https://github.com/preaction/dot-files/blob/master/perltidyrc">perltidyrc
@@ -64,17 +69,17 @@ documentation</a>.</p>
 
 <p>One day, I decided to find out exactly how much code I was maintaining. Since
 perltidy can strip comments and POD, and also normalize the source code to make
-a fair measurement, it's a perfect tool for counting Source Lines of Code
+a fair measurement, it&#39;s a perfect tool for counting Source Lines of Code
 (SLOC).</p>
 
-<p>Here's a small shell script using <code>ack</code>, <code>perltidy</code>, <code>xargs</code>, and <code>wc</code> to count
+<p>Here&#39;s a small shell script using <code>ack</code>, <code>perltidy</code>, <code>xargs</code>, and <code>wc</code> to count
 the source lines of code in any number of directories.</p>
 
 <pre><code>ack -f --perl $@ | xargs -L 1 perltidy --noprofile --delete-pod --mbl=0 --standard-output | wc -l
 </code></pre>
 
 <p><code>ack -f</code> lists the files that would be searched, and <code>--perl</code> searches Perl
-files, so we get ack's heuristics for finding Perl files. <code>xargs -L 1</code> invokes
+files, so we get ack&#39;s heuristics for finding Perl files. <code>xargs -L 1</code> invokes
 the following command for every 1 line of input. The <code>perltidy</code> command strips
 the pod and tightens up the whitespace and writes the result to stdout, which
 <code>wc -l</code> will then count, line by line.</p>
@@ -97,26 +102,27 @@ has 50% more test lines than source lines:</p>
         <nav id="tags">
             <h1>Tags</h1>
             <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-                <li><a href="/blog/tag/error">error</a></li>
-                <li><a href="/blog/tag/etl">etl</a></li>
-                <li><a href="/blog/tag/funny">funny</a></li>
-                <li><a href="/blog/tag/git">git</a></li>
-                <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-                <li><a href="/blog/tag/moose">moose</a></li>
-                <li><a href="/blog/tag/mysql">mysql</a></li>
-                <li><a href="/blog/tag/openbsd">openbsd</a></li>
-                <li><a href="/blog/tag/perl">perl</a></li>
-                <li><a href="/blog/tag/personal">personal</a></li>
-                <li><a href="/blog/tag/progress">progress</a></li>
-                <li><a href="/blog/tag/rants">rants</a></li>
-                <li><a href="/blog/tag/scripts">scripts</a></li>
-                <li><a href="/blog/tag/software">software</a></li>
-                <li><a href="/blog/tag/sql">sql</a></li>
-                <li><a href="/blog/tag/statocles">statocles</a></li>
-                <li><a href="/blog/tag/webgui">webgui</a></li>
-                <li><a href="/blog/tag/xs">xs</a></li>
-                <li><a href="/blog/tag/yertl">yertl</a></li>
+                <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/">error</a></li>
+                <li><a href="/blog/tag/etl/">etl</a></li>
+                <li><a href="/blog/tag/funny/">funny</a></li>
+                <li><a href="/blog/tag/git/">git</a></li>
+                <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+                <li><a href="/blog/tag/moose/">moose</a></li>
+                <li><a href="/blog/tag/mysql/">mysql</a></li>
+                <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+                <li><a href="/blog/tag/pdl/">pdl</a></li>
+                <li><a href="/blog/tag/perl/">perl</a></li>
+                <li><a href="/blog/tag/personal/">personal</a></li>
+                <li><a href="/blog/tag/progress/">progress</a></li>
+                <li><a href="/blog/tag/rants/">rants</a></li>
+                <li><a href="/blog/tag/scripts/">scripts</a></li>
+                <li><a href="/blog/tag/software/">software</a></li>
+                <li><a href="/blog/tag/sql/">sql</a></li>
+                <li><a href="/blog/tag/statocles/">statocles</a></li>
+                <li><a href="/blog/tag/webgui/">webgui</a></li>
+                <li><a href="/blog/tag/xs/">xs</a></li>
+                <li><a href="/blog/tag/yertl/">yertl</a></li>
             </ul>
         </nav>
     </div>
@@ -127,7 +133,7 @@ has 50% more test lines than source lines:</p>
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
         
     </head>
@@ -29,6 +30,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -41,17 +43,20 @@
             <header>
                 <h1>Managing SQL Data with Yertl</h1>
                 <p class="tags">Tags:
-                    <a href="/blog/tag/perl" rel="tag">perl</a>
-                    <a href="/blog/tag/sql" rel="tag">sql</a>
-                    <a href="/blog/tag/etl" rel="tag">etl</a>
-                    <a href="/blog/tag/yertl" rel="tag">yertl</a>
+                    <a href="/blog/tag/perl/" rel="tag">perl</a>
+                    <a href="/blog/tag/sql/" rel="tag">sql</a>
+                    <a href="/blog/tag/etl/" rel="tag">etl</a>
+                    <a href="/blog/tag/yertl/" rel="tag">yertl</a>
                 </p>
+
                 <aside>
                     <p><time datetime="2015-01-21">
                         Posted on 2015-01-21
                     </time>
                     </p>
                 </aside>
+
+
             </header>
             <section id="section-1">
                 <p><a href="http://blogs.perl.org/users/preaction/2015/01/managing-sql-data-with-yertl.html">Originally posted on blogs.perl.org -- Managing SQL Data with
@@ -63,13 +68,13 @@ production. All of them need data extracted, transformed, and loaded.</p>
 
 <p>DBI is the clear choice for dealing with SQL databases in Perl, but there are a
 dozen lines of Perl code in between me and the operation that I want. Sure,
-I've got modules and web applications and ad-hoc commands and scripts that
+I&#39;ve got modules and web applications and ad-hoc commands and scripts that
 perform certain individual tasks on my databases, but sometimes those things
-don't quite do what I need right now, and I just want something that will let
+don&#39;t quite do what I need right now, and I just want something that will let
 me execute whatever SQL I can come up with.</p>
 
 <p><a href="http://metacpan.org/pod/ETL::Yertl">Yertl (ETL::Yertl)</a> is a shell-based ETL
-framework. It's under development (as is all software), but included already is
+framework. It&#39;s under development (as is all software), but included already is
 a small utility called <a href="http://metacpan.org/pod/ysql">ysql</a> to make dealing
 with SQL databases easy.</p>
 
@@ -77,8 +82,8 @@ with SQL databases easy.</p>
             <section id="section-2">
                 <p>To use ysql, first we have to configure a database. This saves us from having
 to type the full DBI data source name (<code>dbi:mysql:host=dev;database=mydb</code>) every
-time. Instead, we can refer to our database by a nice name, like "dev", or
-"prod".</p>
+time. Instead, we can refer to our database by a nice name, like &quot;dev&quot;, or
+&quot;prod&quot;.</p>
 
 <pre><code>$ ysql config dev dbi:SQLite:database.db
 </code></pre>
@@ -96,7 +101,7 @@ database: dev.db
 driver: SQLite
 </code></pre>
 
-<p>Let's add a production database as well:</p>
+<p>Let&#39;s add a production database as well:</p>
 
 <pre><code>$ ysql config prod --driver=SQLite --database=prod.db
 </code></pre>
@@ -113,26 +118,22 @@ prod:
   driver: SQLite
 </code></pre>
 
-<p>Now that we've configured some databases, let's insert some data. First we need
+<p>Now that we&#39;ve configured some databases, let&#39;s insert some data. First we need
 to make some tables:</p>
 
-<pre><code>$ ysql query prod 'CREATE TABLE users ( id INTEGER PRIMARY KEY \
-    AUTOINCREMENT, name VARCHAR, email VARCHAR )'
-$ ysql query dev 'CREATE TABLE users ( id INTEGER PRIMARY KEY \
-    AUTOINCREMENT, name VARCHAR, email VARCHAR )'
+<pre><code>$ ysql query prod &#39;CREATE TABLE users ( id INTEGER PRIMARY KEY         AUTOINCREMENT, name VARCHAR, email VARCHAR )&#39;
+$ ysql query dev &#39;CREATE TABLE users ( id INTEGER PRIMARY KEY         AUTOINCREMENT, name VARCHAR, email VARCHAR )&#39;
 </code></pre>
 
-<p>Next let's insert some data:</p>
+<p>Next let&#39;s insert some data:</p>
 
-<pre><code>$ ysql query prod 'INSERT INTO users ( name, email ) \
-    VALUES ( "preaction", "preaction@example.com" )'
-$ ysql query prod 'INSERT INTO users ( name, email ) \
-    VALUES ( "postaction", "postaction@example.com" )'
+<pre><code>$ ysql query prod &#39;INSERT INTO users ( name, email )         VALUES ( &quot;preaction&quot;, &quot;preaction@example.com&quot; )&#39;
+$ ysql query prod &#39;INSERT INTO users ( name, email )         VALUES ( &quot;postaction&quot;, &quot;postaction@example.com&quot; )&#39;
 </code></pre>
 
-<p>Now, let's query for our data:</p>
+<p>Now, let&#39;s query for our data:</p>
 
-<pre><code>$ ysql query prod 'SELECT * FROM users'
+<pre><code>$ ysql query prod &#39;SELECT * FROM users&#39;
 ---
 email: preaction@example.com
 id: 1
@@ -146,21 +147,21 @@ name: postaction
 <p>Yertl uses YAML as its default output, but we can easily convert to JSON or CSV
 using the <a href="http://metacpan.org/pod/yto">yto utility</a></p>
 
-<pre><code>$ ysql query prod 'SELECT * FROM users' | yto csv
+<pre><code>$ ysql query prod &#39;SELECT * FROM users&#39; | yto csv
 email,id,name
 preaction@example.com,1,preaction
 postaction@example.com,2,postaction
 
-$ ysql query prod 'SELECT * FROM users' | yto json
+$ ysql query prod &#39;SELECT * FROM users&#39; | yto json
 {
-   "email" : "preaction@example.com",
-   "id" : "1",
-   "name" : "preaction"
+   &quot;email&quot; : &quot;preaction@example.com&quot;,
+   &quot;id&quot; : &quot;1&quot;,
+   &quot;name&quot; : &quot;preaction&quot;
 }
 {
-   "email" : "postaction@example.com",
-   "id" : "2",
-   "name" : "postaction"
+   &quot;email&quot; : &quot;postaction@example.com&quot;,
+   &quot;id&quot; : &quot;2&quot;,
+   &quot;name&quot; : &quot;postaction&quot;
 }
 </code></pre>
 
@@ -169,21 +170,19 @@ that, Yertl allows us to read YAML from <code>STDIN</code> and execute a query f
 document. Yertl uses a special interpolation syntax (starting with a <code>$</code>) to
 pick parts of the document to fill in the query:</p>
 
-<pre><code>$ ysql query prod 'SELECT * FROM users' |
-    ysql query dev 'INSERT INTO users ( id, name, email ) \
-        VALUES ( $.id, $.name, $.email )'
+<pre><code>$ ysql query prod &#39;SELECT * FROM users&#39; |
+    ysql query dev &#39;INSERT INTO users ( id, name, email )             VALUES ( $.id, $.name, $.email )&#39;
 </code></pre>
 
 <p>So this will take our users table from prod and write it to dev. <code>$.id</code> picks
-the "id" field, <code>$.name</code> the "name" field, etc...</p>
+the &quot;id&quot; field, <code>$.name</code> the &quot;name&quot; field, etc...</p>
 
 <p>But all this would be a bear to type over and over again (imagine if we had a
 bunch of joins to do). So, ysql allows you to save queries for later use using
 the <code>--save &lt;name&gt;</code> option:</p>
 
-<pre><code>$ ysql query prod --save users 'SELECT * FROM users'
-$ ysql query dev --save update_users 'UPDATE users SET \
-    name=$.name, email=$.email WHERE id=$.id'
+<pre><code>$ ysql query prod --save users &#39;SELECT * FROM users&#39;
+$ ysql query dev --save update_users &#39;UPDATE users SET         name=$.name, email=$.email WHERE id=$.id&#39;
 </code></pre>
 
 <p>Then we can recall our query by the name we gave to the <code>--save</code> option:</p>
@@ -202,8 +201,8 @@ $ yfrom json &lt; users.json | ysql query dev update_users
 <p>So, though Yertl is in its infancy, it can already help with some common
 database tasks!</p>
 
-<p>There are lots of <a href="https://github.com/preaction/ETL-Yertl/labels/feature">plans for Yertl, described in the feature's tag on the issue
-tracker</a>, so if you've
+<p>There are lots of <a href="https://github.com/preaction/ETL-Yertl/labels/feature">plans for Yertl, described in the feature&#39;s tag on the issue
+tracker</a>, so if you&#39;ve
 got common data tasks that you feel should be easier, <a href="https://chat.mibbit.com/?channel=%23yertl&amp;server=irc.perl.org">join me in #yertl on
 irc.perl.org</a>.</p>
 
@@ -216,26 +215,27 @@ irc.perl.org</a>.</p>
         <nav id="tags">
             <h1>Tags</h1>
             <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-                <li><a href="/blog/tag/error">error</a></li>
-                <li><a href="/blog/tag/etl">etl</a></li>
-                <li><a href="/blog/tag/funny">funny</a></li>
-                <li><a href="/blog/tag/git">git</a></li>
-                <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-                <li><a href="/blog/tag/moose">moose</a></li>
-                <li><a href="/blog/tag/mysql">mysql</a></li>
-                <li><a href="/blog/tag/openbsd">openbsd</a></li>
-                <li><a href="/blog/tag/perl">perl</a></li>
-                <li><a href="/blog/tag/personal">personal</a></li>
-                <li><a href="/blog/tag/progress">progress</a></li>
-                <li><a href="/blog/tag/rants">rants</a></li>
-                <li><a href="/blog/tag/scripts">scripts</a></li>
-                <li><a href="/blog/tag/software">software</a></li>
-                <li><a href="/blog/tag/sql">sql</a></li>
-                <li><a href="/blog/tag/statocles">statocles</a></li>
-                <li><a href="/blog/tag/webgui">webgui</a></li>
-                <li><a href="/blog/tag/xs">xs</a></li>
-                <li><a href="/blog/tag/yertl">yertl</a></li>
+                <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/">error</a></li>
+                <li><a href="/blog/tag/etl/">etl</a></li>
+                <li><a href="/blog/tag/funny/">funny</a></li>
+                <li><a href="/blog/tag/git/">git</a></li>
+                <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+                <li><a href="/blog/tag/moose/">moose</a></li>
+                <li><a href="/blog/tag/mysql/">mysql</a></li>
+                <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+                <li><a href="/blog/tag/pdl/">pdl</a></li>
+                <li><a href="/blog/tag/perl/">perl</a></li>
+                <li><a href="/blog/tag/personal/">personal</a></li>
+                <li><a href="/blog/tag/progress/">progress</a></li>
+                <li><a href="/blog/tag/rants/">rants</a></li>
+                <li><a href="/blog/tag/scripts/">scripts</a></li>
+                <li><a href="/blog/tag/software/">software</a></li>
+                <li><a href="/blog/tag/sql/">sql</a></li>
+                <li><a href="/blog/tag/statocles/">statocles</a></li>
+                <li><a href="/blog/tag/webgui/">webgui</a></li>
+                <li><a href="/blog/tag/xs/">xs</a></li>
+                <li><a href="/blog/tag/yertl/">yertl</a></li>
             </ul>
         </nav>
     </div>
@@ -246,7 +246,7 @@ irc.perl.org</a>.</p>
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>

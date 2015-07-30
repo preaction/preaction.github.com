@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/blog/tag/software</id>
+    <id>http://preaction.github.io/blog/tag/software/</id>
     <title>preaction</title>
-    <updated>2015-04-15T00:09:57Z</updated>
-    <link rel="self" href="http://preaction.github.io/blog/tag/software.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/blog/tag/software"/>
-    <generator version="0.044">Statocles</generator>
+    <updated>2015-07-30T00:28:55Z</updated>
+    <link href="http://preaction.github.io/blog/tag/software.atom" rel="self" />
+    <link href="http://preaction.github.io/blog/tag/software/" rel="alternate" />
+    <generator version="0.053">Statocles</generator>
     <entry>
-        <id>http://preaction.github.io/blog/2015/03/08/consuming-chaos</id>
+        <id>http://preaction.github.io/blog/2015/03/08/consuming-chaos/</id>
         <title>Consuming Chaos</title>
-        <link rel="alternate" href="http://preaction.github.io/blog/2015/03/08/consuming-chaos" />
+        <link href="http://preaction.github.io/blog/2015/03/08/consuming-chaos/" rel="alternate" />
         <content type="html"><![CDATA[
-            <p><img src="/images/blog/chaos.jpg" style="width: 40%" class="u-pull-left"/></p>
+            <p><img class="u-pull-left" src="http://preaction.github.io/images/blog/chaos.jpg" style="width: 40%"></p>
 
 <p>For what seems hours, you scan the board. The colors are sharp against the
-simple background. Some movement catches your eye, but it doesn't feel right,
+simple background. Some movement catches your eye, but it doesn&#39;t feel right,
 so you ignore it. Time stretches on.</p>
 
 <p>There! The perfect move. Leaving the perfect next move. A quick flick. A match.
@@ -22,7 +22,7 @@ The pieces fall into place. Another match. Another. Another. A special piece.
 Another special piece. It fires, triggering more. Chaos consumes.</p>
 
 <p>The board is in ruins. Your carefully planned next move is lost in the
-destruction. You're back to scanning the board to try to find where you belong
+destruction. You&#39;re back to scanning the board to try to find where you belong
 in this new world.</p>
 
 <p>Is this a game, or is it your development strategy?</p>
@@ -33,16 +33,16 @@ to brute-force your way to completion (how much software do you know of that
 can be considered complete?).</p>
 
 <p>In the face of these possibilities, a rigid development plan will fail. Vague
-goals are better. Goals written in terms of a problem are best. Problems don't
+goals are better. Goals written in terms of a problem are best. Problems don&#39;t
 change, once you find their roots.</p>
 
-<p>I didn't know this post was going to be about Agile, but there it is.</p>
+<p>I didn&#39;t know this post was going to be about Agile, but there it is.</p>
 
 <p>Exact is for computers. We are not computers. We are human. We are chaos.</p>
 
-                <p><a href="http://preaction.github.io/blog/2015/03/08/consuming-chaos#section-2">Continue reading...</a></p>
+                <p><a href="http://preaction.github.io/blog/2015/03/08/consuming-chaos/#section-2">Continue reading...</a></p>
             <p>Tags:
-                <a href="/blog/tag/software">software</a>
+                <a href="/blog/tag/software/">software</a>
             </p>
         ]]></content>
         <updated>2015-03-08T00:00:00Z</updated>
@@ -52,14 +52,14 @@ change, once you find their roots.</p>
         <id>http://preaction.github.io/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html</id>
         <title>Leaving Crumb Trails -- Talking to Myself</title>
         <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html" />
+        <link href="http://preaction.github.io/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html" rel="alternate" />
         <content type="html"><![CDATA[
             <p>The past me is another person. Sometimes antagonist, sometimes friend, past me
 (postaction?) had ideas, hopes, and dreams and developed some of them into
 software that I and others use. Unfortunately, that asshole left bugs all
 through the code for me to fix.</p>
 
-<p>I can't blame him. Nobody's perfect, not even idealized/demonized copies of my
+<p>I can&#39;t blame him. Nobody&#39;s perfect, not even idealized/demonized copies of my
 past self. But I do have to fix them, and deal with the messes he left.</p>
 
 <p>Lucky for me, while he was writing buggy software, he left extensive notes for
@@ -74,7 +74,7 @@ me to use...</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/software">software</a>
+                <a href="/blog/tag/software/">software</a>
             </p>
         ]]></content>
         <updated>2014-12-23T00:00:00Z</updated>
@@ -84,7 +84,7 @@ me to use...</p>
         <id>http://preaction.github.io/blog/2012/11/04/testing-is-a-feature-of-your-service.html</id>
         <title>Testing is a Feature of Your Service</title>
         <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2012/11/04/testing-is-a-feature-of-your-service.html" />
+        <link href="http://preaction.github.io/blog/2012/11/04/testing-is-a-feature-of-your-service.html" rel="alternate" />
         <content type="html"><![CDATA[
             <p>My job at Bank of America consists largely of data collection and storage. To
 collect data in Perl, I have to write XS modules to interface with the
@@ -94,7 +94,7 @@ modules come with robust test suites, testing that everything works correctly.</
 <p>Since the XS module was intended to be used by other, larger systems, I decided
 to help those larger systems test their dependency on my module: I included a
 <a href="http://search.cpan.org/perldoc?Test::MockObject">Test::MockObject</a> that mocked
-my module's interface. By using my test module, the tests can try some data and
+my module&#39;s interface. By using my test module, the tests can try some data and
 see if their code works.</p>
 
 <p>But the hardest part to test is always the failures. How do they test if the
@@ -111,7 +111,7 @@ user has input an invalid ID for data?</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/software">software</a>
+                <a href="/blog/tag/software/">software</a>
             </p>
         ]]></content>
         <updated>2012-11-04T00:00:00Z</updated>
@@ -121,14 +121,14 @@ user has input an invalid ID for data?</p>
         <id>http://preaction.github.io/blog/2012/09/23/plan-software-to-live-forever.html</id>
         <title>Chicago.PM - Beyond grep - Expanding the Programmer Toolset</title>
         <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2012/09/23/plan-software-to-live-forever.html" />
+        <link href="http://preaction.github.io/blog/2012/09/23/plan-software-to-live-forever.html" rel="alternate" />
         <content type="html"><![CDATA[
-            <p>How often have I told myself, "I'll kludge this now and rewrite it later"? And
-how many times did I actually go back and rewrite that kludgy bit? "Too often"
-and "not enough". Many job postings include the phrase "update legacy
-applications," as a euphemism for "rewrite poorly-designed spaghetti." The Y2K
-problem was a huge exercise in code out-living the developer's plan, with a
-healthy dose of cargo-culting thrown in. Lately, I've been learning to plan for
+            <p>How often have I told myself, &quot;I&#39;ll kludge this now and rewrite it later&quot;? And
+how many times did I actually go back and rewrite that kludgy bit? &quot;Too often&quot;
+and &quot;not enough&quot;. Many job postings include the phrase &quot;update legacy
+applications,&quot; as a euphemism for &quot;rewrite poorly-designed spaghetti.&quot; The Y2K
+problem was a huge exercise in code out-living the developer&#39;s plan, with a
+healthy dose of cargo-culting thrown in. Lately, I&#39;ve been learning to plan for
 a likely possibility: My code will survive to haunt my bug lists and my resume
 for a long time.</p>
 
@@ -141,7 +141,7 @@ for a long time.</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/software">software</a>
+                <a href="/blog/tag/software/">software</a>
             </p>
         ]]></content>
         <updated>2012-09-23T00:00:00Z</updated>

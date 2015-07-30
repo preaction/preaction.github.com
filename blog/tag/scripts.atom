@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/blog/tag/scripts</id>
+    <id>http://preaction.github.io/blog/tag/scripts/</id>
     <title>preaction</title>
-    <updated>2015-04-15T00:09:54Z</updated>
-    <link rel="self" href="http://preaction.github.io/blog/tag/scripts.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/blog/tag/scripts"/>
-    <generator version="0.044">Statocles</generator>
+    <updated>2015-07-30T00:28:56Z</updated>
+    <link href="http://preaction.github.io/blog/tag/scripts.atom" rel="self" />
+    <link href="http://preaction.github.io/blog/tag/scripts/" rel="alternate" />
+    <generator version="0.053">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html</id>
         <title>perlsloc - Count Perl Source Lines with Perl::Tidy</title>
         <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html" />
+        <link href="http://preaction.github.io/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html" rel="alternate" />
         <content type="html"><![CDATA[
             <p>While spending some time putting together my own <a href="https://github.com/preaction/dot-files/blob/master/perltidyrc">perltidyrc
 file</a>, I became
@@ -19,17 +19,17 @@ documentation</a>.</p>
 
 <p>One day, I decided to find out exactly how much code I was maintaining. Since
 perltidy can strip comments and POD, and also normalize the source code to make
-a fair measurement, it's a perfect tool for counting Source Lines of Code
+a fair measurement, it&#39;s a perfect tool for counting Source Lines of Code
 (SLOC).</p>
 
-<p>Here's a small shell script using <code>ack</code>, <code>perltidy</code>, <code>xargs</code>, and <code>wc</code> to count
+<p>Here&#39;s a small shell script using <code>ack</code>, <code>perltidy</code>, <code>xargs</code>, and <code>wc</code> to count
 the source lines of code in any number of directories.</p>
 
 <pre><code>ack -f --perl $@ | xargs -L 1 perltidy --noprofile --delete-pod --mbl=0 --standard-output | wc -l
 </code></pre>
 
 <p><code>ack -f</code> lists the files that would be searched, and <code>--perl</code> searches Perl
-files, so we get ack's heuristics for finding Perl files. <code>xargs -L 1</code> invokes
+files, so we get ack&#39;s heuristics for finding Perl files. <code>xargs -L 1</code> invokes
 the following command for every 1 line of input. The <code>perltidy</code> command strips
 the pod and tightens up the whitespace and writes the result to stdout, which
 <code>wc -l</code> will then count, line by line.</p>
@@ -52,7 +52,7 @@ has 50% more test lines than source lines:</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/scripts">scripts</a>
+                <a href="/blog/tag/scripts/">scripts</a>
             </p>
         ]]></content>
         <updated>2014-06-29T00:00:00Z</updated>

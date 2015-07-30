@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
         
     </head>
@@ -29,6 +30,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -41,8 +43,9 @@
             <header>
                 <h1>Leaving Crumb Trails -- Talking to Myself</h1>
                 <p class="tags">Tags:
-                    <a href="/blog/tag/software" rel="tag">software</a>
+                    <a href="/blog/tag/software/" rel="tag">software</a>
                 </p>
+
                 <aside>
                     <p><time datetime="2014-12-23">
                         Posted on 2014-12-23
@@ -50,11 +53,13 @@
                         by preaction
                     </p>
                 </aside>
+
                 <p>Originally posted as:
-                        <a class="alert-link" href="http://blogs.perl.org/users/preaction/2014/12/leaving-crumb-trails----talking-to-myself.html">
+                        <a href="http://blogs.perl.org/users/preaction/2014/12/leaving-crumb-trails----talking-to-myself.html">
                             <em>Leaving Crumb Trails -- Talking to Myself</em> on blogs.perl.org.
                         </a>
                 </p>
+
             </header>
             <section id="section-1">
                 <p>The past me is another person. Sometimes antagonist, sometimes friend, past me
@@ -62,7 +67,7 @@
 software that I and others use. Unfortunately, that asshole left bugs all
 through the code for me to fix.</p>
 
-<p>I can't blame him. Nobody's perfect, not even idealized/demonized copies of my
+<p>I can&#39;t blame him. Nobody&#39;s perfect, not even idealized/demonized copies of my
 past self. But I do have to fix them, and deal with the messes he left.</p>
 
 <p>Lucky for me, while he was writing buggy software, he left extensive notes for
@@ -86,12 +91,12 @@ suitable to be passed to read_file() or open_file()
 <p>Once the docs have refreshed the memories of past me, I can start looking at
 the code. By keeping the docs near the code, past me left hooks all over for me
 to latch on to. If I search for the name of the method, or just a key word of
-its behavior, I find the code I'm looking for.</p>
+its behavior, I find the code I&#39;m looking for.</p>
 
-<p>Eventually, I'll come to the buggy part. Instead of just changing the code and
+<p>Eventually, I&#39;ll come to the buggy part. Instead of just changing the code and
 fixing the bug, I wonder about why that code was written. Past me was a smart
-guy. Not as smart as me, but I've learned not to second-guess him without due
-diligence. So, I'm relieved when I can check the commit log to find the reasons
+guy. Not as smart as me, but I&#39;ve learned not to second-guess him without due
+diligence. So, I&#39;m relieved when I can check the commit log to find the reasons
 why this line of code exists in exactly this way. Past me has a habit of
 writing at least a paragraph about the change, why it was necessary, and ideas
 for future enhancements or complications.</p>
@@ -102,12 +107,12 @@ Date:   Mon Dec 22 04:15:45 2014 -0600
 open/write filehandles using raw bytes
 
 When the Static app would read/write an image, we would get a bunch of
-warnings of characters not mapped to UTF-8. Now, if we're using a
+warnings of characters not mapped to UTF-8. Now, if we&#39;re using a
 filehandle, we assume raw bytes.
 
 Also added some notes in the docs about how encodings are handled. We
-can't just silently try to Do The Right Thing. We need to tell the
-developers what we're doing so that they can figure things out when they
+can&#39;t just silently try to Do The Right Thing. We need to tell the
+developers what we&#39;re doing so that they can figure things out when they
 go wrong.
 
 Fixes #171
@@ -116,15 +121,15 @@ Fixes #171
 <p>Sometimes, a commit is linked to a ticket tracker, which is another valuable
 source of information. Though the commit message told me about the final
 version of that change, past me jotted down notes, ideas, tests, user reports,
-potential solutions and the reasons for rejecting them. These weren't
+potential solutions and the reasons for rejecting them. These weren&#39;t
 appropriate to gum up the commit logs with, but the ticket tracker is close
 enough to the code to be useful when more information is needed. I appreciate
-not having to sift through pages of text while I'm tracking down the source of
-a bug (that said, I'd prefer too much text to not enough).</p>
+not having to sift through pages of text while I&#39;m tracking down the source of
+a bug (that said, I&#39;d prefer too much text to not enough).</p>
 
 <p>The further away from the code, the more verbose past me is. He starts with the
-small clues, and if I figure it out, that's all I have to swallow. But if I
-can't figure it out, I can always find a bigger clue just a little further
+small clues, and if I figure it out, that&#39;s all I have to swallow. But if I
+can&#39;t figure it out, I can always find a bigger clue just a little further
 away.</p>
 
 <p>Learning to work with past me has been a long struggle. He and I are constantly
@@ -145,26 +150,27 @@ me be an even better programmer than past me and I could imagine.</p>
         <nav id="tags">
             <h1>Tags</h1>
             <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-                <li><a href="/blog/tag/error">error</a></li>
-                <li><a href="/blog/tag/etl">etl</a></li>
-                <li><a href="/blog/tag/funny">funny</a></li>
-                <li><a href="/blog/tag/git">git</a></li>
-                <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-                <li><a href="/blog/tag/moose">moose</a></li>
-                <li><a href="/blog/tag/mysql">mysql</a></li>
-                <li><a href="/blog/tag/openbsd">openbsd</a></li>
-                <li><a href="/blog/tag/perl">perl</a></li>
-                <li><a href="/blog/tag/personal">personal</a></li>
-                <li><a href="/blog/tag/progress">progress</a></li>
-                <li><a href="/blog/tag/rants">rants</a></li>
-                <li><a href="/blog/tag/scripts">scripts</a></li>
-                <li><a href="/blog/tag/software">software</a></li>
-                <li><a href="/blog/tag/sql">sql</a></li>
-                <li><a href="/blog/tag/statocles">statocles</a></li>
-                <li><a href="/blog/tag/webgui">webgui</a></li>
-                <li><a href="/blog/tag/xs">xs</a></li>
-                <li><a href="/blog/tag/yertl">yertl</a></li>
+                <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/">error</a></li>
+                <li><a href="/blog/tag/etl/">etl</a></li>
+                <li><a href="/blog/tag/funny/">funny</a></li>
+                <li><a href="/blog/tag/git/">git</a></li>
+                <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+                <li><a href="/blog/tag/moose/">moose</a></li>
+                <li><a href="/blog/tag/mysql/">mysql</a></li>
+                <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+                <li><a href="/blog/tag/pdl/">pdl</a></li>
+                <li><a href="/blog/tag/perl/">perl</a></li>
+                <li><a href="/blog/tag/personal/">personal</a></li>
+                <li><a href="/blog/tag/progress/">progress</a></li>
+                <li><a href="/blog/tag/rants/">rants</a></li>
+                <li><a href="/blog/tag/scripts/">scripts</a></li>
+                <li><a href="/blog/tag/software/">software</a></li>
+                <li><a href="/blog/tag/sql/">sql</a></li>
+                <li><a href="/blog/tag/statocles/">statocles</a></li>
+                <li><a href="/blog/tag/webgui/">webgui</a></li>
+                <li><a href="/blog/tag/xs/">xs</a></li>
+                <li><a href="/blog/tag/yertl/">yertl</a></li>
             </ul>
         </nav>
     </div>
@@ -175,7 +181,7 @@ me be an even better programmer than past me and I could imagine.</p>
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>

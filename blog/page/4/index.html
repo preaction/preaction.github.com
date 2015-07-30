@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
-        <link rel="alternate" href="/blog/index.atom" type="application/atom+xml" />
-        <link rel="alternate" href="/blog/index.rss" type="application/rss+xml" />
+        <link href="/blog/index.atom" rel="alternate" type="application/atom+xml">
+        <link href="/blog/index.rss" rel="alternate" type="application/rss+xml">
         
     </head>
     <body>
@@ -31,6 +32,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -42,12 +44,48 @@
     <div class="nine columns">
         <main>
 
+
+            <article>
+                <header>
+                    <h1><a href="/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html">Chicago.PM - Dependency Injection (also: Beam::Wire)</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/chicago.pm/" rel="tag">chicago.pm</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2013-03-29">
+                            Posted on 2013-03-29
+                        </time>
+                            by preaction
+                        </p>
+                    </aside>
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2013/03/chicagopm---dependency-injection-also-beamwire.html">
+                                <em>Chicago.PM - Dependency Injection (also: Beam::Wire)</em> on blogs.perl.org.
+                            </a>
+                    </p>
+                </header>
+
+                <p>At <a href="http://www.meetup.com/Windy-City-Perl-mongers-Meetup/events/104681992/">this month&#39;s Chicago.PM
+meeting</a>,
+I gave <a href="http://preaction.github.com/Perl/Dependency-Injection.html">a presentation on Dependency Injection and my new module,
+Beam::Wire</a>.</p>
+
+<p>[EDIT: The presentation doesn&#39;t appear to work on mobile devices. I&#39;m trying
+deck.js, and I&#39;m not sure I like it.]</p>
+
+
+                    <p><a href="/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html#section-2">Continue reading Chicago.PM - Dependency Injection (also: Beam::Wire)...</a></p>
+
+            </article>
             <article>
                 <header>
                     <h1><a href="/blog/2013/03/14/chicago.pm-mojolicious.html">Chicago.PM - Mojolicious</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/chicago.pm" rel="tag">chicago.pm</a>
+                        <a href="/blog/tag/chicago.pm/" rel="tag">chicago.pm</a>
                     </p>
 
                     <aside>
@@ -65,7 +103,7 @@
                     </p>
                 </header>
 
-                <p>February's meeting was about the <a href="http://mojolicio.us">Mojolicious Web
+                <p>February&#39;s meeting was about the <a href="http://mojolicio.us">Mojolicious Web
 Framework</a>. <a href="http://blogs.perl.org/users/joel_berger/">Joel
 Berger</a> has written a <a href="https://metacpan.org/module/Galileo">minimal Perl
 CMS called Galileo</a>, and agreed to give a
@@ -86,7 +124,7 @@ various features of Mojolicious like:</p>
 <p>There are quite a few interesting parts of Mojolicious that make it worth
 giving a look to, and I hope to be able to do so with some web projects that
 have been sitting in my queue for a while (I wrote a nice ticket tracker with
-AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
+AngularJS, but the backend is Python, I&#39;d like to fix that glaring mistake).</p>
 
 
 
@@ -96,7 +134,7 @@ AngularJS, but the backend is Python, I'd like to fix that glaring mistake).</p>
                     <h1><a href="/blog/2012/11/04/testing-is-a-feature-of-your-service.html">Testing is a Feature of Your Service</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/software" rel="tag">software</a>
+                        <a href="/blog/tag/software/" rel="tag">software</a>
                     </p>
 
                     <aside>
@@ -122,7 +160,7 @@ modules come with robust test suites, testing that everything works correctly.</
 <p>Since the XS module was intended to be used by other, larger systems, I decided
 to help those larger systems test their dependency on my module: I included a
 <a href="http://search.cpan.org/perldoc?Test::MockObject">Test::MockObject</a> that mocked
-my module's interface. By using my test module, the tests can try some data and
+my module&#39;s interface. By using my test module, the tests can try some data and
 see if their code works.</p>
 
 <p>But the hardest part to test is always the failures. How do they test if the
@@ -139,7 +177,7 @@ user has input an invalid ID for data?</p>
                     <h1><a href="/blog/2012/10/28/chicago.pm-report-scripting-git-with-perl.html">Chicago.PM - Scripting Git With Perl</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/chicago.pm" rel="tag">chicago.pm</a>
+                        <a href="/blog/tag/chicago.pm/" rel="tag">chicago.pm</a>
                     </p>
 
                     <aside>
@@ -157,7 +195,7 @@ user has input an invalid ID for data?</p>
                     </p>
                 </header>
 
-                <p>This month's presentation was on the
+                <p>This month&#39;s presentation was on the
 <a href="http://search.cpan.org/dist/Git-Repository/">Git::Repository</a> Perl module,
 given by me. In both my jobs, I use the Git::Repository module to automate
 releases.</p>
@@ -171,7 +209,7 @@ releases.</p>
                     <h1><a href="/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html">Using MooseX::Types to Inflate Config Values</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/moose" rel="tag">moose</a>
+                        <a href="/blog/tag/moose/" rel="tag">moose</a>
                     </p>
 
                     <aside>
@@ -198,52 +236,17 @@ configured object is expecting another configured object.</p>
                     <p><a href="/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html#section-2">Continue reading Using MooseX::Types to Inflate Config Values...</a></p>
 
             </article>
-            <article>
-                <header>
-                    <h1><a href="/blog/2012/10/15/chicago.pm-report-project-night-alien-base.html">Chicago.PM Report - Project Night: Alien::Base</a></h1>
-
-                    <p class="tags">Tags:
-                        <a href="/blog/tag/chicago.pm" rel="tag">chicago.pm</a>
-                    </p>
-
-                    <aside>
-                        <p><time datetime="2012-10-15">
-                            Posted on 2012-10-15
-                        </time>
-                            by preaction
-                        </p>
-                    </aside>
-
-                    <p>Originally posted as:
-                            <a href="http://blogs.perl.org/users/preaction/2013/05/chicagopm---beyond-grep---expanding-the-programmer-toolset.html">
-                                <em>Chicago.PM Report - Project Night: Alien::Base</em> on blogs.perl.org.
-                            </a>
-                    </p>
-                </header>
-
-                <p>This month's project night focused on Joel Berger's Alien::Base module. The
-final bugs are either squashed or very close, and we got an introduction to how
-the whole thing works.</p>
-
-
-                    <p><a href="/blog/2012/10/15/chicago.pm-report-project-night-alien-base.html#section-2">Continue reading Chicago.PM Report - Project Night: Alien::Base...</a></p>
-
-            </article>
         </main>
 
         <ul class="pager">
             <li class="prev">
-                <a class="button button-primary"
-                    rel="next" href="page/5"
-                >
-                    &larr; Older
+                <a class="button button-primary" href="/blog/page/5" rel="next">
+                    ← Older
                 </a>
             </li>
             <li class="next">
-                <a class="button button-primary"
-                    rel="prev" href="page/3"
-                >
-                    Newer &rarr;
+                <a class="button button-primary" href="/blog/page/3" rel="prev">
+                    Newer →
                 </a>
             </li>
         </ul>
@@ -254,26 +257,27 @@ the whole thing works.</p>
         
         <h1>Tags</h1>
         <ul class="list-inline">
-            <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-            <li><a href="/blog/tag/error">error</a></li>
-            <li><a href="/blog/tag/etl">etl</a></li>
-            <li><a href="/blog/tag/funny">funny</a></li>
-            <li><a href="/blog/tag/git">git</a></li>
-            <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-            <li><a href="/blog/tag/moose">moose</a></li>
-            <li><a href="/blog/tag/mysql">mysql</a></li>
-            <li><a href="/blog/tag/openbsd">openbsd</a></li>
-            <li><a href="/blog/tag/perl">perl</a></li>
-            <li><a href="/blog/tag/personal">personal</a></li>
-            <li><a href="/blog/tag/progress">progress</a></li>
-            <li><a href="/blog/tag/rants">rants</a></li>
-            <li><a href="/blog/tag/scripts">scripts</a></li>
-            <li><a href="/blog/tag/software">software</a></li>
-            <li><a href="/blog/tag/sql">sql</a></li>
-            <li><a href="/blog/tag/statocles">statocles</a></li>
-            <li><a href="/blog/tag/webgui">webgui</a></li>
-            <li><a href="/blog/tag/xs">xs</a></li>
-            <li><a href="/blog/tag/yertl">yertl</a></li>
+            <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+            <li><a href="/blog/tag/error/">error</a></li>
+            <li><a href="/blog/tag/etl/">etl</a></li>
+            <li><a href="/blog/tag/funny/">funny</a></li>
+            <li><a href="/blog/tag/git/">git</a></li>
+            <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+            <li><a href="/blog/tag/moose/">moose</a></li>
+            <li><a href="/blog/tag/mysql/">mysql</a></li>
+            <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+            <li><a href="/blog/tag/pdl/">pdl</a></li>
+            <li><a href="/blog/tag/perl/">perl</a></li>
+            <li><a href="/blog/tag/personal/">personal</a></li>
+            <li><a href="/blog/tag/progress/">progress</a></li>
+            <li><a href="/blog/tag/rants/">rants</a></li>
+            <li><a href="/blog/tag/scripts/">scripts</a></li>
+            <li><a href="/blog/tag/software/">software</a></li>
+            <li><a href="/blog/tag/sql/">sql</a></li>
+            <li><a href="/blog/tag/statocles/">statocles</a></li>
+            <li><a href="/blog/tag/webgui/">webgui</a></li>
+            <li><a href="/blog/tag/xs/">xs</a></li>
+            <li><a href="/blog/tag/yertl/">yertl</a></li>
         </ul>
         <h1>Feeds</h1>
         <ul class="list-inline">
@@ -296,7 +300,7 @@ the whole thing works.</p>
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>

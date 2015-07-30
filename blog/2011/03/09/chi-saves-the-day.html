@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
         
     </head>
@@ -29,6 +30,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -41,9 +43,10 @@
             <header>
                 <h1>CHI Saves The Day</h1>
                 <p class="tags">Tags:
-                    <a href="/blog/tag/webgui" rel="tag">webgui</a>
-                    <a href="/blog/tag/mysql" rel="tag">mysql</a>
+                    <a href="/blog/tag/webgui/" rel="tag">webgui</a>
+                    <a href="/blog/tag/mysql/" rel="tag">mysql</a>
                 </p>
+
                 <aside>
                     <p><time datetime="2011-03-09">
                         Posted on 2011-03-09
@@ -51,18 +54,20 @@
                         by preaction
                     </p>
                 </aside>
+
                 <p>Originally posted as:
-                        <a class="alert-link" href="http://blogs.perl.org/users/preaction/2011/03/chi-saves-the-day.html">
+                        <a href="http://blogs.perl.org/users/preaction/2011/03/chi-saves-the-day.html">
                             <em>CHI Saves The Day</em> on blogs.perl.org.
                         </a>
                 </p>
+
             </header>
             <section id="section-1">
                 <h2>The Server Is Down</h2>
 
 <ol>
-<li>No it isn't, I didn't get paged.</li>
-<li>Wait a minute, why didn't I get paged?</li>
+<li>No it isn&#39;t, I didn&#39;t get paged.</li>
+<li>Wait a minute, why didn&#39;t I get paged?</li>
 <li>FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU--</li>
 <li>CHALLENGE ACCEPTED</li>
 </ol>
@@ -70,7 +75,7 @@
 <h2>Diagnosis</h2>
 
 <p>The client reported that the site sometimes took more than a minute to load.
-Doesn't respond very slowly to me, and the pager is only primed to ping me if
+Doesn&#39;t respond very slowly to me, and the pager is only primed to ping me if
 there is a sustained downtime (hiccups are not something I want to wake up for
 every night at 3:00am).</p>
 
@@ -88,19 +93,19 @@ I poll mysql for its process list.</p>
 
 <p>A pattern emerges: The load spikes and server goes unresponsive when this happens:</p>
 
-<p><img src="/images/blog/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.43.37%20PM.png" alt="" /></p>
+<p><img alt="" src="/images/blog/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.43.37%20PM.png"></p>
 
 <p>This table shows 12 different processes are trying to update the same cache
-location (process ID 2-3, 5-8, 10, 12-13, 18, 23, and 26). Because of MyISAM's
+location (process ID 2-3, 5-8, 10, 12-13, 18, 23, and 26). Because of MyISAM&#39;s
 table-level lock, any request to get from the cache has to wait for 12 REPLACE
-INTO requests to complete. They've already taken 1 second, if each replace
-takes 2 seconds, that's 24 seconds of non-responsive website.</p>
+INTO requests to complete. They&#39;ve already taken 1 second, if each replace
+takes 2 seconds, that&#39;s 24 seconds of non-responsive website.</p>
 
 <p>These 12 processes all saw that the cache item had expired and are trying to
-update it. This is called a "cache stampede". Only one of them needs to update
-the cache, the rest are just wasting resources. Worse, they're doing all the
+update it. This is called a &quot;cache stampede&quot;. Only one of them needs to update
+the cache, the rest are just wasting resources. Worse, they&#39;re doing all the
 work to update the cache, which is much more expensive than getting the value
-from the cache. If it's expensive enough, the site goes down hard.</p>
+from the cache. If it&#39;s expensive enough, the site goes down hard.</p>
 
 <h2>Management</h2>
 
@@ -128,14 +133,14 @@ instead opted to move this site over to CHI, which has this protection
 built-in.</p>
 
 <pre><code>my $cache   = CHI-&gt;new(
-    driver              =&gt; 'DBI',
-    namespace           =&gt; 'localhost',
+    driver              =&gt; &#39;DBI&#39;,
+    namespace           =&gt; &#39;localhost&#39;,
     dbh                 =&gt; $dbh,
-    expires_variance    =&gt; '0.10',
+    expires_variance    =&gt; &#39;0.10&#39;,
 );
 </code></pre>
 
-<p>This stops the cache stampede, but we're still hitting the database a lot.
+<p>This stops the cache stampede, but we&#39;re still hitting the database a lot.
 Remember we have two web nodes hitting one database node. The fewer database
 hits we make, the better performance we can get without having to ask for more
 hardware from the client (which takes time, and forms, and more forms, and
@@ -150,18 +155,18 @@ cache?</p>
 <p>CHI has an awesome way to do this: Add an l1_cache</p>
 
 <pre><code>my $cache   = CHI-&gt;new(
-    driver              =&gt; 'DBI',
-    namespace           =&gt; 'localhost',
+    driver              =&gt; &#39;DBI&#39;,
+    namespace           =&gt; &#39;localhost&#39;,
     dbh                 =&gt; $dbh,
-    expires_variance    =&gt; '0.10',
+    expires_variance    =&gt; &#39;0.10&#39;,
     l1_cache            =&gt; {
-        driver      =&gt; 'FastMmap',
-        root_dir    =&gt; '/tmp/cache',
+        driver      =&gt; &#39;FastMmap&#39;,
+        root_dir    =&gt; &#39;/tmp/cache&#39;,
     },
 );
 </code></pre>
 
-<p>Now we're using FastMmap to share an in-memory cache between our web
+<p>Now we&#39;re using FastMmap to share an in-memory cache between our web
 processes, and if the L1 cache is expired or missing, we look for content from
 the DBI cache. If that cache is missing or expired, we have a cache miss and
 have to recompute the value.</p>
@@ -171,7 +176,7 @@ have to recompute the value.</p>
 <p>I had to install the DB tables myself, which was not difficult, just
 undocumented (bug report filed). MySQL only allows a 1000-byte key, and the
 CHI::Driver::DBI tries to create a 600-character key. This is fine in the
-Latin-1 charset, but MySQL complains if you're using UTF-8 by default.</p>
+Latin-1 charset, but MySQL complains if you&#39;re using UTF-8 by default.</p>
 
 <p>The driver also tries to create a TEXT field to hold the cache value, but
 MySQL expects a text field to hold characters in a known character set. After
@@ -196,10 +201,10 @@ CREATE TABLE IF NOT EXISTS `chi__CHI_METACACHE` (
 
 <h2>Results</h2>
 
-<p><img src="/images/blog/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.20.55%20PM.png" alt="" /></p>
+<p><img alt="" src="/images/blog/chi-saves-the-day/Screen%20shot%202011-03-08%20at%2010.20.55%20PM.png"></p>
 
 <p>The server is stable again! Spikes do not turn into out-of-control loads and
-unresponsive server. We'll see how things go tomorrow during normal business
+unresponsive server. We&#39;ll see how things go tomorrow during normal business
 hours (the peak time for this site), but right now it looks like CHI has saved
 the day!</p>
 
@@ -212,26 +217,27 @@ the day!</p>
         <nav id="tags">
             <h1>Tags</h1>
             <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-                <li><a href="/blog/tag/error">error</a></li>
-                <li><a href="/blog/tag/etl">etl</a></li>
-                <li><a href="/blog/tag/funny">funny</a></li>
-                <li><a href="/blog/tag/git">git</a></li>
-                <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-                <li><a href="/blog/tag/moose">moose</a></li>
-                <li><a href="/blog/tag/mysql">mysql</a></li>
-                <li><a href="/blog/tag/openbsd">openbsd</a></li>
-                <li><a href="/blog/tag/perl">perl</a></li>
-                <li><a href="/blog/tag/personal">personal</a></li>
-                <li><a href="/blog/tag/progress">progress</a></li>
-                <li><a href="/blog/tag/rants">rants</a></li>
-                <li><a href="/blog/tag/scripts">scripts</a></li>
-                <li><a href="/blog/tag/software">software</a></li>
-                <li><a href="/blog/tag/sql">sql</a></li>
-                <li><a href="/blog/tag/statocles">statocles</a></li>
-                <li><a href="/blog/tag/webgui">webgui</a></li>
-                <li><a href="/blog/tag/xs">xs</a></li>
-                <li><a href="/blog/tag/yertl">yertl</a></li>
+                <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/">error</a></li>
+                <li><a href="/blog/tag/etl/">etl</a></li>
+                <li><a href="/blog/tag/funny/">funny</a></li>
+                <li><a href="/blog/tag/git/">git</a></li>
+                <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+                <li><a href="/blog/tag/moose/">moose</a></li>
+                <li><a href="/blog/tag/mysql/">mysql</a></li>
+                <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+                <li><a href="/blog/tag/pdl/">pdl</a></li>
+                <li><a href="/blog/tag/perl/">perl</a></li>
+                <li><a href="/blog/tag/personal/">personal</a></li>
+                <li><a href="/blog/tag/progress/">progress</a></li>
+                <li><a href="/blog/tag/rants/">rants</a></li>
+                <li><a href="/blog/tag/scripts/">scripts</a></li>
+                <li><a href="/blog/tag/software/">software</a></li>
+                <li><a href="/blog/tag/sql/">sql</a></li>
+                <li><a href="/blog/tag/statocles/">statocles</a></li>
+                <li><a href="/blog/tag/webgui/">webgui</a></li>
+                <li><a href="/blog/tag/xs/">xs</a></li>
+                <li><a href="/blog/tag/yertl/">yertl</a></li>
             </ul>
         </nav>
     </div>
@@ -242,7 +248,7 @@ the day!</p>
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>

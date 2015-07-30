@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/blog/tag/openbsd</id>
+    <id>http://preaction.github.io/blog/tag/openbsd/</id>
     <title>preaction</title>
-    <updated>2015-04-15T00:09:55Z</updated>
-    <link rel="self" href="http://preaction.github.io/blog/tag/openbsd.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/blog/tag/openbsd"/>
-    <generator version="0.044">Statocles</generator>
+    <updated>2015-07-30T00:28:54Z</updated>
+    <link href="http://preaction.github.io/blog/tag/openbsd.atom" rel="self" />
+    <link href="http://preaction.github.io/blog/tag/openbsd/" rel="alternate" />
+    <generator version="0.053">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html</id>
-        <title>Raw Feed of OpenBSD's Work on Cleaning Up OpenSSL</title>
+        <title>Raw Feed of OpenBSD&#39;s Work on Cleaning Up OpenSSL</title>
         <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html" />
+        <link href="http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html" rel="alternate" />
         <content type="html"><![CDATA[
-            <p><a href="http://freshbsd.org/search?project=openbsd&amp;q=file.name:libssl">Raw Feed of OpenBSD's Work on Cleaning Up OpenSSL</a></p>
+            <p><a href="http://freshbsd.org/search?project=openbsd&amp;q=file.name:libssl">Raw Feed of OpenBSD&#39;s Work on Cleaning Up OpenSSL</a></p>
 
 <p>This is an amazing timeline of how much and how quickly work can get done with
 a determined, dedicated team of hackers.</p>
@@ -21,8 +21,8 @@ a determined, dedicated team of hackers.</p>
 
                 <p><a href="http://preaction.github.io/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html#section-2">Continue reading...</a></p>
             <p>Tags:
-                <a href="/blog/tag/openbsd">openbsd</a>
-                <a href="/blog/tag/funny">funny</a>
+                <a href="/blog/tag/openbsd/">openbsd</a>
+                <a href="/blog/tag/funny/">funny</a>
             </p>
         ]]></content>
         <updated>2014-04-19T00:00:00Z</updated>

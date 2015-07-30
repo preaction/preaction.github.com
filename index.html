@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
-        <link rel="alternate" href="/blog/index.atom" type="application/atom+xml" />
-        <link rel="alternate" href="/blog/index.rss" type="application/rss+xml" />
+        <link href="/blog/index.atom" rel="alternate" type="application/atom+xml">
+        <link href="/blog/index.rss" rel="alternate" type="application/rss+xml">
         
     </head>
     <body>
@@ -31,6 +32,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -42,12 +44,92 @@
     <div class="nine columns">
         <main>
 
+
             <article>
                 <header>
-                    <h1><a href="/blog/2015/03/08/consuming-chaos">Consuming Chaos</a></h1>
+                    <h1><a href="/blog/2015/05/13/new-post/">Validating Financial Data with PDL</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/software" rel="tag">software</a>
+                        <a href="/blog/tag/perl/" rel="tag">perl</a>
+                        <a href="/blog/tag/pdl/" rel="tag">pdl</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2015-05-13">
+                            Posted on 2015-05-13
+                        </time>
+                        </p>
+                    </aside>
+
+                </header>
+
+                <p>My job involves financial market data. A lot of financial market data. I take
+the market data from various sources and store it in a database for later
+analysis.</p>
+
+<p>Being a programmer/analyst and not a mathematician with a Ph.D. in finance, my
+use for time series analytics falls into the &quot;ensure correct data is being
+collected&quot; category. But even then, some basic statistical analysis helps me
+preserve quality historical data for later use.</p>
+
+<p>PDL is perfect for doing these kinds of calculations very quickly. Combined
+with PDL::Finance::TA, all the hard work is already done, and all I need to do
+is wire it all up.</p>
+
+<p>Let&#39;s take a large set of random numbers. If our random number generator were
+perfect, we would expect that the set would be evenly distributed because each
+possible value is exactly as possible as any other value. If we calculate the
+standard deviation (stddev, a measurement of how disperse the data set is), we
+would expect that 99.7% of the points would be within 3 standard deviations of
+the mean (average).</p>
+
+<p>So, if we write a test that checks to see if a new (completely random) point is
+within 3 stddev, there is a 0.3% chance that new (completely random) point will
+fail our test. If we bump that to 4 stddev, we should expect 99.99% of the
+points to pass the test, and 0.01% of the points to fail (1 of every 15787). If
+I collect 500,000 (completely random) points in a day, then 50 of them will
+fail our test.</p>
+
+<p>So I create a time series of random points. Then I create a new time series of
+the 30-day standard deviation of the original series. Then I compare the two
+and see which points are outliers.</p>
+
+<pre><code>use PDL;
+use PDL::Finance::TA;
+
+my $ts = random( 5000 ) * 50;
+my $stddev = ta_stddev( $ts, 30, 1 );
+</code></pre>
+
+<p>Market data is not completely random, it&#39;s stochastic, which I interpret to
+mean as &quot;given value A1, the next value A2 will be somewhere between A1 +/- B&quot;.
+It&#39;s predicting (guessing) &quot;B&quot; that earns quants the big bucks. But, over the
+entire set of data, I know each previous value of B, which is the difference
+between A1 and A2, or the rate of change between 2 points. What I really want
+to know is if the rate of change from A1 to A2 appears abnormal, say, if it&#39;s
+more than 4 stddev from the mean.</p>
+
+<p>So I take my time series, create a new time series that is the rate of change
+for each point in the previous series, create another new time series that is
+the 30-day stddev of the previous time series, and then compare the rate of
+change with the stddev to see which ones are outliers.</p>
+
+<p>Finally, I should also make sure that my source is still updating, as it is
+very rare that most series would be the same twice in a row, or for an entire
+week. So let&#39;s check for flatness by using stddev.</p>
+
+<p>PDL and TAlib make this all incredibly simple, so I can get on with my real
+work (fragging lamers in Quake)</p>
+
+
+
+            </article>
+            <article>
+                <header>
+                    <h1><a href="/blog/2015/03/08/consuming-chaos/">Consuming Chaos</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/software/" rel="tag">software</a>
                     </p>
 
                     <aside>
@@ -59,10 +141,10 @@
 
                 </header>
 
-                <p><img src="/images/blog/chaos.jpg" style="width: 40%" class="u-pull-left"/></p>
+                <p><img class="u-pull-left" src="/images/blog/chaos.jpg" style="width: 40%"></p>
 
 <p>For what seems hours, you scan the board. The colors are sharp against the
-simple background. Some movement catches your eye, but it doesn't feel right,
+simple background. Some movement catches your eye, but it doesn&#39;t feel right,
 so you ignore it. Time stretches on.</p>
 
 <p>There! The perfect move. Leaving the perfect next move. A quick flick. A match.
@@ -70,7 +152,7 @@ The pieces fall into place. Another match. Another. Another. A special piece.
 Another special piece. It fires, triggering more. Chaos consumes.</p>
 
 <p>The board is in ruins. Your carefully planned next move is lost in the
-destruction. You're back to scanning the board to try to find where you belong
+destruction. You&#39;re back to scanning the board to try to find where you belong
 in this new world.</p>
 
 <p>Is this a game, or is it your development strategy?</p>
@@ -81,10 +163,10 @@ to brute-force your way to completion (how much software do you know of that
 can be considered complete?).</p>
 
 <p>In the face of these possibilities, a rigid development plan will fail. Vague
-goals are better. Goals written in terms of a problem are best. Problems don't
+goals are better. Goals written in terms of a problem are best. Problems don&#39;t
 change, once you find their roots.</p>
 
-<p>I didn't know this post was going to be about Agile, but there it is.</p>
+<p>I didn&#39;t know this post was going to be about Agile, but there it is.</p>
 
 <p>Exact is for computers. We are not computers. We are human. We are chaos.</p>
 
@@ -93,11 +175,11 @@ change, once you find their roots.</p>
             </article>
             <article>
                 <header>
-                    <h1><a href="/blog/2015/03/02/announcing-statocles">Announcing Statocles</a></h1>
+                    <h1><a href="/blog/2015/03/02/announcing-statocles/">Announcing Statocles</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/perl" rel="tag">perl</a>
-                        <a href="/blog/tag/statocles" rel="tag">statocles</a>
+                        <a href="/blog/tag/perl/" rel="tag">perl</a>
+                        <a href="/blog/tag/statocles/" rel="tag">statocles</a>
                     </p>
 
                     <aside>
@@ -120,17 +202,17 @@ costs).</p>
 
 <p>For me, I like the convenience of using <a href="http://pages.github.com">Github Pages</a>
 to host project-oriented websites. The project itself is already on Github, so
-why not keep the website closely tied to it so it doesn't get out-of-date? For
+why not keep the website closely tied to it so it doesn&#39;t get out-of-date? For
 an organization like <a href="http://chicago.pm.org">the Chicago Perl Mongers</a>, Github
 can even host custom domains, allowing easy collaboration on websites.</p>
 
-<p>It's through the Chicago.PM website that I was introduced to Octopress, a
-blogging engine built on Jekyll. It's through using Octopress that I decided to
+<p>It&#39;s through the Chicago.PM website that I was introduced to Octopress, a
+blogging engine built on Jekyll. It&#39;s through using Octopress that I decided to
 write my own static site generator,
 <a href="http://preaction.github.io/Statocles">Statocles</a>.</p>
 
 
-                    <p><a href="/blog/2015/03/02/announcing-statocles#section-2">Continue reading Announcing Statocles...</a></p>
+                    <p><a href="/blog/2015/03/02/announcing-statocles/#section-2">Continue reading Announcing Statocles...</a></p>
 
             </article>
             <article>
@@ -138,8 +220,8 @@ write my own static site generator,
                     <h1><a href="/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html">Mojolicious Triumphs Over Legacy Code</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/mojolicious" rel="tag">mojolicious</a>
-                        <a href="/blog/tag/perl" rel="tag">perl</a>
+                        <a href="/blog/tag/mojolicious/" rel="tag">mojolicious</a>
+                        <a href="/blog/tag/perl/" rel="tag">perl</a>
                     </p>
 
                     <aside>
@@ -154,7 +236,7 @@ write my own static site generator,
                 <p>I got a text at 8:00am:</p>
 
 <blockquote>
-  <p>"Hey, can you jump on a conference call?"</p>
+  <p>&quot;Hey, can you jump on a conference call?&quot;</p>
 </blockquote>
 
 <p>Groggy and disoriented, I blearily type the conference line and enter my
@@ -162,7 +244,7 @@ passcode, followed by the pound or hash sign. At the tone, I would be the 6th
 person to enter the conference. Tone.</p>
 
 <blockquote>
-  <p>"The app is down, and trading has stopped."</p>
+  <p>&quot;The app is down, and trading has stopped.&quot;</p>
 </blockquote>
 
 
@@ -174,10 +256,10 @@ person to enter the conference. Tone.</p>
                     <h1><a href="/blog/2015/01/21/managing-sql-data-with-yertl.html">Managing SQL Data with Yertl</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/perl" rel="tag">perl</a>
-                        <a href="/blog/tag/sql" rel="tag">sql</a>
-                        <a href="/blog/tag/etl" rel="tag">etl</a>
-                        <a href="/blog/tag/yertl" rel="tag">yertl</a>
+                        <a href="/blog/tag/perl/" rel="tag">perl</a>
+                        <a href="/blog/tag/sql/" rel="tag">sql</a>
+                        <a href="/blog/tag/etl/" rel="tag">etl</a>
+                        <a href="/blog/tag/yertl/" rel="tag">yertl</a>
                     </p>
 
                     <aside>
@@ -198,13 +280,13 @@ production. All of them need data extracted, transformed, and loaded.</p>
 
 <p>DBI is the clear choice for dealing with SQL databases in Perl, but there are a
 dozen lines of Perl code in between me and the operation that I want. Sure,
-I've got modules and web applications and ad-hoc commands and scripts that
+I&#39;ve got modules and web applications and ad-hoc commands and scripts that
 perform certain individual tasks on my databases, but sometimes those things
-don't quite do what I need right now, and I just want something that will let
+don&#39;t quite do what I need right now, and I just want something that will let
 me execute whatever SQL I can come up with.</p>
 
 <p><a href="http://metacpan.org/pod/ETL::Yertl">Yertl (ETL::Yertl)</a> is a shell-based ETL
-framework. It's under development (as is all software), but included already is
+framework. It&#39;s under development (as is all software), but included already is
 a small utility called <a href="http://metacpan.org/pod/ysql">ysql</a> to make dealing
 with SQL databases easy.</p>
 
@@ -212,59 +294,17 @@ with SQL databases easy.</p>
                     <p><a href="/blog/2015/01/21/managing-sql-data-with-yertl.html#section-2">Continue reading Managing SQL Data with Yertl...</a></p>
 
             </article>
-            <article>
-                <header>
-                    <h1><a href="/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html">Leaving Crumb Trails -- Talking to Myself</a></h1>
-
-                    <p class="tags">Tags:
-                        <a href="/blog/tag/software" rel="tag">software</a>
-                    </p>
-
-                    <aside>
-                        <p><time datetime="2014-12-23">
-                            Posted on 2014-12-23
-                        </time>
-                            by preaction
-                        </p>
-                    </aside>
-
-                    <p>Originally posted as:
-                            <a href="http://blogs.perl.org/users/preaction/2014/12/leaving-crumb-trails----talking-to-myself.html">
-                                <em>Leaving Crumb Trails -- Talking to Myself</em> on blogs.perl.org.
-                            </a>
-                    </p>
-                </header>
-
-                <p>The past me is another person. Sometimes antagonist, sometimes friend, past me
-(postaction?) had ideas, hopes, and dreams and developed some of them into
-software that I and others use. Unfortunately, that asshole left bugs all
-through the code for me to fix.</p>
-
-<p>I can't blame him. Nobody's perfect, not even idealized/demonized copies of my
-past self. But I do have to fix them, and deal with the messes he left.</p>
-
-<p>Lucky for me, while he was writing buggy software, he left extensive notes for
-me to use...</p>
-
-
-                    <p><a href="/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html#section-2">Continue reading Leaving Crumb Trails -- Talking to Myself...</a></p>
-
-            </article>
         </main>
 
         <ul class="pager">
             <li class="prev">
-                <a class="button button-primary"
-                    rel="next" href="page/2"
-                >
-                    &larr; Older
+                <a class="button button-primary" href="/blog/page/2" rel="next">
+                    ← Older
                 </a>
             </li>
             <li class="next">
-                <a class="button disabled"
-                    rel="prev" href=""
-                >
-                    Newer &rarr;
+                <a class="button disabled" href="" rel="prev">
+                    Newer →
                 </a>
             </li>
         </ul>
@@ -275,26 +315,27 @@ me to use...</p>
         
         <h1>Tags</h1>
         <ul class="list-inline">
-            <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-            <li><a href="/blog/tag/error">error</a></li>
-            <li><a href="/blog/tag/etl">etl</a></li>
-            <li><a href="/blog/tag/funny">funny</a></li>
-            <li><a href="/blog/tag/git">git</a></li>
-            <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-            <li><a href="/blog/tag/moose">moose</a></li>
-            <li><a href="/blog/tag/mysql">mysql</a></li>
-            <li><a href="/blog/tag/openbsd">openbsd</a></li>
-            <li><a href="/blog/tag/perl">perl</a></li>
-            <li><a href="/blog/tag/personal">personal</a></li>
-            <li><a href="/blog/tag/progress">progress</a></li>
-            <li><a href="/blog/tag/rants">rants</a></li>
-            <li><a href="/blog/tag/scripts">scripts</a></li>
-            <li><a href="/blog/tag/software">software</a></li>
-            <li><a href="/blog/tag/sql">sql</a></li>
-            <li><a href="/blog/tag/statocles">statocles</a></li>
-            <li><a href="/blog/tag/webgui">webgui</a></li>
-            <li><a href="/blog/tag/xs">xs</a></li>
-            <li><a href="/blog/tag/yertl">yertl</a></li>
+            <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+            <li><a href="/blog/tag/error/">error</a></li>
+            <li><a href="/blog/tag/etl/">etl</a></li>
+            <li><a href="/blog/tag/funny/">funny</a></li>
+            <li><a href="/blog/tag/git/">git</a></li>
+            <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+            <li><a href="/blog/tag/moose/">moose</a></li>
+            <li><a href="/blog/tag/mysql/">mysql</a></li>
+            <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+            <li><a href="/blog/tag/pdl/">pdl</a></li>
+            <li><a href="/blog/tag/perl/">perl</a></li>
+            <li><a href="/blog/tag/personal/">personal</a></li>
+            <li><a href="/blog/tag/progress/">progress</a></li>
+            <li><a href="/blog/tag/rants/">rants</a></li>
+            <li><a href="/blog/tag/scripts/">scripts</a></li>
+            <li><a href="/blog/tag/software/">software</a></li>
+            <li><a href="/blog/tag/sql/">sql</a></li>
+            <li><a href="/blog/tag/statocles/">statocles</a></li>
+            <li><a href="/blog/tag/webgui/">webgui</a></li>
+            <li><a href="/blog/tag/xs/">xs</a></li>
+            <li><a href="/blog/tag/yertl/">yertl</a></li>
         </ul>
         <h1>Feeds</h1>
         <ul class="list-inline">
@@ -317,7 +358,7 @@ me to use...</p>
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>

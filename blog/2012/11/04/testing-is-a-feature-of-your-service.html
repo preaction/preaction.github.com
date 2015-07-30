@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
         
     </head>
@@ -29,6 +30,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -41,8 +43,9 @@
             <header>
                 <h1>Testing is a Feature of Your Service</h1>
                 <p class="tags">Tags:
-                    <a href="/blog/tag/software" rel="tag">software</a>
+                    <a href="/blog/tag/software/" rel="tag">software</a>
                 </p>
+
                 <aside>
                     <p><time datetime="2012-11-04">
                         Posted on 2012-11-04
@@ -50,11 +53,13 @@
                         by preaction
                     </p>
                 </aside>
+
                 <p>Originally posted as:
-                        <a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/11/testing-is-a-feature-of-your-service.html">
+                        <a href="http://blogs.perl.org/users/preaction/2012/11/testing-is-a-feature-of-your-service.html">
                             <em>Testing is a Feature of Your Service</em> on blogs.perl.org.
                         </a>
                 </p>
+
             </header>
             <section id="section-1">
                 <p>My job at Bank of America consists largely of data collection and storage. To
@@ -65,7 +70,7 @@ modules come with robust test suites, testing that everything works correctly.</
 <p>Since the XS module was intended to be used by other, larger systems, I decided
 to help those larger systems test their dependency on my module: I included a
 <a href="http://search.cpan.org/perldoc?Test::MockObject">Test::MockObject</a> that mocked
-my module's interface. By using my test module, the tests can try some data and
+my module&#39;s interface. By using my test module, the tests can try some data and
 see if their code works.</p>
 
 <p>But the hardest part to test is always the failures. How do they test if the
@@ -83,16 +88,16 @@ Test::Feed::RandomDisconnect mock API.</p>
 
 <p>By providing these mock objects, users can write more robust code more simply.
 Then, in the eventuality that the service fails, they know exactly what their
-code won't do: Wake them up at 3 in the morning because of an unexpected,
-unhandled error. These mock objects don't even need an external connection to
+code won&#39;t do: Wake them up at 3 in the morning because of an unexpected,
+unhandled error. These mock objects don&#39;t even need an external connection to
 operate, so they can be as fast as possible.</p>
 
 <p>Unfortunately, this is a limited solution that covers only what I know about.
-If the service changes, or has an error I didn't cover, the code still fails.
+If the service changes, or has an error I didn&#39;t cover, the code still fails.
 For this reason, for the web services I build, I build in explicit ways to get
 errors. When the service itself gives the exact error output it gives in
 exceptional circumstances, it can be tested and handled. Instead of a mock
-service, it's the real service (perhaps on a dev system), with real input,
+service, it&#39;s the real service (perhaps on a dev system), with real input,
 returning a real (but desired) error message.</p>
 
 <p>By providing as much help as possible to the users of my code, I can make sure
@@ -110,26 +115,27 @@ everyone write better code.</p>
         <nav id="tags">
             <h1>Tags</h1>
             <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-                <li><a href="/blog/tag/error">error</a></li>
-                <li><a href="/blog/tag/etl">etl</a></li>
-                <li><a href="/blog/tag/funny">funny</a></li>
-                <li><a href="/blog/tag/git">git</a></li>
-                <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-                <li><a href="/blog/tag/moose">moose</a></li>
-                <li><a href="/blog/tag/mysql">mysql</a></li>
-                <li><a href="/blog/tag/openbsd">openbsd</a></li>
-                <li><a href="/blog/tag/perl">perl</a></li>
-                <li><a href="/blog/tag/personal">personal</a></li>
-                <li><a href="/blog/tag/progress">progress</a></li>
-                <li><a href="/blog/tag/rants">rants</a></li>
-                <li><a href="/blog/tag/scripts">scripts</a></li>
-                <li><a href="/blog/tag/software">software</a></li>
-                <li><a href="/blog/tag/sql">sql</a></li>
-                <li><a href="/blog/tag/statocles">statocles</a></li>
-                <li><a href="/blog/tag/webgui">webgui</a></li>
-                <li><a href="/blog/tag/xs">xs</a></li>
-                <li><a href="/blog/tag/yertl">yertl</a></li>
+                <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/">error</a></li>
+                <li><a href="/blog/tag/etl/">etl</a></li>
+                <li><a href="/blog/tag/funny/">funny</a></li>
+                <li><a href="/blog/tag/git/">git</a></li>
+                <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+                <li><a href="/blog/tag/moose/">moose</a></li>
+                <li><a href="/blog/tag/mysql/">mysql</a></li>
+                <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+                <li><a href="/blog/tag/pdl/">pdl</a></li>
+                <li><a href="/blog/tag/perl/">perl</a></li>
+                <li><a href="/blog/tag/personal/">personal</a></li>
+                <li><a href="/blog/tag/progress/">progress</a></li>
+                <li><a href="/blog/tag/rants/">rants</a></li>
+                <li><a href="/blog/tag/scripts/">scripts</a></li>
+                <li><a href="/blog/tag/software/">software</a></li>
+                <li><a href="/blog/tag/sql/">sql</a></li>
+                <li><a href="/blog/tag/statocles/">statocles</a></li>
+                <li><a href="/blog/tag/webgui/">webgui</a></li>
+                <li><a href="/blog/tag/xs/">xs</a></li>
+                <li><a href="/blog/tag/yertl/">yertl</a></li>
             </ul>
         </nav>
     </div>
@@ -140,7 +146,7 @@ everyone write better code.</p>
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>

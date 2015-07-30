@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
-        <link rel="alternate" href="/blog/index.atom" type="application/atom+xml" />
-        <link rel="alternate" href="/blog/index.rss" type="application/rss+xml" />
+        <link href="/blog/index.atom" rel="alternate" type="application/atom+xml">
+        <link href="/blog/index.rss" rel="alternate" type="application/rss+xml">
         
     </head>
     <body>
@@ -31,6 +32,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -42,12 +44,51 @@
     <div class="nine columns">
         <main>
 
+
+            <article>
+                <header>
+                    <h1><a href="/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html">Leaving Crumb Trails -- Talking to Myself</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/software/" rel="tag">software</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2014-12-23">
+                            Posted on 2014-12-23
+                        </time>
+                            by preaction
+                        </p>
+                    </aside>
+
+                    <p>Originally posted as:
+                            <a href="http://blogs.perl.org/users/preaction/2014/12/leaving-crumb-trails----talking-to-myself.html">
+                                <em>Leaving Crumb Trails -- Talking to Myself</em> on blogs.perl.org.
+                            </a>
+                    </p>
+                </header>
+
+                <p>The past me is another person. Sometimes antagonist, sometimes friend, past me
+(postaction?) had ideas, hopes, and dreams and developed some of them into
+software that I and others use. Unfortunately, that asshole left bugs all
+through the code for me to fix.</p>
+
+<p>I can&#39;t blame him. Nobody&#39;s perfect, not even idealized/demonized copies of my
+past self. But I do have to fix them, and deal with the messes he left.</p>
+
+<p>Lucky for me, while he was writing buggy software, he left extensive notes for
+me to use...</p>
+
+
+                    <p><a href="/blog/2014/12/23/leaving-crumb-trails-talking-to-myself.html#section-2">Continue reading Leaving Crumb Trails -- Talking to Myself...</a></p>
+
+            </article>
             <article>
                 <header>
                     <h1><a href="/blog/2014/10/26/managing-boilerplate-with-import-base.html">Manage Boilerplate with Import::Base</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/perl" rel="tag">perl</a>
+                        <a href="/blog/tag/perl/" rel="tag">perl</a>
                     </p>
 
                     <aside>
@@ -88,7 +129,7 @@ lines everywhere.</p>
                     <h1><a href="/blog/2014/07/19/between-learning-and-doing.html">Between Learning and Doing</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/rants" rel="tag">rants</a>
+                        <a href="/blog/tag/rants/" rel="tag">rants</a>
                     </p>
 
                     <aside>
@@ -106,18 +147,18 @@ lines everywhere.</p>
                     </p>
                 </header>
 
-                <p><img src="/images/blog/ive-made-a-huge-mistake.gif" alt="I've made a huge mistake" /></p>
+                <p><img alt="I&#39;ve made a huge mistake" src="/images/blog/ive-made-a-huge-mistake.gif"></p>
 
 <p>A long time ago, when I started building my first video game server for
 <a href="http://doublecluepon.com">Double Cluepon</a>, my video game company, I did a bad
 thing. I looked at the AMF library for Perl and Python and decided that
-Python's looked better. I had always meant to learn Python, and this felt like
+Python&#39;s looked better. I had always meant to learn Python, and this felt like
 the perfect opportunity. It had cooperative multitasking (Twisted) and it had
 an ORM (SQLAlchemy), so along with the messaging format (PyAMF), I had
 everything I needed to build a server for a Flash MMO (later migrated to AIR).</p>
 
 <p>Let me reiterate my mistake: While under time constraints, I chose to learn a
-new programming language. I didn't realize my mistake until it was too late.</p>
+new programming language. I didn&#39;t realize my mistake until it was too late.</p>
 
 
                     <p><a href="/blog/2014/07/19/between-learning-and-doing.html#section-2">Continue reading Between Learning and Doing...</a></p>
@@ -128,7 +169,7 @@ new programming language. I didn't realize my mistake until it was too late.</p>
                     <h1><a href="/blog/2014/06/29/perlsloc-count-perl-source-lines-with-perl-tidy.html">perlsloc - Count Perl Source Lines with Perl::Tidy</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/scripts" rel="tag">scripts</a>
+                        <a href="/blog/tag/scripts/" rel="tag">scripts</a>
                     </p>
 
                     <aside>
@@ -153,17 +194,17 @@ documentation</a>.</p>
 
 <p>One day, I decided to find out exactly how much code I was maintaining. Since
 perltidy can strip comments and POD, and also normalize the source code to make
-a fair measurement, it's a perfect tool for counting Source Lines of Code
+a fair measurement, it&#39;s a perfect tool for counting Source Lines of Code
 (SLOC).</p>
 
-<p>Here's a small shell script using <code>ack</code>, <code>perltidy</code>, <code>xargs</code>, and <code>wc</code> to count
+<p>Here&#39;s a small shell script using <code>ack</code>, <code>perltidy</code>, <code>xargs</code>, and <code>wc</code> to count
 the source lines of code in any number of directories.</p>
 
 <pre><code>ack -f --perl $@ | xargs -L 1 perltidy --noprofile --delete-pod --mbl=0 --standard-output | wc -l
 </code></pre>
 
 <p><code>ack -f</code> lists the files that would be searched, and <code>--perl</code> searches Perl
-files, so we get ack's heuristics for finding Perl files. <code>xargs -L 1</code> invokes
+files, so we get ack&#39;s heuristics for finding Perl files. <code>xargs -L 1</code> invokes
 the following command for every 1 line of input. The <code>perltidy</code> command strips
 the pod and tightens up the whitespace and writes the result to stdout, which
 <code>wc -l</code> will then count, line by line.</p>
@@ -182,11 +223,11 @@ has 50% more test lines than source lines:</p>
             </article>
             <article>
                 <header>
-                    <h1><a href="/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html">Conflict Resolution: local::lib and git's Perl</a></h1>
+                    <h1><a href="/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html">Conflict Resolution: local::lib and git&#39;s Perl</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/perl" rel="tag">perl</a>
-                        <a href="/blog/tag/git" rel="tag">git</a>
+                        <a href="/blog/tag/perl/" rel="tag">perl</a>
+                        <a href="/blog/tag/git/" rel="tag">git</a>
                     </p>
 
                     <aside>
@@ -199,7 +240,7 @@ has 50% more test lines than source lines:</p>
 
                     <p>Originally posted as:
                             <a href="http://blogs.perl.org/users/preaction/2014/06/conflict-resolution-locallib-and-gits-perl.html">
-                                <em>Conflict Resolution: local::lib and git's Perl</em> on blogs.perl.org.
+                                <em>Conflict Resolution: local::lib and git&#39;s Perl</em> on blogs.perl.org.
                             </a>
                     </p>
                 </header>
@@ -209,59 +250,25 @@ has 50% more test lines than source lines:</p>
 <pre><code>$ git add -i
 /usr/bin/perl: symbol lookup error: ~/perl5/lib/perl5/x86_64-linux-thread-multi/auto/List/Util/Util.so:
 undefined symbol: Perl_xs_apiversion_bootcheck
-fatal: 'add--interactive' appears to be a git command, but we were not
+fatal: &#39;add--interactive&#39; appears to be a git command, but we were not
 able to execute it. Maybe git-add--interactive is broken?
 </code></pre>
 
 
-                    <p><a href="/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html#section-2">Continue reading Conflict Resolution: local::lib and git's Perl...</a></p>
-
-            </article>
-            <article>
-                <header>
-                    <h1><a href="/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html">Raw Feed of OpenBSD's Work on Cleaning Up OpenSSL</a></h1>
-
-                    <p class="tags">Tags:
-                        <a href="/blog/tag/openbsd" rel="tag">openbsd</a>
-                        <a href="/blog/tag/funny" rel="tag">funny</a>
-                    </p>
-
-                    <aside>
-                        <p><time datetime="2014-04-19">
-                            Posted on 2014-04-19
-                        </time>
-                            by preaction
-                        </p>
-                    </aside>
-
-                </header>
-
-                <p><a href="http://freshbsd.org/search?project=openbsd&amp;q=file.name:libssl">Raw Feed of OpenBSD's Work on Cleaning Up OpenSSL</a></p>
-
-<p>This is an amazing timeline of how much and how quickly work can get done with
-a determined, dedicated team of hackers.</p>
-
-<p>Here are some gems:</p>
-
-
-                    <p><a href="/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html#section-2">Continue reading Raw Feed of OpenBSD's Work on Cleaning Up OpenSSL...</a></p>
+                    <p><a href="/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html#section-2">Continue reading Conflict Resolution: local::lib and git&#39;s Perl...</a></p>
 
             </article>
         </main>
 
         <ul class="pager">
             <li class="prev">
-                <a class="button button-primary"
-                    rel="next" href="page/3"
-                >
-                    &larr; Older
+                <a class="button button-primary" href="/blog/page/3" rel="next">
+                    ← Older
                 </a>
             </li>
             <li class="next">
-                <a class="button button-primary"
-                    rel="prev" href="index.html"
-                >
-                    Newer &rarr;
+                <a class="button button-primary" href="/" rel="prev">
+                    Newer →
                 </a>
             </li>
         </ul>
@@ -272,26 +279,27 @@ a determined, dedicated team of hackers.</p>
         
         <h1>Tags</h1>
         <ul class="list-inline">
-            <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-            <li><a href="/blog/tag/error">error</a></li>
-            <li><a href="/blog/tag/etl">etl</a></li>
-            <li><a href="/blog/tag/funny">funny</a></li>
-            <li><a href="/blog/tag/git">git</a></li>
-            <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-            <li><a href="/blog/tag/moose">moose</a></li>
-            <li><a href="/blog/tag/mysql">mysql</a></li>
-            <li><a href="/blog/tag/openbsd">openbsd</a></li>
-            <li><a href="/blog/tag/perl">perl</a></li>
-            <li><a href="/blog/tag/personal">personal</a></li>
-            <li><a href="/blog/tag/progress">progress</a></li>
-            <li><a href="/blog/tag/rants">rants</a></li>
-            <li><a href="/blog/tag/scripts">scripts</a></li>
-            <li><a href="/blog/tag/software">software</a></li>
-            <li><a href="/blog/tag/sql">sql</a></li>
-            <li><a href="/blog/tag/statocles">statocles</a></li>
-            <li><a href="/blog/tag/webgui">webgui</a></li>
-            <li><a href="/blog/tag/xs">xs</a></li>
-            <li><a href="/blog/tag/yertl">yertl</a></li>
+            <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+            <li><a href="/blog/tag/error/">error</a></li>
+            <li><a href="/blog/tag/etl/">etl</a></li>
+            <li><a href="/blog/tag/funny/">funny</a></li>
+            <li><a href="/blog/tag/git/">git</a></li>
+            <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+            <li><a href="/blog/tag/moose/">moose</a></li>
+            <li><a href="/blog/tag/mysql/">mysql</a></li>
+            <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+            <li><a href="/blog/tag/pdl/">pdl</a></li>
+            <li><a href="/blog/tag/perl/">perl</a></li>
+            <li><a href="/blog/tag/personal/">personal</a></li>
+            <li><a href="/blog/tag/progress/">progress</a></li>
+            <li><a href="/blog/tag/rants/">rants</a></li>
+            <li><a href="/blog/tag/scripts/">scripts</a></li>
+            <li><a href="/blog/tag/software/">software</a></li>
+            <li><a href="/blog/tag/sql/">sql</a></li>
+            <li><a href="/blog/tag/statocles/">statocles</a></li>
+            <li><a href="/blog/tag/webgui/">webgui</a></li>
+            <li><a href="/blog/tag/xs/">xs</a></li>
+            <li><a href="/blog/tag/yertl/">yertl</a></li>
         </ul>
         <h1>Feeds</h1>
         <ul class="list-inline">
@@ -314,7 +322,7 @@ a determined, dedicated team of hackers.</p>
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>

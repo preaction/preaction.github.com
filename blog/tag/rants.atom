@@ -1,29 +1,29 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/blog/tag/rants</id>
+    <id>http://preaction.github.io/blog/tag/rants/</id>
     <title>preaction</title>
-    <updated>2015-04-15T00:09:56Z</updated>
-    <link rel="self" href="http://preaction.github.io/blog/tag/rants.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/blog/tag/rants"/>
-    <generator version="0.044">Statocles</generator>
+    <updated>2015-07-30T00:28:59Z</updated>
+    <link href="http://preaction.github.io/blog/tag/rants.atom" rel="self" />
+    <link href="http://preaction.github.io/blog/tag/rants/" rel="alternate" />
+    <generator version="0.053">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html</id>
         <title>Between Learning and Doing</title>
         <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html" />
+        <link href="http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html" rel="alternate" />
         <content type="html"><![CDATA[
-            <p><img src="/images/blog/ive-made-a-huge-mistake.gif" alt="I've made a huge mistake" /></p>
+            <p><img alt="I&#39;ve made a huge mistake" src="http://preaction.github.io/images/blog/ive-made-a-huge-mistake.gif"></p>
 
 <p>A long time ago, when I started building my first video game server for
 <a href="http://doublecluepon.com">Double Cluepon</a>, my video game company, I did a bad
 thing. I looked at the AMF library for Perl and Python and decided that
-Python's looked better. I had always meant to learn Python, and this felt like
+Python&#39;s looked better. I had always meant to learn Python, and this felt like
 the perfect opportunity. It had cooperative multitasking (Twisted) and it had
 an ORM (SQLAlchemy), so along with the messaging format (PyAMF), I had
 everything I needed to build a server for a Flash MMO (later migrated to AIR).</p>
 
 <p>Let me reiterate my mistake: While under time constraints, I chose to learn a
-new programming language. I didn't realize my mistake until it was too late.</p>
+new programming language. I didn&#39;t realize my mistake until it was too late.</p>
 
                 <ul>
                     <li><a href="http://blogs.perl.org/users/preaction/2014/07/between-learning-and-doing.html">
@@ -34,7 +34,7 @@ new programming language. I didn't realize my mistake until it was too late.</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/rants">rants</a>
+                <a href="/blog/tag/rants/">rants</a>
             </p>
         ]]></content>
         <updated>2014-07-19T00:00:00Z</updated>
@@ -44,9 +44,9 @@ new programming language. I didn't realize my mistake until it was too late.</p>
         <id>http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html</id>
         <title>Thoughts while changing the API of a massive framework...</title>
         <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html" />
+        <link href="http://preaction.github.io/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html" rel="alternate" />
         <content type="html"><![CDATA[
-            <p>At the Bank we have a home-grown ETL framework that we've been using for quite
+            <p>At the Bank we have a home-grown ETL framework that we&#39;ve been using for quite
 some time. We recently completed a total rewrite, but unfortunately we left out
 a few changes. Had I gotten those changes in 5 months ago, I would have only
 had to break the API of about 10 modules. Today, in order to make those
@@ -65,7 +65,7 @@ make this task surmountable.</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/rants">rants</a>
+                <a href="/blog/tag/rants/">rants</a>
             </p>
         ]]></content>
         <updated>2013-04-11T00:00:00Z</updated>

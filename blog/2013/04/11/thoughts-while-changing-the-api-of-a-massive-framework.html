@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
         
     </head>
@@ -29,6 +30,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -41,8 +43,9 @@
             <header>
                 <h1>Thoughts while changing the API of a massive framework...</h1>
                 <p class="tags">Tags:
-                    <a href="/blog/tag/rants" rel="tag">rants</a>
+                    <a href="/blog/tag/rants/" rel="tag">rants</a>
                 </p>
+
                 <aside>
                     <p><time datetime="2013-04-11">
                         Posted on 2013-04-11
@@ -50,14 +53,16 @@
                         by preaction
                     </p>
                 </aside>
+
                 <p>Originally posted as:
-                        <a class="alert-link" href="http://blogs.perl.org/users/preaction/2013/04/thoughts-while-changing-the-api-of-a-massive-framework.html">
+                        <a href="http://blogs.perl.org/users/preaction/2013/04/thoughts-while-changing-the-api-of-a-massive-framework.html">
                             <em>Thoughts while changing the API of a massive framework...</em> on blogs.perl.org.
                         </a>
                 </p>
+
             </header>
             <section id="section-1">
-                <p>At the Bank we have a home-grown ETL framework that we've been using for quite
+                <p>At the Bank we have a home-grown ETL framework that we&#39;ve been using for quite
 some time. We recently completed a total rewrite, but unfortunately we left out
 a few changes. Had I gotten those changes in 5 months ago, I would have only
 had to break the API of about 10 modules. Today, in order to make those
@@ -73,18 +78,18 @@ make this task surmountable.</p>
 
 <ul>
 <li>3:45pm - 122 modules left</li>
-<li>4:31pm - 112 modules left - And then I remember there's another feature to
+<li>4:31pm - 112 modules left - And then I remember there&#39;s another feature to
 add that will require another migration of all these modules I will have to do.</li>
 <li>4:52pm - 106 modules left -
 <a href="https://metacpan.org/module/Test::Continuous">Test::Continuous</a> removes 3
-steps for each module. Total time saved: HOLY FUCK THAT'S AWESOME</li>
+steps for each module. Total time saved: HOLY FUCK THAT&#39;S AWESOME</li>
 <li>5:35pm - 97 modules left - Every commit message during this ordeal is another
 love note to those who put off this migration five months ago, when there were
 only 10 modules to migrate.</li>
 <li>6:09pm - 94 modules left - New API to change: Create a role to do it for me!
 +100 experience points!</li>
 <li>6:15pm - 93 modules left - Why unpack the hash of args passed-in to the
-method if the method you're calling takes exactly the same arguments? <code>my
+method if the method you&#39;re calling takes exactly the same arguments? <code>my
 $arg_name = $args{arg_name}; return $self-&gt;method( arg_name =&gt; $arg_name )</code>
 should never happen!</li>
 <li>6:37pm - 87 modules left - A thought: If the other team using this project
@@ -100,7 +105,7 @@ programmers.</li>
 <h2>Day 2</h2>
 
 <ul>
-<li>3:02pm - 80 modules left - Let's see if I remember all the macros I left in
+<li>3:02pm - 80 modules left - Let&#39;s see if I remember all the macros I left in
 vim over the weekend... Test::Continuous is still running, which is nice</li>
 <li>3:18pm - 71 modules left - The end is in sight!</li>
 <li>4:30pm - 52 modules left - Perhaps I was premature...</li>
@@ -129,26 +134,27 @@ certainly shaking out the bugs.</li>
         <nav id="tags">
             <h1>Tags</h1>
             <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-                <li><a href="/blog/tag/error">error</a></li>
-                <li><a href="/blog/tag/etl">etl</a></li>
-                <li><a href="/blog/tag/funny">funny</a></li>
-                <li><a href="/blog/tag/git">git</a></li>
-                <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-                <li><a href="/blog/tag/moose">moose</a></li>
-                <li><a href="/blog/tag/mysql">mysql</a></li>
-                <li><a href="/blog/tag/openbsd">openbsd</a></li>
-                <li><a href="/blog/tag/perl">perl</a></li>
-                <li><a href="/blog/tag/personal">personal</a></li>
-                <li><a href="/blog/tag/progress">progress</a></li>
-                <li><a href="/blog/tag/rants">rants</a></li>
-                <li><a href="/blog/tag/scripts">scripts</a></li>
-                <li><a href="/blog/tag/software">software</a></li>
-                <li><a href="/blog/tag/sql">sql</a></li>
-                <li><a href="/blog/tag/statocles">statocles</a></li>
-                <li><a href="/blog/tag/webgui">webgui</a></li>
-                <li><a href="/blog/tag/xs">xs</a></li>
-                <li><a href="/blog/tag/yertl">yertl</a></li>
+                <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/">error</a></li>
+                <li><a href="/blog/tag/etl/">etl</a></li>
+                <li><a href="/blog/tag/funny/">funny</a></li>
+                <li><a href="/blog/tag/git/">git</a></li>
+                <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+                <li><a href="/blog/tag/moose/">moose</a></li>
+                <li><a href="/blog/tag/mysql/">mysql</a></li>
+                <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+                <li><a href="/blog/tag/pdl/">pdl</a></li>
+                <li><a href="/blog/tag/perl/">perl</a></li>
+                <li><a href="/blog/tag/personal/">personal</a></li>
+                <li><a href="/blog/tag/progress/">progress</a></li>
+                <li><a href="/blog/tag/rants/">rants</a></li>
+                <li><a href="/blog/tag/scripts/">scripts</a></li>
+                <li><a href="/blog/tag/software/">software</a></li>
+                <li><a href="/blog/tag/sql/">sql</a></li>
+                <li><a href="/blog/tag/statocles/">statocles</a></li>
+                <li><a href="/blog/tag/webgui/">webgui</a></li>
+                <li><a href="/blog/tag/xs/">xs</a></li>
+                <li><a href="/blog/tag/yertl/">yertl</a></li>
             </ul>
         </nav>
     </div>
@@ -159,7 +165,7 @@ certainly shaking out the bugs.</li>
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
         
     </head>
@@ -29,6 +30,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -41,21 +43,24 @@
             <header>
                 <h1>Mojolicious Triumphs Over Legacy Code</h1>
                 <p class="tags">Tags:
-                    <a href="/blog/tag/mojolicious" rel="tag">mojolicious</a>
-                    <a href="/blog/tag/perl" rel="tag">perl</a>
+                    <a href="/blog/tag/mojolicious/" rel="tag">mojolicious</a>
+                    <a href="/blog/tag/perl/" rel="tag">perl</a>
                 </p>
+
                 <aside>
                     <p><time datetime="2015-02-13">
                         Posted on 2015-02-13
                     </time>
                     </p>
                 </aside>
+
+
             </header>
             <section id="section-1">
                 <p>I got a text at 8:00am:</p>
 
 <blockquote>
-  <p>"Hey, can you jump on a conference call?"</p>
+  <p>&quot;Hey, can you jump on a conference call?&quot;</p>
 </blockquote>
 
 <p>Groggy and disoriented, I blearily type the conference line and enter my
@@ -63,39 +68,39 @@ passcode, followed by the pound or hash sign. At the tone, I would be the 6th
 person to enter the conference. Tone.</p>
 
 <blockquote>
-  <p>"The app is down, and trading has stopped."</p>
+  <p>&quot;The app is down, and trading has stopped.&quot;</p>
 </blockquote>
 
             </section>
             <section id="section-2">
                 <p>Well, yes, their application is down because I spent all night playing
 Whack-a-Mole, banning every IP address they have. Hundreds of them. Their app
-was destroying my service, and denying data to the users who weren't abusing
+was destroying my service, and denying data to the users who weren&#39;t abusing
 it.</p>
 
 <p>The previous day, I had tried putting nginx in front to try to load balance. It
-didn't help: The legacy Catalyst application was I/O bound on long, blocking
-database reads. That's not Catalyst's fault. Our web service was never
-developed for speed. It wasn't meant to perform well. It was meant for internal
+didn&#39;t help: The legacy Catalyst application was I/O bound on long, blocking
+database reads. That&#39;s not Catalyst&#39;s fault. Our web service was never
+developed for speed. It wasn&#39;t meant to perform well. It was meant for internal
 support of a few dozen spreadsheets. If the user wanted performance, they could
 read from the database directly through any number of APIs that we provide.</p>
 
 <blockquote>
-  <p>"Since this API is so slow, we put it on the compute grid. Could that have
-  caused this?"</p>
+  <p>&quot;Since this API is so slow, we put it on the compute grid. Could that have
+  caused this?&quot;</p>
 </blockquote>
 
 <p>So instead of a few dozen spreadsheets, I had a few hundred python scripts
 hitting my web service. The poor thing just could not cope.</p>
 
 <blockquote>
-  <p>"Can't you make it faster? Can we rewrite the web service?"</p>
+  <p>&quot;Can&#39;t you make it faster? Can we rewrite the web service?&quot;</p>
 </blockquote>
 
 <p>No. At least, not all of it. But perhaps we can rewrite just this one URL for
 better performance using all our new modern async APIs.</p>
 
-<p>3 hours later, I've hacked a simple <a href="http://mojolicio.us">Mojolicious</a>
+<p>3 hours later, I&#39;ve hacked a simple <a href="http://mojolicio.us">Mojolicious</a>
 application that behaves exactly like the old application, except the
 Mojolicious app, in a single process, can scale to 100 concurrent requests.</p>
 
@@ -104,17 +109,17 @@ nginx, and my tiny Mojolicious app could now scale to 400 users before things
 started going awry (responses were still within 3 seconds, but sockets would be
 reset. Must be some OS settings to manage).</p>
 
-<p>But I've still got a problem: How do I make absolutely sure that the input and
+<p>But I&#39;ve still got a problem: How do I make absolutely sure that the input and
 the output are exactly the same?</p>
 
-<p>We have an access log. And we have the old web app. Let's make a comparison!</p>
+<p>We have an access log. And we have the old web app. Let&#39;s make a comparison!</p>
 
 <p>Quickly, I used <a href="http://mojolicio.us/perldoc/Mojo/UserAgent">Mojo::UserAgent</a>
 to request a URL from the old app, and then
 <a href="http://mojolicio.us/perldoc/Test/Mojo">Test::Mojo</a> to request the URL from the
 new app, and did a stringy comparison against the two. Some of the failure
 modes were different (the old app built an XML::LibXML object, the new app uses
-templates to build XML), but after adjusting the template's whitespace a bit,
+templates to build XML), but after adjusting the template&#39;s whitespace a bit,
 the new app and the old app have exactly the same output, just in case some
 user is doing something stupid, like <a href="http://stackoverflow.com/a/1732454">parsing XML with regular
 expressions</a>.</p>
@@ -126,7 +131,7 @@ the new webapp, and everything kept going exactly as it had before anyone
 thought of just hammering a random web service with hundreds of concurrent
 requests.</p>
 
-<p>Maybe next time I'll start sending them bogus data instead...</p>
+<p>Maybe next time I&#39;ll start sending them bogus data instead...</p>
 
             </section>
         </main>
@@ -137,26 +142,27 @@ requests.</p>
         <nav id="tags">
             <h1>Tags</h1>
             <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-                <li><a href="/blog/tag/error">error</a></li>
-                <li><a href="/blog/tag/etl">etl</a></li>
-                <li><a href="/blog/tag/funny">funny</a></li>
-                <li><a href="/blog/tag/git">git</a></li>
-                <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-                <li><a href="/blog/tag/moose">moose</a></li>
-                <li><a href="/blog/tag/mysql">mysql</a></li>
-                <li><a href="/blog/tag/openbsd">openbsd</a></li>
-                <li><a href="/blog/tag/perl">perl</a></li>
-                <li><a href="/blog/tag/personal">personal</a></li>
-                <li><a href="/blog/tag/progress">progress</a></li>
-                <li><a href="/blog/tag/rants">rants</a></li>
-                <li><a href="/blog/tag/scripts">scripts</a></li>
-                <li><a href="/blog/tag/software">software</a></li>
-                <li><a href="/blog/tag/sql">sql</a></li>
-                <li><a href="/blog/tag/statocles">statocles</a></li>
-                <li><a href="/blog/tag/webgui">webgui</a></li>
-                <li><a href="/blog/tag/xs">xs</a></li>
-                <li><a href="/blog/tag/yertl">yertl</a></li>
+                <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/">error</a></li>
+                <li><a href="/blog/tag/etl/">etl</a></li>
+                <li><a href="/blog/tag/funny/">funny</a></li>
+                <li><a href="/blog/tag/git/">git</a></li>
+                <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+                <li><a href="/blog/tag/moose/">moose</a></li>
+                <li><a href="/blog/tag/mysql/">mysql</a></li>
+                <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+                <li><a href="/blog/tag/pdl/">pdl</a></li>
+                <li><a href="/blog/tag/perl/">perl</a></li>
+                <li><a href="/blog/tag/personal/">personal</a></li>
+                <li><a href="/blog/tag/progress/">progress</a></li>
+                <li><a href="/blog/tag/rants/">rants</a></li>
+                <li><a href="/blog/tag/scripts/">scripts</a></li>
+                <li><a href="/blog/tag/software/">software</a></li>
+                <li><a href="/blog/tag/sql/">sql</a></li>
+                <li><a href="/blog/tag/statocles/">statocles</a></li>
+                <li><a href="/blog/tag/webgui/">webgui</a></li>
+                <li><a href="/blog/tag/xs/">xs</a></li>
+                <li><a href="/blog/tag/yertl/">yertl</a></li>
             </ul>
         </nav>
     </div>
@@ -167,7 +173,7 @@ requests.</p>
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>

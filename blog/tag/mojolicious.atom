@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/blog/tag/mojolicious</id>
+    <id>http://preaction.github.io/blog/tag/mojolicious/</id>
     <title>preaction</title>
-    <updated>2015-04-15T00:09:56Z</updated>
-    <link rel="self" href="http://preaction.github.io/blog/tag/mojolicious.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/blog/tag/mojolicious"/>
-    <generator version="0.044">Statocles</generator>
+    <updated>2015-07-30T00:28:57Z</updated>
+    <link href="http://preaction.github.io/blog/tag/mojolicious.atom" rel="self" />
+    <link href="http://preaction.github.io/blog/tag/mojolicious/" rel="alternate" />
+    <generator version="0.053">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html</id>
         <title>Mojolicious Triumphs Over Legacy Code</title>
-        <link rel="alternate" href="http://preaction.github.io/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html" />
+        <link href="http://preaction.github.io/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html" rel="alternate" />
         <content type="html"><![CDATA[
             <p>I got a text at 8:00am:</p>
 
 <blockquote>
-  <p>"Hey, can you jump on a conference call?"</p>
+  <p>&quot;Hey, can you jump on a conference call?&quot;</p>
 </blockquote>
 
 <p>Groggy and disoriented, I blearily type the conference line and enter my
@@ -22,13 +22,13 @@ passcode, followed by the pound or hash sign. At the tone, I would be the 6th
 person to enter the conference. Tone.</p>
 
 <blockquote>
-  <p>"The app is down, and trading has stopped."</p>
+  <p>&quot;The app is down, and trading has stopped.&quot;</p>
 </blockquote>
 
                 <p><a href="http://preaction.github.io/blog/2015/02/13/mojolicious-triumphs-over-legacy-code.html#section-2">Continue reading...</a></p>
             <p>Tags:
-                <a href="/blog/tag/mojolicious">mojolicious</a>
-                <a href="/blog/tag/perl">perl</a>
+                <a href="/blog/tag/mojolicious/">mojolicious</a>
+                <a href="/blog/tag/perl/">perl</a>
             </p>
         ]]></content>
         <updated>2015-02-13T00:00:00Z</updated>

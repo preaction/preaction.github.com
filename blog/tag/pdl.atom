@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://preaction.github.io/blog/tag/pdl/</id>
+    <title>preaction</title>
+    <updated>2015-07-30T00:28:56Z</updated>
+    <link href="http://preaction.github.io/blog/tag/pdl.atom" rel="self" />
+    <link href="http://preaction.github.io/blog/tag/pdl/" rel="alternate" />
+    <generator version="0.053">Statocles</generator>
+    <entry>
+        <id>http://preaction.github.io/blog/2015/05/13/new-post/</id>
+        <title>Validating Financial Data with PDL</title>
+        <link href="http://preaction.github.io/blog/2015/05/13/new-post/" rel="alternate" />
+        <content type="html"><![CDATA[
+            <p>My job involves financial market data. A lot of financial market data. I take
+the market data from various sources and store it in a database for later
+analysis.</p>
+
+<p>Being a programmer/analyst and not a mathematician with a Ph.D. in finance, my
+use for time series analytics falls into the &quot;ensure correct data is being
+collected&quot; category. But even then, some basic statistical analysis helps me
+preserve quality historical data for later use.</p>
+
+<p>PDL is perfect for doing these kinds of calculations very quickly. Combined
+with PDL::Finance::TA, all the hard work is already done, and all I need to do
+is wire it all up.</p>
+
+<p>Let&#39;s take a large set of random numbers. If our random number generator were
+perfect, we would expect that the set would be evenly distributed because each
+possible value is exactly as possible as any other value. If we calculate the
+standard deviation (stddev, a measurement of how disperse the data set is), we
+would expect that 99.7% of the points would be within 3 standard deviations of
+the mean (average).</p>
+
+<p>So, if we write a test that checks to see if a new (completely random) point is
+within 3 stddev, there is a 0.3% chance that new (completely random) point will
+fail our test. If we bump that to 4 stddev, we should expect 99.99% of the
+points to pass the test, and 0.01% of the points to fail (1 of every 15787). If
+I collect 500,000 (completely random) points in a day, then 50 of them will
+fail our test.</p>
+
+<p>So I create a time series of random points. Then I create a new time series of
+the 30-day standard deviation of the original series. Then I compare the two
+and see which points are outliers.</p>
+
+<pre><code>use PDL;
+use PDL::Finance::TA;
+
+my $ts = random( 5000 ) * 50;
+my $stddev = ta_stddev( $ts, 30, 1 );
+</code></pre>
+
+<p>Market data is not completely random, it&#39;s stochastic, which I interpret to
+mean as &quot;given value A1, the next value A2 will be somewhere between A1 +/- B&quot;.
+It&#39;s predicting (guessing) &quot;B&quot; that earns quants the big bucks. But, over the
+entire set of data, I know each previous value of B, which is the difference
+between A1 and A2, or the rate of change between 2 points. What I really want
+to know is if the rate of change from A1 to A2 appears abnormal, say, if it&#39;s
+more than 4 stddev from the mean.</p>
+
+<p>So I take my time series, create a new time series that is the rate of change
+for each point in the previous series, create another new time series that is
+the 30-day stddev of the previous time series, and then compare the rate of
+change with the stddev to see which ones are outliers.</p>
+
+<p>Finally, I should also make sure that my source is still updating, as it is
+very rare that most series would be the same twice in a row, or for an entire
+week. So let&#39;s check for flatness by using stddev.</p>
+
+<p>PDL and TAlib make this all incredibly simple, so I can get on with my real
+work (fragging lamers in Quake)</p>
+
+                <p><a href="http://preaction.github.io/blog/2015/05/13/new-post/#section-2">Continue reading...</a></p>
+            <p>Tags:
+                <a href="/blog/tag/perl/">perl</a>
+                <a href="/blog/tag/pdl/">pdl</a>
+            </p>
+        ]]></content>
+        <updated>2015-05-13T00:00:00Z</updated>
+        <category term="perl" />
+        <category term="pdl" />
+    </entry>
+</feed>
+

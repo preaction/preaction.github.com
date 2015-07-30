@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://preaction.github.io/blog/tag/moose</id>
+    <id>http://preaction.github.io/blog/tag/moose/</id>
     <title>preaction</title>
-    <updated>2015-04-15T00:09:57Z</updated>
-    <link rel="self" href="http://preaction.github.io/blog/tag/moose.atom"/>
-    <link rel="alternate" href="http://preaction.github.io/blog/tag/moose"/>
-    <generator version="0.044">Statocles</generator>
+    <updated>2015-07-30T00:28:58Z</updated>
+    <link href="http://preaction.github.io/blog/tag/moose.atom" rel="self" />
+    <link href="http://preaction.github.io/blog/tag/moose/" rel="alternate" />
+    <generator version="0.053">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html</id>
         <title>Using MooseX::Types to Inflate Config Values</title>
         <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html" />
+        <link href="http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html" rel="alternate" />
         <content type="html"><![CDATA[
             <p>For a large application, configuration files become a necessity. They help
 flexible code be used in multiple instances across multiple modules. But they
@@ -26,7 +26,7 @@ configured object is expecting another configured object.</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/moose">moose</a>
+                <a href="/blog/tag/moose/">moose</a>
             </p>
         ]]></content>
         <updated>2012-10-22T00:00:00Z</updated>
@@ -36,7 +36,7 @@ configured object is expecting another configured object.</p>
         <id>http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html</id>
         <title>Run-time Class Composition With Moose</title>
         <author><name>preaction</name></author>
-        <link rel="alternate" href="http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html" />
+        <link href="http://preaction.github.io/blog/2012/10/07/run-time-class-composition-with-moose.html" rel="alternate" />
         <content type="html"><![CDATA[
             <p>Moose is great! At its very basic, it simplifies the boilerplate required to
 create Perl objects immensely, providing attributes with type constraints,
@@ -63,7 +63,7 @@ classes at runtime!</p>
                     </a></li>
                 </ul>
             <p>Tags:
-                <a href="/blog/tag/moose">moose</a>
+                <a href="/blog/tag/moose/">moose</a>
             </p>
         ]]></content>
         <updated>2012-10-07T00:00:00Z</updated>

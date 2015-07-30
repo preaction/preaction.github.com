@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
-        <link rel="alternate" href="/blog/index.atom" type="application/atom+xml" />
-        <link rel="alternate" href="/blog/index.rss" type="application/rss+xml" />
+        <link href="/blog/index.atom" rel="alternate" type="application/atom+xml">
+        <link href="/blog/index.rss" rel="alternate" type="application/rss+xml">
         
     </head>
     <body>
@@ -31,6 +32,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -42,12 +44,43 @@
     <div class="nine columns">
         <main>
 
+
+            <article>
+                <header>
+                    <h1><a href="/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html">Raw Feed of OpenBSD&#39;s Work on Cleaning Up OpenSSL</a></h1>
+
+                    <p class="tags">Tags:
+                        <a href="/blog/tag/openbsd/" rel="tag">openbsd</a>
+                        <a href="/blog/tag/funny/" rel="tag">funny</a>
+                    </p>
+
+                    <aside>
+                        <p><time datetime="2014-04-19">
+                            Posted on 2014-04-19
+                        </time>
+                            by preaction
+                        </p>
+                    </aside>
+
+                </header>
+
+                <p><a href="http://freshbsd.org/search?project=openbsd&amp;q=file.name:libssl">Raw Feed of OpenBSD&#39;s Work on Cleaning Up OpenSSL</a></p>
+
+<p>This is an amazing timeline of how much and how quickly work can get done with
+a determined, dedicated team of hackers.</p>
+
+<p>Here are some gems:</p>
+
+
+                    <p><a href="/blog/2014/04/19/raw-feed-of-openbsds-work-on-cleaning-up-openssl.html#section-2">Continue reading Raw Feed of OpenBSD&#39;s Work on Cleaning Up OpenSSL...</a></p>
+
+            </article>
             <article>
                 <header>
                     <h1><a href="/blog/2013/06/13/chicago.pm-new-website-new-meetup-url-new-presentations-project.html">Chicago.PM New Website! New Meetup URL! New Presentations Project!</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/chicago.pm" rel="tag">chicago.pm</a>
+                        <a href="/blog/tag/chicago.pm/" rel="tag">chicago.pm</a>
                     </p>
 
                     <aside>
@@ -65,7 +98,7 @@
                     </p>
                 </header>
 
-                <p>Lots of news for the Chicago.PM group! We've got a <a href="http://chicago.pm.org">new Chicago.PM
+                <p>Lots of news for the Chicago.PM group! We&#39;ve got a <a href="http://chicago.pm.org">new Chicago.PM
 website</a>, powered by <a href="http://github.com">Github</a>, up at
 <a href="http://chicago.pm.org">http://chicago.pm.org</a>. The website is completely
 editable via Github using the <a href="http://octopress.org">Octopress</a> system. We hope
@@ -81,7 +114,7 @@ of the good tutorials and learning sites.</p>
                     <h1><a href="/blog/2013/05/01/chicago.pm-beyond-grep-expanding-the-programmer-toolset.html">Chicago.PM - Beyond grep - Expanding the Programmer Toolset</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/chicago.pm" rel="tag">chicago.pm</a>
+                        <a href="/blog/tag/chicago.pm/" rel="tag">chicago.pm</a>
                     </p>
 
                     <aside>
@@ -113,7 +146,7 @@ tool</a>.</p>
                     <h1><a href="/blog/2013/04/15/i-bless-you-in-the-name-of-the-stringified-object.html">I Bless You in the Name of the Stringified Object</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/error" rel="tag">error</a>
+                        <a href="/blog/tag/error/" rel="tag">error</a>
                     </p>
 
                     <aside>
@@ -135,16 +168,16 @@ tool</a>.</p>
 
 <pre><code>use DateTime;
 my $date = DateTime-&gt;new( year =&gt; 2013, month =&gt; 4, day =&gt; 15 );
-$date-&gt;set_time_zone("Australia/Sydney");
-print $date-&gt;today;'
+$date-&gt;set_time_zone(&quot;Australia/Sydney&quot;);
+print $date-&gt;today;&#39;
 </code></pre>
 
-<p>This code gives the error <code>Can't locate object method "_normalize_nanoseconds"
-via package "2013-04-15T00:00:00" at
+<p>This code gives the error <code>Can&#39;t locate object method &quot;_normalize_nanoseconds&quot;
+via package &quot;2013-04-15T00:00:00&quot; at
 /usr2/local/perlbrew/perls/perl-5.16.3/lib/site_perl/5.16.3/x86_64-linux-thread-multi/DateTime.pm
 line 252.</code></p>
 
-<p>The package "2013-04-15T00:00:00" is the curious part: It looks like a
+<p>The package &quot;2013-04-15T00:00:00&quot; is the curious part: It looks like a
 stringified DateTime, but who could possibly be stringifying a DateTime object
 and then using that as a package name?</p>
 
@@ -157,7 +190,7 @@ and then using that as a package name?</p>
                     <h1><a href="/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html">Thoughts while changing the API of a massive framework...</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/rants" rel="tag">rants</a>
+                        <a href="/blog/tag/rants/" rel="tag">rants</a>
                     </p>
 
                     <aside>
@@ -175,7 +208,7 @@ and then using that as a package name?</p>
                     </p>
                 </header>
 
-                <p>At the Bank we have a home-grown ETL framework that we've been using for quite
+                <p>At the Bank we have a home-grown ETL framework that we&#39;ve been using for quite
 some time. We recently completed a total rewrite, but unfortunately we left out
 a few changes. Had I gotten those changes in 5 months ago, I would have only
 had to break the API of about 10 modules. Today, in order to make those
@@ -189,56 +222,17 @@ make this task surmountable.</p>
                     <p><a href="/blog/2013/04/11/thoughts-while-changing-the-api-of-a-massive-framework.html#section-2">Continue reading Thoughts while changing the API of a massive framework......</a></p>
 
             </article>
-            <article>
-                <header>
-                    <h1><a href="/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html">Chicago.PM - Dependency Injection (also: Beam::Wire)</a></h1>
-
-                    <p class="tags">Tags:
-                        <a href="/blog/tag/chicago.pm" rel="tag">chicago.pm</a>
-                    </p>
-
-                    <aside>
-                        <p><time datetime="2013-03-29">
-                            Posted on 2013-03-29
-                        </time>
-                            by preaction
-                        </p>
-                    </aside>
-
-                    <p>Originally posted as:
-                            <a href="http://blogs.perl.org/users/preaction/2013/03/chicagopm---dependency-injection-also-beamwire.html">
-                                <em>Chicago.PM - Dependency Injection (also: Beam::Wire)</em> on blogs.perl.org.
-                            </a>
-                    </p>
-                </header>
-
-                <p>At <a href="http://www.meetup.com/Windy-City-Perl-mongers-Meetup/events/104681992/">this month's Chicago.PM
-meeting</a>,
-I gave <a href="http://preaction.github.com/Perl/Dependency-Injection.html">a presentation on Dependency Injection and my new module,
-Beam::Wire</a>.</p>
-
-<p>[EDIT: The presentation doesn't appear to work on mobile devices. I'm trying
-deck.js, and I'm not sure I like it.]</p>
-
-
-                    <p><a href="/blog/2013/03/29/chicago.pm-dependency-injection-also-beam-wire.html#section-2">Continue reading Chicago.PM - Dependency Injection (also: Beam::Wire)...</a></p>
-
-            </article>
         </main>
 
         <ul class="pager">
             <li class="prev">
-                <a class="button button-primary"
-                    rel="next" href="page/4"
-                >
-                    &larr; Older
+                <a class="button button-primary" href="/blog/page/4" rel="next">
+                    ← Older
                 </a>
             </li>
             <li class="next">
-                <a class="button button-primary"
-                    rel="prev" href="page/2"
-                >
-                    Newer &rarr;
+                <a class="button button-primary" href="/blog/page/2" rel="prev">
+                    Newer →
                 </a>
             </li>
         </ul>
@@ -249,26 +243,27 @@ deck.js, and I'm not sure I like it.]</p>
         
         <h1>Tags</h1>
         <ul class="list-inline">
-            <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-            <li><a href="/blog/tag/error">error</a></li>
-            <li><a href="/blog/tag/etl">etl</a></li>
-            <li><a href="/blog/tag/funny">funny</a></li>
-            <li><a href="/blog/tag/git">git</a></li>
-            <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-            <li><a href="/blog/tag/moose">moose</a></li>
-            <li><a href="/blog/tag/mysql">mysql</a></li>
-            <li><a href="/blog/tag/openbsd">openbsd</a></li>
-            <li><a href="/blog/tag/perl">perl</a></li>
-            <li><a href="/blog/tag/personal">personal</a></li>
-            <li><a href="/blog/tag/progress">progress</a></li>
-            <li><a href="/blog/tag/rants">rants</a></li>
-            <li><a href="/blog/tag/scripts">scripts</a></li>
-            <li><a href="/blog/tag/software">software</a></li>
-            <li><a href="/blog/tag/sql">sql</a></li>
-            <li><a href="/blog/tag/statocles">statocles</a></li>
-            <li><a href="/blog/tag/webgui">webgui</a></li>
-            <li><a href="/blog/tag/xs">xs</a></li>
-            <li><a href="/blog/tag/yertl">yertl</a></li>
+            <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+            <li><a href="/blog/tag/error/">error</a></li>
+            <li><a href="/blog/tag/etl/">etl</a></li>
+            <li><a href="/blog/tag/funny/">funny</a></li>
+            <li><a href="/blog/tag/git/">git</a></li>
+            <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+            <li><a href="/blog/tag/moose/">moose</a></li>
+            <li><a href="/blog/tag/mysql/">mysql</a></li>
+            <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+            <li><a href="/blog/tag/pdl/">pdl</a></li>
+            <li><a href="/blog/tag/perl/">perl</a></li>
+            <li><a href="/blog/tag/personal/">personal</a></li>
+            <li><a href="/blog/tag/progress/">progress</a></li>
+            <li><a href="/blog/tag/rants/">rants</a></li>
+            <li><a href="/blog/tag/scripts/">scripts</a></li>
+            <li><a href="/blog/tag/software/">software</a></li>
+            <li><a href="/blog/tag/sql/">sql</a></li>
+            <li><a href="/blog/tag/statocles/">statocles</a></li>
+            <li><a href="/blog/tag/webgui/">webgui</a></li>
+            <li><a href="/blog/tag/xs/">xs</a></li>
+            <li><a href="/blog/tag/yertl/">yertl</a></li>
         </ul>
         <h1>Feeds</h1>
         <ul class="list-inline">
@@ -291,7 +286,7 @@ deck.js, and I'm not sure I like it.]</p>
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>

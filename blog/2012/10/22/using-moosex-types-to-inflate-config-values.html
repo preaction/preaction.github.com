@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
         
     </head>
@@ -29,6 +30,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -41,8 +43,9 @@
             <header>
                 <h1>Using MooseX::Types to Inflate Config Values</h1>
                 <p class="tags">Tags:
-                    <a href="/blog/tag/moose" rel="tag">moose</a>
+                    <a href="/blog/tag/moose/" rel="tag">moose</a>
                 </p>
+
                 <aside>
                     <p><time datetime="2012-10-22">
                         Posted on 2012-10-22
@@ -50,11 +53,13 @@
                         by preaction
                     </p>
                 </aside>
+
                 <p>Originally posted as:
-                        <a class="alert-link" href="http://blogs.perl.org/users/preaction/2012/10/using-moosextypes-to-inflate-config-values.html">
+                        <a href="http://blogs.perl.org/users/preaction/2012/10/using-moosextypes-to-inflate-config-values.html">
                             <em>Using MooseX::Types to Inflate Config Values</em> on blogs.perl.org.
                         </a>
                 </p>
+
             </header>
             <section id="section-1">
                 <p>For a large application, configuration files become a necessity. They help
@@ -69,8 +74,8 @@ configured object is expecting another configured object.</p>
 <pre><code>use Moose;
 use TimeSeries;
 has timeseries =&gt; (
-        is =&gt; 'rw',
-        isa =&gt; 'TimeSeries',
+        is =&gt; &#39;rw&#39;,
+        isa =&gt; &#39;TimeSeries&#39;,
         required =&gt; 1,
 );
 
@@ -78,8 +83,8 @@ package TimeSeries;
 
 use Moose;
 has dates =&gt; (
-        is =&gt; 'rw',
-        isa =&gt; 'HashRef[Number]', # Date =&gt; Value pairs
+        is =&gt; &#39;rw&#39;,
+        isa =&gt; &#39;HashRef[Number]&#39;, # Date =&gt; Value pairs
         default =&gt; sub { {} },
 );
 </code></pre>
@@ -91,14 +96,14 @@ objects are completely separate, joined only by the reference, like so:</p>
 
 <pre><code># dependency.yml
 - service:
-        name: 'test_repo'
-        class: 'FakeRepository'
+        name: &#39;test_repo&#39;
+        class: &#39;FakeRepository&#39;
         constructor_args:
                 timeseries: { ref: test_data }
 
 - service:
-        name: 'test_data'
-        class: 'TimeSeries'
+        name: &#39;test_data&#39;
+        class: &#39;TimeSeries&#39;
         constructor_args:
                 dates:
                         2012-01-01: 1.56
@@ -114,7 +119,7 @@ in its dates attribute directly from the configuration file.</p>
 works fine as-is, the dependency injection framework does the work. But what if
 we wanted to specify the timeseries value directly, instead of indirectly?</p>
 
-<p>Moose's typing system allows us to do just that. By creating a custom type with
+<p>Moose&#39;s typing system allows us to do just that. By creating a custom type with
 a coercion from the data structure in our configuration file, we can create the
 dependency that our test_repo needs.</p>
 
@@ -140,7 +145,7 @@ use Moose;
 use My::Types qw( TimeSeriesType );
 
 has timeseries =&gt; qw(
-        is =&gt; 'rw',
+        is =&gt; &#39;rw&#39;,
         isa =&gt; TimeSeriesType,  # Not quoted!
         coerce =&gt; 1,                    # Activate coercion powers!
         required =&gt; 1,
@@ -152,8 +157,8 @@ without indirection.</p>
 
 <pre><code># dependency.yml
 - service:
-        name: 'test_repo'
-        class: 'FakeRepository'
+        name: &#39;test_repo&#39;
+        class: &#39;FakeRepository&#39;
         constructor_args:
                 timeseries:
                         2012-01-01: 1.56
@@ -172,20 +177,20 @@ coercions in place also helps when writing test code:</p>
 use FakeRepository;
 my $repo = FakeRepository-&gt;new(
         timeseries =&gt; {
-                '2012-01-01' =&gt; 1.56,
-                '2012-01-02' =&gt; 1.69,
-                '2012-01-03' =&gt; 1.45,
+                &#39;2012-01-01&#39; =&gt; 1.56,
+                &#39;2012-01-02&#39; =&gt; 1.69,
+                &#39;2012-01-03&#39; =&gt; 1.45,
         },
 );
 </code></pre>
 
 <p>No need to increase the apparent coverage of the test by including the
 TimeSeries class, we never have to refer to it at all. No need to lock the
-interface to a specific TimeSeries class (if that's a desired goal of the
+interface to a specific TimeSeries class (if that&#39;s a desired goal of the
 project), the coercion takes care of creating the actual object used.</p>
 
-<p>Coercions are a powerful feature. I've used them to build complicated trees
-from arrays of arrays (more on that later), and I've used them to simply
+<p>Coercions are a powerful feature. I&#39;ve used them to build complicated trees
+from arrays of arrays (more on that later), and I&#39;ve used them to simply
 force-uppercase a string so that Log4perl would do its job. Coercions are one
 more very useful tool in a robust toolbox.</p>
 
@@ -198,26 +203,27 @@ more very useful tool in a robust toolbox.</p>
         <nav id="tags">
             <h1>Tags</h1>
             <ul class="list-inline">
-                <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-                <li><a href="/blog/tag/error">error</a></li>
-                <li><a href="/blog/tag/etl">etl</a></li>
-                <li><a href="/blog/tag/funny">funny</a></li>
-                <li><a href="/blog/tag/git">git</a></li>
-                <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-                <li><a href="/blog/tag/moose">moose</a></li>
-                <li><a href="/blog/tag/mysql">mysql</a></li>
-                <li><a href="/blog/tag/openbsd">openbsd</a></li>
-                <li><a href="/blog/tag/perl">perl</a></li>
-                <li><a href="/blog/tag/personal">personal</a></li>
-                <li><a href="/blog/tag/progress">progress</a></li>
-                <li><a href="/blog/tag/rants">rants</a></li>
-                <li><a href="/blog/tag/scripts">scripts</a></li>
-                <li><a href="/blog/tag/software">software</a></li>
-                <li><a href="/blog/tag/sql">sql</a></li>
-                <li><a href="/blog/tag/statocles">statocles</a></li>
-                <li><a href="/blog/tag/webgui">webgui</a></li>
-                <li><a href="/blog/tag/xs">xs</a></li>
-                <li><a href="/blog/tag/yertl">yertl</a></li>
+                <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+                <li><a href="/blog/tag/error/">error</a></li>
+                <li><a href="/blog/tag/etl/">etl</a></li>
+                <li><a href="/blog/tag/funny/">funny</a></li>
+                <li><a href="/blog/tag/git/">git</a></li>
+                <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+                <li><a href="/blog/tag/moose/">moose</a></li>
+                <li><a href="/blog/tag/mysql/">mysql</a></li>
+                <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+                <li><a href="/blog/tag/pdl/">pdl</a></li>
+                <li><a href="/blog/tag/perl/">perl</a></li>
+                <li><a href="/blog/tag/personal/">personal</a></li>
+                <li><a href="/blog/tag/progress/">progress</a></li>
+                <li><a href="/blog/tag/rants/">rants</a></li>
+                <li><a href="/blog/tag/scripts/">scripts</a></li>
+                <li><a href="/blog/tag/software/">software</a></li>
+                <li><a href="/blog/tag/sql/">sql</a></li>
+                <li><a href="/blog/tag/statocles/">statocles</a></li>
+                <li><a href="/blog/tag/webgui/">webgui</a></li>
+                <li><a href="/blog/tag/xs/">xs</a></li>
+                <li><a href="/blog/tag/yertl/">yertl</a></li>
             </ul>
         </nav>
     </div>
@@ -228,7 +234,7 @@ more very useful tool in a robust toolbox.</p>
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>

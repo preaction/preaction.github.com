@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/theme/css/normalize.css" />
-        <link rel="stylesheet" href="/theme/css/skeleton.css" />
-        <link rel="stylesheet" href="/theme/css/statocles-default.css" />
+        <link href="/theme/css/normalize.css" rel="stylesheet">
+        <link href="/theme/css/skeleton.css" rel="stylesheet">
+        <link href="/theme/css/statocles-default.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <title>preaction</title>
-        <link rel="alternate" href="/blog/tag/xs.atom" type="application/atom+xml" />
-        <link rel="alternate" href="/blog/tag/xs.rss" type="application/rss+xml" />
+        <link href="/blog/tag/xs.atom" rel="alternate" type="application/atom+xml">
+        <link href="/blog/tag/xs.rss" rel="alternate" type="application/rss+xml">
         
     </head>
     <body>
@@ -31,6 +32,7 @@
                             <a href="http://indiepalate.com">Food</a>
                         </li>
                     </ul>
+                    
                 </div>
             </nav>
             
@@ -42,13 +44,14 @@
     <div class="nine columns">
         <main>
 
+
             <article>
                 <header>
                     <h1><a href="/blog/2012/03/20/adventures-in-debugging-c-xs-2-debugging-boogaloo.html">Adventures in Debugging C/XS 2: Debugging Boogaloo</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/perl" rel="tag">perl</a>
-                        <a href="/blog/tag/xs" rel="tag">xs</a>
+                        <a href="/blog/tag/perl/" rel="tag">perl</a>
+                        <a href="/blog/tag/xs/" rel="tag">xs</a>
                     </p>
 
                     <aside>
@@ -61,13 +64,13 @@
 
                 </header>
 
-                <p>... or "Ask Not To Whom The Pointer Points, It Points To Thee."</p>
+                <p>... or &quot;Ask Not To Whom The Pointer Points, It Points To Thee.&quot;</p>
 
 <p>TL;DR: A pointer is not a reference. A pointer knows nothing about the data
 being pointed to. Returning multiple values requires actual work.</p>
 
 <p>Everything went wrong when I wanted a string with a <code>NUL</code> character inside it.
-C strings are not Perl scalars, they don't know how long they are. So to mark
+C strings are not Perl scalars, they don&#39;t know how long they are. So to mark
 the end of a string, C uses the <code>NUL</code> character, <code>\0</code>. The <code>strcpy</code> function will
 copy to your destination until the first <code>\0</code> from your source. When you want to
 have a string with a <code>\0</code> inside of it that does not mark the end of the string,
@@ -113,10 +116,10 @@ char* buffer = get_string_with_nuls( &amp;bufferSize );
 </code></pre>
 
 <p>This way, <code>get_string_with_nuls</code> can handle the <code>malloc</code> with exactly the correct
-size and give it to me. I don't have to guess at a size beforehand.</p>
+size and give it to me. I don&#39;t have to guess at a size beforehand.</p>
 
-<p>Of course, a struct could do this better, or since I'm actually in C++, an
-object. I'll be planning a new API as soon as I confirm this one actually
+<p>Of course, a struct could do this better, or since I&#39;m actually in C++, an
+object. I&#39;ll be planning a new API as soon as I confirm this one actually
 works and has proper tests (written in Perl, of course).</p>
 
 
@@ -127,7 +130,7 @@ works and has proper tests (written in Perl, of course).</p>
                     <h1><a href="/blog/2011/11/16/adventures-in-debugging-c-xs.html">Adventures in Debugging C/XS</a></h1>
 
                     <p class="tags">Tags:
-                        <a href="/blog/tag/xs" rel="tag">xs</a>
+                        <a href="/blog/tag/xs/" rel="tag">xs</a>
                     </p>
 
                     <aside>
@@ -165,17 +168,13 @@ fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
 
         <ul class="pager">
             <li class="prev">
-                <a class="button disabled"
-                    rel="next" href=""
-                >
-                    &larr; Older
+                <a class="button disabled" href="" rel="next">
+                    ← Older
                 </a>
             </li>
             <li class="next">
-                <a class="button disabled"
-                    rel="prev" href=""
-                >
-                    Newer &rarr;
+                <a class="button disabled" href="" rel="prev">
+                    Newer →
                 </a>
             </li>
         </ul>
@@ -186,26 +185,27 @@ fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
         
         <h1>Tags</h1>
         <ul class="list-inline">
-            <li><a href="/blog/tag/chicago.pm">chicago.pm</a></li>
-            <li><a href="/blog/tag/error">error</a></li>
-            <li><a href="/blog/tag/etl">etl</a></li>
-            <li><a href="/blog/tag/funny">funny</a></li>
-            <li><a href="/blog/tag/git">git</a></li>
-            <li><a href="/blog/tag/mojolicious">mojolicious</a></li>
-            <li><a href="/blog/tag/moose">moose</a></li>
-            <li><a href="/blog/tag/mysql">mysql</a></li>
-            <li><a href="/blog/tag/openbsd">openbsd</a></li>
-            <li><a href="/blog/tag/perl">perl</a></li>
-            <li><a href="/blog/tag/personal">personal</a></li>
-            <li><a href="/blog/tag/progress">progress</a></li>
-            <li><a href="/blog/tag/rants">rants</a></li>
-            <li><a href="/blog/tag/scripts">scripts</a></li>
-            <li><a href="/blog/tag/software">software</a></li>
-            <li><a href="/blog/tag/sql">sql</a></li>
-            <li><a href="/blog/tag/statocles">statocles</a></li>
-            <li><a href="/blog/tag/webgui">webgui</a></li>
-            <li><a href="/blog/tag/xs">xs</a></li>
-            <li><a href="/blog/tag/yertl">yertl</a></li>
+            <li><a href="/blog/tag/chicago.pm/">chicago.pm</a></li>
+            <li><a href="/blog/tag/error/">error</a></li>
+            <li><a href="/blog/tag/etl/">etl</a></li>
+            <li><a href="/blog/tag/funny/">funny</a></li>
+            <li><a href="/blog/tag/git/">git</a></li>
+            <li><a href="/blog/tag/mojolicious/">mojolicious</a></li>
+            <li><a href="/blog/tag/moose/">moose</a></li>
+            <li><a href="/blog/tag/mysql/">mysql</a></li>
+            <li><a href="/blog/tag/openbsd/">openbsd</a></li>
+            <li><a href="/blog/tag/pdl/">pdl</a></li>
+            <li><a href="/blog/tag/perl/">perl</a></li>
+            <li><a href="/blog/tag/personal/">personal</a></li>
+            <li><a href="/blog/tag/progress/">progress</a></li>
+            <li><a href="/blog/tag/rants/">rants</a></li>
+            <li><a href="/blog/tag/scripts/">scripts</a></li>
+            <li><a href="/blog/tag/software/">software</a></li>
+            <li><a href="/blog/tag/sql/">sql</a></li>
+            <li><a href="/blog/tag/statocles/">statocles</a></li>
+            <li><a href="/blog/tag/webgui/">webgui</a></li>
+            <li><a href="/blog/tag/xs/">xs</a></li>
+            <li><a href="/blog/tag/yertl/">yertl</a></li>
         </ul>
         <h1>Feeds</h1>
         <ul class="list-inline">
@@ -228,7 +228,7 @@ fail 19 times out of 20. Worse, my C test program would never fail at all.</p>
         <footer>
             
             <div class="container tagline">
-                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br/>
+                <a href="http://preaction.github.io/Statocles">Made with Statocles</a><br>
                 <a href="http://www.perl.org">Powered by Perl</a>
             </div>
         </footer>
