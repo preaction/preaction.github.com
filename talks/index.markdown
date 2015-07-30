@@ -16,7 +16,7 @@ These are talks I've given at Perl Mongers meetings and Perl conferences.
 * [Dependency Injection (also: Introducing Beam::Wire)](/talks/Perl/Dependency-Injection.html)
 * [Git::ReleaseRepo](/talks/Perl/Git-ReleaseRepo.html)
 * [Modern Web Apps Using Mojolicious, Angular.js, Bootstrap, and MongoDB](/talks/Perl/Mojo-Angular.html)
-* [Introduction to Rex](/Introduction-to-Rex)
+* [Introduction to Rex](http://preaction.github.io/Introduction-to-Rex)
 * [Command line apps with Perl - Best practices and modules](http://chicago.pm.org/Command-Line-Apps/)
 * [Parsing with Regex and Grammars](http://chicago.pm.org/Parsing-Regex-Grammars/)
 * [perldelta - What's changes from Perl 5.10 - 5.20](http://chicago.pm.org/perldelta)

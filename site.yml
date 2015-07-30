@@ -11,6 +11,12 @@ static_app:
         store: '.'
         url_root: '/'
 
+plain_app:
+    class: Statocles::App::Plain
+    args:
+        store: '.'
+        url_root: '/'
+
 site:
     class: Statocles::Site
     on:
@@ -52,5 +58,7 @@ site:
                 $ref: blog_app
             static:
                 $ref: static_app
+            plain:
+                $ref: plain_app
         data:
             google_analytics_id: 'UA-61295159-2'
