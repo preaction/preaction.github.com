@@ -39,8 +39,6 @@ group, Core Data team. October 2011 - Present
 * Developed custom job metadata reporting using
   [Postgres](http://postgresql.org), [Mojolicious](http://mojolicio.us),
   and custom messaging via [ZeroMQ](http://zeromq.org)
-* Discovered [MongoDB](http://mongodb.org) is not a panacea for
-  database needs
 * Built robust and scalable ETL system using Perl and
   [ActiveMQ](http://activemq.apache.org)
 * Built simple web applications for viewing and exploring data using
@@ -75,7 +73,8 @@ CTO / Technical Director / Senior Developer. October 2009 - June 2014
   using Perl, Jenkins, and Make
 * Built a community website based on Python, Twisted,
   [Jinja](http://jinja.pocoo.org), Angular, and Bootstrap
-* Made almost every wrong Python library decision possible
+* Wrote enough Python to make almost every wrong Python library decision
+  possible
 * Administered MySQL, MongoDB, and 5 FreeBSD servers for all
   small-business needs including e-mail, DNS, and security
 
@@ -98,12 +97,12 @@ Senior Developer / Project Manager / Systems Administrator. November
   object-oriented system), and Plack (web service abstraction layer)
 * Built a JavaScript service-based Admin interface to WebGUI 8, allowing
   for custom scripting for WebGUI sites
+* Performed performance profiling, replication, and administration of
+  MySQL databases
+* Performed manual database merges when replication failed
 * Primary sysadmin for 30 Linux (CentOS) WebGUI hosting servers,
   including a load-balanced cluster for a client with 1.5m hits per
   month
-* Performed performance profiling, replication, and administration of
-  MySQL databases
-* High tolerance for pain
 
 ## Other Accomplishments
 
