@@ -1,0 +1,7 @@
+li {
+    margin-bottom: 0;
+}
+ul ul, ul ol, ol ol, ol ul {
+    margin: 0 0 0 3rem;
+}
+

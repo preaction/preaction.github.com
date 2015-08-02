@@ -1,17 +1,22 @@
 ---
 title: Resume
+links:
+    stylesheet:
+        - href: /theme/css/resume.css
 ---
 
-# Doug Bell
-
-* Located in Chicago, IL
+<div markdown="1" class="pull-right">
+* Chicago, IL
 * (312) 241-8518
-* [E-mail: madcityzen@gmail.com](mailto:madcityzen@gmail.com)
+* [madcityzen@gmail.com](mailto:madcityzen@gmail.com)
+</div>
+
+# Doug Bell
 
 ## Summary
 
 * Software developer in Perl and JavaScript
-* Team leader and project manager
+* Mentor, team leader, and project manager
 * System administrator and operations in Unix and Linux
 
 ## Work History
@@ -59,9 +64,8 @@ CTO / Technical Director / Senior Developer. October 2009 - June 2014
 * Built SwfConduit, an AS3 socket server using Python,
   [Twisted](http://twistedmatrix.com), and
   [PyAMF](https://github.com/hydralabs/pyamf)
-* Designed and built game object database using MongoDB
-    * MongoDB replaced MySQL after complications with
-      [SQLAlchemy](http://www.sqlalchemy.org)
+* Designed and built game object database using MongoDB (replacing MySQL after
+  complications with [SQLAlchemy](http://www.sqlalchemy.org))
 * Developed StoryTeller, an isometric, sprite-based game framework built
   on [Flex](http://flex.apache.org) running under AIR using SwfConduit as a backend
 * Began work on Emerald Kingdom, an MMO RPG with a focus on episodic, rotating
@@ -109,21 +113,17 @@ Senior Developer / Project Manager / Systems Administrator. November
 * Community organizer
     * Chicago Perl Mongers since May 2013
     * #css on Freenode since Mar 2003 (IRC nick: preaction)
-
 * Presentations at [http://preaction.github.io/talks](/talks)
-
 * Contributor to
     * Perl 5
     * Git
-
 * Personal projects
     * [Github profile: preaction](http://github.com/preaction)
     * [Statocles - A static site CMS](http://preaction.github.io/Statocles)
     * [Yertl - ETL With a Shell](http://preaction.github.io/ETL-Yertl)
     * [Import::Base - Remove boilerplate from your code](http://metacpan.org/pod/Import::Base)
     * [MetaCPAN author page](https://metacpan.org/author/PREACTION)
-
 * Blogs
-    * Perl blogging at http://blogs.perl.org/users/preaction
-    * Cooking blog at http://indiepalate.com
-    * Other blogging at http://preaction.github.io
+    * Perl blogging at <http://blogs.perl.org/users/preaction>
+    * Cooking blog at <http://indiepalate.com>
+    * Other blogging at <http://preaction.github.io>
