@@ -5,7 +5,7 @@
         <link>http://preaction.github.io/blog/tag/software/</link>
         <atom:link href="http://preaction.github.io/blog/tag/software.rss" rel="self" type="application/rss+xml" />
         <description>Blog feed of preaction</description>
-        <generator>Statocles 0.053</generator>
+        <generator>Statocles 0.054</generator>
         <item>
             <title>Consuming Chaos</title>
             <link>http://preaction.github.io/blog/2015/03/08/consuming-chaos/</link>

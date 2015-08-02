@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/webgui/</id>
     <title>preaction</title>
-    <updated>2015-07-30T22:47:00Z</updated>
+    <updated>2015-08-02T00:13:58Z</updated>
     <link href="http://preaction.github.io/blog/tag/webgui.atom" rel="self" />
     <link href="http://preaction.github.io/blog/tag/webgui/" rel="alternate" />
-    <generator version="0.053">Statocles</generator>
+    <generator version="0.054">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2011/05/20/webgui-8-status-report.html</id>
         <title>WebGUI 8 Status Report</title>

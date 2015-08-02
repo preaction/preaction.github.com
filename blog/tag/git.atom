@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/git/</id>
     <title>preaction</title>
-    <updated>2015-07-30T22:47:03Z</updated>
+    <updated>2015-08-02T00:13:58Z</updated>
     <link href="http://preaction.github.io/blog/tag/git.atom" rel="self" />
     <link href="http://preaction.github.io/blog/tag/git/" rel="alternate" />
-    <generator version="0.053">Statocles</generator>
+    <generator version="0.054">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/06/14/conflict-resolution-local--lib-and-gits-perl.html</id>
         <title>Conflict Resolution: local::lib and git&#39;s Perl</title>

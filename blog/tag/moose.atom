@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/moose/</id>
     <title>preaction</title>
-    <updated>2015-07-30T22:47:02Z</updated>
+    <updated>2015-08-02T00:14:00Z</updated>
     <link href="http://preaction.github.io/blog/tag/moose.atom" rel="self" />
     <link href="http://preaction.github.io/blog/tag/moose/" rel="alternate" />
-    <generator version="0.053">Statocles</generator>
+    <generator version="0.054">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2012/10/22/using-moosex-types-to-inflate-config-values.html</id>
         <title>Using MooseX::Types to Inflate Config Values</title>

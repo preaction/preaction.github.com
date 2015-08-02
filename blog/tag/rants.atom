@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://preaction.github.io/blog/tag/rants/</id>
     <title>preaction</title>
-    <updated>2015-07-30T22:46:58Z</updated>
+    <updated>2015-08-02T00:14:09Z</updated>
     <link href="http://preaction.github.io/blog/tag/rants.atom" rel="self" />
     <link href="http://preaction.github.io/blog/tag/rants/" rel="alternate" />
-    <generator version="0.053">Statocles</generator>
+    <generator version="0.054">Statocles</generator>
     <entry>
         <id>http://preaction.github.io/blog/2014/07/19/between-learning-and-doing.html</id>
         <title>Between Learning and Doing</title>
