@@ -29,8 +29,8 @@ group, Core Data team. October 2011 - Present
 #### Responsibilities and accomplishments
 
 * Collect and store market data for historical time series analysis
-* Collect market data using Perl, C++, Java, SQL, SOAP, HTTP, FTP, and
-  e-mail
+* Collect market data using Perl, C++ (via Perl XS), Java (via Perl Inline::Java),
+  SQL, SOAP, HTTP, FTP, and e-mail
 * Modernized and simplified legacy Perl platform and improved testing
   and documentation
 * Worked with other QAR teams to build common solutions to data loading
