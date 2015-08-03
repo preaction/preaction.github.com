@@ -47,6 +47,8 @@ site:
             $class: Statocles::Deploy::Git
             $args:
                 path: '.'
+                branch: deploy
+                remote: deploy
         index: blog
         apps:
             blog:
