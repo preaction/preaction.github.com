@@ -29,7 +29,7 @@ site:
             $sub: check_pages
     args:
         title: preaction
-        base_url: http://preaction.github.io
+        base_url: http://preaction.me
         theme: 'theme'
         nav:
             main:
