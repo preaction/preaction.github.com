@@ -49,7 +49,7 @@ site:
                 path: '.'
                 branch: deploy
                 remote: deploy
-        index: blog
+        index: /blog
         apps:
             blog:
                 $ref: blog_app
