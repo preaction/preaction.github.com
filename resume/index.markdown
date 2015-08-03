@@ -126,4 +126,4 @@ Senior Developer / Project Manager / Systems Administrator. November
 * Blogs
     * Perl blogging at <http://blogs.perl.org/users/preaction>
     * Cooking blog at <http://indiepalate.com>
-    * Other blogging at <http://preaction.github.io>
+    * Other blogging at <http://preaction.me>
